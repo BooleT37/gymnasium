@@ -1,0 +1,249 @@
+@font-face {
+    font-family: Karton;
+    src: url(fonts/Karton.otf);
+}
+
+@font-face {
+    font-family: Karton-Regular;
+    src: url(fonts/Karton-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Exo 2 ExtraLightCondensed";
+    font-weight: 200;
+    font-stretch: condensed;
+    src: url(fonts/Exo2-ExtraLightCondensed.otf);
+}
+
+@font-face {
+    font-family: "Exo 2 LightCondensed";
+    font-weight: 300;
+    font-stretch: condensed;
+    src: url(fonts/Exo2-LightCondensed.otf);
+}
+
+@font-face {
+    font-family: "Exo 2 RegularCondensed";
+    font-stretch: condensed;
+    src: url(fonts/Exo2-RegularCondensed.otf);
+}
+
+body {
+    margin: 0;
+    font-family: 'Exo 2 RegularCondensed', sans-serif;
+    font-stretch: condensed;
+}
+
+#design {
+    position: absolute;
+    top: -2px;
+    left: -3px;
+    z-index: 3;
+    background-image: url('images/design.jpg');
+    opacity: 1;
+    width: 1920px;
+    height: 3600px;
+    display: block;
+}
+
+#designSwitchButton {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 4;
+}
+
+.ReactModal__Body--open {
+    overflow: hidden;
+}
+
+#content:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: -1;
+
+    display: block;
+    background-image: url('images/background.jpg');
+    width: 1920px;
+    height: 3600px;
+    margin: 0 auto;
+}
+
+.ReactModal__Body--open #content:before {
+    -webkit-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+}
+
+#wrapper {
+    margin: 0 auto;
+    width: 1920px;
+}
+
+#header_nav {
+    padding: 43px 0px 0px 28px;
+}
+
+#header_nav ul {
+    -webkit-padding-start: 0;
+}
+
+#header_nav li {
+    display: inline-block;
+    color: white;
+    cursor: pointer;
+}
+
+#title {
+    color: white;
+    font: 200 87px 'Exo 2 ExtraLightCondensed', sans-serif;
+    font-stretch: condensed;
+    padding: 43px 0 13px;
+    width: 880px;
+}
+
+#titleText {
+    padding-left: 144px;
+}
+
+.titleHr {
+    height: 2px;
+    border: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+#titleHr_left {
+    margin: 15px 0 0;
+}
+
+#titleHr_right {
+    width: 99px;
+    position: absolute;
+    top: 156px;
+    right: -18px;
+}
+
+.header_elementName {
+    font: 200 24px 'Exo 2 ExtraLightCondensed', sans-serif;
+    font-stretch: condensed;
+}
+
+li.header_autoscroller:hover .header_elementName {
+    text-shadow: 0px 0px 10px white;
+}
+
+#title, #header_nav {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.nav_element_image {
+    width: 1100px;
+    height: 183px;
+    display: inline-block;
+    background-image: url(images/nav_items.png);
+}
+
+#nav_image_graduates {
+    background-position-y: -183px;
+}
+
+#nav_image_graduates:hover {
+    background-position-y: 0px;
+}
+
+#nav_image_teachers {
+    background-position-y: -1281px;
+}
+
+#nav_image_teachers:hover {
+    background-position-y: -1098px;
+}
+
+#nav_image_souvenirs {
+    background-position-y: -1647px;
+}
+
+#nav_image_souvenirs:hover {
+    background-position-y: -1464px;
+}
+
+#nav_image_history {
+    background-position-y: -2013px;
+}
+
+#nav_image_history:hover {
+    background-position-y: -1830px;
+}
+
+#nav_image_administration {
+    background-position-y: -915px;
+}
+
+#nav_image_administration:hover {
+    background-position-y: -732px;
+}
+
+#nav_image_traditions {
+    background-position-y: -549px;
+}
+
+#nav_image_traditions:hover {
+    background-position-y: -366px;
+}
+
+#nav {
+    text-align: center;
+    margin-top: 660px;
+}
+
+#nav li {
+    margin: 260px 0;
+    list-style-type: none;
+}
+
+.modal {
+    position: absolute;
+    top: 40px;
+    bottom: 40px;
+    left: 0px;
+    right: 0px;
+    border: 1px solid #ccc;
+    background: #fff;
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    width: 960px;
+    margin: 0 auto;
+}
+
+.modal_header {
+    text-align: center;
+}
+
+.modal_title {
+    font: 25px Karton-Regular;
+}
+
+.modal_icon {
+    width: 48px;
+    height: 64px;
+}
+
+.modal_icon_leaf {
+    background-image: url(images/nav_items_icons/leaf.png);
+}
+
+.modal_closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-image: url(images/modal_close.png);
+    height: 40px;
+    width: 40px;
+}

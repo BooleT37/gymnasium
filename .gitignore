@@ -1,0 +1,8 @@
+# IntelliJ project files
+.idea
+*.iml
+build/
+target
+node_modules/
+twitter.log
+copyStaticResourses.cmd
