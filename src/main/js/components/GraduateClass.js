@@ -49,7 +49,7 @@ export default class GraduateClass extends React.Component {
     getStateForCurrentClassId(storeState, classId) {
 
         var classesDict = storeState.classesDict;
-        var years = Object.keys(classesDict).sort((a, b) => b - a);
+        var years = Object.keys(classesDict).map(y => parseInt(y, 10)).sort((a, b) => b - a);
 
         var currentClass = concat(Object.values(classesDict)).find(graduateClass => graduateClass.id === classId)
         
@@ -104,34 +104,42 @@ export default class GraduateClass extends React.Component {
         } else {
             var grades = state.grades.map((grade, i) => 
                 <div className={classnames(
-                       'graduateClass_footerElement',
                        'graduateClass_grade', {
                            graduateClass_grade_current: grade === state.currentClass.grade
                        }
-                   )} key={`grade_${i}`}></div>
+                   )} key={`grade_${i}`}>{grade}</div>
             );
             var characters = state.characters.map((char, i) =>
                 <div className={classnames(
-                    'graduateClass_footerElement',
                     'graduateClass_character', {
                        graduateClass_character_current: char === state.currentClass.character
                     }
-                   )} key={`char_${i}`}></div>
+                   )} key={`char_${i}`}>{char}</div>
             );
             content = [
                 <div className="graduateClass_center" key="center">
-                    <div className="graduateClass_photo">Здесь фото</div>
+                    <div className="graduateClass_photo"></div>
                     <GraduatesList classId={state.currentClass.id}></GraduatesList>
                 </div>,
+                <hr key="hr" className="modal_hr modal_footerHr"/>,
                 <div className="popup_footer" key="footer">
-                    <div className="graduateClass_footerElement">год выпуска</div>
-                    <div className={"graduateClass_footerElement graduateClass_yearSwitch" + state.previous ? '' : 'graduateClass_yearSwitch_disabled'}>назад</div>
-                    <div className="graduateClass_footerElement">{state.currentClass.graduateYear}</div>
-                    <div className={"graduateClass_footerElement graduateClass_yearSwitch" + state.previous ? '' : 'graduateClass_yearSwitch_disabled'}>вперед</div>
-                    <div className="graduateClass_footerElement">класс</div>
-                    {characters}
-                    {grades}
-                    <div className="graduateClass_footerElement graduateClass_addGraduate">Добавить анкету</div>
+                    <div className="graduateClass_footerText graduateClass_graduateYearText">год выпуска</div>
+                    <div className="graduateClass_widget graduateClass_yearWidget">
+                        <div className={"graduateClass_yearSwitch" + (state.previousYear ? '' : ' graduateClass_yearSwitch_disabled')}>◂</div>
+                        <div className="graduateClass_graduateYear">{state.currentClass.graduateYear}</div>
+                        <div className={"graduateClass_yearSwitch" + (state.nextYear ? '' : ' graduateClass_yearSwitch_disabled')}>▸</div>
+                    </div>
+                    <div className="graduateClass_footerText graduateClass_graduateClassText">класс</div>
+                    <div className="graduateClass_widget graduateClass_gradeWidget">
+                        {grades}
+                    </div>
+                    <div className="graduateClass_widget graduateClass_characterWidget">
+                        {characters}
+                    </div>
+                    <div className="graduateClass_addGraduate">
+                        <div className="graduateClass_addGraduateText">Добавить<br/>анкету</div>
+                        <div className="graduateClass_addGraduateIcon"></div>
+                    </div>
                 </div>
             ]
     	}

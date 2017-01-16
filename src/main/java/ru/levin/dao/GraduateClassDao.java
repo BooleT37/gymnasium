@@ -70,4 +70,8 @@ public class GraduateClassDao {
         em.flush();
         return graduateClass;
     }
+
+    public boolean isEmpty() {
+        return em.createQuery("select count(c) from " + GraduateClass.class.getName() + " c", Long.class).getSingleResult().equals(0L);
+    }
 }

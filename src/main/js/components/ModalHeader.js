@@ -13,7 +13,7 @@ export default class ModalHeader extends React.Component {
                     {backButton}
                     <a href="#/" title="Закрыть" className="modal_closeButton"></a>
                 </div>
-                <hr key="hr" className="modal_headerHr"/>
+                <hr key="hr" className="modal_hr modal_headerHr"/>
             </div>
         )
     }
