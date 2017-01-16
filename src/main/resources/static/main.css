@@ -63,7 +63,6 @@ body {
     left: 0;
     right: 0;
     z-index: -1;
-
     display: block;
     background-image: url('images/background.jpg');
     width: 1920px;
@@ -217,9 +216,10 @@ li.header_autoscroller:hover .header_elementName {
     overflow: auto;
     border-radius: 4px;
     outline: none;
-    padding: 20px;
+    padding: 10px;
     width: 960px;
     margin: 0 auto;
+    height: 480px;
 }
 
 .modal_header {
@@ -227,10 +227,13 @@ li.header_autoscroller:hover .header_elementName {
 }
 
 .modal_title {
-    font: 25px Karton-Regular;
+    font: 32px Karton-Regular;
+    vertical-align: 12px;
+    margin-right: 5px;
 }
 
 .modal_icon {
+    display: inline-block;
     width: 48px;
     height: 64px;
 }
@@ -241,9 +244,130 @@ li.header_autoscroller:hover .header_elementName {
 
 .modal_closeButton {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 20px;
+    right: 20px;
     background-image: url(images/modal_close.png);
     height: 40px;
     width: 40px;
+}
+
+.modal_hr {
+    border: none;
+    height: 1px;
+    background: dimgray;
+    margin: 0 40px;
+}
+
+.modal_headerHr {
+    box-shadow: 0px 2px 5px grey;
+}
+
+.modal_footerHr {
+    box-shadow: 0px -2px 5px grey;
+}
+
+.graduateClass_center {
+    margin: 7px 40px 7px;
+}
+
+.graduateClass_photo {
+    display: inline-block;
+    vertical-align: top;
+    width: 640px;
+    height: 320px;
+    border-radius: 5px;
+    box-shadow: 2px 4px 15px grey;
+}
+
+.graduatesList {
+    width: 200px;
+    height: 320px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 0 0 10px;
+    overflow: auto;
+}
+
+.graduateName {
+    cursor: pointer;
+}
+
+.popup_footer div {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.popup_footer {
+    font: 25px 'Exo 2 LightCondensed';
+    margin: 25px 40px 0;
+}
+
+.graduateClass_graduateYearText {
+    margin-right: 20px;
+}
+
+.graduateClass_yearSwitch {
+    color: #91b026;
+    cursor: pointer;
+    padding-bottom: 6px;
+}
+
+.graduateClass_yearWidget {
+    margin-right: 30px;
+}
+
+.graduateClass_widget {
+    font: 28px Karton-Regular;
+    line-height: 30px;
+    height: 32px;
+}
+
+.graduateClass_footerText {
+    padding-bottom: 4px;
+}
+
+.graduateClass_graduateYear {
+    border: solid 1px gray;
+    box-shadow: 0px 0px 2px 2px darkgrey inset;
+    padding: 2px;
+}
+
+.graduateClass_graduateClassText {
+    margin-right: 10px;
+}
+
+.graduateClass_grade, .graduateClass_character {
+    color: gray;
+    padding: 0 3px;
+    line-height: 30px;
+    height: 32px;
+    border: solid 2px white;
+    cursor: pointer;
+}
+
+.graduateClass_grade.graduateClass_grade_current, .graduateClass_character.graduateClass_character_current {
+    color: black;
+    border-color: #91b026;
+    cursor: default;
+}
+
+.graduateClass_gradeWidget {
+    margin-right: 20px;
+}
+
+.graduateClass_addGraduateIcon {
+    width: 40px;
+    height: 40px;
+    background-image: url(images/addGraduate.png);
+}
+
+.graduateClass_addGraduate {
+    position: absolute;
+    right: 10px;
+    bottom: 20px;
+}
+
+.graduateClass_addGraduateText {
+    font-size: 16px;
+    margin-right: 20px;
 }

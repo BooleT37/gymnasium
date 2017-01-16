@@ -16,7 +16,8 @@
     "webpack": "^1.12.2"
   },
   "scripts": {
-    "watch": "webpack-dev-server --port 8081"
+    "watch": "webpack-dev-server --port 8081",
+    "webpack": "webpack"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
