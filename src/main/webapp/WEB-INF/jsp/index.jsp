@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head lang="ru">
@@ -59,7 +61,14 @@
 <div id="design" style="display: none"></div>
 <button type="button" id="designSwitchButton">Выкл</button>
 
-<script src="/built/bundle.js"></script>
+<c:choose>
+    <c:when test="${debug}">
+        <script src="http://localhost:8081/src/main/resources/static/built/bundle.js"></script>
+    </c:when>
+    <c:otherwise>
+        <script src="/built/bundle.js"></script>
+    </c:otherwise>
+</c:choose>
 
 </body>
 </html>
