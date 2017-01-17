@@ -219,7 +219,7 @@ li.header_autoscroller:hover .header_elementName {
     padding: 10px;
     width: 960px;
     margin: 0 auto;
-    height: 480px;
+    height: 530px;
 }
 
 .modal_header {
@@ -246,7 +246,7 @@ li.header_autoscroller:hover .header_elementName {
     position: absolute;
     top: 20px;
     right: 20px;
-    background-image: url(images/modal_close.png);
+    background-image: url(images/controls/modal_close.png);
     height: 40px;
     width: 40px;
 }
@@ -270,21 +270,26 @@ li.header_autoscroller:hover .header_elementName {
     margin: 7px 40px 7px;
 }
 
-.graduateClass_photo {
+.graduateClass_photoContainer {
     display: inline-block;
     vertical-align: top;
-    width: 640px;
-    height: 320px;
+    width: 650px;
+    height: 370px;
     border-radius: 5px;
     box-shadow: 2px 4px 15px grey;
+    padding: 10px 0 0 10px;
+}
+
+.graduateClass_photo {
+    width: 640px;
+    height: 360px;
 }
 
 .graduatesList {
-    width: 200px;
+    width: 190px;
     height: 320px;
     display: inline-block;
     vertical-align: top;
-    margin: 0 0 0 10px;
     overflow: auto;
 }
 
@@ -298,7 +303,7 @@ li.header_autoscroller:hover .header_elementName {
 }
 
 .popup_footer {
-    font: 25px 'Exo 2 LightCondensed';
+    font: 30px 'Exo 2 LightCondensed';
     margin: 25px 40px 0;
 }
 
@@ -312,6 +317,10 @@ li.header_autoscroller:hover .header_elementName {
     padding-bottom: 6px;
 }
 
+.graduateClass_yearSwitch_disabled {
+    visibility: hidden;
+}
+
 .graduateClass_yearWidget {
     margin-right: 30px;
 }
@@ -322,14 +331,11 @@ li.header_autoscroller:hover .header_elementName {
     height: 32px;
 }
 
-.graduateClass_footerText {
-    padding-bottom: 4px;
-}
-
 .graduateClass_graduateYear {
     border: solid 1px gray;
     box-shadow: 0px 0px 2px 2px darkgrey inset;
     padding: 2px;
+    cursor: default;
 }
 
 .graduateClass_graduateClassText {
@@ -358,7 +364,7 @@ li.header_autoscroller:hover .header_elementName {
 .graduateClass_addGraduateIcon {
     width: 40px;
     height: 40px;
-    background-image: url(images/addGraduate.png);
+    background-image: url(images/controls/addGraduate.png);
 }
 
 .graduateClass_addGraduate {
@@ -368,6 +374,28 @@ li.header_autoscroller:hover .header_elementName {
 }
 
 .graduateClass_addGraduateText {
-    font-size: 16px;
+    font-size: 18px;
     margin-right: 20px;
+}
+
+.graduateListItem {
+    position: relative;
+    left: 0px;
+    padding-left: 10px;
+    cursor: pointer;
+    margin-right: 12px;
+}
+
+.graduateListItem_current {
+    background-color: #91b026;
+}
+
+.graduateListItem_showInfo {
+    height: 40px;
+    width: 40px;
+    background-image: url(images/controls/showGraduateInfo.png);
+    position: absolute;
+    right: -2px;
+    top: -10px;
+    display: none;
 }

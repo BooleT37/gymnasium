@@ -6,6 +6,7 @@ import client from '../client'
 var Actions = Reflux.createActions([
     "lazyLoadGraduateClasses",
     "lazyLoadGraduatesForClass",
+    "highlightGraduate",
     "showGraduateInfo"
 ]);
 

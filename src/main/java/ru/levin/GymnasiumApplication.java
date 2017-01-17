@@ -87,7 +87,7 @@ public class GymnasiumApplication extends SpringBootServletInitializer {
                     graduateDao.add(new Graduate("Степан", "Сидоров", "Владимирович", graduateClass6));
                     graduateDao.add(new Graduate("Артём", "Вишняков", "Варламович", graduateClass6));
                     graduateDao.add(new Graduate("Маргарита", "Кулагина", "Вадимовна", graduateClass6));
-                    graduateDao.add(new Graduate("Иван", "", "Лукьевна", graduateClass6));
+                    graduateDao.add(new Graduate("Иван", "Елькин", "Андреевич", graduateClass6));
                     graduateDao.add(new Graduate("Валентин", "Назаров", "Яковович", graduateClass6));
                     graduateDao.add(new Graduate("Венера", "Герасимова", "Георгьевна", graduateClass6));
 		        };
