@@ -173,7 +173,7 @@ export default class GraduateClass extends React.Component {
 
         var content;
         if (state.loaded === false) {
-            content = <div className="graduateCLass_loader">Загрузка...</div>
+            content = <div className="graduateCLass_loader">Загрузка списка классов...</div>
         } else {
             var grades = state.grades.map((grade, i) => {
                 if (grade === state.currentClass.grade)

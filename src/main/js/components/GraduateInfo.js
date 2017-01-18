@@ -93,7 +93,7 @@ export default class GraduateInfo extends React.Component {
                 <div className="graduateInfo">
                     <div className="graduateInfo_left">
                         <div className="graduateInfo_photoFrame">
-                            <img src={photoSrc} alt="photo" className="graduateInfo_photo"></img>
+                            <img src={photoSrc} alt="photo" className="graduateInfo_photo" width="285" height="285"></img>
                         </div>
                         <div className="GraduateInfo_links">
                             {generateLink(graduate.facebookLink, "graduateInfo_facebookLinkImage")}
@@ -110,7 +110,10 @@ export default class GraduateInfo extends React.Component {
                 </div>
             )
         } else {
-            return (<div className="GraduateInfo_loader">Загрузка...</div>)
+            return (
+                <div className="graduateInfo">
+                    <div className="GraduateInfo_loader">Загрузка...</div>
+                </div>)
         }
     }
 }
