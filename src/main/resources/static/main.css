@@ -473,3 +473,35 @@ li.header_autoscroller:hover .header_elementName {
 .graduateInfo_achievementsRow {
     margin-top: 56px;
 }
+
+.graduateInfo_facebookLinkImage, .graduateInfo_vkLinkImage {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+}
+
+.GraduateInfo_links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.graduateInfo_link {
+    margin: 0 10px;
+}
+
+.graduateInfo_facebookLinkImage {
+    background-image: url('images/controls/facebookLogo.png');
+}
+
+.graduateInfo_vkLinkImage {
+    background-image: url('/images/controls/vkLogo.png');
+}
+
+.graduateInfo_disabledLink {
+    visibility: hidden;
+}
+
+.graduateInfo_achievementsRow .graduateInfo_rowContent {
+    height: 60px;
+    overflow: auto;
+}
