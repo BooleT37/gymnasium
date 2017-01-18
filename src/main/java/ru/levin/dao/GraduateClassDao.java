@@ -1,5 +1,7 @@
 package ru.levin.dao;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import ru.levin.dao.exceptions.EntityAlreadyExistsException;
 import ru.levin.dao.exceptions.EntityNotFoundException;
@@ -19,6 +21,8 @@ import java.util.Map;
 public class GraduateClassDao {
     @PersistenceContext
     private EntityManager em;
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public GraduateClass getById(Long id) throws EntityNotFoundException {
         GraduateClass graduateClass = em.find(GraduateClass.class, id);
@@ -69,6 +73,12 @@ public class GraduateClassDao {
         em.persist(graduateClass);
         em.flush();
         return graduateClass;
+    }
+
+    @Transactional
+    public void deleteAll() {
+        logger.info("Deleting all " + GraduateClass.class.getName() + " entities");
+        em.createQuery("delete from " + GraduateClass.class.getName());
     }
 
     public boolean isEmpty() {
