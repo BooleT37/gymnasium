@@ -12,6 +12,8 @@ import ru.levin.entities.Graduate;
 import ru.levin.entities.GraduateClass;
 
 import javax.inject.Inject;
+import java.time.LocalDate;
+import java.time.Month;
 
 @SpringBootApplication
 public class GymnasiumApplication extends SpringBootServletInitializer {
@@ -41,6 +43,20 @@ public class GymnasiumApplication extends SpringBootServletInitializer {
 		        	graduateClassDao.add(graduateClass5);
 		        	graduateClassDao.add(graduateClass6);
 
+		        	graduateDao.add(new Graduate(
+		        	        "Дональд",
+                            "Трамп",
+                            "Фредович",
+                            LocalDate.of(1946, Month.JUNE, 14),
+                            graduateClass1,
+                            "Футбол, бейсбол, ораторское исскуство",
+                            "Экономика, Математика, Психология",
+                            "Строительство отелей и казино, организация конкурсов красоты «Мисс Вселенная», выборы в Президенты США",
+                            "Trump.png",
+                            "https://vk.com/boolet",
+                            "https://www.facebook.com/DonaldTrump",
+                            true
+                    ));
                     graduateDao.add(new Graduate("Мэлс", "Крюков", "Филатович", graduateClass1));
                     graduateDao.add(new Graduate("Ким", "Шарапов", "Яковович", graduateClass1));
                     graduateDao.add(new Graduate("Надежда", "Кудрявцева", "Брониславовна", graduateClass1));

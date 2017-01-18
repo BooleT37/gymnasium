@@ -1,18 +1,22 @@
 "use strict";
 
+//external modules
 import Reflux from 'reflux';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import classnames from 'classnames';
+
+//local modules
 import client from './../client';
+import {max, removeDuplicates} from '../utils';
 import Actions from '../actions/Actions';
 import GraduateClassesStore from '../stores/GraduateClassesStore';
+
+//React components
 import ModalHeader from './ModalHeader';
-
-import {concat, max} from '../utils';
-import classnames from 'classnames';
-import {removeDuplicates} from '../utils';
-
 import GraduatesList from './GraduatesList';
+import GraduateInfo from './GraduateInfo';
+
 
 const NO_PHOTO_IMAGE_SRC = "images/class_photos/no_photo.png";
 
@@ -27,11 +31,11 @@ export default class GraduateClass extends React.Component {
     }
 
     componentWillMount() {
-        this.loadState();
+        this.onComponentUpdate(this.props);
     }
 
-    componentWillReceiveProps() {
-        this.loadState();
+    componentWillReceiveProps(nextProps) {
+        this.onComponentUpdate(nextProps);
     }
 
     componentDidMount() {
@@ -39,24 +43,41 @@ export default class GraduateClass extends React.Component {
         this.unsubscribeFromShowGraduateInfoAction = Actions.showGraduateInfo.listen(this.showGraduateInfo);
     }
 
-    onStoreLoaded(storeState) {
-        //location.hash is "#/GraduateClasses/:classId"
-        if (this.props.params.classId) {
-            this.setState(this.getStateForCurrentClassId(storeState, parseInt(this.props.params.classId, 10) || null));
+    routeTo(url) {
+        this.props.router.push(url);
+    }
+
+    onStoreLoaded() {
+        this.onPropsChange(this.props);
+    }
+
+    onPropsChange(props) {
+        var storeState = GraduateClassesStore.state;
+        if (!storeState.loaded) {
+            this.setState({ loaded: false });
+            return;
+        }
+        //location.hash is "#/GraduateClasses/:classId" or "#/GraduateClasses/:classId/graduates/:graduateId"
+        if (props.params.classId) {
+            this.setState(this.getStateForCurrentRouteParams(
+                props.params.classId ? parseInt(props.params.classId, 10) : null,
+                props.params.graduateId ? parseInt(props.params.graduateId, 10) : null
+            ));
         } else {
         //location.hash is "#/GraduateClasses"
             var lastYear = max(Object.keys(storeState.classesDict));
             var currentClass = this.getFirstClass(storeState.classesDict[lastYear]);
-            this.props.router.push(`/graduateClasses/${currentClass.id}`);
+            this.routeTo(`/graduateClasses/${currentClass.id}`);
         }
     }
 
-    getStateForCurrentClassId(storeState, classId) {
+    getStateForCurrentRouteParams(classId, graduateId) {
+        var storeState = GraduateClassesStore.state;
         var classesDict = storeState.classesDict;
         var years = Object.keys(classesDict).map(y => parseInt(y, 10)).sort((a, b) => a - b);
 
-        var currentClass = concat(Object.values(classesDict)).find(graduateClass => graduateClass.id === classId)
-        
+        var currentClass = GraduateClassesStore.getClassById(classId);
+
         var currentYearIndex = years.indexOf(currentClass.graduateYear);
         var gradesAndCharacters = this.getAllClassesGradesAndCharacters(classesDict[currentClass.graduateYear]);
 
@@ -66,12 +87,14 @@ export default class GraduateClass extends React.Component {
             previousYear: currentYearIndex === 0 ? null : years[currentYearIndex - 1],
             nextYear: currentYearIndex === years.length - 1 ? null : years[currentYearIndex + 1],
             grades: gradesAndCharacters.grades,
-            characters: gradesAndCharacters.characters
+            characters: gradesAndCharacters.characters,
+            selectedGraduateId: graduateId
         };
     }
 
     componentWillUnmount() {
-        this.unsubscribe();
+        this.unsubscribeFromStore();
+        this.unsubscribeFromShowGraduateInfoAction();
     }
 
     getFirstClass(graduateClasses) {
@@ -91,12 +114,14 @@ export default class GraduateClass extends React.Component {
         };
     }
 
+    onComponentUpdate(newProps) {
+        Actions.lazyLoadGraduateClasses(newProps.classId);
+        this.onPropsChange(newProps);
+    }
+
     loadState() {
-        if (GraduateClassesStore.state.loaded) {
-            this.onStoreLoaded(GraduateClassesStore.state);
-        } else {
-            Actions.lazyLoadGraduateClasses();
-        }
+        this.onStoreLoaded(GraduateClassesStore.state);
+            
     }
 
     handlePreviousYearClick() {
@@ -114,7 +139,7 @@ export default class GraduateClass extends React.Component {
     changeYear(year) {
         var storeState = GraduateClassesStore.state; //Assuming that by this moment store is already loaded
         var currentClass = this.getFirstClass(storeState.classesDict[year]);
-        this.props.router.push(`/graduateClasses/${currentClass.id}`);
+        this.routeTo(`/graduateClasses/${currentClass.id}`);
     }
 
     changeClassCharacter(newCharacter) {
@@ -123,7 +148,7 @@ export default class GraduateClass extends React.Component {
         var graduateYear = currentClass.graduateYear;
         var storeState = GraduateClassesStore.state;
         var newGraduateClass = this.findClassByGradeAndCharacter(grade, newCharacter, storeState.classesDict[graduateYear]);
-        this.props.router.push(`/graduateClasses/${newGraduateClass.id}`);
+        this.routeTo(`/graduateClasses/${newGraduateClass.id}`);
     }
 
     changeClassGrade(newGrade) {
@@ -132,11 +157,11 @@ export default class GraduateClass extends React.Component {
         var character = currentClass.character;
         var graduateYear = currentClass.graduateYear;
         var newGraduateClass = this.findClassByGradeAndCharacter(newGrade, character, storeState.classesDict[graduateYear])
-        this.props.router.push(`/graduateClasses/${newGraduateClass.id}`);
+        this.routeTo(`/graduateClasses/${newGraduateClass.id}`);
     }
 
     showGraduateInfo(graduate) {
-        
+        this.routeTo(`/graduateClasses/${this.state.currentClass.id}/graduates/${graduate.id}`);
     }
 
     findClassByGradeAndCharacter(grade, character, graduateclasses) {
@@ -156,18 +181,27 @@ export default class GraduateClass extends React.Component {
                 else
                     return (<div className="graduateClass_grade" onClick={this.changeClassGrade.bind(this, grade)} key={`grade_${i}`}>{grade}</div>)
             });
+
             var characters = state.characters.map((char, i) => {
                 if (char === state.currentClass.character)
                     return (<div className="graduateClass_character graduateClass_character_current" key={i}>{char}</div>)
                 else
                     return (<div className="graduateClass_character" onClick={this.changeClassCharacter.bind(this, char)} key={i}>{char}</div>)
             });
-            content = [
-                <div className="graduateClass_center" key="center">
+
+            var innerContent;
+            if (this.state.selectedGraduateId) {
+                innerContent = <GraduateInfo classId={state.currentClass.id} graduateId={state.selectedGraduateId}/>;
+            } else {
+                innerContent = 
                     <div className="graduateClass_photoContainer">
                         <img src={state.currentClass.photoName || NO_PHOTO_IMAGE_SRC} className="graduateClass_photo"></img>
                     </div>
-                    <GraduatesList classId={state.currentClass.id}></GraduatesList>
+            }
+            content = [
+                <div className="graduateClass_center" key="center">
+                    {innerContent}
+                    <GraduatesList classId={state.currentClass.id} selectedGraduateId={state.selectedGraduateId}></GraduatesList>
                 </div>,
                 <hr key="hr" className="modal_hr modal_footerHr"/>,
                 <div className="popup_footer" key="footer">

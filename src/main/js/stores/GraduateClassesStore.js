@@ -3,6 +3,7 @@
 import Reflux from 'reflux'
 import Actions from '../actions/Actions'
 import client from '../client'
+import {concat} from '../utils';
 
 var GraduateClassesStore = Reflux.createStore({
     listenables: Actions,
@@ -14,8 +15,15 @@ var GraduateClassesStore = Reflux.createStore({
         }
     },
 
+    getClassById: function(id) {
+        if (!this.state.loaded)
+            throw new Error("GraduateClassesStore is not loaded yet");
+        return concat(Object.values(this.state.classesDict)).find(graduateClass => graduateClass.id === id);
+    },
+
     lazyLoadGraduateClasses: function() {
-        if (!this.state.loaded) {
+        if (!this.state.loaded && !this.state.loading) {
+            this.state.loading = true;
             client({
                 method: 'GET',
                 path: '/api/graduateClasses/groupByYear'

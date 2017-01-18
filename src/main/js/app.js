@@ -44,6 +44,8 @@ class App {
 
   setUpDesignSwitchButton() {
     var designSwitchButton = document.getElementById("designSwitchButton");
+    if (!designSwitchButton)
+      return;
     var design = document.getElementById("design");
     designSwitchButton.isOn = design.style.display !== "none";
 
@@ -63,9 +65,7 @@ class App {
   setUpRouter() {
     render((
       <Router history={hashHistory}>
-        <Route path="/graduateClasses" component={GradClassModal}>
-          <Route path=":classId" component={GradClassModal}/>
-        </Route>
+        <Route path="/graduateClasses(/:classId(/graduates(/:graduateId(/edit))))" component={GradClassModal}/>
         <Route path="*" component={null}/>
       </Router>
     ), document.getElementsByClassName('ReactModalPortal')[0]);

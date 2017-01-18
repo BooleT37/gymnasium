@@ -11,8 +11,16 @@ var GraduatesStore = Reflux.createStore({
         this.state = {}
     },
 
+    getGraduateById(graduateId, classId) {
+        var graduateList = this.state[classId];
+        if (!graduateList)
+            throw new Error(`GraduatesStore for classId ${classId} is not loaded yet`);
+        return graduateList.find(g => g.id === graduateId);
+    },
+
     lazyLoadGraduatesForClass: function(classId) {
         if (!this.state[classId]) {
+            this.state[classId] = { loading: true };
             client({
                 method: 'GET',
                 path: `/api/graduates/class/${classId}`

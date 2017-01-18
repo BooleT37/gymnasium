@@ -286,11 +286,12 @@ li.header_autoscroller:hover .header_elementName {
 }
 
 .graduatesList {
-    width: 190px;
-    height: 320px;
-    display: inline-block;
-    vertical-align: top;
-    overflow: auto;
+    /* width: 190px; */
+    /* height: 320px; */
+    /* display: inline-block; */
+    /* vertical-align: top; */
+    /* overflow: auto; */
+    padding-top: 10px;
 }
 
 .graduateName {
@@ -336,6 +337,8 @@ li.header_autoscroller:hover .header_elementName {
     box-shadow: 0px 0px 2px 2px darkgrey inset;
     padding: 2px;
     cursor: default;
+    width: 66px;
+    text-align: center;
 }
 
 .graduateClass_graduateClassText {
@@ -381,13 +384,14 @@ li.header_autoscroller:hover .header_elementName {
 .graduateListItem {
     position: relative;
     left: 0px;
-    padding-left: 10px;
-    cursor: pointer;
+    padding-left: 28px;
     margin-right: 12px;
+    cursor: pointer;
 }
 
 .graduateListItem_current {
     background-color: #91b026;
+    cursor: default;
 }
 
 .graduateListItem_showInfo {
@@ -395,7 +399,77 @@ li.header_autoscroller:hover .header_elementName {
     width: 40px;
     background-image: url(images/controls/showGraduateInfo.png);
     position: absolute;
-    right: -2px;
+    right: 0px;
     top: -10px;
-    display: none;
+    cursor: pointer;
+}
+
+.graduatesListContainer {
+    width: 190px;
+    height: 320px;
+    display: inline-block;
+    vertical-align: top;
+    overflow: auto;
+}
+
+.graduateListItemСontainer {
+    position: relative;
+}
+
+.graduatesList_loader {
+    display: inline-block;
+    vertical-align: top;
+    width: 190px;
+    padding-left: 15px;
+    color: dimgray;
+}
+
+.graduateInfo {
+    display: inline-block;
+    vertical-align: top;
+    width: 650px;
+    height: 370px;
+}
+
+.graduateInfo_photoFrame {
+    width: 292px;
+    height: 292px;
+    background-image: url(images/photo_frame.png);
+    border-radius: 5px;
+    box-shadow: 0px 0px 8px 2px darkgrey;
+    padding: 8px 0 0 8px;
+}
+
+.graduateInfo_left, .graduateInfo_right {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.graduateInfo_right {
+    width: 290px;
+    margin-left: 20px;
+}
+
+.graduateInfo_title {
+    font-size: 30px;
+}
+
+.graduateInfo_inlineRow, .graduateInfo_row {
+    margin-top: 20px;
+}
+
+.graduateInfo_rowTitle {
+    font-weight: bold;
+}
+
+.graduateInfo_inlineRow .graduateInfo_rowTitle, .graduateInfo_inlineRow .graduateInfo_rowContent {
+    display: inline;
+}
+
+.graduateInfo_inlineRow .graduateInfo_rowContent {
+    margin-left: 10px;
+}
+
+.graduateInfo_achievementsRow {
+    margin-top: 56px;
 }

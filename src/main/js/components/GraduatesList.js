@@ -1,9 +1,10 @@
 "use strict";
 
-import React from 'react'
-import Actions from '../actions/Actions'
-import GraduatesStore from '../stores/GraduatesStore'
-import GraduatesListItem from './GraduatesListItem'
+import React from 'react';
+import Actions from '../actions/Actions';
+import GraduatesStore from '../stores/GraduatesStore';
+import GraduatesListItem from './GraduatesListItem';
+import {fullNameToShortString} from './../utils';
 
 export default class GraduatesList extends React.Component {
     constructor(props) {
@@ -12,40 +13,43 @@ export default class GraduatesList extends React.Component {
     }
 
     componentWillMount() {
-        Actions.lazyLoadGraduatesForClass(this.props.classId);
-        this.onStoreUpdated();
+        this.onComponentUpdate(this.props);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.classId !== nextProps.classId) {
+            this.onComponentUpdate(nextProps);
+        }
+    }
+
+    onComponentUpdate(newProps) {
+        Actions.lazyLoadGraduatesForClass(newProps.classId);
+        this.setStateForProps(newProps);
     }
 
     componentDidMount() {
         this.unsubscribeFromStore = GraduatesStore.listen(this.onStoreUpdated.bind(this));
         this.unsubscribeFromHighlightGraduateAction = Actions.highlightGraduate.listen(this.highlightGraduate.bind(this));
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (this.props.classId !== nextProps.classId) {
-            Actions.lazyLoadGraduatesForClass(nextProps.classId);
-            this.setStateForClassId(nextProps.classId);
-        }
-    }
+    } 
 
     onStoreUpdated() {
-        this.setStateForClassId(this.props.classId);
+        this.setStateForProps(this.props);
     }
 
-    setStateForClassId(classId) {
+    setStateForProps(props) {
         var storeState = GraduatesStore.state;
-        if (storeState[classId]) {
+        if (storeState[props.classId]) {
             this.setState({
                 loaded: true,
-                list: storeState[classId],
-                chosen: null
+                list: storeState[props.classId],
+                selected: GraduatesStore.getGraduateById(props.selectedGraduateId, props.classId)
             });
         }
     }
 
     highlightGraduate(graduate) {
         this.setState({
-            chosen: graduate
+            selected: graduate
         })
     }
 
@@ -56,10 +60,10 @@ export default class GraduatesList extends React.Component {
 
     render() {
         if (this.state.loaded) {
-            var graduates = this.state.list.map((g, i) => <GraduatesListItem key={g.id} graduate={g} index={i} chosen={this.state.chosen && this.state.chosen.id === g.id}>
-                {g.lastName + (g.firstName ? ". " + g.firstName[0].toUpperCase() : "") + (g.patronymic ? ". " + g.patronymic[0].toUpperCase() : "")}
+            var graduates = this.state.list.map((g, i) => <GraduatesListItem key={g.id} graduate={g} index={i} selected={this.state.selected && this.state.selected.id === g.id}>
+                {fullNameToShortString(g.lastName, g.firstName, g.patronymic)}
             </GraduatesListItem>)
-            return <div className="graduatesList">{graduates}</div>
+            return <div className="graduatesListContainer"><div className="graduatesList">{graduates}</div></div>
         } else {
             return <div className="graduatesList_loader">Загрузка списка учеников...</div>
         }

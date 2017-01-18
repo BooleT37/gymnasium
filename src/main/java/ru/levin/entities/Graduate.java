@@ -4,6 +4,7 @@ import ru.levin.models.GraduateJson;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "TBL_GRADUATE")
@@ -23,41 +24,49 @@ public class Graduate {
     @JoinColumn(name = "COLUMN_GRADUATE_CLASS", nullable = false)
     private GraduateClass graduateClass;
     @Column(length = 500)
+    private String interests;
+    @Column(length = 500)
     private String favouriteSubjects;
     @Column(length = 500)
     private String achievements;
+    private String photoName;
     @Column(length = 50)
     private String vkLink;
     @Column(length = 50)
     private String facebookLink;
     private boolean famous;
 
+    @Transient
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+
 
     private Graduate() {}
 
-    public Graduate(String firstName, String lastName, String patronymic, LocalDate birthDate, GraduateClass graduateClass, String favouriteSubjects, String achievements, String vkLink, String facebookLink, boolean famous) {
+    public Graduate(String firstName, String lastName, String patronymic, LocalDate birthDate, GraduateClass graduateClass, String interests, String favouriteSubjects, String achievements, String photoName, String vkLink, String facebookLink, boolean famous) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.patronymic = patronymic;
         this.birthDate = birthDate;
         this.graduateClass = graduateClass;
+        this.interests = interests;
         this.favouriteSubjects = favouriteSubjects;
         this.achievements = achievements;
         this.vkLink = vkLink;
         this.facebookLink = facebookLink;
         this.famous = famous;
+        this.photoName = photoName;
     }
 
     public Graduate(String firstName, String lastName, String patronymic, GraduateClass graduateClass) {
-        this(firstName, lastName, patronymic, null, graduateClass, null, null, null, null, false);
+        this(firstName, lastName, patronymic, null, graduateClass, null, null, null, null, null, null, false);
     }
 
     public Graduate(String firstName, String lastName, GraduateClass graduateClass) {
-        this(firstName, lastName, null, null, graduateClass, null, null, null, null, false);
+        this(firstName, lastName, null, null, graduateClass, null, null, null, null, null, null, false);
     }
 
     public GraduateJson toGraduateJson() {
-        return new GraduateJson(id, firstName, lastName, patronymic, birthDate, graduateClass.getId(), favouriteSubjects, achievements, vkLink, facebookLink, famous);
+        return new GraduateJson(id, firstName, lastName, patronymic, birthDate == null ? "" : birthDate.format(formatter), graduateClass.getId(), interests, favouriteSubjects, achievements, photoName, vkLink, facebookLink, famous);
     }
 
     public Long getId() {
@@ -118,6 +127,14 @@ public class Graduate {
 
     public void setAchievements(String achievements) {
         this.achievements = achievements;
+    }
+
+    public String getPhotoName() {
+        return photoName;
+    }
+
+    public void setPhotoName(String photoName) {
+        this.photoName = photoName;
     }
 
     public String getVkLink() {

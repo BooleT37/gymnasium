@@ -6,20 +6,27 @@ import classnames from 'classnames';
 
 export default class GraduatesListItem extends React.Component {
 
-    handleClick() {
+    handleItemClick() {
         Actions.highlightGraduate(this.props.graduate);
+    }
+
+    handleShowInfoClick() {
+        Actions.showGraduateInfo(this.props.graduate);
     }
 
     render() {
         var contents;
-        if (this.props.chosen)
+        if (this.props.selected)
             contents = [
-                this.props.children,
-                <div className="graduateListItem_showInfo" key="si"></div>
+                <div className="graduateListItem graduateListItem_current" key="item">{this.props.children}</div>,
+                <div className="graduateListItem_showInfo" onClick={this.handleShowInfoClick.bind(this)} key="showInfo"></div>
             ]
         else
-            contents = this.props.children;
+            contents = <div className="graduateListItem" onClick={this.handleItemClick.bind(this)}>{this.props.children}</div>
             
-        return (<div className={classnames("graduateListItem", {graduateListItem_current: this.props.chosen})} onClick={this.handleClick.bind(this)}>{contents}</div>)
-    }
+        return (
+            <div className="graduateListItemСontainer">
+                {contents}
+            </div>
+            )}
 }

@@ -2,32 +2,35 @@ package ru.levin.models;
 
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 public class GraduateJson implements Serializable {
     private Long id;
     private String firstName;
     private String lastName;
     private String patronymic;
-    private LocalDate birthDate;
+    private String birthDate;
     private Long graduateClassId;
+    private String interests;
     private String favouriteSubjects;
     private String achievements;
+    private String photoName;
     private String vkLink;
     private String facebookLink;
     private boolean famous;
 
     public GraduateJson() {}
 
-    public GraduateJson(Long id, String firstName, String lastName, String patronymic, LocalDate birthDate, Long graduateClassId, String favouriteSubjects, String achievements, String vkLink, String facebookLink, boolean famous) {
+    public GraduateJson(Long id, String firstName, String lastName, String patronymic, String birthDate, Long graduateClassId, String interests, String favouriteSubjects, String achievements, String photoName, String vkLink, String facebookLink, boolean famous) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.patronymic = patronymic;
         this.birthDate = birthDate;
         this.graduateClassId = graduateClassId;
+        this.interests = interests;
         this.favouriteSubjects = favouriteSubjects;
         this.achievements = achievements;
+        this.photoName = photoName;
         this.vkLink = vkLink;
         this.facebookLink = facebookLink;
         this.famous = famous;
@@ -65,11 +68,11 @@ public class GraduateJson implements Serializable {
         this.patronymic = patronymic;
     }
 
-    public LocalDate getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -79,6 +82,14 @@ public class GraduateJson implements Serializable {
 
     public void setGraduateClassId(Long graduateClassId) {
         this.graduateClassId = graduateClassId;
+    }
+
+    public String getInterests() {
+        return interests;
+    }
+
+    public void setInterests(String interests) {
+        this.interests = interests;
     }
 
     public String getFavouriteSubjects() {
@@ -95,6 +106,14 @@ public class GraduateJson implements Serializable {
 
     public void setAchievements(String achievements) {
         this.achievements = achievements;
+    }
+
+    public String getPhotoName() {
+        return photoName;
+    }
+
+    public void setPhotoName(String photoName) {
+        this.photoName = photoName;
     }
 
     public String getVkLink() {
