@@ -34,12 +34,26 @@ class App {
   }
 
   setUpAutoscrollers() {
-    function scrollTo(id) {
-      Velocity(document.getElementById(id), "scroll", { container: document.body, easing: "ease", offset: -200 });
+    function triggerClickEvent(el) {
+        if (document.createEvent) {
+            var event = document.createEvent("MouseEvents");
+            event.initEvent("click", true, true);
+            el.dispatchEvent(event);
+        }
+        else if (el.click) {
+            el.click();
+        }
     }
 
-    var autoscrollers = document.getElementsByClassName("header_autoscroller");
-    Array.from(autoscrollers).forEach((el, i) => {el.onclick = scrollTo.bind(null, el.getAttribute('data-scrollTo'))})
+    function openLink(id) {
+        var element = document.getElementById(id);
+        Velocity(element, "scroll", { container: document.body, easing: "ease", offset: -200 });
+
+        setTimeout(function() { triggerClickEvent(element); }, 400)
+    }
+
+    var links = document.getElementsByClassName("header_link");
+    Array.from(links).forEach((el, i) => {el.onclick = openLink.bind(null, el.getAttribute('data-linkTo'))});
   }
 
   setUpDesignSwitchButton() {
