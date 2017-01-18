@@ -4,6 +4,6 @@
 build/
 target
 node_modules/
-twitter.log
 copyStaticResourses.cmd
 /copyImages.cmd
+/gymnasium.log
