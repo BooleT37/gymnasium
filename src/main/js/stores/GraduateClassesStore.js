@@ -1,8 +1,8 @@
 'use strict';
 
-import Reflux from 'reflux'
-import Actions from '../actions/Actions'
-import client from '../client'
+import Reflux from 'reflux';
+import Actions from '../actions/Actions';
+import client from '../client';
 import {concat} from '../utils';
 
 var GraduateClassesStore = Reflux.createStore({
@@ -18,7 +18,11 @@ var GraduateClassesStore = Reflux.createStore({
     getClassById: function(id) {
         if (!this.state.loaded)
             throw new Error("GraduateClassesStore is not loaded yet");
-        return concat(Object.values(this.state.classesDict)).find(graduateClass => graduateClass.id === id);
+        var graduateClass = concat(Object.values(this.state.classesDict)).find(graduateClass => graduateClass.id === id);
+        if (!graduateClass) {
+            throw new Error(`Cannot find class with id ${id}`);
+        }
+        return graduateClass;
     },
 
     lazyLoadGraduateClasses: function() {

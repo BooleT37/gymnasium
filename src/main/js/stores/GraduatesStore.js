@@ -1,8 +1,8 @@
 'use strict';
 
-import Reflux from 'reflux'
-import Actions from '../actions/Actions'
-import client from '../client'
+import Reflux from 'reflux';
+import Actions from '../actions/Actions';
+import client from '../client';
 
 var GraduatesStore = Reflux.createStore({
     listenables: Actions,
@@ -15,7 +15,11 @@ var GraduatesStore = Reflux.createStore({
         var graduateList = this.state[classId];
         if (!graduateList)
             throw new Error(`GraduatesStore for classId ${classId} is not loaded yet`);
-        return graduateList.find(g => g.id === graduateId);
+        var graduate = graduateList.find(g => g.id === graduateId);
+        if (!graduate) {
+            throw new Error(`Cannot find graduate with id ${graduateId} for class with id ${classId}`);
+        }
+        return graduate;
     },
 
     lazyLoadGraduatesForClass: function(classId) {

@@ -41,9 +41,18 @@ export default class GraduateInfo extends React.Component {
     setStateForProps(props) {
         var storeState = GraduatesStore.state;
         if (storeState[props.classId]) {
+            var gradaute;
+            try {
+                gradaute = GraduatesStore.getGraduateById(props.graduateId, props.classId)
+            } catch (e) {
+                if (console)
+                    console.log(e.message);
+                Actions.routeTo(`/graduateClasses/${props.classId}`);
+                return;
+            }
             this.setState({
                 loaded: true,
-                graduate: GraduatesStore.getGraduateById(props.graduateId, props.classId)
+                graduate: gradaute
             });
         } else {
             this.setState({ loaded: false });

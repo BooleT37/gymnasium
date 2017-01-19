@@ -46,7 +46,7 @@ export default class GraduateClass extends React.Component {
     }
 
     routeTo(url) {
-        this.props.router.push(url);
+        Actions.routeTo(url);
     }
 
     onStoreLoaded() {
@@ -61,10 +61,19 @@ export default class GraduateClass extends React.Component {
         }
         //location.hash is "#/GraduateClasses/:classId" or "#/GraduateClasses/:classId/graduates/:graduateId"
         if (props.params.classId) {
-            this.setState(this.getStateForCurrentRouteParams(
-                props.params.classId ? parseInt(props.params.classId, 10) : null,
-                props.params.graduateId ? parseInt(props.params.graduateId, 10) : null
-            ));
+            var state;
+            try {
+                state = this.getStateForCurrentRouteParams(
+                    props.params.classId ? parseInt(props.params.classId, 10) : null,
+                    props.params.graduateId ? parseInt(props.params.graduateId, 10) : null
+                );
+            } catch(e) {
+                if (console)
+                    console.log(e.message);
+                this.routeTo("/graduateClasses/");
+                return;
+            }
+            this.setState(state);
         } else {
         //location.hash is "#/GraduateClasses"
             var lastYear = max(Object.keys(storeState.classesDict));

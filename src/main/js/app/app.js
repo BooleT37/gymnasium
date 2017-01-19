@@ -2,11 +2,11 @@
 
 import './app.css'
 
-import React from 'react'
-import { render } from 'react-dom'
-import { Router, Route, Link, hashHistory, withRouter } from 'react-router'
-import Velocity from 'velocity-animate'
-import Modal from 'react-modal'
+import React from 'react';
+import { render } from 'react-dom';
+import { Router, Route, Link, hashHistory, withRouter } from 'react-router';
+import Velocity from 'velocity-animate';
+import Modal from 'react-modal';
 import 'babel-polyfill';
 
 import GraduateClass from './../components/GraduateClass/GraduateClass'
@@ -23,7 +23,7 @@ class GradClassModal extends React.Component {
   render() {
     return (
       <Modal isOpen={true} contentLabel="Modal" className="modal">
-          <GraduateClassWithRouter></GraduateClassWithRouter>
+          <GraduateClassWithRouter/>
       </Modal>
     )
   }

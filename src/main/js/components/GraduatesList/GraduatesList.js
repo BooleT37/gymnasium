@@ -40,10 +40,18 @@ export default class GraduatesList extends React.Component {
     setStateForProps(props) {
         var storeState = GraduatesStore.state;
         if (storeState[props.classId]) {
+            var selected;
+            try {
+                selected = GraduatesStore.getGraduateById(props.selectedGraduateId, props.classId)
+            } catch (e) {
+                if (console)
+                    console.log(e.message);
+                selected = null;
+            }
             this.setState({
                 loaded: true,
                 list: storeState[props.classId],
-                selected: GraduatesStore.getGraduateById(props.selectedGraduateId, props.classId)
+                selected: selected
             });
         }
     }
