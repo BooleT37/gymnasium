@@ -6,7 +6,6 @@ import React from 'react';
 import Actions from '../../actions/Actions';
 import GraduatesStore from '../../stores/GraduatesStore';
 import GraduatesListItem from './../GraduatesListItem/GraduatesListItem';
-import {fullNameToShortString} from './../../utils';
 
 export default class GraduatesList extends React.Component {
     constructor(props) {
@@ -62,9 +61,7 @@ export default class GraduatesList extends React.Component {
 
     render() {
         if (this.state.loaded) {
-            var graduates = this.state.list.map((g, i) => <GraduatesListItem key={g.id} graduate={g} index={i} selected={this.state.selected && this.state.selected.id === g.id}>
-                {fullNameToShortString(g.lastName, g.firstName, g.patronymic)}
-            </GraduatesListItem>)
+            var graduates = this.state.list.map((g, i) => <GraduatesListItem key={g.id} graduate={g} index={i} selected={this.state.selected && this.state.selected.id === g.id}/>)
             return <div className="graduatesListContainer"><div className="graduatesList">{graduates}</div></div>
         } else {
             return <div className="graduatesList_loader">Загрузка списка учеников...</div>

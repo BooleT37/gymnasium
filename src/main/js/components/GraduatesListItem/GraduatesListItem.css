@@ -24,3 +24,13 @@
 .graduateListItemСontainer {
     position: relative;
 }
+
+.graduateListItem_name_famous::before {
+    content: "";
+    position: absolute;
+    left: 11px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    background-image: url(./images/star.png);
+}
