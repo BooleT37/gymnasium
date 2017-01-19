@@ -1,0 +1,23 @@
+.graduatesList {
+    padding-top: 10px;
+}
+
+.graduateName {
+    cursor: pointer;
+}
+
+.graduatesListContainer {
+    width: 190px;
+    height: 320px;
+    display: inline-block;
+    vertical-align: top;
+    overflow: auto;
+}
+
+.graduatesList_loader {
+    color: dimgray;
+    display: inline-block;
+    vertical-align: top;
+    width: 190px;
+    padding-left: 15px;
+}

@@ -1,0 +1,91 @@
+.graduateClass_center {
+    margin: 7px 40px 7px;
+}
+
+.graduateClass_photoContainer {
+    display: inline-block;
+    vertical-align: top;
+    width: 650px;
+    height: 370px;
+    border-radius: 5px;
+    box-shadow: 2px 4px 15px grey;
+    padding: 10px 0 0 10px;
+}
+
+.graduateClass_photo {
+    width: 640px;
+    height: 360px;
+}
+
+.graduateClass_graduateYearText {
+    margin-right: 20px;
+}
+
+.graduateClass_yearSwitch {
+    color: #91b026;
+    cursor: pointer;
+    padding-bottom: 6px;
+}
+
+.graduateClass_yearSwitch_disabled {
+    visibility: hidden;
+}
+
+.graduateClass_yearWidget {
+    margin-right: 30px;
+}
+
+.graduateClass_widget {
+    font: 28px Karton-Regular;
+    line-height: 30px;
+    height: 32px;
+}
+
+.graduateClass_graduateYear {
+    border: solid 1px gray;
+    box-shadow: 0px 0px 2px 2px darkgrey inset;
+    padding: 2px;
+    cursor: default;
+    width: 66px;
+    text-align: center;
+}
+
+.graduateClass_graduateClassText {
+    margin-right: 10px;
+}
+
+.graduateClass_grade, .graduateClass_character {
+    color: gray;
+    padding: 0 3px;
+    line-height: 30px;
+    height: 32px;
+    border: solid 2px white;
+    cursor: pointer;
+}
+
+.graduateClass_grade.graduateClass_grade_current, .graduateClass_character.graduateClass_character_current {
+    color: black;
+    border-color: #91b026;
+    cursor: default;
+}
+
+.graduateClass_gradeWidget {
+    margin-right: 20px;
+}
+
+.graduateClass_addGraduateIcon {
+    width: 40px;
+    height: 40px;
+    background-image: url(./images/addGraduate.png);
+}
+
+.graduateClass_addGraduate {
+    position: absolute;
+    right: 10px;
+    bottom: 20px;
+}
+
+.graduateClass_addGraduateText {
+    font-size: 18px;
+    margin-right: 20px;
+}

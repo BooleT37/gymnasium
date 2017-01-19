@@ -5,7 +5,16 @@
 <head lang="ru">
     <meta charset="UTF-8"/>
     <title>Гимназия №2</title>
-    <link rel="stylesheet" href="/main.css" />
+    <c:choose>
+        <c:when test="${debug}">
+            <div id="design" style="display: none"></div>
+            <button type="button" id="designSwitchButton">Выкл</button>
+            <link rel="stylesheet" href="http://localhost:8081/src/main/resources/static/built/bundle.css" />
+        </c:when>
+        <c:otherwise>
+            <link rel="stylesheet" href="built/bundle.css" />
+        </c:otherwise>
+    </c:choose>
 </head>
 <body>
 <div id="content">

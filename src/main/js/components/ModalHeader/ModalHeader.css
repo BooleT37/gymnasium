@@ -1,0 +1,28 @@
+.modal_header {
+    text-align: center;
+}
+
+.modal_title {
+    font: 32px Karton-Regular;
+    vertical-align: 12px;
+    margin-right: 5px;
+}
+
+.modal_icon {
+    display: inline-block;
+    width: 48px;
+    height: 64px;
+}
+
+.modal_icon_leaf {
+    background-image: url(./images/leaf.png);
+}
+
+.modal_closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-image: url(./images/modal_close.png);
+    height: 40px;
+    width: 40px;
+}

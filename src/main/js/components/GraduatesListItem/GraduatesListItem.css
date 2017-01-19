@@ -1,0 +1,26 @@
+.graduateListItem {
+    position: relative;
+    left: 0px;
+    padding-left: 28px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.graduateListItem_current {
+    background-color: #91b026;
+    cursor: default;
+}
+
+.graduateListItem_showInfo {
+    height: 40px;
+    width: 40px;
+    background-image: url(./images/showGraduateInfo.png);
+    position: absolute;
+    right: 0px;
+    top: -10px;
+    cursor: pointer;
+}
+
+.graduateListItemСontainer {
+    position: relative;
+}
