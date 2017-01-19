@@ -7,3 +7,4 @@ node_modules/
 copyStaticResourses.cmd
 /copyImages.cmd
 /gymnasium.log
+/src/main/resources/static/built/*
