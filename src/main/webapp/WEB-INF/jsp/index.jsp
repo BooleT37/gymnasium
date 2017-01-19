@@ -7,8 +7,6 @@
     <title>Гимназия №2</title>
     <c:choose>
         <c:when test="${debug}">
-            <div id="design" style="display: none"></div>
-            <button type="button" id="designSwitchButton">Выкл</button>
             <link rel="stylesheet" href="http://localhost:8081/src/main/resources/static/built/bundle.css" />
         </c:when>
         <c:otherwise>
