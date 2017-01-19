@@ -54,7 +54,8 @@ public class GraduateDao {
     @Transactional
     public void deleteAll() {
         logger.info("Deleting all " + Graduate.class.getName() + " entities");
-        em.createQuery("delete from " + Graduate.class.getName());
+        em.createQuery("delete from " + Graduate.class.getName()).executeUpdate();
+        em.createNativeQuery("ALTER TABLE TBL_GRADUATE ALTER COLUMN id RESTART WITH 1").executeUpdate();
     }
 
     public boolean isEmpty() {

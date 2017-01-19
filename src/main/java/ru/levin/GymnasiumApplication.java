@@ -75,6 +75,16 @@ public class GymnasiumApplication extends SpringBootServletInitializer {
         graduateDao.add(new Graduate("Даниил", "Кабанов", "Тихонович", graduateClass1));
         graduateDao.add(new Graduate("Антон", "Шилов", "Лукьянович", graduateClass1));
         graduateDao.add(new Graduate("Глеб", "Потапов", "Федосеевич", graduateClass1));
+        graduateDao.add(new Graduate("Вадим", "Носов", "Витальевич", graduateClass1));
+        graduateDao.add(new Graduate("Георгий", "Лыткин", "Глебович", graduateClass1));
+        graduateDao.add(new Graduate("Ярослав", "Колесников", "Викторович", graduateClass1));
+        graduateDao.add(new Graduate("Матвей", "Андреев", "Анатольевич", graduateClass1));
+        graduateDao.add(new Graduate("Филат", "Кудрявцев", "Валерьянович", graduateClass1));
+        graduateDao.add(new Graduate("Фаина", "Быкова", "Максимовна", graduateClass1));
+        graduateDao.add(new Graduate("Глеб", "Попов", "Христофорович", graduateClass1));
+        graduateDao.add(new Graduate("Мэлс", "Петухов", "Кимович", graduateClass1));
+        graduateDao.add(new Graduate("Полина", "Григорьева", "Всеволодовна", graduateClass1));
+        graduateDao.add(new Graduate("Василий", "Сергеев", "Никитевич", graduateClass1));
         graduateDao.add(new Graduate("Никита", "Артемьев", "Русланович", graduateClass2));
         graduateDao.add(new Graduate("Марфа", "Одинцова", "Макаровна", graduateClass2));
         graduateDao.add(new Graduate("Наина", "Логинова", "Донатовна", graduateClass2));
