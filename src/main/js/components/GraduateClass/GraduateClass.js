@@ -215,7 +215,7 @@ export default class GraduateClass extends React.Component {
                     <GraduatesList classId={state.currentClass.id} selectedGraduateId={state.selectedGraduateId}></GraduatesList>
                 </div>,
                 <hr key="hr" className="modal_hr modal_footerHr"/>,
-                <div className="popup_footer" key="footer">
+                <div className="modal_footer" key="footer">
                     <div className="graduateClass_footerText graduateClass_graduateYearText">год выпуска</div>
                     <div className="graduateClass_widget graduateClass_yearWidget">
                         <div className={"graduateClass_yearSwitch" + (state.previousYear ? '' : ' graduateClass_yearSwitch_disabled')} onClick={this.handlePreviousYearClick}>◂</div>

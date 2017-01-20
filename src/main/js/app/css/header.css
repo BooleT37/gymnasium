@@ -1,0 +1,61 @@
+header {
+    position: relative;
+}
+
+#header_nav {
+    padding: 43px 0px 0px 28px;
+}
+
+#header_nav ul {
+    -webkit-padding-start: 0;
+}
+
+#header_nav li {
+    display: inline-block;
+    color: white;
+    cursor: pointer;
+}
+
+#title {
+    color: white;
+    font: 200 87px 'Exo 2 ExtraLightCondensed', sans-serif;
+    font-stretch: condensed;
+    padding: 43px 0 13px;
+    width: 880px;
+}
+
+#titleText {
+    padding-left: 144px;
+}
+
+.titleHr {
+    height: 2px;
+    border: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+#titleHr_left {
+    margin: 15px 0 0;
+}
+
+#titleHr_right {
+    width: 99px;
+    position: absolute;
+    top: 156px;
+    right: 0px;
+}
+
+.header_elementName {
+    font: 200 24px 'Exo 2 ExtraLightCondensed', sans-serif;
+    font-stretch: condensed;
+}
+
+.header_link:hover .header_elementName {
+    text-shadow: 0px 0px 10px white;
+}
+
+#title, #header_nav {
+    display: inline-block;
+    vertical-align: top;
+}
