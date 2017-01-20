@@ -23,6 +23,7 @@
 
 .graduateListItemСontainer {
     position: relative;
+    margin-right: 20px;
 }
 
 .graduateListItem_name_famous::before {

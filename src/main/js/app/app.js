@@ -1,6 +1,7 @@
 'use strict';
 
-import './app.css'
+import './app.css';
+import './customScroll.css';
 
 import React from 'react';
 import { render } from 'react-dom';
