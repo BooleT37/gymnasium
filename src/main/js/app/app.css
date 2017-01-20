@@ -53,6 +53,10 @@ body {
     z-index: 4;
 }
 
+header {
+    position: relative;
+}
+
 .ReactModal__Body--open {
     overflow: hidden;
 }
@@ -123,7 +127,7 @@ body {
     width: 99px;
     position: absolute;
     top: 156px;
-    right: -18px;
+    right: 0px;
 }
 
 .header_elementName {
