@@ -1,12 +1,13 @@
 "use strict";
 
 import './ModalHeader.css';
+import { Link } from 'react-router'
 
 import React from 'react'
 
 export default class ModalHeader extends React.Component {
     render() {
-        var backButton = this.props.backUrl ? <a href={"#" + this.props.backUrl} class="modal_backButton"><div className="modal_icon_back"></div></a> : null;
+        var backButton = this.props.backUrl ? <Link to={this.props.backUrl} className="modal_backButton"></Link> : null;
         return (
             <div key="header" className="modal_header">
                 <div>

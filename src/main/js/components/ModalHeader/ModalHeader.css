@@ -22,7 +22,16 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    background-image: url(./images/modal_close.png);
+    background-image: url(./images/close.png);
+    height: 40px;
+    width: 40px;
+}
+
+.modal_backButton {
+    position: absolute;
+    top: 20px;
+    right: 70px;
+    background-image: url(./images/back.png);
     height: 40px;
     width: 40px;
 }

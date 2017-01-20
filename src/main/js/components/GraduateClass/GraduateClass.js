@@ -236,9 +236,10 @@ export default class GraduateClass extends React.Component {
                 </div>
             ]
     	}
+        var backUrl = state.selectedGraduateId ? `/graduateClasses/${state.currentClass.id}` : null;
         return (
             <div className="graduateClass">
-                <ModalHeader title="ВЫПУСКНИКИ" iconType="leaf"/>
+                <ModalHeader title="ВЫПУСКНИКИ" iconType="leaf" backUrl={backUrl}/>
                 {content}
             </div>
         );
