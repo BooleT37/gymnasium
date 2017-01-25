@@ -18,6 +18,7 @@ import GraduateClassesStore from '../../stores/GraduateClassesStore';
 import ModalHeader from './../ModalHeader/ModalHeader';
 import GraduatesList from './../GraduatesList/GraduatesList';
 import GraduateInfo from './../GraduateInfo/GraduateInfo';
+import ModalFooter from './../ModalFooter/ModalFooter';
 
 
 const NO_PHOTO_IMAGE_SRC = "images/class_photos/no_photo.png";
@@ -30,6 +31,7 @@ export default class GraduateClass extends React.Component {
         this.handlePreviousYearClick = this.handlePreviousYearClick.bind(this);
         this.handleNextYearClick = this.handleNextYearClick.bind(this);
         this.showGraduateInfo = this.showGraduateInfo.bind(this);
+        this.handleAddGraduate = this.handleAddGraduate.bind(this);
     }
 
     componentWillMount() {
@@ -178,6 +180,13 @@ export default class GraduateClass extends React.Component {
     findClassByGradeAndCharacter(grade, character, graduateclasses) {
         return graduateclasses.find(c => c.grade === grade && c.character === character);
     }
+    
+    handleAddGraduate() {
+        if (this.state.selectedGraduateId)
+            this.routeTo(`/graduateClasses/${this.state.currentClass.id}/graduates/${this.state.selectedGraduateId}/addGraduate`);
+        else
+            this.routeTo(`/graduateClasses/${this.state.currentClass.id}/addGraduate`);
+    }
 
     render() {
         var state = this.state;
@@ -209,18 +218,27 @@ export default class GraduateClass extends React.Component {
                         <img src={state.currentClass.photoName || NO_PHOTO_IMAGE_SRC} className="graduateClass_photo"></img>
                     </div>
             }
-            content = [
-                <div className="graduateClass_center" key="center">
+            content = (
+                <div className="modal_content graduateClass_center">
                     {innerContent}
                     <GraduatesList classId={state.currentClass.id} selectedGraduateId={state.selectedGraduateId}></GraduatesList>
-                </div>,
-                <hr key="hr" className="modal_hr modal_footerHr"/>,
-                <div className="modal_footer" key="footer">
+                </div>
+            );
+            var footer = (
+                <ModalFooter>
                     <div className="graduateClass_footerText graduateClass_graduateYearText">год выпуска</div>
                     <div className="graduateClass_widget graduateClass_yearWidget">
-                        <div className={"graduateClass_yearSwitch" + (state.previousYear ? '' : ' graduateClass_yearSwitch_disabled')} onClick={this.handlePreviousYearClick}>◂</div>
+                        <div className={classnames(
+                            "graduateClass_yearSwitch",
+                            "graduateClass_yearSwitch_left",
+                            { graduateClass_yearSwitch_disabled: !state.previousYear}
+                        )} onClick={this.handlePreviousYearClick}></div>
                         <div className="graduateClass_graduateYear">{state.currentClass.graduateYear}</div>
-                        <div className={"graduateClass_yearSwitch" + (state.nextYear ? '' : ' graduateClass_yearSwitch_disabled')} onClick={this.handleNextYearClick}>▸</div>
+                        <div className={classnames(
+                            "graduateClass_yearSwitch",
+                            "graduateClass_yearSwitch_right",
+                            { graduateClass_yearSwitch_disabled: !state.nextYear}
+                        )} onClick={this.handleNextYearClick}></div>
                     </div>
                     <div className="graduateClass_footerText graduateClass_graduateClassText">класс</div>
                     <div className="graduateClass_widget graduateClass_gradeWidget">
@@ -231,16 +249,17 @@ export default class GraduateClass extends React.Component {
                     </div>
                     <div className="graduateClass_addGraduate">
                         <div className="graduateClass_addGraduateText">добавить<br/>анкету</div>
-                        <div className="graduateClass_addGraduateIcon"></div>
+                        <div className="graduateClass_addGraduateIcon" onClick={this.handleAddGraduate}></div>
                     </div>
-                </div>
-            ]
+                </ModalFooter>
+            );
     	}
         var backUrl = state.selectedGraduateId ? `/graduateClasses/${state.currentClass.id}` : null;
         return (
             <div className="graduateClass">
                 <ModalHeader title="ВЫПУСКНИКИ" iconType="leaf" backUrl={backUrl}/>
                 {content}
+                {footer}
             </div>
         );
     }

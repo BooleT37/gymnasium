@@ -3,7 +3,7 @@
 }
 
 .modal_title {
-    font: 32px Karton-Regular;
+    font: 38px Karton-Regular;
     vertical-align: 12px;
     margin-right: 5px;
 }
@@ -34,4 +34,12 @@
     background-image: url(./images/back.png);
     height: 40px;
     width: 40px;
+}
+
+.modal_header_top {
+    height: 75px;
+}
+
+.modal_headerHr {
+    box-shadow: 0px 2px 5px grey;
 }

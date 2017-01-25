@@ -69,7 +69,7 @@
 <c:choose>
     <c:when test="${debug}">
         <div id="design" style="display: none"></div>
-        <button type="button" id="designSwitchButton">Выкл</button>
+        <button type="button" id="designSwitchButton">Вкл</button>
         <script src="http://localhost:8081/src/main/resources/static/built/bundle.js"></script>
     </c:when>
     <c:otherwise>

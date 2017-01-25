@@ -13,7 +13,8 @@ import Velocity from 'velocity-animate';
 import Modal from 'react-modal';
 import 'babel-polyfill';
 
-import GraduateClass from './../components/GraduateClass/GraduateClass'
+import GraduateClass from './../components/GraduateClass/GraduateClass';
+import GraduateEdit from './../components/GraduateEdit/GraduateEdit';
 
 class EmptyModal extends React.Component {
   render() {
@@ -21,13 +22,21 @@ class EmptyModal extends React.Component {
   }
 }
 
-const GraduateClassWithRouter = withRouter(GraduateClass);
-
 class GradClassModal extends React.Component {
   render() {
     return (
       <Modal isOpen={true} contentLabel="Modal" className="modal">
-          <GraduateClassWithRouter/>
+          <GraduateClass params={this.props.params}/>
+      </Modal>
+    )
+  }
+}
+
+class GradEditModal extends React.Component {
+  render() {
+    return (
+      <Modal isOpen={true} contentLabel="Modal" className="modal">
+          <GraduateEdit params={this.props.params}/>
       </Modal>
     )
   }
@@ -86,7 +95,8 @@ class App {
   setUpRouter() {
     render((
       <Router history={hashHistory}>
-        <Route path="/graduateClasses(/:classId(/graduates(/:graduateId(/edit))))" component={GradClassModal}/>
+        <Route path="/graduateClasses(/:classId(/graduates(/:graduateId)))" component={GradClassModal}/>
+        <Route path="/graduateClasses/:classId(/graduates(/:graduateId))/addGraduate" component={GradEditModal}/>
         <Route path="*" component={null}/>
       </Router>
     ), document.getElementsByClassName('ReactModalPortal')[0]);

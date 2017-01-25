@@ -1,0 +1,52 @@
+/* .graduateEdit_birthDateInput */
+.graduateEdit_birthDateInput::placeholder {
+    font-size: 30px;
+    position: relative;
+    bottom: 5px;
+}
+
+.graduateEdit_birthDateInput::-webkit-input-placeholder {
+    font-size: 30px;
+    position: relative;
+    bottom: 5px;
+}
+
+.graduateEdit_birthDateInput::-moz-placeholder {
+    font-size: 30px;
+    position: relative;
+    bottom: 5px;
+}
+
+.graduateEdit_birthDateInput:-ms-input-placeholder {
+    font-size: 30px;
+    position: relative;
+    bottom: 5px;
+}
+
+.graduateEdit_birthDateInput:-moz-placeholder {
+    font-size: 30px;
+    position: relative;
+    bottom: 5px;
+}
+
+
+/* input, textarea */
+.graduateEdit input::placeholder, .graduateEdit textarea::placeholder {
+    color: #bcbbb9;
+}
+
+.graduateEdit input::-webkit-input-placeholder, .graduateEdit textarea::-webkit-input-placeholder {
+    color: #bcbbb9;
+}
+
+.graduateEdit input::-moz-placeholder, .graduateEdit textarea::-moz-placeholder {
+    color: #bcbbb9;
+}
+
+.graduateEdit input:-ms-input-placeholder, .graduateEdit textarea::-ms-input-placeholder {
+    color: #bcbbb9;
+}
+
+.ggraduateEdit input:-moz-placeholder, .graduateEdit textarea::-ms-input-placeholder {
+    color: #bcbbb9;
+}

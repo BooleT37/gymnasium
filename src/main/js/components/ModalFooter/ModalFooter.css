@@ -1,0 +1,11 @@
+.modal_footerHr {
+    box-shadow: 0px -2px 5px grey;
+}
+
+.modal_footer {
+    font: 30px 'Exo 2 LightCondensed';
+}
+
+.modal_footer_content {
+    position: relative;
+}

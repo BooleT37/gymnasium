@@ -36,12 +36,12 @@
   .custom-scroll .custom-scrollbar {
     position: absolute;
     height: 100%;
-    width: 16px;
+    width: 14px;
     right: 3px;
-    opacity: 0;
+    opacity: .7;
     z-index: 1;
-    -webkit-transition: opacity 0.4s ease-out;
-    transition: opacity 0.4s ease-out;
+    -webkit-transition: opacity 0.3s ease-out;
+    transition: opacity 0.3s ease-out;
     padding: 6px 0;
     box-sizing: border-box;
     will-change: opacity;
@@ -66,7 +66,7 @@
 .custom-scroll .custom-scrollbar:after {
     content: "";
     position: absolute;
-    left: 7px;
+    left: 6px;
     height: 100%;
     width: 1px;
     background-color: #c4c4c4;

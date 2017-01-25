@@ -1,0 +1,110 @@
+.graduateEdit .graduateEdit_content {
+    color: #b9b9b9;
+    font: 30px 'Exo 2 LightCondensed';
+}
+
+.graduateEdit_input_fullWidth {
+    width: 424px;
+}
+
+.graduateEdit_input_smallWidth {
+    width: 66px;
+    margin-left: 13px;
+}
+
+.graduateEdit_left, .graduateEdit_right {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.classLabel {
+    margin-left: 52px;
+}
+
+.graduateEdit_left {
+    width: 450px;
+    margin: 10px 0 0 50px;
+}
+
+.graduateEdit input, .graduateEdit textarea {
+    font-family: 'Exo 2 LightCondensed';
+    border: solid 1px lightgrey;
+    box-shadow: 0px 0px 2px 1px darkgrey inset;
+    padding: 0 5px;
+}
+
+.graduateEdit .graduateEdit_left input, .graduateEdit .graduateEdit_left textarea {
+    margin-bottom: 16px;
+}
+
+.graduateEdit input {
+    height: 46px;
+    font-size: 40px;
+}
+
+.graduateEdit textarea {
+    font-size: 30px;
+}
+
+.graduateEdit_yearAndClass {
+    margin-bottom: 15px;
+}
+
+.graduateEdit textarea {
+    height: 74px;
+}
+
+.graduateEdit input.graduateEdit_input_link {
+    height: 34px;
+    width: 262px;
+    font-size: 26px;
+}
+
+.graduateEdit_photoPrompt {
+    margin: 12px 0 0 75px;
+}
+
+.graduateEdit_photoFrame {
+    cursor: pointer;
+    margin: 16px 0 0 82px;
+    width: 235px;
+    height: 235px;
+    background-image: url(./images/photoframe.png);
+}
+
+.graduateEdit_photo {
+    margin: 10px 0 0 20px;
+}
+
+.graduateEdit_vkLogo, .graduateEdit_facebookLogo {
+    width: 34px;
+    height: 34px;
+    display: inline-block;
+    vertical-align: bottom;
+    margin: 0px 18px 0px 40px;
+}
+
+.graduateEdit_vkLogo {
+    background-image: url(./images/vkLogo.png)
+}
+
+.graduateEdit_facebookLogo {
+    background-image: url(./images/facebookLogo.png)
+}
+
+.graduateEdit_linkRow {
+    margin-top: 10px;
+}
+
+.graduateEdit_submitButton {
+    position: absolute;
+    right: 20px;
+    top: 19px;
+    width: 306px;
+    height: 47px;
+    color: white;
+    background-color: #91b026;
+    padding-top: 8px;
+    text-align: center;
+    cursor: pointer;
+}
