@@ -6,17 +6,28 @@ import './GraduateEdit-placeholders.css';
 import React from 'react';
 import MaskedInput from 'react-maskedinput';
 
+import GraduateClassesStore from '../../stores/GraduateClassesStore'
+
 import ModalHeader from './../ModalHeader/ModalHeader';
 import ModalFooter from './../ModalFooter/ModalFooter';
 
 export default class GraduateEdit extends React.Component {
     constructor(props) {
         super(props);
+        var graduateClass = "";
+        var graduateYear = "";
+        var classId = parseInt(props.params.classId);
+        if (GraduateClassesStore.state.loaded && classId) {
+            var graduateClassObj = GraduateClassesStore.getClassById(classId);
+            graduateClass = `${graduateClassObj.grade} ${graduateClassObj.character}`;
+            graduateYear = graduateClassObj.graduateYear;
+        }
+
         this.state = {
             fio: "",
             birthDate: "",
-            graduateYear: "",
-            graduateClass: "", //todo: подтягивать класс из this.props.params.classId
+            graduateYear: graduateYear,
+            graduateClass: graduateClass,
             favouriteSubjects: "",
             achievements: "",
             photo: null,
@@ -103,11 +114,11 @@ export default class GraduateEdit extends React.Component {
                     <div className="graduateEdit_yearAndClass">
                         <label>
                             год выпуска
-                            <input type="text" maxLength="4" value={this.state.graduateYear} onChange={this.handleGradateYearChange} className="graduateEdit_input_smallWidth"/>
+                            <input type="text" maxLength="4" value={this.state.graduateYear} onChange={this.handleGradateYearChange} className="graduateEdit_input_year"/>
                         </label>
                         <label className="classLabel">
                             класс
-                            <input type="text" value={this.state.graduateClass} onChange={this.handleGraduateClassChange}  className="graduateEdit_input_smallWidth"/>
+                            <input type="text" value={this.state.graduateClass} onChange={this.handleGraduateClassChange}  className="graduateEdit_input_class"/>
                         </label>
                     </div>
                     <textarea placeholder="ваши любимые предметы" value={this.state.favouriteSubjects} onChange={this.handleFavouriteSubjectsChange}  className="graduateEdit_input_fullWidth"/>

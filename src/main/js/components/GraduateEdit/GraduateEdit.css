@@ -7,9 +7,16 @@
     width: 424px;
 }
 
-.graduateEdit_input_smallWidth {
-    width: 66px;
+.graduateEdit_input_year, .graduateEdit_input_class {
     margin-left: 13px;
+}
+
+.graduateEdit_input_year {
+    width: 76px;
+}
+
+.graduateEdit_input_class {
+    width: 66px;
 }
 
 .graduateEdit_left, .graduateEdit_right {
@@ -18,7 +25,7 @@
 }
 
 .classLabel {
-    margin-left: 52px;
+    margin-left: 42px;
 }
 
 .graduateEdit_left {
