@@ -21,3 +21,14 @@ export function fullNameToShortString(lastName, firstName, patronymic) {
 export function fullNameToString(lastName, firstName, patronymic) {
     return lastName + (firstName ? (" " + firstName) : "") + (patronymic ? (" " + patronymic) : "");
 }
+
+export function triggerClickEvent(el) {
+    if (document.createEvent) {
+        var event = document.createEvent("MouseEvents");
+        event.initEvent("click", true, true);
+        el.dispatchEvent(event);
+    }
+    else if (el.click) {
+        el.click();
+    }
+}

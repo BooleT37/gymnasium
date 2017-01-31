@@ -16,6 +16,7 @@ import 'babel-polyfill';
 import GraduateClass from './../components/GraduateClass/GraduateClass';
 import GraduateEdit from './../components/GraduateEdit/GraduateEdit';
 import Teachers from './../components/Teachers/Teachers';
+import {triggerClickEvent} from '../utils';
 
 class EmptyModal extends React.Component {
   render() {
@@ -61,16 +62,7 @@ class App {
   }
 
   setUpAutoscrollers() {
-    function triggerClickEvent(el) {
-        if (document.createEvent) {
-            var event = document.createEvent("MouseEvents");
-            event.initEvent("click", true, true);
-            el.dispatchEvent(event);
-        }
-        else if (el.click) {
-            el.click();
-        }
-    }
+    
 
     function openLink(id) {
         var element = document.getElementById(id);
