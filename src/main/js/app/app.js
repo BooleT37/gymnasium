@@ -74,7 +74,13 @@ class App {
 
     function openLink(id) {
         var element = document.getElementById(id);
-        Velocity(element, "scroll", { container: document.body, easing: "ease", offset: -200 });
+        var image = element.getElementsByClassName("nav_element_image")[0];
+        var h = window.innerHeight
+          || document.documentElement.clientHeight
+          || document.body.clientHeight;
+        var navElementHeightHalf = 91;
+        var offset = -(h / 2 - navElementHeightHalf);
+        Velocity(image, "scroll", { container: document.body, easing: "ease", offset: offset});
 
         setTimeout(function() { triggerClickEvent(element); }, 400)
     }
