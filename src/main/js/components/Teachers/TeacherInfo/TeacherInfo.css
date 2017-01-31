@@ -1,0 +1,37 @@
+.teacherInfo {
+    display: inline-block;
+    vertical-align: top;
+    width: 670px;
+    height: 380px;
+    position: relative;
+}
+
+.teacherInfo_left, .teacherInfo_right {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 32px;
+}
+
+.teacherInfo_left {
+    margin-left: 13px;
+}
+
+.teacherInfo_right {
+    width: 290px;
+    margin-left: 40px;
+    padding-top: 33px;
+}
+
+.teacherInfo_title {
+    font-size: 38px;
+    margin-bottom: 33px;
+}
+
+.teacherInfo_row {
+    margin-top: 22px;
+    margin-left: 4px;
+}
+
+.teacherInfo_rowContent {
+    margin-left: 10px;
+}

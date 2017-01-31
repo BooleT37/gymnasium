@@ -16,7 +16,7 @@ export default class GraduateEdit extends React.Component {
             fio: "",
             birthDate: "",
             graduateYear: "",
-            graduateClass: "",
+            graduateClass: "", //todo: подтягивать класс из this.props.params.classId
             favouriteSubjects: "",
             achievements: "",
             photo: null,
@@ -66,6 +66,7 @@ export default class GraduateEdit extends React.Component {
 
     handlePhotoChange(event) {
         alert("Функция добавления фото заработает в следующем релизе!");
+        //todo: дописать
     }
 
     handleVkLinkChange(event) {

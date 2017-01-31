@@ -23,9 +23,9 @@ public class GraduatesRestController {
     @Inject
     private GraduateClassDao graduateClassDao;
 
-    @GetMapping("class/{classId}")
-    public List<GraduateJson> getAllForClass(@PathVariable("classId") Long classId) throws EntityNotFoundException {
-        GraduateClass graduateClass = graduateClassDao.getById(classId);
+    @GetMapping("class/{id}")
+    public List<GraduateJson> getAllForClass(@PathVariable("id") Long id) throws EntityNotFoundException {
+        GraduateClass graduateClass = graduateClassDao.getById(id);
         return graduateDao.getAllForClass(graduateClass).stream().map(Graduate::toGraduateJson).collect(Collectors.toList());
     }
 }

@@ -14,8 +14,13 @@
     height: 64px;
 }
 
-.modal_icon_leaf {
-    background-image: url(./images/leaf.png);
+.modal_icon.modal_icon_leaf {
+   background-image: url(./images/leaf.png); 
+}
+
+.modal_icon.modal_icon_mortarboard {
+    width: 64px;
+    background-image: url(./images/mortarboard.png);
 }
 
 .modal_closeButton {

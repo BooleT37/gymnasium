@@ -28,6 +28,7 @@ export default class GraduateClass extends React.Component {
     constructor(props) {
         super(props);
         this.state = { loaded: false };
+
         this.handlePreviousYearClick = this.handlePreviousYearClick.bind(this);
         this.handleNextYearClick = this.handleNextYearClick.bind(this);
         this.showGraduateInfo = this.showGraduateInfo.bind(this);
@@ -42,13 +43,14 @@ export default class GraduateClass extends React.Component {
         this.onComponentUpdate(nextProps);
     }
 
+    onComponentUpdate(newProps) {
+        Actions.lazyLoadGraduateClasses(newProps.classId);
+        this.onPropsChange(newProps);
+    }
+
     componentDidMount() {
         this.unsubscribeFromStore = GraduateClassesStore.listen(this.onStoreLoaded.bind(this));
         this.unsubscribeFromShowGraduateInfoAction = Actions.showGraduateInfo.listen(this.showGraduateInfo);
-    }
-
-    routeTo(url) {
-        Actions.routeTo(url);
     }
 
     onStoreLoaded() {
@@ -72,7 +74,7 @@ export default class GraduateClass extends React.Component {
             } catch(e) {
                 if (console)
                     console.log(e.message);
-                this.routeTo("/graduateClasses/");
+                Actions.routeTo("/graduateClasses/");
                 return;
             }
             this.setState(state);
@@ -80,7 +82,7 @@ export default class GraduateClass extends React.Component {
         //location.hash is "#/GraduateClasses"
             var lastYear = max(Object.keys(storeState.classesDict));
             var currentClass = this.getFirstClass(storeState.classesDict[lastYear]);
-            this.routeTo(`/graduateClasses/${currentClass.id}`);
+            Actions.routeTo(`/graduateClasses/${currentClass.id}`);
         }
     }
 
@@ -127,11 +129,6 @@ export default class GraduateClass extends React.Component {
         };
     }
 
-    onComponentUpdate(newProps) {
-        Actions.lazyLoadGraduateClasses(newProps.classId);
-        this.onPropsChange(newProps);
-    }
-
     loadState() {
         this.onStoreLoaded(GraduateClassesStore.state);
             
@@ -152,7 +149,7 @@ export default class GraduateClass extends React.Component {
     changeYear(year) {
         var storeState = GraduateClassesStore.state; //Assuming that by this moment store is already loaded
         var currentClass = this.getFirstClass(storeState.classesDict[year]);
-        this.routeTo(`/graduateClasses/${currentClass.id}`);
+        Actions.routeTo(`/graduateClasses/${currentClass.id}`);
     }
 
     changeClassCharacter(newCharacter) {
@@ -161,7 +158,7 @@ export default class GraduateClass extends React.Component {
         var graduateYear = currentClass.graduateYear;
         var storeState = GraduateClassesStore.state;
         var newGraduateClass = this.findClassByGradeAndCharacter(grade, newCharacter, storeState.classesDict[graduateYear]);
-        this.routeTo(`/graduateClasses/${newGraduateClass.id}`);
+        Actions.routeTo(`/graduateClasses/${newGraduateClass.id}`);
     }
 
     changeClassGrade(newGrade) {
@@ -170,11 +167,11 @@ export default class GraduateClass extends React.Component {
         var character = currentClass.character;
         var graduateYear = currentClass.graduateYear;
         var newGraduateClass = this.findClassByGradeAndCharacter(newGrade, character, storeState.classesDict[graduateYear])
-        this.routeTo(`/graduateClasses/${newGraduateClass.id}`);
+        Actions.routeTo(`/graduateClasses/${newGraduateClass.id}`);
     }
 
     showGraduateInfo(graduate) {
-        this.routeTo(`/graduateClasses/${this.state.currentClass.id}/graduates/${graduate.id}`);
+        Actions.routeTo(`/graduateClasses/${this.state.currentClass.id}/graduates/${graduate.id}`);
     }
 
     findClassByGradeAndCharacter(grade, character, graduateclasses) {
@@ -183,77 +180,74 @@ export default class GraduateClass extends React.Component {
     
     handleAddGraduate() {
         if (this.state.selectedGraduateId)
-            this.routeTo(`/graduateClasses/${this.state.currentClass.id}/graduates/${this.state.selectedGraduateId}/addGraduate`);
+            Actions.routeTo(`/graduateClasses/${this.state.currentClass.id}/graduates/${this.state.selectedGraduateId}/addGraduate`);
         else
-            this.routeTo(`/graduateClasses/${this.state.currentClass.id}/addGraduate`);
+            Actions.routeTo(`/graduateClasses/${this.state.currentClass.id}/addGraduate`);
     }
 
     render() {
         var state = this.state;
 
-        var content;
-        if (state.loaded === false) {
-            content = <div className="graduateClass_loader">Загрузка списка классов...</div>
+        if (state.loaded === false)
+            return (<div className="modal_loader">Загрузка списка классов...</div>);
+        var grades = state.grades.map((grade, i) => {
+            if (grade === state.currentClass.grade)
+                return (<div className="graduateClass_grade graduateClass_grade_current" key={i}>{grade}</div>)
+            else
+                return (<div className="graduateClass_grade" onClick={this.changeClassGrade.bind(this, grade)} key={`grade_${i}`}>{grade}</div>)
+        });
+
+        var characters = state.characters.map((char, i) => {
+            if (char === state.currentClass.character)
+                return (<div className="graduateClass_character graduateClass_character_current" key={i}>{char}</div>)
+            else
+                return (<div className="graduateClass_character" onClick={this.changeClassCharacter.bind(this, char)} key={i}>{char}</div>)
+        });
+
+        var innerContent;
+        if (this.state.selectedGraduateId) {
+            innerContent = <GraduateInfo classId={state.currentClass.id} graduateId={state.selectedGraduateId}/>;
         } else {
-            var grades = state.grades.map((grade, i) => {
-                if (grade === state.currentClass.grade)
-                    return (<div className="graduateClass_grade graduateClass_grade_current" key={i}>{grade}</div>)
-                else
-                    return (<div className="graduateClass_grade" onClick={this.changeClassGrade.bind(this, grade)} key={`grade_${i}`}>{grade}</div>)
-            });
-
-            var characters = state.characters.map((char, i) => {
-                if (char === state.currentClass.character)
-                    return (<div className="graduateClass_character graduateClass_character_current" key={i}>{char}</div>)
-                else
-                    return (<div className="graduateClass_character" onClick={this.changeClassCharacter.bind(this, char)} key={i}>{char}</div>)
-            });
-
-            var innerContent;
-            if (this.state.selectedGraduateId) {
-                innerContent = <GraduateInfo classId={state.currentClass.id} graduateId={state.selectedGraduateId}/>;
-            } else {
-                innerContent = 
-                    <div className="graduateClass_photoContainer">
-                        <img src={state.currentClass.photoName || NO_PHOTO_IMAGE_SRC} className="graduateClass_photo"></img>
-                    </div>
-            }
-            content = (
-                <div className="modal_content graduateClass_center">
-                    {innerContent}
-                    <GraduatesList classId={state.currentClass.id} selectedGraduateId={state.selectedGraduateId}></GraduatesList>
+            innerContent = 
+                <div className="graduateClass_photoContainer">
+                    <img src={state.currentClass.photoName || NO_PHOTO_IMAGE_SRC} className="graduateClass_photo"></img>
                 </div>
-            );
-            var footer = (
-                <ModalFooter>
-                    <div className="graduateClass_footerText graduateClass_graduateYearText">год выпуска</div>
-                    <div className="graduateClass_widget graduateClass_yearWidget">
-                        <div className={classnames(
-                            "graduateClass_yearSwitch",
-                            "graduateClass_yearSwitch_left",
-                            { graduateClass_yearSwitch_disabled: !state.previousYear}
-                        )} onClick={this.handlePreviousYearClick}></div>
-                        <div className="graduateClass_graduateYear">{state.currentClass.graduateYear}</div>
-                        <div className={classnames(
-                            "graduateClass_yearSwitch",
-                            "graduateClass_yearSwitch_right",
-                            { graduateClass_yearSwitch_disabled: !state.nextYear}
-                        )} onClick={this.handleNextYearClick}></div>
-                    </div>
-                    <div className="graduateClass_footerText graduateClass_graduateClassText">класс</div>
-                    <div className="graduateClass_widget graduateClass_gradeWidget">
-                        {grades}
-                    </div>
-                    <div className="graduateClass_widget graduateClass_characterWidget">
-                        {characters}
-                    </div>
-                    <div className="graduateClass_addGraduate">
-                        <div className="graduateClass_addGraduateText">добавить<br/>анкету</div>
-                        <div className="graduateClass_addGraduateIcon" onClick={this.handleAddGraduate}></div>
-                    </div>
-                </ModalFooter>
-            );
-    	}
+        }
+        var content = (
+            <div className="modal_content graduateClass_center">
+                {innerContent}
+                <GraduatesList classId={state.currentClass.id} selectedGraduateId={state.selectedGraduateId}></GraduatesList>
+            </div>
+        );
+        var footer = (
+            <ModalFooter>
+                <div className="graduateClass_footerText graduateClass_graduateYearText">год выпуска</div>
+                <div className="graduateClass_widget graduateClass_yearWidget">
+                    <div className={classnames(
+                        "graduateClass_yearSwitch",
+                        "graduateClass_yearSwitch_left",
+                        { graduateClass_yearSwitch_disabled: !state.previousYear}
+                    )} onClick={this.handlePreviousYearClick}></div>
+                    <div className="graduateClass_graduateYear">{state.currentClass.graduateYear}</div>
+                    <div className={classnames(
+                        "graduateClass_yearSwitch",
+                        "graduateClass_yearSwitch_right",
+                        { graduateClass_yearSwitch_disabled: !state.nextYear}
+                    )} onClick={this.handleNextYearClick}></div>
+                </div>
+                <div className="graduateClass_footerText graduateClass_graduateClassText">класс</div>
+                <div className="graduateClass_widget graduateClass_gradeWidget">
+                    {grades}
+                </div>
+                <div className="graduateClass_widget graduateClass_characterWidget">
+                    {characters}
+                </div>
+                <div className="graduateClass_addGraduate">
+                    <div className="graduateClass_addGraduateText">добавить<br/>анкету</div>
+                    <div className="graduateClass_addGraduateIcon" onClick={this.handleAddGraduate}></div>
+                </div>
+            </ModalFooter>
+        );
         var backUrl = state.selectedGraduateId ? `/graduateClasses/${state.currentClass.id}` : null;
         return (
             <div className="graduateClass">

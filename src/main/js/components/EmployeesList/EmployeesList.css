@@ -1,0 +1,42 @@
+.employeesList {
+    width: 222px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.employeesListInnerContainer {
+    max-height: 410px;
+}
+
+.graduateListItem {
+    position: relative;
+    padding-left: 38px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.employeeList_item {
+    position: relative;
+    padding-left: 38px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.employeeList_item_selected {
+    background-color: #91b026;
+    cursor: default;
+}
+
+employeeList_item_name {
+    margin-left: 20px;
+}
+
+.employeeList_item_name_famous::before {
+    content: "";
+    position: absolute;
+    left: 11px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    background-image: url(./images/star.png);
+}

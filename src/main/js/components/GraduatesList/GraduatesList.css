@@ -2,10 +2,6 @@
     padding-top: 10px;
 }
 
-.graduateName {
-    cursor: pointer;
-}
-
 .graduatesListOuterContainer {
     width: 222px;
     display: inline-block;

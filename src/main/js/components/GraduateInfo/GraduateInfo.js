@@ -7,7 +7,7 @@ import classnames from 'classnames';
 
 import Actions from '../../actions/Actions';
 import GraduatesStore from '../../stores/GraduatesStore';
-import {fullNameToString} from './../../utils';
+import {fullNameToString} from '../../utils';
 
 export default class GraduateInfo extends React.Component {
     constructor(props) {
@@ -98,7 +98,7 @@ export default class GraduateInfo extends React.Component {
                 )
             }
 
-            var photoSrc = "/images/graduate_photos/" + (graduate.photoName || "no_photo.png");
+            var photoSrc = graduate.photoName ? `/images/graduate_photos/${graduate.photoName}` : "images/no_photo.png";
 
             return (
                 <div className="graduateInfo">

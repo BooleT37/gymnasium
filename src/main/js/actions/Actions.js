@@ -8,6 +8,7 @@ var Actions = Reflux.createActions([
     "routeTo",
     "lazyLoadGraduateClasses",
     "lazyLoadGraduatesForClass",
+    "lazyLoadTeachers",
     "highlightGraduate",
     "showGraduateInfo"
 ]);

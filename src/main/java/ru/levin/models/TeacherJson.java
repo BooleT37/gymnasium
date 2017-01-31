@@ -1,49 +1,20 @@
-package ru.levin.entities;
+package ru.levin.models;
 
-import ru.levin.models.TeacherJson;
-
-import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-@Entity
-@Table(name = "TBL_TEACHER")
-public class Teacher {
-    @Id
-    @GeneratedValue
+public class TeacherJson {
     private Long id;
-
-    @Column(length = 50, nullable = false)
     private String firstName;
-    @Column(length = 50, nullable = false)
     private String lastName;
-    @Column(length = 50)
     private String patronymic;
-    private LocalDate birthDate;
-    @ElementCollection
-    @CollectionTable(
-        name="TBL_SUBJECTS"
-    )
+    private String birthDate;
     private List<String> subjects;
     private Integer employmentYear;
     private Integer releaseYear;
     private boolean famous;
 
-    @Transient
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-
-    private Teacher() {}
-
-    public Teacher(String firstName, String lastName) {
-        this(firstName, lastName, null, null, null, null, null, false);
-    }
-
-    public Teacher(String firstName, String lastName, String patronymic) {
-        this(firstName, lastName, patronymic, null, null, null, null, false);
-    }
-
-    public Teacher(String firstName, String lastName, String patronymic, LocalDate birthDate, List<String> subjects, Integer employmentYear, Integer releaseYear, boolean famous) {
+    public TeacherJson(Long id, String firstName, String lastName, String patronymic, String birthDate, List<String> subjects, Integer employmentYear, Integer releaseYear, boolean famous) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.patronymic = patronymic;
@@ -54,8 +25,8 @@ public class Teacher {
         this.famous = famous;
     }
 
-    public TeacherJson toTeacherJson() {
-        return new TeacherJson(id, firstName, lastName, patronymic, birthDate == null ? "" : birthDate.format(formatter), subjects, employmentYear, releaseYear, famous);
+    public TeacherJson(String firstName, String lastName, String patronymic, String birthDate, List<String> subjects, Integer employmentYear, Integer releaseYear, boolean famous) {
+        this(null, firstName, lastName, patronymic, birthDate, subjects, employmentYear,releaseYear, famous);
     }
 
     public Long getId() {
@@ -86,11 +57,11 @@ public class Teacher {
         this.patronymic = patronymic;
     }
 
-    public LocalDate getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -102,19 +73,19 @@ public class Teacher {
         this.subjects = subjects;
     }
 
-    public int getEmploymentYear() {
+    public Integer getEmploymentYear() {
         return employmentYear;
     }
 
-    public void setEmploymentYear(int employmentYear) {
+    public void setEmploymentYear(Integer employmentYear) {
         this.employmentYear = employmentYear;
     }
 
-    public int getReleaseYear() {
+    public Integer getReleaseYear() {
         return releaseYear;
     }
 
-    public void setReleaseYear(int releaseYear) {
+    public void setReleaseYear(Integer releaseYear) {
         this.releaseYear = releaseYear;
     }
 

@@ -15,6 +15,7 @@ import 'babel-polyfill';
 
 import GraduateClass from './../components/GraduateClass/GraduateClass';
 import GraduateEdit from './../components/GraduateEdit/GraduateEdit';
+import Teachers from './../components/Teachers/Teachers';
 
 class EmptyModal extends React.Component {
   render() {
@@ -37,6 +38,16 @@ class GradEditModal extends React.Component {
     return (
       <Modal isOpen={true} contentLabel="Modal" className="modal">
           <GraduateEdit params={this.props.params}/>
+      </Modal>
+    )
+  }
+}
+
+class TeachersModal extends React.Component {
+  render() {
+    return (
+      <Modal isOpen={true} contentLabel="Modal" className="modal">
+          <Teachers params={this.props.params}/>
       </Modal>
     )
   }
@@ -97,6 +108,7 @@ class App {
       <Router history={hashHistory}>
         <Route path="/graduateClasses(/:classId(/graduates(/:graduateId)))" component={GradClassModal}/>
         <Route path="/graduateClasses/:classId(/graduates(/:graduateId))/addGraduate" component={GradEditModal}/>
+        <Route path="/teachers(/:teacherId)" component={TeachersModal}/>
         <Route path="*" component={null}/>
       </Router>
     ), document.getElementsByClassName('ReactModalPortal')[0]);

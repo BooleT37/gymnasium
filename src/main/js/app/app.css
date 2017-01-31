@@ -36,13 +36,13 @@ body {
 
 #design {
     position: fixed;
-    top: 10px;
+    top: -7px;
     left: 471px;
     z-index: 3;
     background-image: url('./images/design.jpg');
     opacity: 0.5;
     width: 980px;
-    height: 659px;
+    height: 713px;
     display: block;
 }
 
@@ -80,4 +80,13 @@ body {
 #wrapper {
     margin: 0 auto;
     width: 1920px;
+}
+
+.photoFrame {
+    background-image: url(./images/photo_frame.png);
+    width: 296px;
+    height: 316px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 8px 2px darkgrey;
+    padding: 8px 0 0 8px;
 }
