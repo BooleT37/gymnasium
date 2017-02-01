@@ -1,7 +1,5 @@
 package ru.levin.entities;
 
-import ru.levin.models.TeacherJson;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -54,10 +52,6 @@ public class Teacher {
         this.famous = famous;
     }
 
-    public TeacherJson toTeacherJson() {
-        return new TeacherJson(id, firstName, lastName, patronymic, birthDate == null ? "" : birthDate.format(formatter), subjects, employmentYear, releaseYear, famous);
-    }
-
     public Long getId() {
         return id;
     }
@@ -102,7 +96,7 @@ public class Teacher {
         this.subjects = subjects;
     }
 
-    public int getEmploymentYear() {
+    public Integer getEmploymentYear() {
         return employmentYear;
     }
 
@@ -110,7 +104,7 @@ public class Teacher {
         this.employmentYear = employmentYear;
     }
 
-    public int getReleaseYear() {
+    public Integer getReleaseYear() {
         return releaseYear;
     }
 

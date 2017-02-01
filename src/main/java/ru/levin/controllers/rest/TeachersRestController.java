@@ -7,11 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.levin.dao.TeacherDao;
 import ru.levin.dao.exceptions.EntityNotFoundException;
 import ru.levin.entities.Teacher;
-import ru.levin.models.TeacherJson;
 
 import javax.inject.Inject;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/teachers")
@@ -20,12 +18,12 @@ public class TeachersRestController {
     private TeacherDao teacherDao;
 
     @GetMapping("")
-    public List<TeacherJson> all() {
-        return teacherDao.getAll().stream().map(Teacher::toTeacherJson).collect(Collectors.toList());
+    public List<Teacher> all() {
+        return teacherDao.getAll();
     }
 
     @GetMapping("/{id}")
-    public TeacherJson getById(@PathVariable("id") Long id) throws EntityNotFoundException {
-        return teacherDao.getById(id).toTeacherJson();
+    public Teacher getById(@PathVariable("id") Long id) throws EntityNotFoundException {
+        return teacherDao.getById(id);
     }
 }

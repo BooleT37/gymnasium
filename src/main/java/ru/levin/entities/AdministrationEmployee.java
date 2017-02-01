@@ -1,16 +1,18 @@
 package ru.levin.entities;
 
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import ru.levin.entities.enums.AdministrationPosition;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 import static javax.persistence.EnumType.STRING;
 
 
 @Entity
 @Table(name = "TBL_ADMINISTRATION_EMPLOYEE")
+@JsonDeserialize
 public class AdministrationEmployee {
     @Id
     @GeneratedValue
@@ -22,14 +24,14 @@ public class AdministrationEmployee {
     private String lastName;
     @Column(length = 50)
     private String patronymic;
-    private Date birthDate;
+    private LocalDate birthDate;
     private Integer employmentYear;
     private Integer releaseYear;
     @Enumerated(STRING)
     @Column(nullable = false)
     private AdministrationPosition position;
 
-    private AdministrationEmployee() {};
+    private AdministrationEmployee() {}
 
     public AdministrationEmployee(String firstName, String lastName, AdministrationPosition position) {
         this(firstName, lastName, null, null, null, null, position);
@@ -39,7 +41,7 @@ public class AdministrationEmployee {
         this(firstName, lastName, patronymic, null, null, null, position);
     }
 
-    public AdministrationEmployee(String firstName, String lastName, String patronymic, Date birthDate, Integer employmentYear, Integer releaseYear, AdministrationPosition position) {
+    public AdministrationEmployee(String firstName, String lastName, String patronymic, LocalDate birthDate, Integer employmentYear, Integer releaseYear, AdministrationPosition position) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.patronymic = patronymic;
@@ -77,15 +79,15 @@ public class AdministrationEmployee {
         this.patronymic = patronymic;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
-    public int getEmploymentYear() {
+    public Integer getEmploymentYear() {
         return employmentYear;
     }
 
@@ -93,7 +95,7 @@ public class AdministrationEmployee {
         this.employmentYear = employmentYear;
     }
 
-    public int getReleaseYear() {
+    public Integer getReleaseYear() {
         return releaseYear;
     }
 
