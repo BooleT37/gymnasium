@@ -1,12 +1,15 @@
 package ru.levin;
 
+import ru.levin.dao.AdministrationEmployeeDao;
 import ru.levin.dao.GraduateClassDao;
 import ru.levin.dao.GraduateDao;
 import ru.levin.dao.TeacherDao;
 import ru.levin.dao.exceptions.EntityAlreadyExistsException;
+import ru.levin.entities.AdministrationEmployee;
 import ru.levin.entities.Graduate;
 import ru.levin.entities.GraduateClass;
 import ru.levin.entities.Teacher;
+import ru.levin.entities.enums.AdministrationPosition;
 import ru.levin.entities.exceptions.WrongGradeException;
 
 import javax.inject.Inject;
@@ -18,23 +21,17 @@ import java.util.Collections;
 
 @Named
 public class TestDataFiller {
-    @Inject
-    private GraduateDao graduateDao;
-    @Inject
-    private GraduateClassDao graduateClassDao;
-    @Inject
-    private TeacherDao teacherDao;
+    @Inject private GraduateDao graduateDao;
+    @Inject private GraduateClassDao graduateClassDao;
+    @Inject private TeacherDao teacherDao;
+    @Inject private AdministrationEmployeeDao administrationEmployeeDao;
 
-    public void fill() throws WrongGradeException, EntityAlreadyExistsException {
-
+    private void fillGraduatesAndClasses() throws WrongGradeException, EntityAlreadyExistsException {
         if (!graduateDao.isEmpty())
             graduateDao.deleteAll();
 
         if (!graduateClassDao.isEmpty())
             graduateClassDao.deleteAll();
-
-        if (!teacherDao.isEmpty())
-            teacherDao.deleteAll();
 
         GraduateClass graduateClass1 = new GraduateClass(1999, 9, "А");
         GraduateClass graduateClass2 = new GraduateClass(1999, 9, "Б");
@@ -124,6 +121,11 @@ public class TestDataFiller {
         graduateDao.add(new Graduate("Иван", "Елькин", "Андреевич", graduateClass6));
         graduateDao.add(new Graduate("Валентин", "Назаров", "Яковович", graduateClass6));
         graduateDao.add(new Graduate("Венера", "Герасимова", "Георгьевна", graduateClass6));
+    }
+
+    private void fillTeachers() throws WrongGradeException, EntityAlreadyExistsException {
+        if (!teacherDao.isEmpty())
+            teacherDao.deleteAll();
 
         teacherDao.add(new Teacher("Варвара", "Калашникова", "Геласьевна", LocalDate.of(1951, 2, 9), Arrays.asList("Математика", "Информатика"), 2003, 2013, false));
         teacherDao.add(new Teacher("Антонина", "Жданова", "Авксентьевна", LocalDate.of(1952, 3, 22), Collections.singletonList("Математика"), 2005, 2015, true));
@@ -155,5 +157,37 @@ public class TestDataFiller {
         teacherDao.add(new Teacher("Валентин", "Тарасов", "Александрович", LocalDate.of(1984, 6, 3), Collections.singletonList("Математика"), 2010, 2015, false));
         teacherDao.add(new Teacher("Фаина", "Фёдорова", "Станиславовна", null, Collections.singletonList("Математика"), 2008, null, false));
         teacherDao.add(new Teacher("Октябрина", "Ефремова", "Игнатьевна", LocalDate.of(1986, 6, 19), null, 2013, 2014, false));
+    }
+
+    private void fillAdministration() throws EntityAlreadyExistsException {
+        if (!administrationEmployeeDao.isEmpty())
+            administrationEmployeeDao.deleteAll();
+
+        administrationEmployeeDao.add(new AdministrationEmployee("Демьян", "Козлов", "Пантелеймонович", LocalDate.of(1964, 2, 23), 2004, 2006, AdministrationPosition.DIRECTOR));
+        administrationEmployeeDao.add(new AdministrationEmployee("Анжела", "Васильева", "Протасьевна", LocalDate.of(1973, 8, 29), 2003, 2013, AdministrationPosition.DIRECTOR));
+        administrationEmployeeDao.add(new AdministrationEmployee("Надежда", "Алексеева", "Владиславовна", LocalDate.of(1974, 3, 25), 2010, 2011, AdministrationPosition.DIRECTOR));
+        administrationEmployeeDao.add(new AdministrationEmployee("Фаина", "Киселёва", "Богдановна", LocalDate.of(1978, 4, 10), 2005, 2011, AdministrationPosition.DIRECTOR));
+        administrationEmployeeDao.add(new AdministrationEmployee("Лидия", "Дроздова", "Данииловна", LocalDate.of(1999, 3, 30), 2003, 2008, AdministrationPosition.DIRECTOR));
+        administrationEmployeeDao.add(new AdministrationEmployee("Евсей", "Кошелев", "Васильевич", LocalDate.of(1967, 11, 24), 2009, 2009, AdministrationPosition.DIRECTOR));
+        administrationEmployeeDao.add(new AdministrationEmployee("Фаина", "Киселёва", "Павловна", LocalDate.of(1975, 4, 9), 2011, 2015, AdministrationPosition.DIRECTOR));
+        administrationEmployeeDao.add(new AdministrationEmployee("Фёдор", "Гордеев", "Мэлорович", LocalDate.of(1990, 3, 4), 2003, 2005, AdministrationPosition.DIRECTOR));
+        administrationEmployeeDao.add(new AdministrationEmployee("Виктор", "Мельников", "Артёмович", LocalDate.of(1993, 7, 14), 2003, 2005, AdministrationPosition.DEPUTY_DIRECTOR));
+        administrationEmployeeDao.add(new AdministrationEmployee("Ульяна", "Аксёнова", "Дмитрьевна", LocalDate.of(1995, 2, 11), 2004, 2008, AdministrationPosition.DEPUTY_DIRECTOR));
+        administrationEmployeeDao.add(new AdministrationEmployee("Альберт", "Бобылёв", "Протасьевич", LocalDate.of(1950, 8, 9), 2016, null, AdministrationPosition.DEPUTY_DIRECTOR));
+        administrationEmployeeDao.add(new AdministrationEmployee("Варвара", "Соколова", "Фёдоровна", LocalDate.of(1954, 4, 3), 2013, null, AdministrationPosition.DEPUTY_DIRECTOR));
+        administrationEmployeeDao.add(new AdministrationEmployee("Парфений", "Доронин", "Эдуардович", LocalDate.of(1965, 4, 6), 2015, 2016, AdministrationPosition.DEPUTY_DIRECTOR));
+        administrationEmployeeDao.add(new AdministrationEmployee("Иванна", "Воронова", "Александровна", LocalDate.of(1973, 6, 14), 2013, 2015, AdministrationPosition.DEPUTY_DIRECTOR));
+        administrationEmployeeDao.add(new AdministrationEmployee("Владислав", "Мухин", "Даниилович", LocalDate.of(1981, 10, 5), 2010, null, AdministrationPosition.DEPUTY_DIRECTOR));
+        administrationEmployeeDao.add(new AdministrationEmployee("Игнатий", "Колесников", "Егорович", LocalDate.of(1953, 9, 30), 2009, 2012, AdministrationPosition.DEPUTY_DIRECTOR));
+        administrationEmployeeDao.add(new AdministrationEmployee("Оксана", "Медведьева", "Антониновна", LocalDate.of(1968, 2, 6), 2008, 2010, AdministrationPosition.DEPUTY_DIRECTOR));
+        administrationEmployeeDao.add(new AdministrationEmployee("Лаврентий", "Фролов", "Егорович", LocalDate.of(1985, 10, 3), 2004, 2004, AdministrationPosition.DEPUTY_DIRECTOR));
+        administrationEmployeeDao.add(new AdministrationEmployee("Яков", "Емельянов", "Георгьевич", LocalDate.of(1989, 1, 17), 2004, 2012, AdministrationPosition.DEPUTY_DIRECTOR));
+        administrationEmployeeDao.add(new AdministrationEmployee("Анжела", "Щербакова", "Эдуардовна", LocalDate.of(1990, 3, 20), 2004, 2014, AdministrationPosition.DEPUTY_DIRECTOR));
+    }
+
+    public void fill() throws WrongGradeException, EntityAlreadyExistsException {
+        fillGraduatesAndClasses();
+        fillTeachers();
+        fillAdministration();
     }
 }
