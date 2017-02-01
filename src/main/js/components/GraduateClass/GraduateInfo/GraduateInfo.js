@@ -5,9 +5,9 @@ import './GraduateInfo.css';
 import React from 'react';
 import classnames from 'classnames';
 
-import Actions from '../../actions/Actions';
-import GraduatesStore from '../../stores/GraduatesStore';
-import {fullNameToString} from '../../utils';
+import Actions from '../../../actions/Actions';
+import GraduatesStore from '../../../stores/GraduatesStore';
+import {fullNameToString} from '../../../utils';
 
 export default class GraduateInfo extends React.Component {
     constructor(props) {

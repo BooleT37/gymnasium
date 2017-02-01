@@ -3,8 +3,8 @@
 import './app.css';
 import './css/customScroll.css';
 import './css/header.css';
-import './css/modal.css';
 import './css/nav.css';
+import '../components/Modal/modal.css';
 
 import React from 'react';
 import { render } from 'react-dom';

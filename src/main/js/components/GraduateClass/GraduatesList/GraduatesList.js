@@ -5,9 +5,9 @@ import './GraduatesList.css';
 import React from 'react';
 import CustomScroll from 'react-custom-scroll';
 
-import Actions from '../../actions/Actions';
-import GraduatesStore from '../../stores/GraduatesStore';
-import GraduatesListItem from './../GraduatesListItem/GraduatesListItem';
+import Actions from '../../../actions/Actions';
+import GraduatesStore from '../../../stores/GraduatesStore';
+import GraduatesListItem from './GraduatesListItem/GraduatesListItem';
 
 export default class GraduatesList extends React.Component {
     constructor(props) {

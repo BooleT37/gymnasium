@@ -15,10 +15,10 @@ import Actions from '../../actions/Actions';
 import GraduateClassesStore from '../../stores/GraduateClassesStore';
 
 //React components
-import ModalHeader from './../ModalHeader/ModalHeader';
-import GraduatesList from './../GraduatesList/GraduatesList';
-import GraduateInfo from './../GraduateInfo/GraduateInfo';
-import ModalFooter from './../ModalFooter/ModalFooter';
+import GraduatesList from './GraduatesList/GraduatesList';
+import GraduateInfo from './GraduateInfo/GraduateInfo';
+import ModalHeader from '../Modal/ModalHeader/ModalHeader';
+import ModalFooter from '../Modal/ModalFooter/ModalFooter';
 
 
 const NO_PHOTO_IMAGE_SRC = "images/class_photos/no_photo.png";

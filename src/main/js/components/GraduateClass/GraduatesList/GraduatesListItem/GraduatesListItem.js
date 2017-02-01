@@ -5,8 +5,8 @@ import './GraduatesListItem.css';
 import React from 'react';
 import classnames from 'classnames';
 
-import Actions from '../../actions/Actions'
-import {fullNameToShortString} from './../../utils';
+import Actions from '../../../../actions/Actions'
+import {fullNameToShortString} from '../../../../utils';
 
 export default class GraduatesListItem extends React.Component {
 

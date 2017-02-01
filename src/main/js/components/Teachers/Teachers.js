@@ -6,8 +6,8 @@ import React from 'react';
 
 import TeacherInfo from './TeacherInfo/TeacherInfo'
 import EmployeesList from '../EmployeesList/EmployeesList'
-import ModalHeader from './../ModalHeader/ModalHeader';
-import ModalFooter from './../ModalFooter/ModalFooter';
+import ModalHeader from '../Modal/ModalHeader/ModalHeader';
+import ModalFooter from '../Modal/ModalFooter/ModalFooter';
 
 import Actions from '../../actions/Actions';
 import TeachersStore from '../../stores/TeachersStore';

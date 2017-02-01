@@ -9,8 +9,8 @@ import FileDrop from 'react-file-drop';
 
 import GraduateClassesStore from '../../stores/GraduateClassesStore'
 
-import ModalHeader from './../ModalHeader/ModalHeader';
-import ModalFooter from './../ModalFooter/ModalFooter';
+import ModalHeader from '../Modal/ModalHeader/ModalHeader';
+import ModalFooter from '../Modal/ModalFooter/ModalFooter';
 import {triggerClickEvent} from '../../utils';
 
 /*
