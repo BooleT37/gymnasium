@@ -1,4 +1,4 @@
-.teacherInfo {
+.administrationEmployeeInfo {
     display: inline-block;
     vertical-align: top;
     width: 670px;
@@ -6,36 +6,36 @@
     position: relative;
 }
 
-.teacherInfo_left, .teacherInfo_right {
+.administrationEmployeeInfo_left, .administrationEmployeeInfo_right {
     display: inline-block;
     vertical-align: top;
     margin-top: 32px;
 }
 
-.teacherInfo_left {
+.administrationEmployeeInfo_left {
     margin-left: 13px;
 }
 
-.teacherInfo_right {
+.administrationEmployeeInfo_right {
     width: 290px;
     margin-left: 40px;
     padding-top: 33px;
 }
 
-.teacherInfo_title {
+.administrationEmployeeInfo_title {
     font-size: 38px;
     margin-bottom: 33px;
 }
 
-.teacherInfo_row {
+.administrationEmployeeInfo_row {
     margin-top: 22px;
     margin-left: 4px;
 }
 
-.teacherInfo_rowTitle {
+.administrationEmployeeInfo_rowTitle {
     font-weight: bold;
 }
 
-.teacherInfo_rowContent {
+.administrationEmployeeInfo_rowContent {
     margin-left: 10px;
 }

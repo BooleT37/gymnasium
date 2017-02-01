@@ -2,7 +2,7 @@
 
 import './TeacherInfo.css';
 import React from 'react';
-//import classnames from 'classnames';
+
 import {fullNameToString} from '../../../utils';
 
 export default class TeacherInfo extends React.Component {

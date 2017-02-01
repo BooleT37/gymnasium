@@ -26,6 +26,7 @@ public class Teacher {
     private List<String> subjects;
     private Integer employmentYear;
     private Integer releaseYear;
+    private String photoName;
     private boolean famous;
 
     @Transient
@@ -33,15 +34,11 @@ public class Teacher {
 
     private Teacher() {}
 
-    public Teacher(String firstName, String lastName) {
-        this(firstName, lastName, null, null, null, null, null, false);
-    }
-
     public Teacher(String firstName, String lastName, String patronymic) {
-        this(firstName, lastName, patronymic, null, null, null, null, false);
+        this(firstName, lastName, patronymic, null, null, null, null, null, false);
     }
 
-    public Teacher(String firstName, String lastName, String patronymic, LocalDate birthDate, List<String> subjects, Integer employmentYear, Integer releaseYear, boolean famous) {
+    public Teacher(String firstName, String lastName, String patronymic, LocalDate birthDate, List<String> subjects, Integer employmentYear, Integer releaseYear, String photoName, boolean famous) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.patronymic = patronymic;
@@ -49,6 +46,7 @@ public class Teacher {
         this.subjects = subjects;
         this.employmentYear = employmentYear;
         this.releaseYear = releaseYear;
+        this.photoName = photoName;
         this.famous = famous;
     }
 
@@ -110,6 +108,14 @@ public class Teacher {
 
     public void setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
+    }
+
+    public String getPhotoName() {
+        return photoName;
+    }
+
+    public void setPhotoName(String photoName) {
+        this.photoName = photoName;
     }
 
     public boolean isFamous() {

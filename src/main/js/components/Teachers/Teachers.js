@@ -4,8 +4,8 @@ import './Teachers.css';
 
 import React from 'react';
 
-import TeacherInfo from './TeacherInfo/TeacherInfo'
-import EmployeesList from '../EmployeesList/EmployeesList'
+import TeacherInfo from './TeacherInfo/TeacherInfo';
+import EmployeesList from '../EmployeesList/EmployeesList';
 import ModalHeader from '../Modal/ModalHeader/ModalHeader';
 import ModalFooter from '../Modal/ModalFooter/ModalFooter';
 
@@ -71,12 +71,12 @@ export default class Teachers extends React.Component {
         return (
             <div className="teachers">
                 <ModalHeader title="УЧИТЕЛЯ" iconType="mortarboard"/>
-                <div className="modal_content graduateClass_center">
+                <div className="modal_content">
                     <TeacherInfo teacher={this.state.selected}/>
                     <EmployeesList
-                        selected={state.selected}
+                        selected = {state.selected}
                         items = {TeachersStore.state.list}
-                        onItemSelect={this.showTeacherInfo}
+                        onItemSelect = {this.showTeacherInfo}
                     />
                 </div>
                 <ModalFooter/>

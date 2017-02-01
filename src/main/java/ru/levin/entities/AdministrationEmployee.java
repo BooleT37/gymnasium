@@ -27,27 +27,25 @@ public class AdministrationEmployee {
     private LocalDate birthDate;
     private Integer employmentYear;
     private Integer releaseYear;
+    private String photoName;
     @Enumerated(STRING)
     @Column(nullable = false)
     private AdministrationPosition position;
 
     private AdministrationEmployee() {}
 
-    public AdministrationEmployee(String firstName, String lastName, AdministrationPosition position) {
-        this(firstName, lastName, null, null, null, null, position);
-    }
-
     public AdministrationEmployee(String firstName, String lastName, String patronymic, AdministrationPosition position) {
-        this(firstName, lastName, patronymic, null, null, null, position);
+        this(firstName, lastName, patronymic, null, null, null, null, position);
     }
 
-    public AdministrationEmployee(String firstName, String lastName, String patronymic, LocalDate birthDate, Integer employmentYear, Integer releaseYear, AdministrationPosition position) {
+    public AdministrationEmployee(String firstName, String lastName, String patronymic, LocalDate birthDate, Integer employmentYear, Integer releaseYear, String photoName, AdministrationPosition position) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.patronymic = patronymic;
         this.birthDate = birthDate;
         this.employmentYear = employmentYear;
         this.releaseYear = releaseYear;
+        this.photoName = photoName;
         this.position = position;
     }
 
@@ -101,6 +99,14 @@ public class AdministrationEmployee {
 
     public void setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
+    }
+
+    public String getPhotoName() {
+        return photoName;
+    }
+
+    public void setPhotoName(String photoName) {
+        this.photoName = photoName;
     }
 
     public AdministrationPosition getPosition() {

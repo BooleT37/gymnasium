@@ -1,0 +1,97 @@
+.administrationSelector {
+    display: inline-block;
+    vertical-align: top;
+    width: 630px;
+    height: 380px;
+    position: relative;
+    margin: 35px 0 0 40px;
+}
+
+.administrationSelector_rowTitle {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    margin-right: 11px;
+    width: 90px;
+}
+
+.administrationSelector_rowTitle.administrationSelector_rowTitle_directors {
+    vertical-align: 16px;
+}
+
+.administrationSelector_rowTitle.administrationSelector_rowTitle_deputyDirectors {
+    vertical-align: 8px;
+}
+
+.administrationSelector_rowSelector {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.administrationSelector_arrowClickArea {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: 10px;
+    width: 20px;
+    height: 30px;
+}
+
+.administrationSelector_arrow {
+    margin: 5px 0 0 5px;
+    width: 13px;
+    height: 20px;
+}
+
+.administrationSelector_arrow_disabled {
+    visibility: hidden;
+}
+
+.administrationSelector_arrow_left {
+    background-image: url(./images/arrow_left.png);
+}
+
+.administrationSelector_arrow_right {
+    background-image: url(./images/arrow_right.png);
+}
+
+img.administrationSelector_itemPhoto {
+    width: 90px;
+    height: 96px;
+}
+
+.administrationSelector_item {
+    display: inline-block;
+    margin-right: 25px;
+    cursor: pointer;
+}
+
+.administrationSelector_itemPhotoFrame {
+    background: lightgray;
+    width: 90px;
+    height: 97px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 4px 2px darkgrey;
+    padding: 2px 2px;
+}
+
+.administrationSelector_row {margin-bottom: 11px;}
+
+.administrationSelector_rowItems {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 7px 0 0 6px;
+}
+
+.administrationSelector_itemName {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 5px;
+    font-size: 18px;
+    width: 94px;
+    height: 45px;
+    overflow: hidden;
+}
+
+.administrationSelector_item:last-child {
+    margin-right: 3px;
+}

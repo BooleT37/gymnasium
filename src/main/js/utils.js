@@ -15,7 +15,7 @@ export function removeDuplicates(array) {
 }
 
 export function fullNameToShortString(lastName, firstName, patronymic) {
-    return lastName + (firstName ? (" " + firstName[0].toUpperCase() + ".") : "") + (patronymic ? (" " + patronymic[0].toUpperCase() + ".") : "");
+    return lastName + (firstName ? (" " + firstName[0].toUpperCase() + ".") : "") + (patronymic ? ("\u00a0" + patronymic[0].toUpperCase() + ".") : "");
 }
 
 export function fullNameToString(lastName, firstName, patronymic) {

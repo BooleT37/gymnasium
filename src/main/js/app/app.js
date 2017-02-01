@@ -13,9 +13,10 @@ import Velocity from 'velocity-animate';
 import Modal from 'react-modal';
 import 'babel-polyfill';
 
-import GraduateClass from './../components/GraduateClass/GraduateClass';
-import GraduateEdit from './../components/GraduateEdit/GraduateEdit';
-import Teachers from './../components/Teachers/Teachers';
+import GraduateClass from '../components/GraduateClass/GraduateClass';
+import GraduateEdit from '../components/GraduateEdit/GraduateEdit';
+import Teachers from '../components/Teachers/Teachers';
+import Administration from '../components/Administration/Administration';
 import {triggerClickEvent} from '../utils';
 
 class EmptyModal extends React.Component {
@@ -24,33 +25,35 @@ class EmptyModal extends React.Component {
   }
 }
 
-class GradClassModal extends React.Component {
-  render() {
-    return (
+function renderModalWithComponent(Component, componentParams) {
+  return (
       <Modal isOpen={true} contentLabel="Modal" className="modal">
-          <GraduateClass params={this.props.params}/>
+          <Component params={componentParams}/>
       </Modal>
     )
+}
+
+class GradClassModal extends React.Component {
+  render() {
+    return renderModalWithComponent(GraduateClass, this.props.params);
   }
 }
 
 class GradEditModal extends React.Component {
   render() {
-    return (
-      <Modal isOpen={true} contentLabel="Modal" className="modal">
-          <GraduateEdit params={this.props.params}/>
-      </Modal>
-    )
+    return renderModalWithComponent(GraduateEdit, this.props.params);
   }
 }
 
 class TeachersModal extends React.Component {
   render() {
-    return (
-      <Modal isOpen={true} contentLabel="Modal" className="modal">
-          <Teachers params={this.props.params}/>
-      </Modal>
-    )
+    return renderModalWithComponent(Teachers, this.props.params);
+  }
+}
+
+class AdministrationModal extends React.Component {
+  render() {
+    return renderModalWithComponent(Administration, this.props.params);
   }
 }
 
@@ -107,6 +110,7 @@ class App {
         <Route path="/graduateClasses(/:classId(/graduates(/:graduateId)))" component={GradClassModal}/>
         <Route path="/graduateClasses/:classId(/graduates(/:graduateId))/addGraduate" component={GradEditModal}/>
         <Route path="/teachers(/:teacherId)" component={TeachersModal}/>
+        <Route path="/administration(/:employeeId)" component={AdministrationModal}/>
         <Route path="*" component={null}/>
       </Router>
     ), document.getElementsByClassName('ReactModalPortal')[0]);

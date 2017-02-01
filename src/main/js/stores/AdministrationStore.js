@@ -4,7 +4,7 @@ import Reflux from 'reflux';
 import Actions from '../actions/Actions';
 import client from '../client';
 
-var TeachersStore = Reflux.createStore({
+var AdministrationStore = Reflux.createStore({
     listenables: Actions,
 
     init: function () {
@@ -14,20 +14,20 @@ var TeachersStore = Reflux.createStore({
         }
     },
 
-    getTeacherById(id) {
+    getEmployeeById(id) {
         if (!this.state.loaded)
-            throw new Error("TeachersStore is not loaded yet");
-        var found = this.state.list.find(teacher => teacher.id === id);
+            throw new Error("AdministrationStore is not loaded yet");
+        var found = this.state.list.find(employee => employee.id === id);
         if (!found)
-            throw new Error(`Cannot find teacher with id ${id}`);
+            throw new Error(`Cannot find administration employee with id ${id}`);
         return found;
     },
 
-    lazyLoadTeachers: function() {
+    lazyLoadAdministration: function() {
         if (!this.state.loaded) {
             client({
                 method: 'GET',
-                path: '/api/teachers'
+                path: '/api/administration'
             }).done(response => {
                 this.state = {
                     list: response.entity,
@@ -39,4 +39,4 @@ var TeachersStore = Reflux.createStore({
     }
 });
 
-export default TeachersStore;
+export default AdministrationStore;
