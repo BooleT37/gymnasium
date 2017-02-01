@@ -63,7 +63,7 @@ export default class Administration extends React.Component {
     render() {
         var state = this.state;
         if (state.loaded === false)
-            return (<div className="modal_loader">Загрузка списка учителей...</div>);
+            return (<div className="modal_loader">Загрузка списка сотрудников...</div>);
 
         var modelTitle = state.selected ? 
             state.selected.position === "DIRECTOR" ? "ДИРЕКТОР" : "ЗАМ. ДИРЕКТОРА" :
