@@ -73,7 +73,7 @@ export default class AdministrationSelector extends React.Component {
                         <div className="administrationSelector_arrowClickArea">
                             <div className={classnames(
                                 "administrationSelector_arrow",
-                                "administrationSelector_arrow_left",
+                                "arrow_left",
                                 {administrationSelector_arrow_disabled: isLeftArrowDisabled})
                             } onClick={onLeftArrowClick}></div>
                         </div>
@@ -83,7 +83,7 @@ export default class AdministrationSelector extends React.Component {
                         <div className="administrationSelector_arrowClickArea">
                             <div className={classnames(
                                 "administrationSelector_arrow",
-                                "administrationSelector_arrow_right",
+                                "arrow_right",
                                 {administrationSelector_arrow_disabled: isRightArrowDisabled})
                             } onClick={onRightArrowClick}></div>
                         </div>

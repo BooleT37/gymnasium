@@ -209,13 +209,13 @@ export default class GraduateClass extends SelfUpdatingComponent {
                 <div className="graduateClass_widget graduateClass_yearWidget">
                     <div className={classnames(
                         "graduateClass_yearSwitch",
-                        "graduateClass_yearSwitch_left",
+                        "arrow_left",
                         { graduateClass_yearSwitch_disabled: !state.previousYear}
                     )} onClick={this.handlePreviousYearClick}></div>
                     <div className="graduateClass_graduateYear">{state.currentClass.graduateYear}</div>
                     <div className={classnames(
                         "graduateClass_yearSwitch",
-                        "graduateClass_yearSwitch_right",
+                        "arrow_right",
                         { graduateClass_yearSwitch_disabled: !state.nextYear}
                     )} onClick={this.handleNextYearClick}></div>
                 </div>

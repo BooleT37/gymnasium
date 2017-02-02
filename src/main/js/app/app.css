@@ -81,13 +81,26 @@ body {
 }
 
 .facebookLogo {
-    background-image: url('./images/facebookLogo.png');
+    background-image: url(./images/facebookLogo.png);
     width: 49px;
     height: 49px;
 }
 
 .vkLogo {
-    background-image: url('./images/vkLogo.png');
+    background-image: url(./images/vkLogo.png);
     width: 49px;
     height: 49px;
+}
+
+.arrow_left, .arrow_right {
+    width: 44px;
+    height: 71px;
+}
+
+.arrow_left {
+    background-image: url(./images/arrow_left.png);
+}
+
+.arrow_right {
+    background-image: url(./images/arrow_right.png);
 }

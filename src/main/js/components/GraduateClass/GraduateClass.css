@@ -38,18 +38,11 @@
     cursor: pointer;
     width: 12px;
     height: 19px;
+    background-size: 12px 19px;
 }
 
 .graduateClass .modal_footer .graduateClass_yearSwitch {
     vertical-align: initial;
-}
-
-.graduateClass_yearSwitch_left {
-    background-image: url(./images/yearSwitcher_left.png);
-}
-
-.graduateClass_yearSwitch_right {
-    background-image: url(./images/yearSwitcher_right.png);
 }
 
 .graduateClass_yearSwitch_disabled {

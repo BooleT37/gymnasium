@@ -40,18 +40,11 @@
     margin-top: 5px;
     width: 13px;
     height: 20px;
+    background-size: 13px 20px;
 }
 
 .administrationSelector_arrow_disabled {
     visibility: hidden;
-}
-
-.administrationSelector_arrow_left {
-    background-image: url(./images/arrow_left.png);
-}
-
-.administrationSelector_arrow_right {
-    background-image: url(./images/arrow_right.png);
 }
 
 .administrationSelector_rowItems {
