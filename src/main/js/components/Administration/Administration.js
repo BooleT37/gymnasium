@@ -23,8 +23,7 @@ export default class Administration extends SelfUpdatingComponent {
         this.showEmployeeInfo = this.showEmployeeInfo.bind(this);
     }
 
-    onPropsChange(props) {
-        var storeState = AdministrationStore.state;
+    onPropsChange(props, storeState) {
         if (!storeState.loaded) {
             this.setState({ loaded: false });
             return;

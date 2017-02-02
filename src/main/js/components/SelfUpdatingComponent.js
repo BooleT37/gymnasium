@@ -3,8 +3,10 @@
 import React from 'react';
 
 /*
-    Component that updates every time store updates its state or it receives new props
-    Method onPropsChange and properties store and lazyLoadStoreAction are required to be defined for each inheritor
+    Component that fetches data from the corresponding store
+    and updates its state every time store updates or it receives new props
+    Method onPropsChange(props, storeState) and properties store and lazyLoadStoreAction are required
+    to be defined for each inheritor
 */
 export default class SelfUpdatingComponent extends React.Component {
     constructor(props) {
@@ -22,7 +24,7 @@ export default class SelfUpdatingComponent extends React.Component {
 
     onComponentUpdate(newProps) {
         this.lazyLoadStoreAction();
-        this.onPropsChange(newProps);
+        this.onPropsChange(newProps, this.store.state);
     }
 
     componentDidMount() {
@@ -33,11 +35,11 @@ export default class SelfUpdatingComponent extends React.Component {
         this.unsubscribeFromStore();
     }
 
-    onStoreLoaded() {
-        this.onPropsChange(this.props);
+    onStoreLoaded(storeState) {
+        this.onPropsChange(this.props, storeState);
     }
 
-    onPropsChange(props) {
+    onPropsChange(props, storeState) {
         throw new Error("Method onPropsChange isn't defined!");
     }
 }

@@ -22,8 +22,7 @@ export default class Teachers extends SelfUpdatingComponent {
         this.showTeacherInfo = this.showTeacherInfo.bind(this);
     }
 
-    onPropsChange(props) {
-        var storeState = TeachersStore.state;
+    onPropsChange(props, storeState) {
         if (!storeState.loaded) {
             this.setState({ loaded: false });
             return;

@@ -39,7 +39,7 @@ export default class GraduateClass extends SelfUpdatingComponent {
 
     onComponentUpdate(newProps) {
         Actions.lazyLoadGraduateClasses(newProps.classId);
-        this.onPropsChange(newProps);
+        this.onPropsChange(newProps, GraduateClassesStore.state);
     }
 
     componentDidMount() {
@@ -52,8 +52,7 @@ export default class GraduateClass extends SelfUpdatingComponent {
         this.unsubscribeFromShowGraduateInfoAction();
     }
 
-    onPropsChange(props) {
-        var storeState = GraduateClassesStore.state;
+    onPropsChange(props, storeState) {
         if (!storeState.loaded) {
             this.setState({ loaded: false });
             return;
