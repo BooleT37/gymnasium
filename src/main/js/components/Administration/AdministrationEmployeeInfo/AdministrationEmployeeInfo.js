@@ -8,7 +8,7 @@ import {fullNameToString} from '../../../utils';
 export default class AdministrationEmployeeInfo extends React.Component {
     render() {
         var employee = this.props.employee;
-        var photoSrc = employee.photoName ? `/images/administration_photos/${employee.photoName}` : "images/no_photo.png";
+        var photoSrc = employee.photoName ? `/images/photos/administration/${employee.photoName}` : "images/no_photo.png";
 
         function generateRow(rowTitle, rowContent) {
             return (

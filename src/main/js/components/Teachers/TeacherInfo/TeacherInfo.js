@@ -8,7 +8,7 @@ import {fullNameToString} from '../../../utils';
 export default class TeacherInfo extends React.Component {
     render() {
         var teacher = this.props.teacher;
-        var photoSrc = teacher.photoName ? `/images/teacher_photos/${teacher.photoName}` : "images/no_photo.png";
+        var photoSrc = teacher.photoName ? `/images/photos/teachers/${teacher.photoName}` : "images/no_photo.png";
 
         function generateRow(rowTitle, rowContent) {
             return (

@@ -25,7 +25,6 @@ import ModalFooter from '../Modal/ModalFooter/ModalFooter';
 const NO_PHOTO_IMAGE_SRC = "images/class_photos/no_photo.png";
 
 export default class GraduateClass extends SelfUpdatingComponent {
-    
     constructor(props) {
         super(props);
         this.store = GraduateClassesStore;

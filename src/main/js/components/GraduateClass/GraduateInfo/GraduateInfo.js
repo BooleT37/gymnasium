@@ -98,7 +98,7 @@ export default class GraduateInfo extends React.Component {
                 )
             }
 
-            var photoSrc = graduate.photoName ? `/images/graduate_photos/${graduate.photoName}` : "images/no_photo.png";
+            var photoSrc = graduate.photoName ? `/images/photos/graduates/${graduate.photoName}` : "images/no_photo.png";
 
             return (
                 <div className="graduateInfo">
