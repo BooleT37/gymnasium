@@ -11,12 +11,16 @@ public class Souvenir {
     private Long id;
 
     @Column(nullable = false)
-    private String Name;
+    private String name;
+
+    private String photoName;
 
     private Souvenir() {}
 
-    public Souvenir(String name) {
-        Name = name;
+    public Souvenir(Long id, String name, String photoName) {
+        this.id = id;
+        this.name = name;
+        this.photoName = photoName;
     }
 
     public Long getId() {
@@ -24,10 +28,18 @@ public class Souvenir {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
+    }
+
+    public String getPhotoName() {
+        return photoName;
+    }
+
+    public void setPhotoName(String photoName) {
+        this.photoName = photoName;
     }
 }

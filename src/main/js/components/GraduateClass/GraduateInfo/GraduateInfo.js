@@ -90,7 +90,7 @@ export default class GraduateInfo extends React.Component {
                 return (
                     <div className={classnames(
                             "graduateInfo_row", cls,
-                            { graduateInfo_inlineRow: isInline }
+                            { graduateInfo_inlineRow: isInline, graduateInfo_blockRow: !isInline }
                         )}>
                         <div className="graduateInfo_rowTitle">{rowTitle + ":"}</div>
                         <div className="graduateInfo_rowContent">{rowContent}</div>
@@ -103,12 +103,12 @@ export default class GraduateInfo extends React.Component {
             return (
                 <div className="graduateInfo">
                     <div className="graduateInfo_left">
-                        <div className="graduateInfo_photoFrame">
-                            <img src={photoSrc} alt="photo" className="graduateInfo_photo" width="285" height="285"></img>
+                        <div className="photoFrame graduateInfo_photoFrame">
+                            <img src={photoSrc} alt="photo" className="graduateInfo_photo"></img>
                         </div>
                         <div className="GraduateInfo_links">
-                            {generateLink(graduate.facebookLink, "graduateInfo_facebookLinkImage")}
-                            {generateLink(graduate.vkLink, "graduateInfo_vkLinkImage")}
+                            {generateLink(graduate.facebookLink, "graduateInfo_socialLogo facebookLogo")}
+                            {generateLink(graduate.vkLink, "graduateInfo_socialLogo vkLogo")}
                         </div>
                     </div>
                     <div className="graduateInfo_right">

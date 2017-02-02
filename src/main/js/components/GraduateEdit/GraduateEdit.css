@@ -30,7 +30,7 @@
 
 .graduateEdit_left {
     width: 450px;
-    margin: 10px 0 0 50px;
+    margin: 17px 0 0 50px;
 }
 
 .graduateEdit input, .graduateEdit textarea {
@@ -65,39 +65,32 @@
     height: 34px;
     width: 262px;
     font-size: 26px;
+    vertical-align: 5px;
 }
 
 .graduateEdit_photoPrompt {
-    margin: 12px 0 0 75px;
+    margin: 19px 0 0 75px;
 }
 
 .graduateEdit_photoFrame {
     position: relative;
     cursor: pointer;
-    margin: 16px 0 0 82px;
-    width: 235px;
-    height: 235px;
-    background-image: url(./images/photoframe.png);
+    margin: 16px 0 14px 82px;
+    width: 225px;
+    height: 237px;
+    background-size: 225px 237px;
 }
 
-.graduateEdit_vkLogo, .graduateEdit_facebookLogo {
-    width: 34px;
-    height: 34px;
+.graduateEdit_socialLogo {
+    width: 32px;
+    height: 32px;
+    background-size: 32px 32px;
     display: inline-block;
-    vertical-align: bottom;
-    margin: 0px 18px 0px 40px;
-}
-
-.graduateEdit_vkLogo {
-    background-image: url(./images/vkLogo.png)
-}
-
-.graduateEdit_facebookLogo {
-    background-image: url(./images/facebookLogo.png)
+    margin: 0 18px 0 38px;
 }
 
 .graduateEdit_linkRow {
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .graduateEdit_fileInput {

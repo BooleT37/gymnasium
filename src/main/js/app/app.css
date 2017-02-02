@@ -40,7 +40,7 @@ body {
     left: 471px;
     z-index: 3;
     background-image: url('./images/design.jpg');
-    opacity: 0.5;
+    opacity: 0.8;
     width: 980px;
     height: 713px;
     display: block;
@@ -51,10 +51,6 @@ body {
     top: 10px;
     right: 10px;
     z-index: 4;
-}
-
-.ReactModal__Body--open {
-    overflow: hidden;
 }
 
 #content:before {
@@ -70,13 +66,6 @@ body {
     margin: 0 auto;
 }
 
-.ReactModal__Body--open #content:before {
-    -webkit-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(5px);
-}
-
 #wrapper {
     margin: 0 auto;
     width: 1920px;
@@ -84,9 +73,21 @@ body {
 
 .photoFrame {
     background-image: url(./images/photo_frame.png);
-    width: 296px;
-    height: 316px;
-    border-radius: 5px;
+    width: 642px;
+    height: 681px;
+    /*border-radius: 5px;
     box-shadow: 0px 0px 8px 2px darkgrey;
-    padding: 8px 0 0 8px;
+    padding: 8px 0 0 8px;*/
+}
+
+.facebookLogo {
+    background-image: url('./images/facebookLogo.png');
+    width: 49px;
+    height: 49px;
+}
+
+.vkLogo {
+    background-image: url('./images/vkLogo.png');
+    width: 49px;
+    height: 49px;
 }

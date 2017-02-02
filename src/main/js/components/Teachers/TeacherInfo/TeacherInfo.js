@@ -35,8 +35,10 @@ export default class TeacherInfo extends React.Component {
 
         return (
             <div className="teacherInfo">
-                <div className="photoFrame teacherInfo_left">
-                    <img src={photoSrc} alt="photo" className="teacherInfo_photo" width="290" height="306"></img>
+                <div className="teacherInfo_left">
+                    <div className="photoFrame teacherInfo_photoFrame">
+                        <img src={photoSrc} alt="photo" className="teacherInfo_photo" width="290" height="306"></img>
+                    </div>
                 </div>
                 <div className="teacherInfo_right">
                     <div className="teacherInfo_title">{fullNameToString(teacher.lastName, teacher.firstName, teacher.patronymic)}</div>

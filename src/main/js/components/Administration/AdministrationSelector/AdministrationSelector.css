@@ -1,10 +1,10 @@
 .administrationSelector {
+    position: relative;
     display: inline-block;
     vertical-align: top;
-    width: 630px;
+    width: 632px;
     height: 380px;
-    position: relative;
-    margin: 35px 0 0 40px;
+    margin: 42px 0 0 38px;
 }
 
 .administrationSelector_rowTitle {
@@ -37,7 +37,7 @@
 }
 
 .administrationSelector_arrow {
-    margin: 5px 0 0 5px;
+    margin-top: 5px;
     width: 13px;
     height: 20px;
 }
@@ -54,42 +54,39 @@
     background-image: url(./images/arrow_right.png);
 }
 
-img.administrationSelector_itemPhoto {
-    width: 90px;
-    height: 96px;
+.administrationSelector_rowItems {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 3px 0 0 2px;
 }
 
 .administrationSelector_item {
     display: inline-block;
-    margin-right: 25px;
+    margin-right: 17px;
     cursor: pointer;
 }
 
 .administrationSelector_itemPhotoFrame {
-    background-image: url(./images/photo_frame.png);
     width: 90px;
     height: 97px;
-    border-radius: 3px;
-    box-shadow: 0px 0px 4px 2px darkgrey;
-    padding: 2px 2px;
+    background-size: 102px 109px;
+    padding: 6px 6px;
+}
+
+.administrationSelector_itemPhoto {
+    width: 90px;
+    height: 96px;
 }
 
 .administrationSelector_row {
     margin-bottom: 11px;
 }
 
-.administrationSelector_rowItems {
-    display: inline-block;
-    vertical-align: middle;
-    padding: 7px 0 0 6px;
-}
-
 .administrationSelector_itemName {
     text-align: center;
     font-size: 18px;
-    margin-top: 5px;
-    font-size: 18px;
-    width: 94px;
+    margin-top: 1px;
+    width: 102px;
     height: 45px;
     overflow: hidden;
 }

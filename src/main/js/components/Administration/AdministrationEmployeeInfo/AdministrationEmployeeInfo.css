@@ -9,17 +9,27 @@
 .administrationEmployeeInfo_left, .administrationEmployeeInfo_right {
     display: inline-block;
     vertical-align: top;
-    margin-top: 32px;
 }
 
 .administrationEmployeeInfo_left {
-    margin-left: 13px;
+    margin-top: 27px;
+}
+
+.administrationEmployeeInfo_photoFrame {
+    width: 288px;
+    height: 307px;
+    background-size: 328px 347px;
+    padding: 20px 20px;
+}
+
+.administrationEmployeeInfo_photo {
+    width: 289px;
+    height: 306px;    
 }
 
 .administrationEmployeeInfo_right {
     width: 290px;
-    margin-left: 40px;
-    padding-top: 33px;
+    margin: 72px 0 0 26px;
 }
 
 .administrationEmployeeInfo_title {

@@ -17,11 +17,11 @@ import {triggerClickEvent} from '../../utils';
     Max width and height of photo image.
     Used during use image fitting
 */
-const photoWidth = 196;
-const photoHeight = 202;
+const photoWidth = 198;
+const photoHeight = 210;
 const photoRatio = photoWidth / photoHeight;
-const photoMarginLeft = 20;
-const photoMarginTop = 16;
+const photoMarginLeft = 14;
+const photoMarginTop = 13;
 
 export default class GraduateEdit extends React.Component {
     constructor(props) {
@@ -209,16 +209,16 @@ export default class GraduateEdit extends React.Component {
                 <div className="graduateEdit_right">
                     <div className="graduateEdit_photoPrompt">загрузите ваше фото</div>
                     <input type="file" ref="fileInput" name="photo" className="graduateEdit_fileInput" onChange={this.handlePhotoChange}/>
-                    <div className="graduateEdit_photoFrame" onClick={this.handlePhotoFrameClick}>
+                    <div className="photoFrame graduateEdit_photoFrame" onClick={this.handlePhotoFrameClick}>
                         {image}
                         <FileDrop targetAlwaysVisible={true} onDrop={this.handleFileDrop}>Перетащите фото сюда</FileDrop>
                     </div>
                     <div className="graduateEdit_linkRow">
-                        <div className="graduateEdit_vkLogo"></div>
+                        <div className="graduateEdit_socialLogo vkLogo"></div>
                         <input type="text" value={this.state.vkLink} onChange={this.handleVkLinkChange} className="graduateEdit_input_link" />
                     </div>
                     <div className="graduateEdit_linkRow">
-                        <div className="graduateEdit_facebookLogo"></div>
+                        <div className="graduateEdit_socialLogo facebookLogo"></div>
                         <input type="text" value={this.state.facebookLink} onChange={this.handleFacebookLinkChange} className="graduateEdit_input_link" />
                     </div>
                 </div>

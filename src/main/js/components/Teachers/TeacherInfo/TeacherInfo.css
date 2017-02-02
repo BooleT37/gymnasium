@@ -9,17 +9,27 @@
 .teacherInfo_left, .teacherInfo_right {
     display: inline-block;
     vertical-align: top;
-    margin-top: 32px;
 }
 
 .teacherInfo_left {
-    margin-left: 13px;
+    margin-top: 27px;
+}
+
+.teacherInfo_photoFrame {
+    width: 288px;
+    height: 307px;
+    background-size: 328px 347px;
+    padding: 20px 20px;
+}
+
+.teacherInfo_photo {
+    width: 289px;
+    height: 306px;        
 }
 
 .teacherInfo_right {
     width: 290px;
-    margin-left: 40px;
-    padding-top: 33px;
+    margin: 72px 0 0 26px;
 }
 
 .teacherInfo_title {

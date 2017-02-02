@@ -32,8 +32,10 @@ export default class AdministrationEmployeeInfo extends React.Component {
 
         return (
             <div className="administrationEmployeeInfo">
-                <div className="photoFrame administrationEmployeeInfo_left">
-                    <img src={photoSrc} alt="photo" className="administrationEmployeeInfo_photo" width="290" height="306"></img>
+                <div className="administrationEmployeeInfo_left">
+                    <div className="photoFrame administrationEmployeeInfo_photoFrame">
+                        <img src={photoSrc} alt="photo" className="administrationEmployeeInfo_photo" width="290" height="306"></img>
+                    </div>
                 </div>
                 <div className="administrationEmployeeInfo_right">
                     <div className="administrationEmployeeInfo_title">{fullNameToString(employee.lastName, employee.firstName, employee.patronymic)}</div>

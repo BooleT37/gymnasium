@@ -1,18 +1,26 @@
 .graduateInfo {
     display: inline-block;
     vertical-align: top;
-    width: 670px;
+    width: 668px;
     height: 380px;
     position: relative;
 }
 
 .graduateInfo_photoFrame {
-    width: 292px;
-    height: 292px;
-    background-image: url(./images/photo_frame.png);
-    border-radius: 5px;
-    box-shadow: 0px 0px 8px 2px darkgrey;
-    padding: 8px 0 0 8px;
+    width: 282px;
+    height: 300px;
+    background-size: 300px 316px;
+    padding: 16px 0 0 18px;
+}
+
+.graduateInfo_photo {
+    width: 265px;
+    height: 281px;
+}
+
+.graduateInfo_row {
+    margin-left: 7px;
+    margin-top: 22px;
 }
 
 .graduateInfo_left, .graduateInfo_right {
@@ -21,16 +29,13 @@
 }
 
 .graduateInfo_right {
-    width: 290px;
-    margin-left: 20px;
+    width: 332px;
+    margin: 12px 0 0 32px;
 }
 
 .graduateInfo_title {
-    font-size: 30px;
-}
-
-.graduateInfo_inlineRow, .graduateInfo_row {
-    margin-top: 20px;
+    font-size: 38px;
+    margin-bottom: 3px;
 }
 
 .graduateInfo_rowTitle {
@@ -46,12 +51,10 @@
 }
 
 .graduateInfo_achievementsRow {
-    margin-top: 56px;
+    margin-top: 70px;
 }
 
-.graduateInfo_facebookLinkImage, .graduateInfo_vkLinkImage {
-    width: 40px;
-    height: 40px;
+.graduateInfo_socialLogo {
     display: inline-block;
 }
 
@@ -62,14 +65,6 @@
 
 .graduateInfo_link {
     margin: 0 10px;
-}
-
-.graduateInfo_facebookLinkImage {
-    background-image: url('./images/facebookLogo.png');
-}
-
-.graduateInfo_vkLinkImage {
-    background-image: url('./images/vkLogo.png');
 }
 
 .graduateInfo_disabledLink {
