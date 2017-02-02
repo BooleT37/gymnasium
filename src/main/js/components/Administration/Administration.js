@@ -4,6 +4,7 @@ import './Administration.css';
 
 import React from 'react';
 
+import SelfUpdatingComponent from '../SelfUpdatingComponent';
 import AdministrationSelector from './AdministrationSelector/AdministrationSelector';
 import AdministrationEmployeeInfo from './AdministrationEmployeeInfo/AdministrationEmployeeInfo';
 import EmployeesList from '../EmployeesList/EmployeesList';
@@ -13,33 +14,13 @@ import ModalFooter from '../Modal/ModalFooter/ModalFooter';
 import Actions from '../../actions/Actions';
 import AdministrationStore from '../../stores/AdministrationStore';
 
-export default class Administration extends React.Component {
+export default class Administration extends SelfUpdatingComponent {
     constructor(props) {
         super(props);
-        this.state = { loaded: false };
+        this.store = AdministrationStore;
+        this.lazyLoadStoreAction = Actions.lazyLoadAdministration;
 
         this.showEmployeeInfo = this.showEmployeeInfo.bind(this);
-    }
-
-    componentWillMount() {
-        this.onComponentUpdate(this.props);
-    }
-
-    componentWillReceiveProps(nextProps) {
-        this.onComponentUpdate(nextProps);
-    }
-
-    onComponentUpdate(newProps) {
-        Actions.lazyLoadAdministration();
-        this.onPropsChange(newProps);
-    }
-
-    componentDidMount() {
-        this.unsubscribeFromStore = AdministrationStore.listen(this.onStoreLoaded.bind(this));
-    }
-
-    onStoreLoaded() {
-        this.onPropsChange(this.props);
     }
 
     onPropsChange(props) {

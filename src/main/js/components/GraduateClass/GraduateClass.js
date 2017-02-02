@@ -9,6 +9,7 @@ import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 
 //local modules
+import SelfUpdatingComponent from '../SelfUpdatingComponent';
 import client from './../../client';
 import {max, removeDuplicates} from '../../utils';
 import Actions from '../../actions/Actions';
@@ -23,24 +24,17 @@ import ModalFooter from '../Modal/ModalFooter/ModalFooter';
 
 const NO_PHOTO_IMAGE_SRC = "images/class_photos/no_photo.png";
 
-export default class GraduateClass extends React.Component {
+export default class GraduateClass extends SelfUpdatingComponent {
     
     constructor(props) {
         super(props);
-        this.state = { loaded: false };
+        this.store = GraduateClassesStore;
+        this.lazyLoadStoreAction = Actions.lazyLoadGraduateClasses;
 
         this.handlePreviousYearClick = this.handlePreviousYearClick.bind(this);
         this.handleNextYearClick = this.handleNextYearClick.bind(this);
         this.showGraduateInfo = this.showGraduateInfo.bind(this);
         this.handleAddGraduate = this.handleAddGraduate.bind(this);
-    }
-
-    componentWillMount() {
-        this.onComponentUpdate(this.props);
-    }
-
-    componentWillReceiveProps(nextProps) {
-        this.onComponentUpdate(nextProps);
     }
 
     onComponentUpdate(newProps) {
@@ -49,12 +43,13 @@ export default class GraduateClass extends React.Component {
     }
 
     componentDidMount() {
-        this.unsubscribeFromStore = GraduateClassesStore.listen(this.onStoreLoaded.bind(this));
+        super.componentDidMount();
         this.unsubscribeFromShowGraduateInfoAction = Actions.showGraduateInfo.listen(this.showGraduateInfo);
     }
 
-    onStoreLoaded() {
-        this.onPropsChange(this.props);
+    componentWillUnmount() {
+        super.componentWillUnmount();
+        this.unsubscribeFromShowGraduateInfoAction();
     }
 
     onPropsChange(props) {
@@ -107,11 +102,6 @@ export default class GraduateClass extends React.Component {
         };
     }
 
-    componentWillUnmount() {
-        this.unsubscribeFromStore();
-        this.unsubscribeFromShowGraduateInfoAction();
-    }
-
     getFirstClass(graduateClasses) {
         return graduateClasses.reduce((prev, current) => {
             if (current.grade < prev.grade)
@@ -127,11 +117,6 @@ export default class GraduateClass extends React.Component {
             grades: removeDuplicates(graduateClasses.map(c => c.grade)),
             characters: removeDuplicates(graduateClasses.map(c => c.character))
         };
-    }
-
-    loadState() {
-        this.onStoreLoaded(GraduateClassesStore.state);
-            
     }
 
     handlePreviousYearClick() {

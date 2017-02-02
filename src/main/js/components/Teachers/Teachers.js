@@ -4,6 +4,7 @@ import './Teachers.css';
 
 import React from 'react';
 
+import SelfUpdatingComponent from '../SelfUpdatingComponent';
 import TeacherInfo from './TeacherInfo/TeacherInfo';
 import EmployeesList from '../EmployeesList/EmployeesList';
 import ModalHeader from '../Modal/ModalHeader/ModalHeader';
@@ -12,33 +13,13 @@ import ModalFooter from '../Modal/ModalFooter/ModalFooter';
 import Actions from '../../actions/Actions';
 import TeachersStore from '../../stores/TeachersStore';
 
-export default class Teachers extends React.Component {
+export default class Teachers extends SelfUpdatingComponent {
     constructor(props) {
         super(props);
-        this.state = { loaded: false };
+        this.store = TeachersStore;
+        this.lazyLoadStoreAction = Actions.lazyLoadTeachers;
 
         this.showTeacherInfo = this.showTeacherInfo.bind(this);
-    }
-
-    componentWillMount() {
-        this.onComponentUpdate(this.props);
-    }
-
-    componentWillReceiveProps(nextProps) {
-        this.onComponentUpdate(nextProps);
-    }
-
-    onComponentUpdate(newProps) {
-        Actions.lazyLoadTeachers();
-        this.onPropsChange(newProps);
-    }
-
-    componentDidMount() {
-        this.unsubscribeFromStore = TeachersStore.listen(this.onStoreLoaded.bind(this));
-    }
-
-    onStoreLoaded() {
-        this.onPropsChange(this.props);
     }
 
     onPropsChange(props) {
