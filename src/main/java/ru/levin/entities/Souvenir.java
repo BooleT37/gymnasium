@@ -23,6 +23,10 @@ public class Souvenir {
         this.photoName = photoName;
     }
 
+    public Souvenir(String name, String photoName) {
+        this(null, name, photoName);
+    }
+
     public Long getId() {
         return id;
     }

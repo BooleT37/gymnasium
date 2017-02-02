@@ -1,14 +1,8 @@
 package ru.levin;
 
-import ru.levin.dao.AdministrationEmployeeDao;
-import ru.levin.dao.GraduateClassDao;
-import ru.levin.dao.GraduateDao;
-import ru.levin.dao.TeacherDao;
+import ru.levin.dao.*;
 import ru.levin.dao.exceptions.EntityAlreadyExistsException;
-import ru.levin.entities.AdministrationEmployee;
-import ru.levin.entities.Graduate;
-import ru.levin.entities.GraduateClass;
-import ru.levin.entities.Teacher;
+import ru.levin.entities.*;
 import ru.levin.entities.enums.AdministrationPosition;
 import ru.levin.entities.exceptions.WrongGradeException;
 
@@ -25,6 +19,7 @@ public class TestDataFiller {
     @Inject private GraduateClassDao graduateClassDao;
     @Inject private TeacherDao teacherDao;
     @Inject private AdministrationEmployeeDao administrationEmployeeDao;
+    @Inject private SouvenirDao souvenirDao;
 
     private void fillGraduatesAndClasses() throws WrongGradeException, EntityAlreadyExistsException {
         if (!graduateDao.isEmpty())
@@ -189,9 +184,21 @@ public class TestDataFiller {
         administrationEmployeeDao.add(new AdministrationEmployee("Анжела", "Щербакова", "Эдуардовна", LocalDate.of(1990, 3, 20), 2004, 2014, null, AdministrationPosition.DEPUTY_DIRECTOR));
     }
 
+    private void fillSouvenirs() throws EntityAlreadyExistsException {
+        if (!souvenirDao.isEmpty())
+            souvenirDao.deleteAll();
+
+        souvenirDao.add(new Souvenir("Футболка с символикой", null));
+        souvenirDao.add(new Souvenir("Фотоальбом", null));
+        souvenirDao.add(new Souvenir("Сувенир 3", null));
+        souvenirDao.add(new Souvenir("Сувенир 4", null));
+        souvenirDao.add(new Souvenir("Сувенир 5", null));
+    }
+
     public void fill() throws WrongGradeException, EntityAlreadyExistsException {
         fillGraduatesAndClasses();
         fillTeachers();
         fillAdministration();
+        fillSouvenirs();
     }
 }

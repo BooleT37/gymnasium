@@ -1,5 +1,7 @@
 package ru.levin.dao;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import ru.levin.dao.exceptions.EntityAlreadyExistsException;
 import ru.levin.dao.exceptions.EntityNotFoundException;
@@ -16,6 +18,8 @@ import java.util.List;
 public class SouvenirDao {
     @PersistenceContext
     private EntityManager em;
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public List<Souvenir> getAll() {
         return em.createQuery("from " + Souvenir.class.getName(), Souvenir.class).getResultList();
@@ -44,5 +48,16 @@ public class SouvenirDao {
         em.persist(souvenir);
         em.flush();
         return souvenir;
+    }
+
+    @Transactional
+    public void deleteAll() {
+        logger.info("Deleting all " + Souvenir.class.getName() + " entities");
+        em.createQuery("delete from " + Souvenir.class.getName()).executeUpdate();
+        em.createNativeQuery("ALTER TABLE TBL_SOUVENIR ALTER COLUMN id RESTART WITH 1").executeUpdate();
+    }
+
+    public boolean isEmpty() {
+        return em.createQuery("select count(c) from " + Souvenir.class.getName() + " c", Long.class).getSingleResult().equals(0L);
     }
 }
