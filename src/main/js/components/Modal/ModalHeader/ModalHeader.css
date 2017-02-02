@@ -28,6 +28,11 @@
     background-image: url(./images/admin.png);
 }
 
+.modal_icon.modal_icon_t-shirt {
+    width: 64px;
+    background-image: url(./images/t-shirt.png);
+}
+
 .modal_closeButton {
     position: absolute;
     top: 20px;
