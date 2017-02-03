@@ -33,24 +33,8 @@
     margin: 17px 0 0 50px;
 }
 
-.graduateEdit input, .graduateEdit textarea {
-    font-family: 'Exo 2 LightCondensed';
-    border: solid 1px lightgrey;
-    box-shadow: 0px 0px 2px 1px darkgrey inset;
-    padding: 0 5px;
-}
-
 .graduateEdit .graduateEdit_left input, .graduateEdit .graduateEdit_left textarea {
     margin-bottom: 16px;
-}
-
-.graduateEdit input {
-    height: 46px;
-    font-size: 40px;
-}
-
-.graduateEdit textarea {
-    font-size: 30px;
 }
 
 .graduateEdit_yearAndClass {

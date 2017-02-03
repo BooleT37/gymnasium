@@ -58,14 +58,14 @@
     margin: 10px 0 0 8px;
 }
 
-.souvenirs_buyButton {
-    cursor: pointer;
+.button.souvenirs_buyButton {
+    color: black;
     margin: 45px 0 0 41px;
-    width: 115px;
-    height: 40px;
+    width: 149px;
     background-color: #91b026;
-    font-size: 27px;
-    padding: 6px 0 0 35px;
+    font-size: 28px;
+    line-height: 45px;
+    /*padding: 6px 0 0 35px;*/
 }
 
 .souvenirs_items {

@@ -104,7 +104,7 @@ export default class GraduateInfo extends React.Component {
                 <div className="graduateInfo">
                     <div className="graduateInfo_left">
                         <div className="photoFrame graduateInfo_photoFrame">
-                            <img src={photoSrc} alt="photo" className="graduateInfo_photo"></img>
+                            <img src={photoSrc} alt="photo" className="graduateInfo_photo"/>
                         </div>
                         <div className="GraduateInfo_links">
                             {generateLink(graduate.facebookLink, "graduateInfo_socialLogo facebookLogo")}

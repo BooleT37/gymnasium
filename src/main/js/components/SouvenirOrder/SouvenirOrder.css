@@ -1,0 +1,63 @@
+.souvenirOrder_left, .souvenirOrder_right {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.souvenirOrder_left {
+    margin: 33px 0 0 75px;
+}
+
+.souvenirOrder_text {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.souvenirOrder_row {
+    margin-bottom: 12px;
+}
+
+.souvenirOrder input[type="text"] {
+    width: 355px;
+}
+
+.souvenirOrder_submitButton {
+    margin: 32px 0 0 151px;
+    color: black;
+    width: 216px;
+    line-height: 38px;
+}
+
+.souvenirOrder_right {
+    margin: 36px 0 0 92px;
+}
+
+.souvenirOrder_photoFrame {
+    width: 241px;
+    height: 257px;
+    background-size: 277px 293px;
+    padding: 18px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.souvenirOrder_image {
+    max-width: 242px;
+    max-height: 256px;
+}
+
+.souvenirOrder_souvenirName {
+    font-size: 22px;
+    margin-top: 14px;
+    text-align: center;
+    width: 277px;
+}
+
+.souvenirOrder_footerText {
+    font-size: 22px;
+    margin: 13px 0 0 120px;
+}

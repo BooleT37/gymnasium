@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 import './GraduateEdit.css';
 import './GraduateEdit-placeholders.css';
@@ -7,7 +7,7 @@ import React from 'react';
 import MaskedInput from 'react-maskedinput';
 import FileDrop from 'react-file-drop';
 
-import GraduateClassesStore from '../../stores/GraduateClassesStore'
+import GraduateClassesStore from '../../stores/GraduateClassesStore';
 
 import ModalHeader from '../Modal/ModalHeader/ModalHeader';
 import ModalFooter from '../Modal/ModalFooter/ModalFooter';
@@ -62,8 +62,9 @@ export default class GraduateEdit extends React.Component {
     }
 
     handleSubmit() {
-        console.log(this.state);
-        alert("Отправка данных на сервер заработает, когда появится админка");
+        // console.log(this.state);
+        if (console)
+            console.log("Отпарвка зарабоатет, когда появится админка");
     }
 
     handleFioChange(event) {

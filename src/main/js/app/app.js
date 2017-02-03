@@ -18,6 +18,7 @@ import GraduateEdit from '../components/GraduateEdit/GraduateEdit';
 import Teachers from '../components/Teachers/Teachers';
 import Administration from '../components/Administration/Administration';
 import Souvenirs from '../components/Souvenirs/Souvenirs';
+import SouvenirOrder from '../components/SouvenirOrder/SouvenirOrder';
 import {triggerClickEvent} from '../utils';
 
 class EmptyModal extends React.Component {
@@ -61,6 +62,12 @@ class AdministrationModal extends React.Component {
 class SouvenirsModal extends React.Component {
   render() {
     return renderModalWithComponent(Souvenirs, this.props.params);
+  }
+}
+
+class SouvenirOrderModal extends React.Component {
+  render() {
+    return renderModalWithComponent(SouvenirOrder, this.props.params);
   }
 }
 
@@ -119,6 +126,7 @@ class App {
         <Route path="/teachers(/:teacherId)" component={TeachersModal}/>
         <Route path="/administration(/:employeeId)" component={AdministrationModal}/>
         <Route path="/souvenirs" component={SouvenirsModal}/>
+        <Route path="/souvenirs/order/:souvenirId" component={SouvenirOrderModal}/>
         <Route path="*" component={null}/>
       </Router>
     ), document.getElementsByClassName('ReactModalPortal')[0]);

@@ -46,6 +46,12 @@ export default class Souvenirs extends SelfUpdatingComponent {
 
     handleItemClick(event) {
         console.log(event.currentTarget.getAttribute("data-id"));
+        
+    }
+
+    handleBuyButtonClick(event) {
+        var id = event.currentTarget.getAttribute("data-id");
+        Actions.routeTo(`/souvenirs/order/${id}`)
     }
 
     render() {
@@ -66,7 +72,7 @@ export default class Souvenirs extends SelfUpdatingComponent {
                         {imageElements}
                     </div>
                     <div className="souvenirs_itemName">{obj.name}</div>
-                    <div className="souvenirs_buyButton">КУПИТЬ</div>
+                    <div className="button souvenirs_buyButton" data-id={obj.id} onClick={this.handleBuyButtonClick}>КУПИТЬ</div>
                 </div>
             )
         }
