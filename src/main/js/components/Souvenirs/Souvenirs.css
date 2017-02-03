@@ -1,0 +1,86 @@
+.souvenirs_itemPhotoFrame {
+    position: relative;
+    width: 191px;
+    height: 203px;
+    background-size: 220px 232px;
+    padding: 16px 13px 13px 14px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.souvenirs_arrow, .souvenirs_items, .souvenirs_item {
+    display: inline-block;
+}
+
+.souvenirs_arrow {
+    cursor: pointer;
+    vertical-align: 209px;
+    background-size: 23px 38px;
+    width: 23px;
+    height: 38px;
+}
+
+.souvenirs_arrow_disabled {
+    visibility: hidden;
+}
+
+.modal_content.souvenirs_content {
+    margin-left: 63px;
+    margin-top: 37px;
+    height: 376px;
+}
+
+.souvenirs_item {
+    margin: 0 29px 0 18px;
+}
+
+.souvenirs_itemImage {
+    cursor: pointer;
+}
+
+.souvenirs_itemImage img {
+    max-width: 192px;
+    max-height: 204px;
+}
+
+.souvenirs_item:last-child {
+    margin-right: 10px;
+}
+
+.souvenirs_itemName {
+    width: 212px;
+    font-size: 22px;
+    margin: 10px 0 0 8px;
+}
+
+.souvenirs_buyButton {
+    cursor: pointer;
+    margin: 45px 0 0 41px;
+    width: 115px;
+    height: 40px;
+    background-color: #91b026;
+    font-size: 27px;
+    padding: 6px 0 0 35px;
+}
+
+.souvenirs_items {
+    height: 365px;
+}
+
+.souvenirs_enlarge {
+    background-image: url(./images/enlarge.png);
+    width: 75px;
+    height: 75px;
+    position: absolute;
+    top: 80px;
+    left: 71px;
+}
+
+.souvenirs_itemImage:hover .souvenirs_enlarge {
+    background-image: url(./images/enlarge_hover.png);
+}

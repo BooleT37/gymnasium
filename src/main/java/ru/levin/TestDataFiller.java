@@ -188,8 +188,8 @@ public class TestDataFiller {
         if (!souvenirDao.isEmpty())
             souvenirDao.deleteAll();
 
-        souvenirDao.add(new Souvenir("Футболка с символикой", null));
-        souvenirDao.add(new Souvenir("Фотоальбом", null));
+        souvenirDao.add(new Souvenir("Футболка с символикой", "T-shirt.jpg"));
+        souvenirDao.add(new Souvenir("Фотоальбом", "Album.jpg"));
         souvenirDao.add(new Souvenir("Сувенир 3", null));
         souvenirDao.add(new Souvenir("Сувенир 4", null));
         souvenirDao.add(new Souvenir("Сувенир 5", null));
