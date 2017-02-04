@@ -22,7 +22,7 @@ import ModalHeader from '../Modal/ModalHeader/ModalHeader';
 import ModalFooter from '../Modal/ModalFooter/ModalFooter';
 
 
-const NO_PHOTO_IMAGE_SRC = "images/class_photos/no_photo.png";
+const NO_PHOTO_IMAGE_SRC = "images/photos/classes/no_photo.png";
 
 export default class GraduateClass extends SelfUpdatingComponent {
     constructor(props) {
