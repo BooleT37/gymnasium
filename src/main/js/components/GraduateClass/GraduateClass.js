@@ -1,11 +1,10 @@
-"use strict";
+'use strict';
 
 import './GraduateClass.css';
 
 //external modules
 import Reflux from 'reflux';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 
 //local modules

@@ -13,15 +13,7 @@ import {triggerClickEvent} from '../utils';
 import RoutingManager from './RoutingManager';
 
 class App {
-  run() {
-    this.setUpAutoscrollers();
-    this.setUpDesignSwitchButton();
-    this.setUpRouter();
-  }
-
   setUpAutoscrollers() {
-    
-
     function openLink(id) {
         var element = document.getElementById(id);
         var image = element.getElementsByClassName("nav_element_image")[0];
@@ -62,6 +54,12 @@ class App {
   setUpRouter() {
     var routingManager = new RoutingManager();
     routingManager.run();
+  }
+  
+  run() {
+    this.setUpAutoscrollers();
+    this.setUpDesignSwitchButton();
+    this.setUpRouter();
   }
 }
 

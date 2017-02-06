@@ -1,25 +1,3 @@
-.modal {
-    position: absolute;
-    top: 40px;
-    bottom: 40px;
-    left: 0px;
-    right: 0px;
-    border: 1px solid #ccc;
-    /* linear gradient start */
-    background: -moz-linear-gradient(top,  rgba(255,255,255,0.4) 0%, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top,  rgba(255,255,255,0.4) 0%,rgba(255,255,255,1) 20%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom,  rgba(255,255,255,0.4) 0%,rgba(255,255,255,1) 20%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
-    /* linear gradient end */
-    overflow: auto;
-    border-radius: 4px;
-    outline: none;
-    padding: 10px;
-    width: 960px;
-    margin: 0 auto;
-    height: 585px;
-}
-
 .modal_hr {
     border: none;
     height: 1px;
@@ -40,15 +18,4 @@
     right: 0;
     top: 250px;
     text-align: center;
-}
-
-.ReactModal__Body--open {
-    overflow: hidden;
-}
-
-.ReactModal__Body--open #content {
-    -webkit-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(5px);
 }

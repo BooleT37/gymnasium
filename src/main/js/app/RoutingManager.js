@@ -3,11 +3,14 @@ import { render } from 'react-dom';
 import { Router, Route, Link, hashHistory, withRouter } from 'react-router';
 import Modal from 'react-modal';
 
+import ModalWrapper from '../components/Modal/ModalWrapper/ModalWrapper';
+import InnerModalWrapper from '../components/Modal/InnerModalWrapper/InnerModalWrapper';
 import GraduateClass from '../components/GraduateClass/GraduateClass';
 import GraduateEdit from '../components/GraduateEdit/GraduateEdit';
 import Teachers from '../components/Teachers/Teachers';
 import Administration from '../components/Administration/Administration';
 import Souvenirs from '../components/Souvenirs/Souvenirs';
+import SouvenirsEnlargedPhoto from '../components/Souvenirs/SouvenirsEnlargedPhoto/SouvenirsEnlargedPhoto'
 import SouvenirOrder from '../components/SouvenirOrder/SouvenirOrder';
 
 class EmptyModal extends React.Component {
@@ -19,9 +22,24 @@ class EmptyModal extends React.Component {
 function renderModalWithComponent(Component, componentParams) {
   return (
       <Modal isOpen={true} contentLabel="Modal" className="modal">
+        <ModalWrapper innerModalOpened={false}>
           <Component params={componentParams}/>
+        </ModalWrapper>
       </Modal>
     )
+}
+
+function renderInnerModalWithComponent(ModalComponent, InnerModalComponent, componentParams) {
+  return (
+      <Modal isOpen={true} contentLabel="Modal" className="modal">
+        <ModalWrapper innerModalOpened={true}>
+          <ModalComponent params={componentParams}/>
+        </ModalWrapper>
+        <InnerModalWrapper className="innerModal">
+          <InnerModalComponent params={componentParams}/>
+        </InnerModalWrapper>
+      </Modal>
+    );
 }
 
 class GradClassModal extends React.Component {
@@ -54,6 +72,12 @@ class SouvenirsModal extends React.Component {
   }
 }
 
+class SouvenirsEnlargeModal extends React.Component {
+  render() {
+    return renderInnerModalWithComponent(Souvenirs, SouvenirsEnlargedPhoto, this.props.params);
+  }
+}
+
 class SouvenirOrderModal extends React.Component {
   render() {
     return renderModalWithComponent(SouvenirOrder, this.props.params);
@@ -63,15 +87,16 @@ class SouvenirOrderModal extends React.Component {
 export default class RoutingManager {
     run() {
         render((
-        <Router history={hashHistory}>
-            <Route path="/graduateClasses(/:classId(/graduates(/:graduateId)))" component={GradClassModal}/>
-            <Route path="/graduateClasses/:classId(/graduates(/:graduateId))/addGraduate" component={GradEditModal}/>
-            <Route path="/teachers(/:teacherId)" component={TeachersModal}/>
-            <Route path="/administration(/:employeeId)" component={AdministrationModal}/>
-            <Route path="/souvenirs" component={SouvenirsModal}/>
-            <Route path="/souvenirs/order/:souvenirId" component={SouvenirOrderModal}/>
-            <Route path="*" component={null}/>
-        </Router>
+            <Router history={hashHistory}>
+                <Route path="/graduateClasses(/:classId(/graduates(/:graduateId)))" component={GradClassModal}/>
+                <Route path="/graduateClasses/:classId(/graduates(/:graduateId))/addGraduate" component={GradEditModal}/>
+                <Route path="/teachers(/:teacherId)" component={TeachersModal}/>
+                <Route path="/administration(/:employeeId)" component={AdministrationModal}/>
+                <Route path="/souvenirs" component={SouvenirsModal}/>
+                <Route path="/souvenirs/enlarge/:souvenirId" component={SouvenirsEnlargeModal}/>
+                <Route path="/souvenirs/order/:souvenirId" component={SouvenirOrderModal}/>
+                <Route path="*" component={null}/>
+            </Router>
         ), document.getElementsByClassName('ReactModalPortal')[0]);
     }
 }

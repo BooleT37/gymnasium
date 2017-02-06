@@ -17,6 +17,7 @@ var SouvenirsStore = Reflux.createStore({
     getSouvenirById(id) {
         if (!this.state.loaded)
             throw new Error("SouvenirsStore is not loaded yet");
+        id = parseInt(id, 10);
         var found = this.state.list.find(souvenir => souvenir.id === id);
         if (!found)
             throw new Error(`Cannot find souvenir with id ${id}`);

@@ -27,7 +27,7 @@ export default class SouvenirOrder extends SelfUpdatingComponent {
         }
         this.setState({
             loaded: true,
-            souvenir: this.store.getSouvenirById(parseInt(props.params.souvenirId, 10)),
+            souvenir: this.store.getSouvenirById(props.params.souvenirId),
             form: {
                 fio: "",
                 phone: "",

@@ -1,0 +1,36 @@
+.souvenirsEnlargedPhoto {
+    text-align: center;
+}
+
+.photoFrame.souvenirsEnlargedPhoto_photoFrame {
+    position: relative;
+    display: inline-block;
+    margin-top: 60px;
+    padding: 40px;
+    width: 410px;
+    height: 442px;
+    background-size: 490px 522px;
+}
+
+.souvenirsEnlargedPhoto_photoContainer {
+    height: 442px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.souvenirsEnlargedPhoto_image {
+    max-width: 410px;
+    max-height: 442px;
+}
+
+.souvenirsEnlargedPhoto_closeButton {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    cursor: pointer;
+}

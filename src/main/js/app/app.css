@@ -75,9 +75,6 @@ body {
     background-image: url(./images/photo_frame.png);
     width: 642px;
     height: 681px;
-    /*border-radius: 5px;
-    box-shadow: 0px 0px 8px 2px darkgrey;
-    padding: 8px 0 0 8px;*/
 }
 
 .facebookLogo {
@@ -130,4 +127,10 @@ textarea {
     text-align: center;
     cursor: pointer;
     font-size: 36px;
+}
+
+.closeButton {
+    background-image: url(./images/close.png);
+    height: 40px;
+    width: 40px;
 }

@@ -14,7 +14,7 @@ export default class ModalHeader extends React.Component {
                     <span className="modal_title">{this.props.title}</span>
                     <span className={`modal_icon modal_icon_${this.props.iconType}`}></span>
                     {backButton}
-                    <a href="#/" title="Закрыть" className="modal_closeButton"></a>
+                    <a href="#/" title="Закрыть" className="closeButton modal_closeButton"></a>
                 </div>
                 <hr key="hr" className="modal_hr modal_headerHr"/>
             </div>

@@ -45,8 +45,9 @@ export default class Souvenirs extends SelfUpdatingComponent {
     }
 
     handleItemClick(event) {
-        console.log(event.currentTarget.getAttribute("data-id"));
-        
+        var id = event.currentTarget.getAttribute("data-id");
+        //console.log(event.currentTarget.getAttribute("data-id"));
+        Actions.routeTo(`/souvenirs/enlarge/${id}`);
     }
 
     handleBuyButtonClick(event) {

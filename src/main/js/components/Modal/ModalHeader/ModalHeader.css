@@ -37,9 +37,6 @@
     position: absolute;
     top: 20px;
     right: 30px;
-    background-image: url(./images/close.png);
-    height: 40px;
-    width: 40px;
 }
 
 .modal_backButton {

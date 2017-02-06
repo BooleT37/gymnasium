@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 import './ModalFooter.css';
 
@@ -13,6 +13,6 @@ export default class ModalFooter extends React.Component {
                     {this.props.children}
                 </div>
             </div>
-        )
+        );
     }
 }

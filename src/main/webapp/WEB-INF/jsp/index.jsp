@@ -65,6 +65,7 @@
     </div>
 </div>
 <div class="ReactModalPortal"></div>
+<div class="innerModal"></div>
 
 <c:choose>
     <c:when test="${debug}">
