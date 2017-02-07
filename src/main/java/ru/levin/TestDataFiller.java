@@ -4,6 +4,7 @@ import ru.levin.dao.*;
 import ru.levin.dao.exceptions.EntityAlreadyExistsException;
 import ru.levin.entities.*;
 import ru.levin.entities.enums.AdministrationPosition;
+import ru.levin.entities.enums.HistoryEventType;
 import ru.levin.entities.exceptions.WrongGradeException;
 
 import javax.inject.Inject;
@@ -20,6 +21,7 @@ public class TestDataFiller {
     @Inject private TeacherDao teacherDao;
     @Inject private AdministrationEmployeeDao administrationEmployeeDao;
     @Inject private SouvenirDao souvenirDao;
+    @Inject private HistoryEventDao historyEventDao;
 
     private void fillGraduatesAndClasses() throws WrongGradeException, EntityAlreadyExistsException {
         if (!graduateDao.isEmpty())
@@ -195,10 +197,65 @@ public class TestDataFiller {
         souvenirDao.add(new Souvenir("Сувенир 5", null));
     }
 
+    private void fillHistoryEvents() throws EntityAlreadyExistsException {
+        final String loremIpsum = "Lorem ipsum dolor sit amet," +
+                "consectetur adipiscing elit, sed do eiusmod tempor" +
+                "incididunt ut labore et dolore magna aliqua." +
+                "Ut enim ad minim veniam, quis nostrud exercitation" +
+                "ullamco laboris nisi ut aliquip ex ea commodo consequat.\n" +
+                "Duis aute irure dolor in reprehenderit in voluptate velit" +
+                "esse cillum dolore eu fugiat nulla pariatur. Excepteur sint" +
+                "occaecat cupidatat non proident, sunt in culpa qui officia" +
+                "deserunt mollit anim id est laborum.";
+        
+        final String shortLoremIpsum = "Lorem ipsum dolor sit amet";
+
+        if (!historyEventDao.isEmpty())
+            historyEventDao.deleteAll();
+
+        historyEventDao.add(new HistoryEvent(LocalDate.of(1992, 8, 9), loremIpsum, HistoryEventType.HISTORY, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(1995, 12, 8), loremIpsum, HistoryEventType.HISTORY, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(1998, 6, 4), shortLoremIpsum, HistoryEventType.HISTORY, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(1999, 5, 23), shortLoremIpsum, HistoryEventType.HISTORY, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(1999, 10, 15), shortLoremIpsum, HistoryEventType.HISTORY, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(1999, 12, 9), shortLoremIpsum, HistoryEventType.HISTORY, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2006, 11, 17), shortLoremIpsum, HistoryEventType.HISTORY, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2010, 1, 30), shortLoremIpsum, HistoryEventType.HISTORY, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2015, 2, 17), shortLoremIpsum, HistoryEventType.HISTORY, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2016, 3, 5), shortLoremIpsum, HistoryEventType.HISTORY, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(1997, 2, 16), shortLoremIpsum, HistoryEventType.LITERATURE_CLUB, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(1998, 2, 18), shortLoremIpsum, HistoryEventType.LITERATURE_CLUB, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2009, 5, 27), shortLoremIpsum, HistoryEventType.LITERATURE_CLUB, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2000, 9, 11), shortLoremIpsum, HistoryEventType.LITERATURE_CLUB, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2015, 9, 24), shortLoremIpsum, HistoryEventType.LITERATURE_CLUB, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2016, 6, 19), shortLoremIpsum, HistoryEventType.LITERATURE_CLUB, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(1995, 8, 25), shortLoremIpsum, HistoryEventType.SPORT, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2006, 1, 28), shortLoremIpsum, HistoryEventType.SPORT, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2011, 4, 3), shortLoremIpsum, HistoryEventType.SPORT, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2011, 4, 27), shortLoremIpsum, HistoryEventType.SPORT, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(1993, 3, 6), shortLoremIpsum, HistoryEventType.ART, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(1994, 10, 14), shortLoremIpsum, HistoryEventType.ART, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(1997, 5, 13), shortLoremIpsum, HistoryEventType.ART, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2003, 8, 16), shortLoremIpsum, HistoryEventType.ART, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2014, 1, 12), shortLoremIpsum, HistoryEventType.ART, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2014, 5, 14), shortLoremIpsum, HistoryEventType.ART, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2015, 11, 16), shortLoremIpsum, HistoryEventType.ART, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2003, 4, 11), shortLoremIpsum, HistoryEventType.SCIENCE, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2003, 7, 5), shortLoremIpsum, HistoryEventType.SCIENCE, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2014, 12, 14), shortLoremIpsum, HistoryEventType.SCIENCE, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(1995, 3, 15), shortLoremIpsum, HistoryEventType.TRAVEL, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(1999, 9, 6), shortLoremIpsum, HistoryEventType.TRAVEL, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2004, 4, 26), shortLoremIpsum, HistoryEventType.TRAVEL, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2007, 9, 5), shortLoremIpsum, HistoryEventType.TRAVEL, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2008, 4, 12), shortLoremIpsum, HistoryEventType.TRAVEL, null, null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2012, 5, 2), shortLoremIpsum, HistoryEventType.TRAVEL, null, null));
+    }
+
     public void fill() throws WrongGradeException, EntityAlreadyExistsException {
         fillGraduatesAndClasses();
         fillTeachers();
         fillAdministration();
         fillSouvenirs();
+        fillHistoryEvents();
     }
 }
