@@ -1,0 +1,37 @@
+.timeline {
+    position: relative;
+    margin: 33px 0 0 96px;
+}
+
+.timeline_leftYear, .timeline_rightYear, .timeline_scale {
+    display: inline-block;
+}
+
+.timeline_leftYear, .timeline_rightYear {
+    font: 20px Karton-Regular;
+    vertical-align: 7px;
+    margin: 0 8px;
+}
+
+.timeline_year_hidden {
+    visibility: hidden;
+}
+
+.timeline_scale {
+    width: 694px;
+    height: 30px;
+    background-image: url(./images/scale.png);
+    position: relative;
+}
+
+.timeline_selector {
+    cursor: pointer;
+    width: 106px;
+    height: 87px;
+    background-image: url(./images/selector.png);
+    position: absolute;
+    top: -53px;
+    left: -15px;
+    font: 36px Karton-Regular;
+    padding: 46px 0 0 39px;
+}

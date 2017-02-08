@@ -12,6 +12,7 @@ import Administration from '../components/Administration/Administration';
 import Souvenirs from '../components/Souvenirs/Souvenirs';
 import SouvenirsEnlargedPhoto from '../components/Souvenirs/SouvenirsEnlargedPhoto/SouvenirsEnlargedPhoto'
 import SouvenirOrder from '../components/SouvenirOrder/SouvenirOrder';
+import HistoryEvents from '../components/HistoryEvents/HistoryEvents';
 
 class EmptyModal extends React.Component {
   render() {
@@ -42,6 +43,7 @@ function renderInnerModalWithComponent(ModalComponent, InnerModalComponent, comp
     );
 }
 
+//todo change to 1 function
 class GradClassModal extends React.Component {
   render() {
     return renderModalWithComponent(GraduateClass, this.props.params);
@@ -84,6 +86,13 @@ class SouvenirOrderModal extends React.Component {
   }
 }
 
+class HistoryEventsModal extends React.Component {
+  render() {
+    this.props.params.type = "HISTORY";
+    return renderModalWithComponent(HistoryEvents, this.props.params)
+  }
+}
+
 export default class RoutingManager {
     run() {
         render((
@@ -95,6 +104,7 @@ export default class RoutingManager {
                 <Route path="/souvenirs" component={SouvenirsModal}/>
                 <Route path="/souvenirs/enlarge/:souvenirId" component={SouvenirsEnlargeModal}/>
                 <Route path="/souvenirs/order/:souvenirId" component={SouvenirOrderModal}/>
+                <Route path="/history(/:eventId)" component={HistoryEventsModal}/>
                 <Route path="*" component={null}/>
             </Router>
         ), document.getElementsByClassName('ReactModalPortal')[0]);

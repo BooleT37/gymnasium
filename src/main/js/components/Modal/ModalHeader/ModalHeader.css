@@ -10,16 +10,16 @@
 
 .modal_icon {
     display: inline-block;
-    width: 48px;
+    width: 64px;
     height: 64px;
 }
 
 .modal_icon.modal_icon_leaf {
-   background-image: url(./images/leaf.png); 
+    width: 48px;
+    background-image: url(./images/leaf.png); 
 }
 
 .modal_icon.modal_icon_mortarboard {
-    width: 64px;
     background-image: url(./images/mortarboard.png);
 }
 
@@ -29,8 +29,12 @@
 }
 
 .modal_icon.modal_icon_t-shirt {
-    width: 64px;
     background-image: url(./images/t-shirt.png);
+}
+
+.modal_icon.modal_icon_book {
+    width: 74px;
+    background-image: url(./images/book.png);
 }
 
 .modal_closeButton {

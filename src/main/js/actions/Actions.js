@@ -11,6 +11,7 @@ var Actions = Reflux.createActions([
     "lazyLoadTeachers",
     "lazyLoadAdministration",
     "lazyLoadSouvenirs",
+    "lazyLoadHistoryEventsOfType",
     "highlightGraduate",
     "showGraduateInfo"
 ]);

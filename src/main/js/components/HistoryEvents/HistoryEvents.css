@@ -1,0 +1,74 @@
+.historyEvents_photoFrame {
+    width: 302px;
+    height: 236px;
+    background-image: url(./images/photoFrame.png);
+    margin: 41px 0 51px 16px;
+}
+
+.historyEvents_arrowLeft, .historyEvents_innerContent, .historyEvents_arrowRight {
+    display: inline-block;
+}
+
+.historyEvents_innerContent {
+    width: 775px;
+}
+
+.historyEvents_arrowLeft, .historyEvents_arrowRight {
+    cursor: pointer;
+    width: 21px;
+    height: 34px;
+    background-size: 21px 34px;
+    vertical-align: -160px;
+}
+
+.historyEvents_arrow_disabled {
+    visibility: hidden;
+}
+
+.historyEvents_content {
+    padding: 0 30px;
+}
+
+.historyEvents_left, .historyEvents_right {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.historyEvents_button {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.historyEvents_button_disabled {
+    visibility: hidden;
+}
+
+.historyEvents_leftButtons {
+    margin: 51px 0 0 30px;
+}
+
+.historyEvents_photosButton {
+    width: 132px;
+    height: 45px;
+    background-image: url(./images/photosButton.png);
+    margin-right: 19px;
+}
+
+.historyEvents_videosButton {
+    width: 137px;
+    height: 45px;
+    background-image: url(./images/videosButton.png);
+}
+
+.historyEvents_right {
+    padding: 29px 0 0 35px;
+}
+
+.historyEvents_date {
+    font-size: 36px;
+    margin-bottom: 27px;
+}
+
+.historyEvents_description {
+    width: 415px;
+}
