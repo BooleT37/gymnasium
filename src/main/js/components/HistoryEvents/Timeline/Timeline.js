@@ -39,7 +39,7 @@ export default class Timeline extends React.Component {
         // console.log(this.scaleRect.left);
         var left = this.scaleRect.left;
         this.mouseHooks = this.yearOffsets.map(offset => {var center = offset + left; return {left: center - mousHookRadius, right: center + mousHookRadius}});
-        console.log(this.mouseHooks);
+        // console.log(this.mouseHooks);
     }
 
     onSelectorMouseDown(e) {

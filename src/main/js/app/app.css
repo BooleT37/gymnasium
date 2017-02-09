@@ -37,12 +37,12 @@ body {
 #design {
     position: fixed;
     top: -7px;
-    left: 471px;
+    left: 393px;
     z-index: 3;
     background-image: url('./images/design.jpg');
     opacity: 0.8;
-    width: 980px;
-    height: 713px;
+    width: 1280px;
+    height: 931px;
     display: block;
 }
 
@@ -131,6 +131,6 @@ textarea {
 
 .closeButton {
     background-image: url(./images/close.png);
-    height: 40px;
-    width: 40px;
+    height: 55px;
+    width: 55px;
 }

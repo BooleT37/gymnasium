@@ -1,0 +1,37 @@
+.historyEventsMedia {
+    text-align: center;
+    margin-top: 53px;
+    position: relative;
+}
+
+.historyEventsMedia_arrow, .historyEventsMedia_photoFrame {
+    display: inline-block;
+}
+
+.historyEventsMedia_arrow_hidden {
+    visibility: hidden;
+}
+
+.historyEventsMedia_photoFrame {
+    position: relative;
+    width: 1013px;
+    height: 661px;
+    background-image: url(./images/photoFrame.png);
+    padding: 67px 67px;
+}
+
+.historyEventsMedia_arrow {
+    cursor: pointer;
+    vertical-align: 313px;
+    margin: 0 17px;
+    background-size: 28px 44px;
+    width: 28px;
+    height: 44px;
+}
+
+.historyEventsMedia_closeButton {
+    position: absolute;
+    cursor: pointer;
+    top: 35px;
+    right: 27px;
+}

@@ -13,6 +13,9 @@ import Souvenirs from '../components/Souvenirs/Souvenirs';
 import SouvenirsEnlargedPhoto from '../components/Souvenirs/SouvenirsEnlargedPhoto/SouvenirsEnlargedPhoto'
 import SouvenirOrder from '../components/SouvenirOrder/SouvenirOrder';
 import HistoryEvents from '../components/HistoryEvents/HistoryEvents';
+import HistoryEventsMedia from '../components/HistoryEvents/HistoryEventsMedia/HistoryEventsMedia';
+import HistoryEventsPhoto from '../components/HistoryEvents/HistoryEventsMedia/HistoryEventsPhoto/HistoryEventsPhoto';
+import HistoryEventsVideo from '../components/HistoryEvents/HistoryEventsMedia/HistoryEventsVideo/HistoryEventsVideo';
 
 class EmptyModal extends React.Component {
   render() {
@@ -93,6 +96,36 @@ class HistoryEventsModal extends React.Component {
   }
 }
 
+class HistoryEventsPhotoWrapper extends React.Component {
+  render() {
+    return (
+      <HistoryEventsMedia type="photo" params={this.props.params}/>
+    )
+  }
+}
+
+class HistoryEventsVideoWrapper extends React.Component {
+  render() {
+    return (
+      <HistoryEventsMedia type="video" params={this.props.params}/>
+    )
+  }
+}
+
+class HistoryEventsPhotoModal extends React.Component {
+  render() {
+    this.props.params.type = "HISTORY";
+    return renderInnerModalWithComponent(HistoryEvents, HistoryEventsPhotoWrapper, this.props.params);
+  }
+}
+
+class HistoryEventsVideoModal extends React.Component {
+  render() {
+    this.props.params.type = "HISTORY";
+    return renderInnerModalWithComponent(HistoryEvents, HistoryEventsVideoWrapper, this.props.params);
+  }
+}
+
 export default class RoutingManager {
     run() {
         render((
@@ -105,6 +138,8 @@ export default class RoutingManager {
                 <Route path="/souvenirs/enlarge/:souvenirId" component={SouvenirsEnlargeModal}/>
                 <Route path="/souvenirs/order/:souvenirId" component={SouvenirOrderModal}/>
                 <Route path="/history(/:eventId)" component={HistoryEventsModal}/>
+                <Route path="/history/:eventId/photo/(:index)" component={HistoryEventsPhotoModal}/>
+                <Route path="/history/:eventId/video/(:index)" component={HistoryEventsVideoModal}/>
                 <Route path="*" component={null}/>
             </Router>
         ), document.getElementsByClassName('ReactModalPortal')[0]);

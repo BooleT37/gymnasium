@@ -39,6 +39,8 @@ export default class HistoryEvents extends SelfUpdatingComponent {
 
         this.onArrowLeftClick = this.onArrowLeftClick.bind(this);
         this.onArrowRightClick = this.onArrowRightClick.bind(this);
+        this.onPhotosClick = this.onPhotosClick.bind(this);
+        this.onVideosClick = this.onVideosClick.bind(this);
         this.onYearChange = this.onYearChange.bind(this);
     }
 
@@ -94,6 +96,14 @@ export default class HistoryEvents extends SelfUpdatingComponent {
         Actions.routeTo(`${this.pathPrefix}/${this.state.nextEvent.id}`);
     }
 
+    onPhotosClick() {
+        Actions.routeTo(`${this.pathPrefix}/${this.state.currentEvent.id}/photo/0`);
+    }
+
+    onVideosClick() {
+        Actions.routeTo(`${this.pathPrefix}/${this.state.currentEvent.id}/video/0`);
+    }
+
     onYearChange(year) {
         // console.log(year);
         Actions.routeTo(`${this.pathPrefix}/${this.firstEventForEachYear[year].id}`);
@@ -108,7 +118,13 @@ export default class HistoryEvents extends SelfUpdatingComponent {
             return (<div className="modal_loader">Загрузка событий...</div>);
 
         var photoPreview = (event.photoNames && event.photoNames.length) ?
-            <img src={`images/photos/${this.pathPrefix}/${event.photoNames[0]}`} alt="Photo preview"/> :
+            <div className="historyEvents_photoContainer">
+                <img
+                    src={`images/photos/${this.pathPrefix}/${event.photoNames[0]}`}
+                    alt="Photo preview"
+                    className="historyEvents_imagePreview"
+                />
+            </div> :
             null;
         
         return (
@@ -128,12 +144,12 @@ export default class HistoryEvents extends SelfUpdatingComponent {
                                     "historyEvents_button",
                                     "historyEvents_photosButton",
                                     {historyEvents_button_disabled: !event.photoNames || !event.photoNames.length}
-                                    )}></div>
+                                    )} onClick={this.onPhotosClick}></div>
                                 <div className={classnames(
                                     "historyEvents_button",
                                     "historyEvents_videosButton",
                                     {historyEvents_button_disabled: !event.videoNames || !event.videoNames.length}
-                                    )}></div>
+                                    )} onClick={this.onVideosClick}></div>
                             </div>
                         </div>
                         <div className="historyEvents_right">
