@@ -33,6 +33,7 @@
     "file-loader": "github:webpack/file-loader",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
+    "video.js": "^5.16.0",
     "webpack-dev-server": "^1.16.2"
   }
 }

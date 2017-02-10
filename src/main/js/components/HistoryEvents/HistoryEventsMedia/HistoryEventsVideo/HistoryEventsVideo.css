@@ -1,0 +1,177 @@
+.video-js {
+    width: 1012px;
+    height: 661px;
+}
+
+.historyEventsVideo .video-js .vjs-control {
+    color: #91b025;
+}
+
+.historyEventsVideo .vjs-poster, .historyEventsVideo .video-js {
+    background: none;
+}
+
+.historyEventsVideo .video-js .vjs-big-play-button {
+    background-color: transparent;
+    width: 290px;
+    height: 290px;
+    background-image: url(./images/bigPlayButton.png);
+    border: 0;
+    border-radius: 0;
+    left: 50%;
+    top: 50%;
+    margin-left: -145px;
+    margin-top: -145px;
+}
+
+.historyEventsVideo .video-js:hover .vjs-big-play-button {
+    background-color: transparent;
+}
+
+.historyEventsVideo .video-js .vjs-big-play-button:before {
+    content: none;
+}
+
+.historyEventsVideo .video-js .vjs-control-bar {
+    background-color: transparent;
+}
+
+.historyEventsVideo .video-js .vjs-control-bar {
+    height: 77px;
+}
+
+.historyEventsVideo .video-js .vjs-control {
+    font-size: 40px;
+}
+
+.historyEventsVideo .video-js .vjs-control:before {
+    line-height: initial;
+}
+
+.historyEventsVideo .video-js .vjs-tech {
+    height: 600px;
+}
+
+.historyEventsVideo .video-js .vjs-progress-holder {
+    height: 3px;
+    /* background: transparent; */
+}
+
+.historyEventsVideo .video-js .vjs-progress-holder .vjs-play-progress, .historyEventsVideo .video-js .vjs-progress-holder .vjs-load-progress, .historyEventsVideo .video-js .vjs-progress-holder .vjs-tooltip-progress-bar, .historyEventsVideo .video-js .vjs-progress-holder .vjs-load-progress div {
+    height: 3px;
+}
+
+.historyEventsVideo .video-js .vjs-load-progress {
+    background: #91b025;
+}
+
+.historyEventsVideo .video-js .vjs-load-progress div {
+    background: #91b025;
+}
+
+.historyEventsVideo .video-js .vjs-play-progress.vjs-slider-bar {
+    background: #91b025;
+}
+
+.historyEventsVideo .video-js .vjs-slider {
+    background: #fff;
+    margin: 0 0.1em 0 0.1em;
+}
+
+.historyEventsVideo .video-js .vjs-play-progress:before, .historyEventsVideo .video-js .vjs-volume-level:before {
+    content: "\2759";
+    font-size: 0.8em;
+    height: 40px;
+    width: 16px;
+    color: transparent;
+    background: #91b025;
+    border-radius: 5px;
+    border: solid 1px white;
+    box-shadow: 0 0 8px 1px gray;
+}
+
+.historyEventsVideo .video-js .vjs-play-progress:before {
+    top: -18px;
+    right: -9px;
+}
+
+.historyEventsVideo .video-js .vjs-volume-bar.vjs-slider-horizontal {
+    height: 3px;
+}
+
+.historyEventsVideo .video-js .vjs-slider-horizontal .vjs-volume-level {
+    height: 3px;
+}
+
+.historyEventsVideo .video-js .vjs-slider-horizontal .vjs-volume-level:before {
+    top: -18px;
+    right: -8px;
+}
+
+.historyEventsVideo .video-js .vjs-volume-bar {
+    margin: 37px 0 0 14px;
+}
+
+.historyEventsVideo .video-js .vjs-time-control {
+    line-height: 2em;
+}
+
+.historyEventsVideo .video-js .vjs-menu-button-inline:before {
+    width: 0;
+}
+
+.historyEventsVideo .video-js .vjs-menu-button-inline .vjs-menu {
+    left: 2em;
+}
+
+.historyEventsVideo .video-js .vjs-control.vjs-volume-menu-button {
+    width: 2.2em;
+}
+
+.historyEventsVideo .video-js .vjs-menu-button-inline:hover, .historyEventsVideo .video-js .vjs-menu-button-inline:focus, .historyEventsVideo .video-js .vjs-menu-button-inline.vjs-slider-active, .historyEventsVideo .video-js.vjs-no-flex .vjs-menu-button-inline {
+    width: 8em;
+}
+
+.historyEventsVideo .video-js .vjs-control:focus:before, .historyEventsVideo .video-js .vjs-control:hover:before, .historyEventsVideo .video-js .vjs-control:focus {
+    text-shadow: 0 0 20px white;
+}
+
+.historyEventsVideo .video-js .vjs-progress-control:hover .vjs-progress-holderspan.vjs-control-text {
+    font-size: initial;
+}
+
+.historyEventsVideo .video-js .vjs-progress-control:hover .vjs-progress-holder {
+    font-size: inherit;
+}
+
+.historyEventsVideo .video-js .vjs-progress-control:hover .vjs-play-progress:before {
+    height: 44px;
+    width: 18px;
+    top: -20px;
+    transition: height 0.4s;
+}
+
+.historyEventsVideo .video-js .vjs-progress-control:hover .vjs-progress-holder, .historyEventsVideo .video-js .vjs-progress-control:hover .vjs-load-progress, .historyEventsVideo .video-js .vjs-progress-control:hover .vjs-play-progress {
+    height: 6px;
+    transition: height 0.4s;
+}
+
+.historyEventsVideo .video-js .vjs-progress-control:hover .vjs-progress-holder {
+    margin: 0 0.3em 0 0.3em;
+}
+
+.historyEventsVideo .video-js.vjs-fullscreen .vjs-tech {
+    height: 100%;
+}
+
+.historyEventsVideo .video-js .vjs-volume-level {
+    background: #91b025;
+}
+
+.historyEventsVideo .video-js .vjs-remaining-time {
+    padding-right: 0;
+}
+
+.historyEventsVideo .video-js .vjs-control.vjs-fullscreen-control, .video-js .vjs-control.vjs-play-control {
+    width: 2.5em;
+}

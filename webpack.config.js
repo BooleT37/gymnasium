@@ -29,7 +29,7 @@ module.exports = {
                 )
             },
             {
-                test: /\.(png|ttf|otf)$/,
+                test: /\.(png|ttf|otf|eot)$/,
                 loader: "url-loader?limit=100000&name=[name].[ext]&publicPath=../images/file-loader/&outputPath=src/main/resources/static/images/file-loader/",
             },
             {

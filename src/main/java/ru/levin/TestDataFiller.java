@@ -213,7 +213,7 @@ public class TestDataFiller {
         if (!historyEventDao.isEmpty())
             historyEventDao.deleteAll();
 
-        historyEventDao.add(new HistoryEvent(LocalDate.of(1992, 8, 9), loremIpsum, HistoryEventType.HISTORY, Arrays.asList("1.jpg", "2.jpg", "3.jpg"), null));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(1992, 8, 9), loremIpsum, HistoryEventType.HISTORY, Arrays.asList("1.jpg", "2.jpg", "3.jpg"), Arrays.asList("SampleVideo_1280x720_10mb.mp4", "SampleVideo_1280x720_1mb.mp4", "SampleVideo_720x480_1mb.mp4")));
         historyEventDao.add(new HistoryEvent(LocalDate.of(1995, 12, 8), loremIpsum, HistoryEventType.HISTORY, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(1998, 6, 4), shortLoremIpsum, HistoryEventType.HISTORY, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(1999, 5, 23), shortLoremIpsum, HistoryEventType.HISTORY, null, null));
