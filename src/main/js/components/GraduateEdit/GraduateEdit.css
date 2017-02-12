@@ -1,10 +1,10 @@
 .graduateEdit .graduateEdit_content {
     color: #b9b9b9;
-    font: 30px 'Exo 2 LightCondensed';
+    font: 40px 'Exo 2 LightCondensed';
 }
 
 .graduateEdit_input_fullWidth {
-    width: 424px;
+    width: 557px;
 }
 
 .graduateEdit_input_year, .graduateEdit_input_class {
@@ -12,11 +12,11 @@
 }
 
 .graduateEdit_input_year {
-    width: 76px;
+    width: 90px;
 }
 
 .graduateEdit_input_class {
-    width: 66px;
+    width: 98px;
 }
 
 .graduateEdit_left, .graduateEdit_right {
@@ -25,52 +25,53 @@
 }
 
 .classLabel {
-    margin-left: 42px;
+    margin-left: 62px;
 }
 
 .graduateEdit_left {
-    width: 450px;
-    margin: 17px 0 0 50px;
+    width: 600px;
+    margin: 23px 0 0 63px;
 }
 
 .graduateEdit .graduateEdit_left input, .graduateEdit .graduateEdit_left textarea {
-    margin-bottom: 16px;
+    margin-bottom: 21px;
 }
 
 .graduateEdit_yearAndClass {
-    margin-bottom: 15px;
+    margin: 6px 0 14px;
 }
 
 .graduateEdit textarea {
-    height: 74px;
+    height: 99px;
 }
 
 .graduateEdit input.graduateEdit_input_link {
-    height: 34px;
-    width: 262px;
-    font-size: 26px;
-    vertical-align: 5px;
+    height: 46px;
+    width: 349px;
+    font-size: 32px;
+    vertical-align: middle;
 }
 
 .graduateEdit_photoPrompt {
-    margin: 19px 0 0 75px;
+    margin: 26px 0 0 83px;
 }
 
 .graduateEdit_photoFrame {
     position: relative;
     cursor: pointer;
-    margin: 16px 0 14px 82px;
+    margin: 20px 0 15px 97px;
     width: 225px;
     height: 237px;
     background-size: 225px 237px;
 }
 
 .graduateEdit_socialLogo {
-    width: 32px;
-    height: 32px;
-    background-size: 32px 32px;
-    display: inline-block;
     margin: 0 18px 0 38px;
+    width: 45px;
+    height: 45px;
+    background-size: contain;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .graduateEdit_linkRow {
@@ -120,10 +121,11 @@
 
 .graduateEdit_submitButton {
     position: absolute;
-    right: 20px;
-    top: 19px;
-    width: 306px;
-    height: 47px;
+    right: 31px;
+    top: 29px;
+    width: 407px;
+    height: 63px;
+    font-size: 42px;
     color: white;
     background-color: #91b026;
     padding-top: 8px;

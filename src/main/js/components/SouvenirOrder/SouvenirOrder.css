@@ -4,37 +4,37 @@
 }
 
 .souvenirOrder_left {
-    margin: 33px 0 0 75px;
+    margin: 45px 0 0 98px;
 }
 
 .souvenirOrder_text {
-    font-size: 22px;
-    margin-bottom: 8px;
+    font-size: 28px;
+    margin-bottom: 9px;
 }
 
 .souvenirOrder_row {
-    margin-bottom: 12px;
+    margin-bottom: 17px;
 }
 
 .souvenirOrder input[type="text"] {
-    width: 355px;
+    width: 467px;
 }
 
 .souvenirOrder_submitButton {
-    margin: 32px 0 0 151px;
+    margin: 45px 0 0 199px;
     color: black;
-    width: 216px;
-    line-height: 38px;
+    width: 280px;
+    line-height: 48px;
 }
 
 .souvenirOrder_right {
-    margin: 36px 0 0 92px;
+    margin: 48px 0 0 120px;
 }
 
 .souvenirOrder_photoFrame {
-    width: 241px;
-    height: 257px;
-    background-size: 277px 293px;
+    width: 326px;
+    height: 348px;
+    background-size: contain;
     padding: 18px;
     display: -webkit-box;
     display: -moz-box;
@@ -51,13 +51,13 @@
 }
 
 .souvenirOrder_souvenirName {
-    font-size: 22px;
-    margin-top: 14px;
+    font-size: 28px;
+    margin-top: 17px;
     text-align: center;
-    width: 277px;
+    width: 362px;
 }
 
 .souvenirOrder_footerText {
-    font-size: 22px;
-    margin: 13px 0 0 120px;
+    font-size: 29px;
+    margin: 26px 0 0 159px;
 }

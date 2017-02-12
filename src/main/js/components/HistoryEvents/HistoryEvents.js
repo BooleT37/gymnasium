@@ -57,7 +57,7 @@ export default class HistoryEvents extends SelfUpdatingComponent {
             return;
         }
 
-        this.pathPrefix = type === "HISTORY" ? "/history" : `/traditions/${type}`;
+        this.pathPrefix = type === "HISTORY" ? "/history" : `/traditions/${type.toLowerCase()}`;
 
         
         this.firstEventForEachYear = {};

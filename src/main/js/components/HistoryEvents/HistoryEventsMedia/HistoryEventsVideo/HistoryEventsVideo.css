@@ -132,6 +132,10 @@
     width: 8em;
 }
 
+.historyEventsVideo .video-js .vjs-menu-button-inline .vjs-menu-content {
+    overflow: visible;
+}
+
 .historyEventsVideo .video-js .vjs-control:focus:before, .historyEventsVideo .video-js .vjs-control:hover:before, .historyEventsVideo .video-js .vjs-control:focus {
     text-shadow: 0 0 20px white;
 }
@@ -174,4 +178,8 @@
 
 .historyEventsVideo .video-js .vjs-control.vjs-fullscreen-control, .video-js .vjs-control.vjs-play-control {
     width: 2.5em;
+}
+
+.historyEventsVideo .video-js.vjs-fullscreen .vjs-control-bar {
+    background-color: rgba(227, 227, 227, 0.7);
 }

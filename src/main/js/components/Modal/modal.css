@@ -1,3 +1,7 @@
+.modal {
+    font-size: 22px;
+}
+
 .modal_hr {
     border: none;
     height: 1px;
@@ -6,8 +10,9 @@
 }
 
 .modal_content {
-    margin: 0 0 7px 42px;
-    height: 413px;
+    margin: 0 0 7px 57px;
+    width: 1200px;
+    height: 542px;
 }
 
 .modal_loader {

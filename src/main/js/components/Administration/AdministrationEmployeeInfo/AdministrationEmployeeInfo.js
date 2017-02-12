@@ -34,7 +34,7 @@ export default class AdministrationEmployeeInfo extends React.Component {
             <div className="administrationEmployeeInfo">
                 <div className="administrationEmployeeInfo_left">
                     <div className="photoFrame administrationEmployeeInfo_photoFrame">
-                        <img src={photoSrc} alt="photo" className="administrationEmployeeInfo_photo" width="290" height="306"></img>
+                        <img src={photoSrc} alt="photo" className="administrationEmployeeInfo_photo"></img>
                     </div>
                 </div>
                 <div className="administrationEmployeeInfo_right">

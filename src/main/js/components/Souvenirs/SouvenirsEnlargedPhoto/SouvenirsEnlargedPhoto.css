@@ -5,15 +5,15 @@
 .photoFrame.souvenirsEnlargedPhoto_photoFrame {
     position: relative;
     display: inline-block;
-    margin-top: 60px;
+    margin-top: 76px;
     padding: 40px;
-    width: 410px;
-    height: 442px;
-    background-size: 490px 522px;
+    width: 564px;
+    height: 601px;
+    background-size: contain;
 }
 
 .souvenirsEnlargedPhoto_photoContainer {
-    height: 442px;
+    height: 602px;
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -24,8 +24,8 @@
 }
 
 .souvenirsEnlargedPhoto_image {
-    max-width: 410px;
-    max-height: 442px;
+    max-width: 564px;
+    max-height: 602px;
 }
 
 .souvenirsEnlargedPhoto_closeButton {

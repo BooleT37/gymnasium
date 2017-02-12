@@ -20,9 +20,6 @@ import GraduateInfo from './GraduateInfo/GraduateInfo';
 import ModalHeader from '../Modal/ModalHeader/ModalHeader';
 import ModalFooter from '../Modal/ModalFooter/ModalFooter';
 
-
-const NO_PHOTO_IMAGE_SRC = "images/photos/classes/no_photo.png";
-
 export default class GraduateClass extends SelfUpdatingComponent {
     constructor(props) {
         super(props);
@@ -172,6 +169,8 @@ export default class GraduateClass extends SelfUpdatingComponent {
 
         if (state.loaded === false)
             return (<div className="modal_loader">Загрузка списка классов...</div>);
+
+        var photoElement = state.currentClass.photoName ? <img src={"images/classes/" + state.currentClass.photoName} className="graduateClass_photo"></img> : null;
         var grades = state.grades.map((grade, i) => {
             if (grade === state.currentClass.grade)
                 return (<div className="graduateClass_grade graduateClass_grade_current" key={i}>{grade}</div>)
@@ -192,7 +191,7 @@ export default class GraduateClass extends SelfUpdatingComponent {
         } else {
             innerContent = 
                 <div className="graduateClass_photoContainer">
-                    <img src={state.currentClass.photoName || NO_PHOTO_IMAGE_SRC} className="graduateClass_photo"></img>
+                    {photoElement}
                 </div>
         }
         var content = (

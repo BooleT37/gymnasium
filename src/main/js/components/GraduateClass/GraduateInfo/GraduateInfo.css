@@ -1,26 +1,25 @@
 .graduateInfo {
     display: inline-block;
     vertical-align: top;
-    width: 668px;
+    width: 872px;
     height: 380px;
     position: relative;
 }
 
 .graduateInfo_photoFrame {
-    width: 282px;
-    height: 300px;
-    background-size: 300px 316px;
-    padding: 16px 0 0 18px;
+    width: 340px;
+    height: 365px;
+    background-size: contain;
+    padding: 24px 25px;
 }
 
 .graduateInfo_photo {
-    width: 265px;
-    height: 281px;
+    max-width: 340px;
+    max-height: 365px;
 }
 
 .graduateInfo_row {
-    margin-left: 7px;
-    margin-top: 22px;
+    margin: 28px 0 0 7px;
 }
 
 .graduateInfo_left, .graduateInfo_right {
@@ -29,13 +28,19 @@
 }
 
 .graduateInfo_right {
-    width: 332px;
-    margin: 12px 0 0 32px;
+    width: 435px;
+    margin: 16px 0 0 44px;
 }
 
 .graduateInfo_title {
-    font-size: 38px;
-    margin-bottom: 3px;
+    font-size: 50px;
+    height: 120px;
+    overflow: auto;
+}
+
+.graduateInfo_data {
+    max-height: 380px;
+    max-width: 410px;
 }
 
 .graduateInfo_rowTitle {
@@ -51,7 +56,7 @@
 }
 
 .graduateInfo_achievementsRow {
-    margin-top: 70px;
+    margin-top: 90px;
 }
 
 .graduateInfo_socialLogo {
@@ -60,11 +65,11 @@
 
 .GraduateInfo_links {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 28px;
 }
 
 .graduateInfo_link {
-    margin: 0 10px;
+    margin: 0 15px;
 }
 
 .graduateInfo_disabledLink {
@@ -72,8 +77,8 @@
 }
 
 .graduateInfo_achievementsRow .graduateInfo_rowContent {
-    height: 60px;
-    overflow: auto;
+    max-height: 140px;
+    margin-top: 20px;
 }
 
 .GraduateInfo_loader {

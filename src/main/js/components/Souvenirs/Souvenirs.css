@@ -1,8 +1,8 @@
 .souvenirs_itemPhotoFrame {
     position: relative;
-    width: 191px;
-    height: 203px;
-    background-size: 220px 232px;
+    width: 262px;
+    height: 278px;
+    background-size: contain;
     padding: 16px 13px 13px 14px;
     display: -webkit-box;
     display: -moz-box;
@@ -19,10 +19,11 @@
 
 .souvenirs_arrow {
     cursor: pointer;
-    vertical-align: 209px;
-    background-size: 23px 38px;
-    width: 23px;
-    height: 38px;
+    vertical-align: top;
+    margin-top: 133px;
+    width: 30px;
+    height: 48px;
+    background-size: cover;
 }
 
 .souvenirs_arrow_disabled {
@@ -30,13 +31,12 @@
 }
 
 .modal_content.souvenirs_content {
-    margin-left: 63px;
-    margin-top: 37px;
-    height: 376px;
+    margin: 47px 0 0 84px;
+    height: 542px;
 }
 
 .souvenirs_item {
-    margin: 0 29px 0 18px;
+    margin: 0 37px 0 23px;
 }
 
 .souvenirs_itemImage {
@@ -49,22 +49,21 @@
 }
 
 .souvenirs_item:last-child {
-    margin-right: 10px;
+    margin-right: 23px;
 }
 
 .souvenirs_itemName {
-    width: 212px;
-    font-size: 22px;
-    margin: 10px 0 0 8px;
+    width: 273px;
+    font-size: 28px;
+    margin: 11px 0 0 12px;
 }
 
 .button.souvenirs_buyButton {
     color: black;
-    margin: 45px 0 0 41px;
-    width: 149px;
-    background-color: #91b026;
-    font-size: 28px;
-    line-height: 45px;
+    margin: 59px 0 0 54px;
+    width: 196px;
+    font-size: 36px;
+    line-height: 60px;
     /*padding: 6px 0 0 35px;*/
 }
 
@@ -74,11 +73,11 @@
 
 .souvenirs_enlarge {
     background-image: url(./images/enlarge.png);
-    width: 75px;
-    height: 75px;
+    width: 100px;
+    height: 100px;
     position: absolute;
-    top: 80px;
-    left: 71px;
+    top: 107px;
+    left: 93px;
 }
 
 .souvenirs_itemImage:hover .souvenirs_enlarge {

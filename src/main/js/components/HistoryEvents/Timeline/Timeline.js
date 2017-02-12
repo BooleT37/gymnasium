@@ -5,9 +5,9 @@ import './Timeline.css';
 import React from 'react';
 import classnames from 'classnames';
 
-const scaleWidth = 694;
-const selectorHalfWidth = 73;
-const mousHookRadius = 10;
+const scaleWidth = 907;
+const selectorHalfWidth = 95;
+const mousHookRadius = 12;
 //import classnames from 'classnames';
 
 export default class Timeline extends React.Component {

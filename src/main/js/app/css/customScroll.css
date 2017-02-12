@@ -35,8 +35,8 @@
             user-select: none; }
   .custom-scroll .custom-scrollbar {
     position: absolute;
-    height: 100%;
-    width: 14px;
+    height: calc(100% - 20px);
+    width: 16px;
     right: 3px;
     opacity: .7;
     z-index: 1;
@@ -45,7 +45,9 @@
     padding-bottom: 6px;
     box-sizing: border-box;
     will-change: opacity;
-    pointer-events: none; }
+    pointer-events: none;
+    margin-top: 10px;
+    }
     .custom-scroll .custom-scrollbar.custom-scrollbar-rtl {
       right: auto;
       left: 3px; }
@@ -56,7 +58,7 @@
     width: 100%;
     top: 0; }
   .custom-scroll .inner-handle {
-    height: calc(100% - 4px);
+    height: calc(100% - 24px);
     margin-top: 1px;
     background-color: white;
     border: solid 1px #aca7a7;
@@ -66,11 +68,11 @@
 .custom-scroll .custom-scrollbar:after {
     content: "";
     position: absolute;
-    left: 6px;
+    left: 7px;
     height: 100%;
     width: 1px;
-    background-color: #c4c4c4;
+    background-color: #bbbbbb;
     z-index: -1;
-    border-left: solid 1px #ebebeb;
+    border-left: solid 1px #eeeeee;
     border-right: solid 1px #f2f2f2;
 }

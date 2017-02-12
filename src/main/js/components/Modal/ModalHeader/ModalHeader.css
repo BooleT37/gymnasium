@@ -1,21 +1,23 @@
 .modal_header {
     text-align: center;
+    height: 111px;
 }
 
 .modal_title {
-    font: 38px Karton-Regular;
-    vertical-align: 12px;
+    font: 50px/111px Karton-Regular;
     margin-right: 15px;
+    vertical-align: middle;
 }
 
 .modal_icon {
     display: inline-block;
-    width: 64px;
-    height: 64px;
+    width: 99px;
+    height: 85px;
+    vertical-align: middle;
 }
 
 .modal_icon.modal_icon_leaf {
-    width: 48px;
+    width: 64px;
     background-image: url(./images/leaf.png); 
 }
 
@@ -24,7 +26,7 @@
 }
 
 .modal_icon.modal_icon_admin {
-    width: 46px;
+    width: 71px;
     background-image: url(./images/admin.png);
 }
 
@@ -33,29 +35,25 @@
 }
 
 .modal_icon.modal_icon_book {
-    width: 74px;
+    width: 121px;
     background-image: url(./images/book.png);
 }
 
 .modal_closeButton {
     position: absolute;
-    top: 20px;
-    right: 30px;
+    top: 25px;
+    right: 25px;
 }
 
 .modal_backButton {
     position: absolute;
-    top: 20px;
-    right: 80px;
+    top: 25px;
+    right: 90px;
     background-image: url(./images/back.png);
-    height: 40px;
-    width: 40px;
+    height: 53px;
+    width: 53px;
 }
 
-.modal_header_top {
-    height: 75px;
-}
-
-.modal_headerHr {
+/*.modal_headerHr {
     box-shadow: 0px 2px 5px grey;
-}
+}*/

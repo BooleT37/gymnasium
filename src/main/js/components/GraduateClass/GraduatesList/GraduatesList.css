@@ -1,15 +1,14 @@
 .graduatesList {
-    padding: 10px 0 10px;
+    padding: 10px 0;
 }
 
 .graduatesListOuterContainer {
-    width: 222px;
+    width: 288px;
     display: inline-block;
-    vertical-align: top;
 } 
 
 .graduatesListInnerContainer {
-    max-height: 410px;
+    max-height: 549px;
 }
 
 .graduatesList_loader {

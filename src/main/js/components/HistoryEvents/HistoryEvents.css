@@ -1,16 +1,18 @@
 .historyEvents_arrowLeft, .historyEvents_innerContent, .historyEvents_arrowRight {
     display: inline-block;
+    vertical-align: top;
 }
 
 .historyEvents_innerContent {
-    width: 775px;
+    width: 1013px;
 }
 
 .historyEvents_arrowLeft, .historyEvents_arrowRight {
     cursor: pointer;
-    width: 21px;
-    height: 34px;
-    background-size: 21px 34px;
+    width: 27px;
+    height: 44px;
+    background-size: cover;
+    margin-top: 186px;
     vertical-align: -160px;
 }
 
@@ -19,7 +21,8 @@
 }
 
 .historyEvents_content {
-    padding: 0 30px;
+    padding: 0 39px;
+    width: 1122px;
 }
 
 .historyEvents_left, .historyEvents_right {
@@ -28,16 +31,16 @@
 }
 
 .historyEvents_photoFrame {
-    width: 285px;
-    height: 223px;
+    width: 313px;
+    height: 243px;
     background-image: url(./images/photoFrame.png);
-    margin: 41px 0 51px 16px;
-    padding: 13px 0 0 17px;
+    margin: 54px 0 51px 21px;
+    padding: 16px 60px 49px 22px;
 }
 
 .historyEvents_photoContainer {
-    width: 239px;
-    height: 185px;
+    width: 100%;
+    height: 100%;
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -48,8 +51,8 @@
 }
 
 .historyEvents_imagePreview {
-    max-width: 239px;
-    max-height: 185px;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .historyEvents_button {
@@ -62,31 +65,32 @@
 }
 
 .historyEvents_leftButtons {
-    margin: 51px 0 0 30px;
+    margin: 67px 0 0 40px;
 }
 
 .historyEvents_photosButton {
-    width: 132px;
-    height: 45px;
+    width: 173px;
+    height: 59px;
     background-image: url(./images/photosButton.png);
-    margin-right: 19px;
+    margin-right: 24px;
 }
 
 .historyEvents_videosButton {
-    width: 137px;
-    height: 45px;
+    width: 179px;
+    height: 59px;
     background-image: url(./images/videosButton.png);
 }
 
 .historyEvents_right {
-    padding: 29px 0 0 35px;
+    margin: 35px 0 0 43px;
 }
 
 .historyEvents_date {
-    font-size: 36px;
-    margin-bottom: 27px;
+    font-size: 50px;
+    margin-bottom: 34px;
 }
 
 .historyEvents_description {
-    width: 415px;
+    margin-left: 3px;
+    width: 545px;
 }

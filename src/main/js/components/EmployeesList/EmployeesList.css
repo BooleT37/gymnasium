@@ -1,19 +1,12 @@
 .employeesList {
-    width: 222px;
+    width: 275px;
     display: inline-block;
     vertical-align: top;
     margin-top: 7px;
 }
 
 .employeesListInnerContainer {
-    max-height: 410px;
-}
-
-.graduateListItem {
-    position: relative;
-    padding-left: 38px;
-    margin-right: 12px;
-    cursor: pointer;
+    max-height: 542px;
 }
 
 .employeeList_item {
@@ -36,8 +29,8 @@ employeeList_item_name {
     content: "";
     position: absolute;
     left: 11px;
-    top: 4px;
-    width: 12px;
-    height: 12px;
+    top: 6px;
+    width: 16px;
+    height: 15px;
     background-image: url(./images/star.png);
 }

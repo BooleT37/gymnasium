@@ -1,6 +1,6 @@
 .graduateListItem {
     position: relative;
-    padding-left: 38px;
+    padding-left: 50px;
     margin-right: 12px;
     cursor: pointer;
 }
@@ -11,12 +11,12 @@
 }
 
 .graduateListItem_showInfo {
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
     background-image: url(./images/showGraduateInfo.png);
     position: absolute;
     right: 0px;
-    top: -10px;
+    top: -12px;
     cursor: pointer;
 }
 
@@ -28,9 +28,9 @@
 .graduateListItem_name_famous::before {
     content: "";
     position: absolute;
-    left: 11px;
-    top: 4px;
-    width: 12px;
-    height: 12px;
+    left: 23px;
+    top: 6px;
+    width: 16px;
+    height: 15px;
     background-image: url(./images/star.png);
 }

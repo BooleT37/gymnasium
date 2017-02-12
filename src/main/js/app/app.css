@@ -36,13 +36,13 @@ body {
 
 #design {
     position: fixed;
-    top: -7px;
-    left: 244px;
+    top: -22px;
+    left: 320px;
     z-index: 3;
     background-image: url('./images/design.jpg');
-    opacity: 0.8;
+    opacity: 0.5;
     width: 1280px;
-    height: 931px;
+    height: 866px;
     display: block;
 }
 
@@ -79,14 +79,14 @@ body {
 
 .facebookLogo {
     background-image: url(./images/facebookLogo.png);
-    width: 49px;
-    height: 49px;
+    width: 64px;
+    height: 64px;
 }
 
 .vkLogo {
     background-image: url(./images/vkLogo.png);
-    width: 49px;
-    height: 49px;
+    width: 64px;
+    height: 64px;
 }
 
 .arrow_left, .arrow_right {
@@ -112,21 +112,21 @@ input, textarea {
 }
 
 input {
-    height: 46px;
-    font-size: 40px;
+    height: 60px;
+    font-size: 50px;
 }
 
 textarea {
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .button {
-    height: 46px;
+    height: 60px;
     color: white;
     background-color: #91b026;
     text-align: center;
     cursor: pointer;
-    font-size: 36px;
+    font-size: 48px;
 }
 
 .closeButton {

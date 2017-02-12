@@ -1,8 +1,8 @@
 .teacherInfo {
     display: inline-block;
     vertical-align: top;
-    width: 670px;
-    height: 380px;
+    width: 885px;
+    height: 545px;
     position: relative;
 }
 
@@ -12,34 +12,33 @@
 }
 
 .teacherInfo_left {
-    margin-top: 27px;
+    margin-top: 36px;
 }
 
 .teacherInfo_photoFrame {
-    width: 288px;
-    height: 307px;
-    background-size: 328px 347px;
-    padding: 20px 20px;
+    width: 376px;
+    height: 403px;
+    background-size: contain;
+    padding: 26px;
 }
 
 .teacherInfo_photo {
-    width: 289px;
-    height: 306px;        
+    width: 377px;
+    height: 402px;
 }
 
 .teacherInfo_right {
-    width: 290px;
-    margin: 72px 0 0 26px;
+    width: 415px;
+    margin: 93px 0 0 36px;
 }
 
 .teacherInfo_title {
-    font-size: 38px;
-    margin-bottom: 33px;
+    font-size: 50px;
+    margin-bottom: 44px;
 }
 
 .teacherInfo_row {
-    margin-top: 22px;
-    margin-left: 4px;
+    margin: 26px 0 0 4px;
 }
 
 .teacherInfo_rowTitle {

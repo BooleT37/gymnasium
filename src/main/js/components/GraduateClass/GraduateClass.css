@@ -1,12 +1,13 @@
 .graduateClass_photoContainer {
     display: inline-block;
+    background-image: url(./images/photoFrame.png);
     vertical-align: top;
-    width: 618px;
-    height: 385px;
+    width: 815px;
+    height: 510px;
+    margin: 12px 0 0 37px;
+    box-shadow: 0 0 30px grey;
     border-radius: 5px;
-    box-shadow: 2px 4px 15px grey;
     padding: 10px;
-    margin: 2px 0 0 32px;
     overflow: hidden;
 }
 
@@ -17,18 +18,18 @@
 
 /* footer */
 
-.graduateClass .modal_footer_content {
-    margin: 28px 0 0 65px;
+.graduateClass .modal_footer {
+    font: 42px 'Exo 2 LightCondensed';
+    margin: 42px 0 0 86px;
 }
 
-.graduateClass .modal_footer_content div {
+.graduateClass .modal_footer div {
     display: inline-block;
     vertical-align: top;
 }
 
 .graduateClass_widget {
-    font: 32px Karton-Regular;
-    line-height: 40px;
+    font: 43px Karton-Regular;
 }
 
 /* footer - year widget */
@@ -36,13 +37,13 @@
 .graduateClass_yearSwitch {
     color: #91b026;
     cursor: pointer;
-    width: 12px;
-    height: 19px;
-    background-size: 12px 19px;
+    width: 15px;
+    height: 25px;
+    background-size: contain;
 }
 
 .graduateClass .modal_footer .graduateClass_yearSwitch {
-    vertical-align: initial;
+    vertical-align: middle;
 }
 
 .graduateClass_yearSwitch_disabled {
@@ -50,7 +51,7 @@
 }
 
 .graduateClass_yearWidget {
-    margin-right: 58px;
+    margin-right: 77px;
 }
 
 .graduateClass_graduateYear {
@@ -58,27 +59,30 @@
     box-shadow: 0px 0px 2px 2px darkgrey inset;
     padding: 2px;
     cursor: default;
-    width: 70px;
+    width: 95px;
+    height: 56px;
+    line-height: 56px;
     text-align: center;
-    margin: 0 5px;
+    margin: 5px 6px 0;
 }
 
 .graduateClass_graduateYearText {
-    margin-right: 40px;
+    margin: 2px 40px 0 0;
 }
 
 /* footer - grade and class */
 
 .graduateClass_graduateClassText {
-    margin-right: 10px;
+    margin: 2px 10px 0 0;
 }
 
 .graduateClass_grade, .graduateClass_character {
     color: gray;
-    padding: 6px 6px 0;
-    line-height: 30px;
-    height: 36px;
-    border: solid 2px white;
+    margin-top: 5px;
+    padding: 0 6px;
+    height: 58px;
+    line-height: 58px;
+    border: solid 2px transparent;
     cursor: pointer;
 }
 
@@ -89,26 +93,26 @@
 }
 
 .graduateClass_gradeWidget {
-    margin-right: 20px;
+    margin-right: 29px;
 }
 
 /* footer - "add graduate" buddon */
 
 .graduateClass_addGraduateIcon {
     cursor: pointer;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     background-image: url(./images/addGraduate.png);
 }
 
 .graduateClass_addGraduate {
     position: absolute;
-    right: 19px;
-    bottom: -5px;
+    right: 25px;
+    bottom: 29px;
 }
 
 .graduateClass_addGraduateText {
-    font-size: 20px;
-    margin: 0 23px 11px 0;
-    line-height: 19px;
+    font-size: 26px;
+    margin-right: 36px;
+    line-height: 23px;
 }

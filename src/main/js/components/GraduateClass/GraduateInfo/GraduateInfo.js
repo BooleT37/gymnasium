@@ -4,6 +4,7 @@ import './GraduateInfo.css';
 
 import React from 'react';
 import classnames from 'classnames';
+import CustomScroll from 'react-custom-scroll';
 
 import Actions from '../../../actions/Actions';
 import GraduatesStore from '../../../stores/GraduatesStore';
@@ -112,11 +113,17 @@ export default class GraduateInfo extends React.Component {
                         </div>
                     </div>
                     <div className="graduateInfo_right">
-                        <div className="graduateInfo_title">{fullNameToString(graduate.lastName, graduate.firstName, graduate.patronymic)}</div>
-                        {generateRow("Дата рождения", graduate.birthDate, true)}
-                        {generateRow("Интересы", graduate.interests, true)}
-                        {generateRow("Любимые предметы в школе", graduate.favouriteSubjects)}
-                        {generateRow("Достижения", graduate.achievements, false, "graduateInfo_achievementsRow")}
+                        <CustomScroll>
+                            <div className="graduateInfo_title">{fullNameToString(graduate.lastName, graduate.firstName, graduate.patronymic)}</div>
+                        </CustomScroll>
+                        <CustomScroll>
+                            <div className="graduateInfo_data">
+                                {generateRow("Дата рождения", graduate.birthDate, true)}
+                                {generateRow("Интересы", graduate.interests, true)}
+                                {generateRow("Любимые предметы в школе", graduate.favouriteSubjects)}
+                                {generateRow("Достижения", graduate.achievements, false, "graduateInfo_achievementsRow")}
+                            </div>
+                        </CustomScroll>
                     </div>
                 </div>
             )
