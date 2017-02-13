@@ -113,17 +113,21 @@ export default class GraduateInfo extends React.Component {
                         </div>
                     </div>
                     <div className="graduateInfo_right">
-                        <CustomScroll>
-                            <div className="graduateInfo_title">{fullNameToString(graduate.lastName, graduate.firstName, graduate.patronymic)}</div>
-                        </CustomScroll>
-                        <CustomScroll>
-                            <div className="graduateInfo_data">
-                                {generateRow("Дата рождения", graduate.birthDate, true)}
-                                {generateRow("Интересы", graduate.interests, true)}
-                                {generateRow("Любимые предметы в школе", graduate.favouriteSubjects)}
-                                {generateRow("Достижения", graduate.achievements, false, "graduateInfo_achievementsRow")}
+                        <div className="graduateInfo_table graduateInfo_rightWrapper">
+                            <div className="graduateInfo_tableRow graduateInfo_title">{fullNameToString(graduate.lastName, graduate.firstName, graduate.patronymic)}</div>
+                            <div className="graduateInfo_tableRow graduateInfo_dataWrapper">
+                                <div className="graduateInfo_tableCell graduateInfo_dataOuterWrapper">
+                                    <div className="graduateInfo_dataInnerrWrapper">
+                                        <div className="graduateInfo_data">
+                                            {generateRow("Дата рождения", graduate.birthDate, true)}
+                                            {generateRow("Интересы", graduate.interests, true)}
+                                            {generateRow("Любимые предметы в школе", graduate.favouriteSubjects)}
+                                            {generateRow("Достижения", graduate.achievements, false, "graduateInfo_achievementsRow")}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </CustomScroll>
+                        </div>
                     </div>
                 </div>
             )

@@ -32,15 +32,48 @@
     margin: 16px 0 0 44px;
 }
 
-.graduateInfo_title {
-    font-size: 50px;
-    height: 120px;
+
+.graduateInfo_rightWrapper {
+    height: 500px;
+    width: 410px;
+}
+
+.graduateInfo_dataWrapper {
+    height: 100%;
+}
+
+.graduateInfo_dataOuterWrapper {
+    height: 100%;
+}
+
+.graduateInfo_dataInnerrWrapper {
+    height: 100%;
+    position: relative;
     overflow: auto;
 }
 
+.graduateInfo_table {
+    display: table;
+}
+
+.graduateInfo_tableRow {
+    display: table-row;
+}
+
+.graduateInfo_tableCell {
+    display: table-cell;
+}
+
+.graduateInfo_title {
+    font-size: 50px;
+}
+
 .graduateInfo_data {
-    max-height: 380px;
-    max-width: 410px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .graduateInfo_rowTitle {
