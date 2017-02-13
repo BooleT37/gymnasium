@@ -24,7 +24,7 @@
     cursor: pointer;
     vertical-align: 313px;
     margin: 0 17px;
-    background-size: 28px 44px;
+    background-size: contain;
     width: 28px;
     height: 44px;
 }
