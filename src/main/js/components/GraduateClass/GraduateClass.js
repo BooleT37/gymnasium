@@ -31,6 +31,8 @@ export default class GraduateClass extends SelfUpdatingComponent {
         this.handleNextYearClick = this.handleNextYearClick.bind(this);
         this.showGraduateInfo = this.showGraduateInfo.bind(this);
         this.handleAddGraduate = this.handleAddGraduate.bind(this);
+        this.onYearInputChange = this.onYearInputChange.bind(this);
+        this.onYearInputFocus = this.onYearInputFocus.bind(this);
     }
 
     onComponentUpdate(newProps) {
@@ -89,6 +91,12 @@ export default class GraduateClass extends SelfUpdatingComponent {
         return {
             loaded: true,
             currentClass: currentClass,
+            years: years,
+            yearInputState: {
+                value: currentClass.graduateYear,
+                valid: true,
+                message: null 
+            },
             previousYear: currentYearIndex === 0 ? null : years[currentYearIndex - 1],
             nextYear: currentYearIndex === years.length - 1 ? null : years[currentYearIndex + 1],
             grades: gradesAndCharacters.grades,
@@ -165,6 +173,42 @@ export default class GraduateClass extends SelfUpdatingComponent {
             Actions.routeTo(`/graduateClasses/${this.state.currentClass.id}/addGraduate`);
     }
 
+    onYearInputChange(event) {
+        var yearStr = event.currentTarget.value;
+        if (yearStr.length > 4)
+            return;
+        if (yearStr.length < 4) {
+            this.setState({yearInputState: {
+                value: yearStr,
+                valid: false,
+                message: "Год дложен состоять из 4 цифр"
+            }});
+            return;
+        }
+        var year = parseInt(yearStr, 10);
+        if (this.state.years.indexOf(year) !== -1) {
+            if (this.state.currentClass.graduateYear === year) {
+                this.setState({yearInputState: {
+                    value: yearStr,
+                    valid: true,
+                    message: null
+                }});
+            } else {
+                this.changeYear(year);
+            }
+        } else {
+            this.setState({yearInputState: {
+                value: yearStr,
+                valid: false,
+                message: "Для этого года нет ни одного класса"
+            }});
+        }
+    }
+
+    onYearInputFocus(event) {
+        event.target.select();
+    }
+
     render() {
         var state = this.state;
 
@@ -212,7 +256,14 @@ export default class GraduateClass extends SelfUpdatingComponent {
                         "arrow_left",
                         { graduateClass_yearSwitch_disabled: !state.previousYear}
                     )} onClick={this.handlePreviousYearClick}></div>
-                    <div className="graduateClass_graduateYear">{state.currentClass.graduateYear}</div>
+                    <input
+                        type="number"
+                        maxLength={4}
+                        className={classnames("graduateClass_graduateYear", {graduateClass_graduateYear_invalid: !state.yearInputState.valid})}
+                        title={state.yearInputState.message}
+                        value={state.yearInputState.value}
+                        onChange={this.onYearInputChange}
+                        onFocus={this.onYearInputFocus} />
                     <div className={classnames(
                         "graduateClass_yearSwitch",
                         "arrow_right",

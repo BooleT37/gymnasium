@@ -39,10 +39,7 @@
     width: 15px;
     height: 25px;
     background-size: contain;
-}
-
-.graduateClass .modal_footer .graduateClass_yearSwitch {
-    vertical-align: middle;
+    margin-top: 23px;
 }
 
 .graduateClass_yearSwitch_disabled {
@@ -54,15 +51,26 @@
 }
 
 .graduateClass_graduateYear {
+    cursor: default;
     border: solid 1px gray;
     box-shadow: 0px 0px 2px 2px darkgrey inset;
     padding: 2px;
-    cursor: default;
-    width: 95px;
+    font: 43px Karton-Regular;
+    width: 105px;
     height: 56px;
     line-height: 56px;
     text-align: center;
     margin: 5px 6px 0;
+}
+
+input.graduateClass_graduateYear::-webkit-outer-spin-button,
+input.graduateClass_graduateYear::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.graduateClass_graduateYear_invalid {
+    background-color: #ffccbf;
 }
 
 .graduateClass_graduateYearText {
