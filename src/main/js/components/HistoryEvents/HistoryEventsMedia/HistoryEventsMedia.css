@@ -22,11 +22,12 @@
 
 .historyEventsMedia_arrow {
     cursor: pointer;
-    vertical-align: 313px;
+    vertical-align: top;
     margin: 0 17px;
     background-size: contain;
-    width: 28px;
+    width: 27px;
     height: 44px;
+    margin-top: 357px;
 }
 
 .historyEventsMedia_closeButton {
