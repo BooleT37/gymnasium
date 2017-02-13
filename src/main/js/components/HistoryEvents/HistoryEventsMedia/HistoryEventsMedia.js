@@ -37,7 +37,7 @@ export default class HistoryEventsMedia extends SelfUpdatingComponent {
             this.setState({ loaded: false });
             return;
         }
-        this.pathPrefix = type === "HISTORY" ? "history" : `traditions/${type}`;
+        this.pathPrefix = type === "history" ? "history" : `traditions/${type}`;
 
         this.setState({
             loaded: true,

@@ -1,0 +1,68 @@
+.traditions_content {
+    margin: 45px 0 7px 162px;
+    width: 1098px;
+    height: 498px;
+}
+
+.traditions_row {
+    margin-bottom: 50px;
+}
+
+.traditions_column {
+    display: inline-block;
+    vertical-align: top;
+    text-decoration: none;
+    color: black;
+    border-radius: 5px;
+}
+
+.traditions_column:hover {
+    background-color: rgba(200, 200, 200, 0.2);
+}
+
+.traditions_column_1 {
+    width: 604px;
+}
+
+.traditions_column_2 {
+    width: 430px;
+}
+
+.tradition_icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 17px;
+    height: 120px;
+    background-image: url(./images/icons.png);
+}
+
+.tradition_icon_scroll {
+    width: 130px;
+    background-position-x: left;
+}
+
+.tradition_icon_darts {
+    width: 129px;
+    background-position-x: -130px;
+}
+
+.tradition_icon_easel {
+    width: 130px;
+    background-position-x: -259px;
+}
+
+.tradition_icon_bulbs {
+    width: 116px;
+    background-position-x: -389px;
+}
+
+.tradition_icon_map {
+    width: 119px;
+    background-position-x: -505px;
+}
+
+.traditions_itemName {
+    font: 34px Karton-Regular;
+    display: inline-block;
+    vertical-align: middle;
+}

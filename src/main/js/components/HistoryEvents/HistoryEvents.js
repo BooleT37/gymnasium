@@ -14,21 +14,21 @@ import Actions from '../../actions/Actions';
 import HistoryEventsStore from '../../stores/HistoryEventsStore';
 
 const modalTitles = {
-    HISTORY: "ИСТОРИЯ",
-    LITERATURE_CLUB: "ЛИТЕРАТУРНЫЕ ГОСТИННЫЕ",
-    SPORT: "СПОРТ",
-    ART: "ТВОРЧЕСТВО",
-    SCIENCE: "НАУКА",
-    TRAVEL: "ПУТЕШЕСТВИЯ"
+    history: "ИСТОРИЯ",
+    literature_club: "ЛИТЕРАТУРНЫЕ ГОСТИННЫЕ",
+    sport: "СПОРТ",
+    art: "ТВОРЧЕСТВО",
+    science: "НАУКА",
+    travel: "ПУТЕШЕСТВИЯ"
 };
 
 const modalIcons = {
-    HISTORY: "book",
-    LITERATURE_CLUB: "scroll",
-    SPORT: "darts",
-    ART: "easel",
-    SCIENCE: "bulbs",
-    TRAVEL: "map"
+    history: "book",
+    literature_club: "scroll",
+    sport: "darts",
+    art: "easel",
+    science: "bulbs",
+    travel: "map"
 }
 
 export default class HistoryEvents extends SelfUpdatingComponent {
@@ -57,7 +57,7 @@ export default class HistoryEvents extends SelfUpdatingComponent {
             return;
         }
 
-        this.pathPrefix = type === "HISTORY" ? "/history" : `/traditions/${type.toLowerCase()}`;
+        this.pathPrefix = type === "history" ? "/history" : `/traditions/${type.toLowerCase()}`;
 
         
         this.firstEventForEachYear = {};
@@ -82,6 +82,7 @@ export default class HistoryEvents extends SelfUpdatingComponent {
                 previousEvent: currentEventIndex === 0 ? null : list[currentEventIndex - 1],
                 nextEvent: currentEventIndex === list.length - 1 ? null : list[currentEventIndex + 1]
             });
+        //location.hash is "#/history|(traditions/...)"
         } else {
             id = list[0].id;
             Actions.routeTo(`${this.pathPrefix}/${id}`);
@@ -126,10 +127,12 @@ export default class HistoryEvents extends SelfUpdatingComponent {
                 />
             </div> :
             null;
+
+        var backUrl = type === "history" ? null : "/traditions";
         
         return (
             <div className="historyEvents">
-                <ModalHeader title={modalTitles[type]} iconType={modalIcons[type]}/>
+                <ModalHeader title={modalTitles[type]} iconType={modalIcons[type]} backUrl={backUrl}/>
                 <div className="modal_content historyEvents_content">
                     <div
                         className={classnames("arrow_left", "historyEvents_arrowLeft", {historyEvents_arrow_disabled: state.previousEvent === null})}

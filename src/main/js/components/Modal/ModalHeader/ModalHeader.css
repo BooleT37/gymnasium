@@ -11,32 +11,64 @@
 
 .modal_icon {
     display: inline-block;
-    width: 99px;
     height: 85px;
     vertical-align: middle;
+    background-image: url(./images/icons.png); 
 }
 
 .modal_icon.modal_icon_leaf {
-    width: 64px;
-    background-image: url(./images/leaf.png); 
+    background-position-x: left;
+    width: 61px;
 }
 
 .modal_icon.modal_icon_mortarboard {
-    background-image: url(./images/mortarboard.png);
-}
-
-.modal_icon.modal_icon_admin {
-    width: 71px;
-    background-image: url(./images/admin.png);
+    background-position-x: -61px;
+    width: 100px;
 }
 
 .modal_icon.modal_icon_t-shirt {
-    background-image: url(./images/t-shirt.png);
+    background-position-x: -161px;
+    width: 102px;
 }
 
 .modal_icon.modal_icon_book {
-    width: 121px;
-    background-image: url(./images/book.png);
+    background-position-x: -263px;
+    width: 114px;
+}
+
+.modal_icon.modal_icon_admin {
+    background-position-x: -377px;
+    width: 73px;
+}
+
+.modal_icon.modal_icon_cup {
+    background-position-x: -450px;
+    width: 86px;
+}
+
+.modal_icon.modal_icon_scroll {
+    background-position-x: -536px;
+    width: 97px;
+}
+
+.modal_icon.modal_icon_darts {
+    background-position-x: -633px;
+    width: 90px;
+}
+
+.modal_icon.modal_icon_easel {
+    background-position-x: -723px;
+    width: 108px;
+}
+
+.modal_icon.modal_icon_bulbs {
+    background-position-x: -831px;
+    width: 91px;
+}
+
+.modal_icon.modal_icon_map {
+    background-position-x: -922px;
+    width: 91px;
 }
 
 .modal_closeButton {

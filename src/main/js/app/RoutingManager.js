@@ -16,6 +16,7 @@ import HistoryEvents from '../components/HistoryEvents/HistoryEvents';
 import HistoryEventsMedia from '../components/HistoryEvents/HistoryEventsMedia/HistoryEventsMedia';
 import HistoryEventsPhoto from '../components/HistoryEvents/HistoryEventsMedia/HistoryEventsPhoto/HistoryEventsPhoto';
 import HistoryEventsVideo from '../components/HistoryEvents/HistoryEventsMedia/HistoryEventsVideo/HistoryEventsVideo';
+import Traditions from '../components/Traditions/Traditions';
 
 class EmptyModal extends React.Component {
   render() {
@@ -91,7 +92,8 @@ class SouvenirOrderModal extends React.Component {
 
 class HistoryEventsModal extends React.Component {
   render() {
-    this.props.params.type = "HISTORY";
+    if (!this.props.params.type)
+      this.props.params.type = "history";
     return renderModalWithComponent(HistoryEvents, this.props.params)
   }
 }
@@ -114,15 +116,23 @@ class HistoryEventsVideoWrapper extends React.Component {
 
 class HistoryEventsPhotoModal extends React.Component {
   render() {
-    this.props.params.type = "HISTORY";
+    if (!this.props.params.type)
+      this.props.params.type = "history";
     return renderInnerModalWithComponent(HistoryEvents, HistoryEventsPhotoWrapper, this.props.params);
   }
 }
 
 class HistoryEventsVideoModal extends React.Component {
   render() {
-    this.props.params.type = "HISTORY";
+    if (!this.props.params.type)
+      this.props.params.type = "history";
     return renderInnerModalWithComponent(HistoryEvents, HistoryEventsVideoWrapper, this.props.params);
+  }
+}
+
+class TraditionsModal extends React.Component {
+  render() {
+    return renderModalWithComponent(Traditions, this.props.params);
   }
 }
 
@@ -140,6 +150,10 @@ export default class RoutingManager {
                 <Route path="/history(/:eventId)" component={HistoryEventsModal}/>
                 <Route path="/history/:eventId/photo/(:index)" component={HistoryEventsPhotoModal}/>
                 <Route path="/history/:eventId/video/(:index)" component={HistoryEventsVideoModal}/>
+                <Route path="/traditions" component={TraditionsModal}/>
+                <Route path="/traditions/:type(/:eventId)" component={HistoryEventsModal}/>
+                <Route path="/traditions/:type/:eventId/photo/(:index)" component={HistoryEventsPhotoModal}/>
+                <Route path="/traditions/:type/:eventId/video/(:index)" component={HistoryEventsVideoModal}/>
                 <Route path="*" component={null}/>
             </Router>
         ), document.getElementsByClassName('ReactModalPortal')[0]);
