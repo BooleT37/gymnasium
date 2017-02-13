@@ -8,7 +8,7 @@ import classnames from 'classnames';
 const scaleWidth = 907;
 const selectorHalfWidth = 95;
 const mousHookRadius = 12;
-//import classnames from 'classnames';
+const yearLabelsShift = 5;
 
 export default class Timeline extends React.Component {
     constructor(props) {
@@ -73,6 +73,13 @@ export default class Timeline extends React.Component {
         var currentYearIndex = this.years.indexOf(this.currentYear);
         var firstYear = this.years[0];
         var lastYear = this.years[this.years.length - 1];
+
+        var yearLabels = this.years.slice(1, this.years.length - 1).map((year, i) => 
+            (<div
+                className={classnames("timeline_yearLabel", {timeline_yearLabel_hidden: currentYear === year})}
+                style={{left: this.yearOffsets[i + 1] - yearLabelsShift}} key={i
+                }>{year}</div>)
+        )
         
         return (
             <div className="timeline">
@@ -81,6 +88,7 @@ export default class Timeline extends React.Component {
                     <div className="timeline_selector" onMouseDown={this.onSelectorMouseDown} style={{left: this.yearOffsetsWithShift[currentYearIndex]}}>
                         {currentYear}
                     </div>
+                    {yearLabels}
                 </div>
                 <div className={classnames("timeline_rightYear",{timeline_year_hidden: currentYear === lastYear})}>{lastYear}</div>
             </div>

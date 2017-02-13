@@ -35,4 +35,28 @@
     height: 175px;
     line-height: 175px;
     background-image: url(./images/selector.png);
+    z-index: 2;
+}
+
+.timeline_yearLabel {
+    position: absolute;
+    bottom: -5px;
+    font-size: 16px;
+    color: #aeacad;
+    font-family: 'Exo 2 ExtraLightCondensed';
+    z-index: 1;
+}
+
+/*.timeline_yearLabel:before {
+    content: "";
+    background-color: #91b026;
+    width: 4px;
+    height: 19px;
+    position: absolute;
+    top: -22px;
+    left: 13px;
+}*/
+
+.timeline_yearLabel_hidden {
+    display: none;
 }
