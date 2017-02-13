@@ -60,9 +60,10 @@
     position: relative;
     cursor: pointer;
     margin: 20px 0 15px 97px;
-    width: 225px;
-    height: 237px;
-    background-size: 225px 237px;
+    width: 197px;
+    height: 211px;
+    background-size: contain;
+    padding: 13px 15px 13px 13px;
 }
 
 .graduateEdit_socialLogo {
@@ -101,21 +102,39 @@
     -o-transition: all 150ms linear;
     opacity: 0;
     text-align: center;
-    font-size: 24px;
-    padding-top: 100px;
+    font-size: 26px;
+    color: black;
+    padding: 100px 10px;
     box-sizing: border-box; /* for total height to not include padding */
 }
+
+.graduateEdit_photoFrame_empty:hover .file-drop > .file-drop-target {
+    opacity: 1;
+}
+
+.graduateEdit_photoFrame_empty img {
+    transition: all 150ms linear;
+    -webkit-transition: all 150ms linear;
+    -moz-transition: all 150ms linear;
+    -ms-transition: all 150ms linear;
+    -o-transition: all 150ms linear;
+}
+
+.graduateEdit_photoFrame_empty:hover img {
+    opacity: 0.7;
+}
+
 
 .file-drop > .file-drop-target.file-drop-dragging-over-frame {
     border: none;
     background-color: rgba(0, 0, 0, 0.65);
+    color: #91b026;
     box-shadow: none;
     z-index: 50;
     opacity: 1.0;
 }
 
 .file-drop > .file-drop-target.file-drop-dragging-over-target {
-     color: #91b026;
      box-shadow: 0 0 13px 3px #91b026;
 }
 

@@ -6,6 +6,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 import SelfUpdatingComponent from '../SelfUpdatingComponent';
+import PhotoContainer from '../PhotoContainer/PhotoContainer';
 import ModalHeader from '../Modal/ModalHeader/ModalHeader';
 import ModalFooter from '../Modal/ModalFooter/ModalFooter';
 
@@ -32,16 +33,16 @@ export default class Souvenirs extends SelfUpdatingComponent {
         this.setState({
             loaded: true,
             list: storeState.list,
-            listOffset: 0
+            listOffset: storeState.listOffset
         });
     }
 
     shiftListLeft() {
-        this.setState({listOffset: this.state.listOffset - 1});
+        Actions.setSouvenirsListOffset(this.state.listOffset - 1);
     }
 
     shiftListRight() {
-        this.setState({listOffset: this.state.listOffset + 1});
+        Actions.setSouvenirsListOffset(this.state.listOffset + 1);
     }
 
     handleItemClick(event) {
@@ -63,7 +64,9 @@ export default class Souvenirs extends SelfUpdatingComponent {
         function renderItem(obj) {
             var imageElements = obj.photoName ? (
                 <div className="souvenirs_itemImage" data-id={obj.id} onClick={this.handleItemClick}>
-                    <img src={`/images/photos/souvenirs/${obj.photoName}`} alt="image"/>
+                    <PhotoContainer height={270}>
+                        <img src={`/images/photos/souvenirs/${obj.photoName}`} alt="image"/>
+                    </PhotoContainer>
                     <div className="souvenirs_enlarge"></div>
                 </div>
              ) : null;

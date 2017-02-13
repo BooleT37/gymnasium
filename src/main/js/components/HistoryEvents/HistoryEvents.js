@@ -6,6 +6,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 import SelfUpdatingComponent from '../SelfUpdatingComponent';
+import PhotoContainer from '../PhotoContainer/PhotoContainer';
 import ModalHeader from '../Modal/ModalHeader/ModalHeader';
 import ModalFooter from '../Modal/ModalFooter/ModalFooter';
 import Timeline from './Timeline/Timeline';
@@ -119,13 +120,13 @@ export default class HistoryEvents extends SelfUpdatingComponent {
             return (<div className="modal_loader">Загрузка событий...</div>);
 
         var photoPreview = (event.photoNames && event.photoNames.length) ?
-            <div className="historyEvents_photoContainer">
+            <PhotoContainer height={243}>
                 <img
                     src={`images/photos/${this.pathPrefix}/${event.photoNames[0]}`}
                     alt="Photo preview"
                     className="historyEvents_imagePreview"
                 />
-            </div> :
+            </PhotoContainer> :
             null;
 
         var backUrl = type === "history" ? null : "/traditions";

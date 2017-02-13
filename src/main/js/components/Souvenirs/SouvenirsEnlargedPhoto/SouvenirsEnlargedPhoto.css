@@ -12,22 +12,6 @@
     background-size: contain;
 }
 
-.souvenirsEnlargedPhoto_photoContainer {
-    height: 602px;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.souvenirsEnlargedPhoto_image {
-    max-width: 564px;
-    max-height: 602px;
-}
-
 .souvenirsEnlargedPhoto_closeButton {
     position: absolute;
     right: 0px;

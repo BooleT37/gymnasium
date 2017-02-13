@@ -5,6 +5,7 @@ import './SouvenirsEnlargedPhoto.css';
 import React from 'react';
 
 import SelfUpdatingComponent from '../../SelfUpdatingComponent';
+import PhotoContainer from '../../PhotoContainer/PhotoContainer';
 
 import Actions from '../../../actions/Actions';
 import SouvenirsStore from '../../../stores/SouvenirsStore';
@@ -39,9 +40,9 @@ export default class SouvenirsEnlargedPhoto extends SelfUpdatingComponent {
         return (
             <div className="souvenirsEnlargedPhoto">
                 <div className="photoFrame souvenirsEnlargedPhoto_photoFrame">
-                    <div className="souvenirsEnlargedPhoto_photoContainer">
+                    <PhotoContainer height={602}>
                         <img src={this.state.src} alt="photo" className="souvenirsEnlargedPhoto_image"/>
-                    </div>
+                    </PhotoContainer>
                     <div className="closeButton souvenirsEnlargedPhoto_closeButton" onClick={this.onCloseButtonClick}></div>
                 </div>
             </div>

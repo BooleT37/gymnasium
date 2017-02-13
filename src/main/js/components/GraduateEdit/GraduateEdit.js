@@ -6,22 +6,14 @@ import './GraduateEdit-placeholders.css';
 import React from 'react';
 import MaskedInput from 'react-maskedinput';
 import FileDrop from 'react-file-drop';
+import classnames from 'classnames';
 
 import GraduateClassesStore from '../../stores/GraduateClassesStore';
 
 import ModalHeader from '../Modal/ModalHeader/ModalHeader';
 import ModalFooter from '../Modal/ModalFooter/ModalFooter';
+import PhotoContainer from '../PhotoContainer/PhotoContainer';
 import {triggerClickEvent} from '../../utils';
-
-/*
-    Max width and height of photo image.
-    Used during use image fitting
-*/
-const photoWidth = 198;
-const photoHeight = 210;
-const photoRatio = photoWidth / photoHeight;
-const photoMarginLeft = 14;
-const photoMarginTop = 13;
 
 export default class GraduateEdit extends React.Component {
     constructor(props) {
@@ -100,42 +92,7 @@ export default class GraduateEdit extends React.Component {
     }
 
     onPhotoLoad(photo) {
-        var img = new Image();
-
-        function onLoad() {
-            var imgRatio = img.width / img.height
-
-            var width, height, marginLeft = photoMarginLeft, marginTop = photoMarginTop;
-            if (img.width < photoWidth && img.height < photoHeight) {
-                width = img.width;
-                height = img.height;
-                marginLeft += (photoWidth - img.width) / 2;
-                marginTop += (photoHeight - img.height) / 2;
-            } else {
-                if (imgRatio > photoRatio) {
-                    width = photoWidth;
-                    height = photoWidth / imgRatio;
-                    marginTop += (photoHeight - height) / 2;
-                } else {
-                    width = photoHeight * imgRatio;
-                    height = photoHeight;
-                    marginLeft += (photoWidth - width) / 2;
-                }
-            }
-
-            this.setState({
-                photo: {
-                    src: photo,
-                    width: width,
-                    height: height,
-                    marginLeft: marginLeft,
-                    marginTop: marginTop
-                }
-            });
-        };
-
-        img.onload = onLoad.bind(this);
-        img.src = photo;
+        this.setState({ photoSrc: photo });
     }
 
     handleVkLinkChange(event) {
@@ -166,21 +123,7 @@ export default class GraduateEdit extends React.Component {
                 backUrl = `/graduateClasses/${params.classId}`;
         else
             backUrl = null;
-        var image;
-        if (this.state.photo) {
-            var photo = this.state.photo;
-            var style = {
-                marginTop: photo.marginTop + "px",
-                marginLeft: photo.marginLeft + "px"
-            };
-            image = <img src={photo.src} alt="photo" width={photo.width} height={photo.height} style={style}/>;
-        } else {
-            var style = {
-                marginTop: photoMarginTop + "px",
-                marginLeft: photoMarginLeft + "px"
-            };
-            image = <img src="/images/graduateEdit_addPhoto.png" alt="photo" width={photoWidth} height={photoHeight} style={style}/>;
-        }
+        var image = <img src={this.state.photoSrc || "/images/graduateEdit_addPhoto.png"} alt="photo"/>;
 
         var content = (
             <form onSubmit={this.handleSubmit}>
@@ -210,8 +153,10 @@ export default class GraduateEdit extends React.Component {
                 <div className="graduateEdit_right">
                     <div className="graduateEdit_photoPrompt">загрузите ваше фото</div>
                     <input type="file" ref="fileInput" name="photo" className="graduateEdit_fileInput" onChange={this.handlePhotoChange}/>
-                    <div className="photoFrame graduateEdit_photoFrame" onClick={this.handlePhotoFrameClick}>
-                        {image}
+                    <div className={classnames("photoFrame", "graduateEdit_photoFrame", {graduateEdit_photoFrame_empty: !this.state.photoSrc})} onClick={this.handlePhotoFrameClick}>
+                        <PhotoContainer height={211}>
+                            {image}
+                        </PhotoContainer>
                         <FileDrop targetAlwaysVisible={true} onDrop={this.handleFileDrop}>Перетащите фото сюда</FileDrop>
                     </div>
                     <div className="graduateEdit_linkRow">

@@ -8,6 +8,7 @@ import CustomScroll from 'react-custom-scroll';
 
 import Actions from '../../../actions/Actions';
 import GraduatesStore from '../../../stores/GraduatesStore';
+import PhotoContainer from '../../PhotoContainer/PhotoContainer';
 import {fullNameToString} from '../../../utils';
 
 export default class GraduateInfo extends React.Component {
@@ -105,7 +106,9 @@ export default class GraduateInfo extends React.Component {
                 <div className="graduateInfo">
                     <div className="graduateInfo_left">
                         <div className="photoFrame graduateInfo_photoFrame">
-                            <img src={photoSrc} alt="photo" className="graduateInfo_photo"/>
+                            <PhotoContainer height={365}>
+                                <img src={photoSrc} alt="photo" className="graduateInfo_photo"/>
+                            </PhotoContainer>
                         </div>
                         <div className="GraduateInfo_links">
                             {generateLink(graduate.facebookLink, "graduateInfo_socialLogo facebookLogo")}

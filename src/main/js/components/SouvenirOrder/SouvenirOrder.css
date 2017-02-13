@@ -32,22 +32,10 @@
 }
 
 .souvenirOrder_photoFrame {
-    width: 326px;
-    height: 348px;
+    width: 318px;
+    height: 340px;
     background-size: contain;
-    padding: 18px;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.souvenirOrder_image {
-    max-width: 242px;
-    max-height: 256px;
+    padding: 22px;
 }
 
 .souvenirOrder_souvenirName {

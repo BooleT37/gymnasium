@@ -10,11 +10,12 @@ var SouvenirsStore = Reflux.createStore({
     init: function () {
         this.state = {
             list: [],
+            listOffset: 0,
             loaded: false
         }
     },
 
-    getSouvenirById(id) {
+    getSouvenirById: function(id) {
         if (!this.state.loaded)
             throw new Error("SouvenirsStore is not loaded yet");
         id = parseInt(id, 10);
@@ -22,6 +23,15 @@ var SouvenirsStore = Reflux.createStore({
         if (!found)
             throw new Error(`Cannot find souvenir with id ${id}`);
         return found;
+    },
+
+    setSouvenirsListOffset: function(offset) {
+        this.state = {
+            list: this.state.list,
+            listOffset: offset,
+            loaded: this.state.loaded
+        };
+        this.trigger(this.state);
     },
 
     lazyLoadSouvenirs: function() {
@@ -32,6 +42,7 @@ var SouvenirsStore = Reflux.createStore({
             }).done(response => {
                 this.state = {
                     list: response.entity,
+                    listOffset: this.state.listOffset,
                     loaded: true
                 };
                 this.trigger(this.state);

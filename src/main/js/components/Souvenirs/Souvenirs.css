@@ -1,16 +1,9 @@
 .souvenirs_itemPhotoFrame {
     position: relative;
-    width: 262px;
-    height: 278px;
+    width: 253px;
+    height: 272px;
     background-size: contain;
-    padding: 16px 13px 13px 14px;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 18px 18px 17px 18px;
 }
 
 .souvenirs_arrow, .souvenirs_items, .souvenirs_item {
@@ -41,11 +34,6 @@
 
 .souvenirs_itemImage {
     cursor: pointer;
-}
-
-.souvenirs_itemImage img {
-    max-width: 192px;
-    max-height: 204px;
 }
 
 .souvenirs_item:last-child {

@@ -5,6 +5,7 @@ import './SouvenirOrder.css';
 import React from 'react';
 
 import SelfUpdatingComponent from '../SelfUpdatingComponent';
+import PhotoContainer from '../PhotoContainer/PhotoContainer';
 import ModalHeader from '../Modal/ModalHeader/ModalHeader';
 import ModalFooter from '../Modal/ModalFooter/ModalFooter';
 
@@ -71,7 +72,9 @@ export default class SouvenirOrder extends SelfUpdatingComponent {
                     </div>
                     <div className="souvenirOrder_right">
                         <div className="photoFrame souvenirOrder_photoFrame">
-                            {imageElement}
+                            <PhotoContainer height={340}>
+                                {imageElement}
+                            </PhotoContainer>
                         </div>
                         <div className="souvenirOrder_souvenirName">{souvenir.name}</div>
                     </div>

@@ -3,6 +3,7 @@
 import './AdministrationEmployeeInfo.css';
 import React from 'react';
 
+import PhotoContainer from '../../PhotoContainer/PhotoContainer';
 import {fullNameToString} from '../../../utils';
 
 export default class AdministrationEmployeeInfo extends React.Component {
@@ -34,7 +35,9 @@ export default class AdministrationEmployeeInfo extends React.Component {
             <div className="administrationEmployeeInfo">
                 <div className="administrationEmployeeInfo_left">
                     <div className="photoFrame administrationEmployeeInfo_photoFrame">
-                        <img src={photoSrc} alt="photo" className="administrationEmployeeInfo_photo"></img>
+                        <PhotoContainer height={401}>
+                            <img src={photoSrc} alt="photo" className="administrationEmployeeInfo_photo"></img>
+                        </PhotoContainer>
                     </div>
                 </div>
                 <div className="administrationEmployeeInfo_right">

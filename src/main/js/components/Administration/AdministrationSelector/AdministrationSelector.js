@@ -5,6 +5,7 @@ import './AdministrationSelector.css';
 import React from 'react';
 import classnames from 'classnames';
 
+import PhotoContainer from '../../PhotoContainer/PhotoContainer';
 import Actions from '../../../actions/Actions';
 
 import {fullNameToShortString} from '../../../utils';
@@ -50,11 +51,13 @@ export default class AdministrationSelector extends React.Component {
 
     render() {
         function renderItem(obj) {
-            var photoSrc = obj.photoName ? `/images/administration_photos/${obj.photoName}` : "images/no_photo.png";
+            var photoSrc = obj.photoName ? `/images/photos/administration/${obj.photoName}` : "images/no_photo.png";
             return (
                 <div className="administrationSelector_item" onClick={this.onItemClick} key={obj.id} data-id={obj.id}>
                     <div className="photoFrame administrationSelector_itemPhotoFrame">
-                        <img className="administrationSelector_itemPhoto" src={photoSrc} alt="photo"/>
+                        <PhotoContainer height={126}>
+                            <img className="administrationSelector_itemPhoto" src={photoSrc} alt="photo"/>
+                        </PhotoContainer>
                     </div>
                     <div className="administrationSelector_itemName">
                         {fullNameToShortString(obj.lastName, obj.firstName, obj.patronymic)}

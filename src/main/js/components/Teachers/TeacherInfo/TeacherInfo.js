@@ -4,6 +4,7 @@ import './TeacherInfo.css';
 import React from 'react';
 
 import {fullNameToString} from '../../../utils';
+import PhotoContainer from '../../PhotoContainer/PhotoContainer';
 
 export default class TeacherInfo extends React.Component {
     render() {
@@ -37,7 +38,9 @@ export default class TeacherInfo extends React.Component {
             <div className="teacherInfo">
                 <div className="teacherInfo_left">
                     <div className="photoFrame teacherInfo_photoFrame">
-                        <img src={photoSrc} alt="photo" className="teacherInfo_photo" width="290" height="306"></img>
+                        <PhotoContainer height={403}>
+                            <img src={photoSrc} alt="photo" className="teacherInfo_photo"></img>
+                        </PhotoContainer>
                     </div>
                 </div>
                 <div className="teacherInfo_right">

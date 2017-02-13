@@ -1,19 +1,18 @@
-.graduateClass_photoContainer {
+.graduateClass_photoFrame {
     display: inline-block;
     background-image: url(./images/photoFrame.png);
     vertical-align: top;
-    width: 815px;
-    height: 510px;
+    width: 805px;
+    height: 500px;
     margin: 12px 0 0 37px;
     box-shadow: 0 0 30px grey;
     border-radius: 5px;
-    padding: 10px;
-    overflow: hidden;
+    padding: 15px;
 }
 
 .graduateClass_photo {
-    width: 618px;
-    height: 385px;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 /* footer */

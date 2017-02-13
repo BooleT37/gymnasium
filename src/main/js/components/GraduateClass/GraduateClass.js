@@ -15,6 +15,7 @@ import Actions from '../../actions/Actions';
 import GraduateClassesStore from '../../stores/GraduateClassesStore';
 
 //React components
+import PhotoContainer from '../PhotoContainer/PhotoContainer';
 import GraduatesList from './GraduatesList/GraduatesList';
 import GraduateInfo from './GraduateInfo/GraduateInfo';
 import ModalHeader from '../Modal/ModalHeader/ModalHeader';
@@ -170,7 +171,7 @@ export default class GraduateClass extends SelfUpdatingComponent {
         if (state.loaded === false)
             return (<div className="modal_loader">Загрузка списка классов...</div>);
 
-        var photoElement = state.currentClass.photoName ? <img src={"images/classes/" + state.currentClass.photoName} className="graduateClass_photo"></img> : null;
+        var photoElement = state.currentClass.photoName ? <img src={"images/photos/classes/" + state.currentClass.photoName} className="graduateClass_photo"></img> : null;
         var grades = state.grades.map((grade, i) => {
             if (grade === state.currentClass.grade)
                 return (<div className="graduateClass_grade graduateClass_grade_current" key={i}>{grade}</div>)
@@ -190,8 +191,10 @@ export default class GraduateClass extends SelfUpdatingComponent {
             innerContent = <GraduateInfo classId={state.currentClass.id} graduateId={state.selectedGraduateId}/>;
         } else {
             innerContent = 
-                <div className="graduateClass_photoContainer">
-                    {photoElement}
+                <div className="graduateClass_photoFrame">
+                    <PhotoContainer height={500}>
+                        {photoElement}
+                    </PhotoContainer>
                 </div>
         }
         var content = (
