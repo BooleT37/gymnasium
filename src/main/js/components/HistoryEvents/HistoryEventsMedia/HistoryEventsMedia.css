@@ -1,6 +1,6 @@
 .historyEventsMedia {
     text-align: center;
-    margin-top: 59px;
+    margin-top: 53px;
     position: relative;
 }
 
@@ -14,10 +14,10 @@
 
 .historyEventsMedia_photoFrame {
     position: relative;
-    width: 857px;
-    height: 664px;
+    width: 1013px;
+    height: 661px;
     background-image: url(./images/photoFrame.png);
-        padding: 44px 59px;
+    padding: 67px 67px;
 }
 
 .historyEventsMedia_arrow {
@@ -32,6 +32,6 @@
 .historyEventsMedia_closeButton {
     position: absolute;
     cursor: pointer;
-    top: 14px;
-    right: 14px;
+    top: 35px;
+    right: 27px;
 }
