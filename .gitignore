@@ -7,3 +7,4 @@ node_modules/
 /copyImages.cmd
 /gymnasium.log
 /src/main/resources/static/built/*
+/src/main/js/app/images/design.jpg
