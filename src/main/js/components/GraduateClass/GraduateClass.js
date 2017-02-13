@@ -197,7 +197,7 @@ export default class GraduateClass extends SelfUpdatingComponent {
         var content = (
             <div className="modal_content graduateClass_center">
                 {innerContent}
-                <GraduatesList classId={state.currentClass.id} selectedGraduateId={state.selectedGraduateId}></GraduatesList>
+                <GraduatesList classId={state.currentClass.id} showInfoOnClick={state.selectedGraduateId !== undefined && state.selectedGraduateId !== null} selectedGraduateId={state.selectedGraduateId}></GraduatesList>
             </div>
         );
         var footer = (

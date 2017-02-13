@@ -72,7 +72,7 @@ export default class GraduatesList extends React.Component {
 
     render() {
         if (this.state.loaded) {
-            var graduates = this.state.list.map((g, i) => <GraduatesListItem key={g.id} graduate={g} index={i} selected={this.state.selected && this.state.selected.id === g.id}/>)
+            var graduates = this.state.list.map((g, i) => <GraduatesListItem key={g.id} graduate={g} showInfoOnClick={this.props.showInfoOnClick} selected={this.state.selected && this.state.selected.id === g.id}/>)
             return (
                 <div className="graduatesListOuterContainer">
                     <CustomScroll>
