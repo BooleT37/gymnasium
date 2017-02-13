@@ -1,5 +1,7 @@
 var path = require('path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var webpack = require("webpack");
+var argv = require('yargs').argv;
 
 module.exports = {
     entry: './src/main/js/app/app.js',
@@ -40,6 +42,11 @@ module.exports = {
         ],
     },
     plugins: [
-        new ExtractTextPlugin("src/main/resources/static/built/bundle.css")
+        new ExtractTextPlugin("src/main/resources/static/built/bundle.css"),
+        new webpack.DefinePlugin({
+            'process.env': {
+                'DEBUG': argv.debug === 'true'
+            }
+        })
     ]
 };

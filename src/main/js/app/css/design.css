@@ -1,0 +1,18 @@
+#design {
+    position: fixed;
+    top: -22px;
+    left: 320px;
+    z-index: 3;
+    background-image: url('./../images/design.jpg');
+    opacity: 0.5;
+    width: 1280px;
+    height: 866px;
+    display: block;
+}
+
+#designSwitchButton {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 4;
+}

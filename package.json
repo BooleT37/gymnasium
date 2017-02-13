@@ -19,7 +19,7 @@
     "webpack": "^1.12.2"
   },
   "scripts": {
-    "watch": "webpack-dev-server --port 8081",
+    "watch": "webpack-dev-server --port 8081 --debug true",
     "webpack": "webpack"
   },
   "devDependencies": {
