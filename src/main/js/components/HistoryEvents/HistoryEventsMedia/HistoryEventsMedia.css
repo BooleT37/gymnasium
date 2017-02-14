@@ -2,6 +2,7 @@
     text-align: center;
     margin-top: 53px;
     position: relative;
+    min-width: 1275px;
 }
 
 .historyEventsMedia_arrow, .historyEventsMedia_photoFrame {
