@@ -24,78 +24,61 @@ class EmptyModal extends React.Component {
   }
 }
 
-function renderModalWithComponent(Component, componentParams) {
-  return (
-      <Modal isOpen={true} contentLabel="Modal" className="modal">
-        <ModalWrapper innerModalOpened={false}>
-          <Component params={componentParams}/>
-        </ModalWrapper>
-      </Modal>
-    )
+function modalWrapper(Component) {
+  return React.createClass({
+      componentWillMount: function() {
+        this.onComponentUpdate(this.props);
+      },
+      componentWillReceiveProps: function(newProps) {
+        this.onComponentUpdate(newProps);
+      },
+      onComponentUpdate: function(newProps) {
+        var prms = newProps.route.additionalParams;
+        if (prms)
+          for (var key in prms)
+            if (prms.hasOwnProperty(key))
+              newProps.params[key] = prms[key];
+      },
+      render: function() {
+        return (
+          <Modal isOpen={true} contentLabel="Modal" className="modal">
+            <ModalWrapper innerModalOpened={false}>
+              <Component params={this.props.params}/>
+            </ModalWrapper>
+          </Modal>
+        )
+      }
+  });
 }
 
-function renderInnerModalWithComponent(ModalComponent, InnerModalComponent, componentParams) {
-  return (
-      <Modal isOpen={true} contentLabel="Modal" className="modal">
-        <ModalWrapper innerModalOpened={true}>
-          <ModalComponent params={componentParams}/>
-        </ModalWrapper>
-        <InnerModalWrapper className="innerModal">
-          <InnerModalComponent params={componentParams}/>
-        </InnerModalWrapper>
-      </Modal>
-    );
-}
-
-//todo change to 1 function
-class GradClassModal extends React.Component {
-  render() {
-    return renderModalWithComponent(GraduateClass, this.props.params);
-  }
-}
-
-class GradEditModal extends React.Component {
-  render() {
-    return renderModalWithComponent(GraduateEdit, this.props.params);
-  }
-}
-
-class TeachersModal extends React.Component {
-  render() {
-    return renderModalWithComponent(Teachers, this.props.params);
-  }
-}
-
-class AdministrationModal extends React.Component {
-  render() {
-    return renderModalWithComponent(Administration, this.props.params);
-  }
-}
-
-class SouvenirsModal extends React.Component {
-  render() {
-    return renderModalWithComponent(Souvenirs, this.props.params);
-  }
-}
-
-class SouvenirsEnlargeModal extends React.Component {
-  render() {
-    return renderInnerModalWithComponent(Souvenirs, SouvenirsEnlargedPhoto, this.props.params);
-  }
-}
-
-class SouvenirOrderModal extends React.Component {
-  render() {
-    return renderModalWithComponent(SouvenirOrder, this.props.params);
-  }
-}
-
-class HistoryEventsModal extends React.Component {
-  render() {
-    if (!this.props.params.type)
-      this.props.params.type = "history";
-    return renderModalWithComponent(HistoryEvents, this.props.params)
-  }
+function innerModalWrapper(ModalComponent, InnerModalComponent) {
+  return React.createClass({
+      componentWillMount: function() {
+        this.onComponentUpdate(this.props);
+      },
+      componentWillReceiveProps: function(newProps) {
+        this.onComponentUpdate(newProps);
+      },
+      onComponentUpdate: function(newProps) {
+        var prms = newProps.route.additionalParams;
+        if (prms)
+          for (var key in prms)
+            if (prms.hasOwnProperty(key))
+              newProps.params[key] = prms[key];
+      },
+      render: function() {
+        return (
+            <Modal isOpen={true} contentLabel="Modal" className="modal">
+              <ModalWrapper innerModalOpened={true}>
+                <ModalComponent params={this.props.params}/>
+              </ModalWrapper>
+              <InnerModalWrapper className="innerModal">
+                <InnerModalComponent params={this.props.params}/>
+              </InnerModalWrapper>
+            </Modal>
+          );
+      }
+  });
 }
 
 class HistoryEventsPhotoWrapper extends React.Component {
@@ -114,46 +97,24 @@ class HistoryEventsVideoWrapper extends React.Component {
   }
 }
 
-class HistoryEventsPhotoModal extends React.Component {
-  render() {
-    if (!this.props.params.type)
-      this.props.params.type = "history";
-    return renderInnerModalWithComponent(HistoryEvents, HistoryEventsPhotoWrapper, this.props.params);
-  }
-}
-
-class HistoryEventsVideoModal extends React.Component {
-  render() {
-    if (!this.props.params.type)
-      this.props.params.type = "history";
-    return renderInnerModalWithComponent(HistoryEvents, HistoryEventsVideoWrapper, this.props.params);
-  }
-}
-
-class TraditionsModal extends React.Component {
-  render() {
-    return renderModalWithComponent(Traditions, this.props.params);
-  }
-}
-
 export default class RoutingManager {
     run() {
         render((
             <Router history={hashHistory}>
-                <Route path="/graduateClasses(/:classId(/graduates(/:graduateId)))" component={GradClassModal}/>
-                <Route path="/graduateClasses/:classId(/graduates(/:graduateId))/addGraduate" component={GradEditModal}/>
-                <Route path="/teachers(/:teacherId)" component={TeachersModal}/>
-                <Route path="/administration(/:employeeId)" component={AdministrationModal}/>
-                <Route path="/souvenirs" component={SouvenirsModal}/>
-                <Route path="/souvenirs/enlarge/:souvenirId" component={SouvenirsEnlargeModal}/>
-                <Route path="/souvenirs/order/:souvenirId" component={SouvenirOrderModal}/>
-                <Route path="/history(/:eventId)" component={HistoryEventsModal}/>
-                <Route path="/history/:eventId/photo/(:index)" component={HistoryEventsPhotoModal}/>
-                <Route path="/history/:eventId/video/(:index)" component={HistoryEventsVideoModal}/>
-                <Route path="/traditions" component={TraditionsModal}/>
-                <Route path="/traditions/:type(/:eventId)" component={HistoryEventsModal}/>
-                <Route path="/traditions/:type/:eventId/photo/(:index)" component={HistoryEventsPhotoModal}/>
-                <Route path="/traditions/:type/:eventId/video/(:index)" component={HistoryEventsVideoModal}/>
+                <Route path="/graduateClasses(/:classId(/graduates(/:graduateId)))" component={modalWrapper(GraduateClass)}/>
+                <Route path="/graduateClasses/:classId(/graduates(/:graduateId))/addGraduate" component={modalWrapper(GraduateEdit)}/>
+                <Route path="/teachers(/:teacherId)" component={modalWrapper(Teachers)}/>
+                <Route path="/administration(/:employeeId)" component={modalWrapper(Administration)}/>
+                <Route path="/souvenirs" component={modalWrapper(Souvenirs)}/>
+                <Route path="/souvenirs/enlarge/:souvenirId" component={innerModalWrapper(Souvenirs, SouvenirsEnlargedPhoto)}/>
+                <Route path="/souvenirs/order/:souvenirId" component={modalWrapper(SouvenirOrder)}/>
+                <Route path="/history(/:eventId)" additionalParams={{type: "history"}} component={modalWrapper(HistoryEvents)}/>
+                <Route path="/history/:eventId/photo/(:index)" additionalParams={{type: "history"}} component={innerModalWrapper(HistoryEvents, HistoryEventsPhotoWrapper)}/>
+                <Route path="/history/:eventId/video/(:index)" additionalParams={{type: "history"}} component={innerModalWrapper(HistoryEvents, HistoryEventsVideoWrapper)}/>
+                <Route path="/traditions" component={modalWrapper(Traditions)}/>
+                <Route path="/traditions/:type(/:eventId)" component={modalWrapper(HistoryEvents)}/>
+                <Route path="/traditions/:type/:eventId/photo/(:index)" component={innerModalWrapper(HistoryEvents, HistoryEventsPhotoWrapper)}/>
+                <Route path="/traditions/:type/:eventId/video/(:index)" component={innerModalWrapper(HistoryEvents, HistoryEventsVideoWrapper)}/>
                 <Route path="*" component={null}/>
             </Router>
         ), document.getElementsByClassName('ReactModalPortal')[0]);
