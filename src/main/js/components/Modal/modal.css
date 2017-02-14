@@ -15,7 +15,7 @@
     height: 542px;
 }
 
-.modal_loader {
+.modal_loader, .modal_empty {
     color: dimgray;
     position: absolute;
     margin: 0 auto;

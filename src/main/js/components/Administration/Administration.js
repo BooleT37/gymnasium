@@ -28,6 +28,13 @@ export default class Administration extends SelfUpdatingComponent {
             this.setState({ loaded: false });
             return;
         }
+        if (storeState.list.length === 0) {
+            this.setState({
+                loaded: true,
+                empty: true
+            });
+            return;
+        }
         var selected = props.params.employeeId ? AdministrationStore.getEmployeeById(parseInt(props.params.employeeId, 10)) : null;
         this.setState({
             loaded: true,
@@ -43,11 +50,29 @@ export default class Administration extends SelfUpdatingComponent {
     render() {
         var state = this.state;
         if (state.loaded === false)
-            return (<div className="modal_loader">Загрузка списка сотрудников...</div>);
+            return (
+                <div className="administration">
+                    <ModalHeader title="АДМИНИСТРАЦИЯ" iconType="admin"/>
+                    <div className="modal_content">
+                        <div className="modal_loader">Загрузка списка сотрудников...</div>
+                    </div>
+                    <ModalFooter/>
+                </div>);
+        
+        if (state.empty === true)
+            return (
+                <div className="administration">
+                    <ModalHeader title="АДМИНИСТРАЦИЯ" iconType="admin"/>
+                    <div className="modal_content">
+                        <div className="modal_empty">Список сотрудников пуст. Приносим свои извинения.</div>
+                    </div>
+                    <ModalFooter/>
+                </div>
+            );
 
         var modelTitle = state.selected ? 
             state.selected.position === "DIRECTOR" ? "ДИРЕКТОР" : "ЗАМ. ДИРЕКТОРА" :
-            "АДМИНИСТРАЦИЯ"
+            "АДМИНИСТРАЦИЯ";
 
         var backUrl = state.selected ? "/administration" : null;
 

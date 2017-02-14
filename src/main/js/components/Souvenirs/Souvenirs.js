@@ -30,6 +30,13 @@ export default class Souvenirs extends SelfUpdatingComponent {
             this.setState({ loaded: false });
             return;
         }
+        if (storeState.list.length === 0) {
+            this.setState({
+                loaded: true,
+                empty: true
+            });
+            return;
+        }
         this.setState({
             loaded: true,
             list: storeState.list,
@@ -59,7 +66,25 @@ export default class Souvenirs extends SelfUpdatingComponent {
     render() {
         var state = this.state;
         if (state.loaded === false)
-            return (<div className="modal_loader">Загрузка сувениров...</div>);
+            return (
+                <div className="souvenirs">
+                    <ModalHeader title="СУВЕНИРЫ" iconType="t-shirt"/>
+                    <div className="modal_content">
+                        <div className="modal_loader">Загрузка сувениров...</div>
+                    </div>
+                    <ModalFooter/>
+                </div>);
+        
+        if (state.empty === true)
+            return (
+                <div className="souvenirs">
+                    <ModalHeader title="СУВЕНИРЫ" iconType="t-shirt"/>
+                    <div className="modal_content">
+                        <div className="modal_empty">Список сувениров пуст. Приносим свои извинения.</div>
+                    </div>
+                    <ModalFooter/>
+                </div>
+            );
 
         function renderItem(obj) {
             var imageElements = obj.photoName ? (

@@ -55,6 +55,20 @@ export default class GraduateClass extends SelfUpdatingComponent {
             this.setState({ loaded: false });
             return;
         }
+        var storeIsEmpty = true;
+        for (var key in storeState.classesDict)
+            if (storeState.classesDict.hasOwnProperty(key)) {
+                storeIsEmpty = false;
+                break;
+            }
+        if (storeIsEmpty) {
+            this.setState({
+                loaded: true,
+                empty: true
+            });
+            return;
+        }
+
         //location.hash is "#/GraduateClasses/:classId" or "#/GraduateClasses/:classId/graduates/:graduateId"
         if (props.params.classId) {
             var state;
@@ -213,7 +227,25 @@ export default class GraduateClass extends SelfUpdatingComponent {
         var state = this.state;
 
         if (state.loaded === false)
-            return (<div className="modal_loader">Загрузка списка классов...</div>);
+            return (
+                <div className="graduateClass">
+                    <ModalHeader title="ВЫПУСКНИКИ" iconType="leaf"/>
+                    <div className="modal_content">
+                        <div className="modal_loader">Загрузка списка классов...</div>
+                    </div>
+                    <ModalFooter/>
+                </div>
+            );
+        if (state.empty === true)
+            return (
+                <div className="graduateClass">
+                    <ModalHeader title="ВЫПУСКНИКИ" iconType="leaf"/>
+                    <div className="modal_content">
+                        <div className="modal_empty">Список выпускников пуст. Приносим свои извинения.</div>
+                    </div>
+                    <ModalFooter/>
+                </div>
+            );
 
         var photoElement = state.currentClass.photoName ? <img src={"images/photos/classes/" + state.currentClass.photoName} className="graduateClass_photo"></img> : null;
         var grades = state.grades.map((grade, i) => {

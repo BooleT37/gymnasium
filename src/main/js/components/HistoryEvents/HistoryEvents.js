@@ -58,6 +58,14 @@ export default class HistoryEvents extends SelfUpdatingComponent {
             return;
         }
 
+        if (list.length === 0) {
+            this.setState({
+                loaded: true,
+                empty: true
+            });
+            return;
+        }
+
         this.pathPrefix = type === "history" ? "/history" : `/traditions/${type.toLowerCase()}`;
 
         
@@ -116,8 +124,27 @@ export default class HistoryEvents extends SelfUpdatingComponent {
         var type = this.props.params.type;
         var event = state.currentEvent;
 
-        if (state.loaded === false || type === undefined)
-            return (<div className="modal_loader">Загрузка событий...</div>);
+        if (state.loaded === false)
+            return (
+                <div className="historyEvents">
+                    <ModalHeader title={modalTitles[type]} iconType={modalIcons[type]} backUrl={backUrl}/>
+                    <div className="modal_content">
+                        <div className="modal_loader">Загрузка событий...</div>
+                    </div>
+                    <ModalFooter/>
+                </div>
+            );
+
+        if (state.empty === true)
+            return (
+                <div className="historyEvents">
+                    <ModalHeader title={modalTitles[type]} iconType={modalIcons[type]} backUrl={backUrl}/>
+                    <div className="modal_content">
+                        <div className="modal_empty">Список событий пуст. Приносим свои извинения.</div>
+                    </div>
+                    <ModalFooter/>
+                </div>
+            );
 
         var photoPreview = (event.photoNames && event.photoNames.length) ?
             <PhotoContainer height={243}>

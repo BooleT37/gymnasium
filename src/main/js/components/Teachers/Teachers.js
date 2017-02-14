@@ -27,6 +27,13 @@ export default class Teachers extends SelfUpdatingComponent {
             this.setState({ loaded: false });
             return;
         }
+        if (storeState.list.length === 0) {
+            this.setState({
+                loaded: true,
+                empty: true
+            });
+            return;
+        }
         var id = parseInt(this.props.params.teacherId, 10);
         if (!id) {
             id = storeState.list[0].id;
@@ -47,7 +54,25 @@ export default class Teachers extends SelfUpdatingComponent {
     render() {
         var state = this.state;
         if (state.loaded === false)
-            return (<div className="modal_loader">Загрузка списка учителей...</div>);
+            return (
+                <div className="teachers">
+                    <ModalHeader title="УЧИТЕЛЯ" iconType="mortarboard"/>
+                    <div className="modal_content">
+                        <div className="modal_loader">Загрузка списка учителей...</div>
+                    </div>
+                    <ModalFooter/>
+                </div>
+            );
+        if (state.empty === true)
+            return (
+                <div className="teachers">
+                    <ModalHeader title="УЧИТЕЛЯ" iconType="mortarboard"/>
+                    <div className="modal_content">
+                        <div className="modal_empty">Список учителей пуст. Приносим свои извинения.</div>
+                    </div>
+                    <ModalFooter/>
+                </div>
+            );
         return (
             <div className="teachers">
                 <ModalHeader title="УЧИТЕЛЯ" iconType="mortarboard"/>
