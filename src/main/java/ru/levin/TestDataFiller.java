@@ -254,7 +254,6 @@ public class TestDataFiller {
         historyEventDao.add(new HistoryEvent(LocalDate.of(2015, 11, 16), shortLoremIpsum, HistoryEventType.ART, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(2003, 4, 11), shortLoremIpsum, HistoryEventType.SCIENCE, Arrays.asList("1.jpg", "2.jpg"), Arrays.asList("SampleVideo_1280x720_1mb.mp4", "SampleVideo_720x480_1mb.mp4")));
         historyEventDao.add(new HistoryEvent(LocalDate.of(2003, 7, 5), shortLoremIpsum, HistoryEventType.SCIENCE, null, null));
-        historyEventDao.add(new HistoryEvent(LocalDate.of(2014, 12, 14), shortLoremIpsum, HistoryEventType.SCIENCE, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(1995, 3, 15), shortLoremIpsum, HistoryEventType.TRAVEL, Arrays.asList("1.jpg", "2.jpg"), Arrays.asList("SampleVideo_1280x720_1mb.mp4", "SampleVideo_720x480_1mb.mp4")));
         historyEventDao.add(new HistoryEvent(LocalDate.of(1999, 9, 6), shortLoremIpsum, HistoryEventType.TRAVEL, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(2004, 4, 26), shortLoremIpsum, HistoryEventType.TRAVEL, null, null));

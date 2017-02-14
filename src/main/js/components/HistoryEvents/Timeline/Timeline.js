@@ -5,6 +5,8 @@ import './Timeline.css';
 import React from 'react';
 import classnames from 'classnames';
 
+import {removeDuplicates} from '../../../utils';
+
 const scaleWidth = 907;
 const selectorHalfWidth = 95;
 const mousHookRadius = 12;
@@ -26,12 +28,17 @@ export default class Timeline extends React.Component {
     }
     
     onComponentUpdate(newProps) {
-        this.years = newProps.list.map(e => e.date.getFullYear()).sort((a, b) => a - b);
-        var firstYear = this.years[0];
-        var lastYear = this.years[this.years.length - 1];
-        var yearInterval = lastYear - firstYear;
-        this.yearOffsets = this.years.map(y => scaleWidth * (y - firstYear) / yearInterval);
-        this.yearOffsetsWithShift = this.yearOffsets.map(offset => offset - selectorHalfWidth);
+        this.years = removeDuplicates(newProps.list.map(e => e.date.getFullYear())).sort((a, b) => a - b);
+        if (this.years.length === 1) {
+            this.yearOffsets = [0];
+            this.yearOffsetsWithShift = [-selectorHalfWidth];
+        } else {
+            var firstYear = this.years[0];
+            var lastYear = this.years[this.years.length - 1];
+            var yearInterval = lastYear - firstYear;
+            this.yearOffsets = this.years.map(y => scaleWidth * (y - firstYear) / yearInterval);
+            this.yearOffsetsWithShift = this.yearOffsets.map(offset => offset - selectorHalfWidth);
+        }
         this.currentYear = this.props.current.date.getFullYear();
     }
 
@@ -90,7 +97,7 @@ export default class Timeline extends React.Component {
                     </div>
                     {yearLabels}
                 </div>
-                <div className={classnames("timeline_rightYear",{timeline_year_hidden: currentYear === lastYear})}>{lastYear}</div>
+                <div className={classnames("timeline_rightYear",{timeline_year_hidden: this.years.length !== 1 && currentYear === lastYear})}>{lastYear}</div>
             </div>
         )
     }
