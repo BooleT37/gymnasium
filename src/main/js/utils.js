@@ -34,6 +34,8 @@ export function triggerClickEvent(el) {
 }
 
 export function addBreakLines(text, number) {
+    if (!text)
+        return "";
     var React = require('react');
     if (number === undefined)
         number = 1;
