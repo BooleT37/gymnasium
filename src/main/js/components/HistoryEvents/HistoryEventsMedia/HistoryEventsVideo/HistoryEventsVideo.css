@@ -1,4 +1,4 @@
-.video-js {
+.historyEventsVideo .video-js {
     width: 1012px;
     height: 661px;
 }
@@ -37,7 +37,7 @@
 }
 
 .historyEventsVideo .video-js .vjs-control-bar {
-    height: 77px;
+    height: 66px;
 }
 
 .historyEventsVideo .video-js .vjs-control {
@@ -45,7 +45,7 @@
 }
 
 .historyEventsVideo .video-js .vjs-control:before {
-    line-height: initial;
+    line-height: normal;
 }
 
 .historyEventsVideo .video-js .vjs-tech {
@@ -141,7 +141,7 @@
 }
 
 .historyEventsVideo .video-js .vjs-progress-control:hover .vjs-progress-holderspan.vjs-control-text {
-    font-size: initial;
+    font-size: normal;
 }
 
 .historyEventsVideo .video-js .vjs-progress-control:hover .vjs-progress-holder {
