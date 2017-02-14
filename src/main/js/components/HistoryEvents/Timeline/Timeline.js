@@ -19,8 +19,9 @@ export default class Timeline extends React.Component {
 
         this.onSelectorMouseDown = this.onSelectorMouseDown.bind(this);
         this.onDocumentMouseMove = this.onDocumentMouseMove.bind(this);
-        // this.addMouseMoveListener = this.addMouseMoveListener.bind(this);
-        // this.removeMouseMoveListener = this.removeMouseMoveListener.bind(this);
+
+        this.selectPreviousYear = this.selectPreviousYear.bind(this);
+        this.selectNextYear = this.selectNextYear.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -43,10 +44,8 @@ export default class Timeline extends React.Component {
     }
 
     componentDidMount() {
-        // console.log(this.scaleRect.left);
         var left = this.scaleRect.left;
         this.mouseHooks = this.yearOffsets.map(offset => {var center = offset + left; return {left: center - mousHookRadius, right: center + mousHookRadius}});
-        // console.log(this.mouseHooks);
     }
 
     onSelectorMouseDown(e) {
@@ -65,12 +64,23 @@ export default class Timeline extends React.Component {
     }
 
     onDocumentMouseMove(e) {
-        // console.log(e.screenX);
         for (let i=0; i<this.mouseHooks.length; i++) {
             if (this.years[i] !== this.currentYear && this.mouseHooks[i].left <= e.screenX && e.screenX <= this.mouseHooks[i].right)
                 this.props.onYearChange(this.years[i]);
         }
         
+    }
+
+    selectPreviousYear() {
+        var currentYearIndex = this.years.indexOf(this.currentYear);
+        if (currentYearIndex !== 0)
+            this.props.onYearChange(this.years[currentYearIndex - 1]);
+    }
+
+    selectNextYear() {
+        var currentYearIndex = this.years.indexOf(this.currentYear);
+        if (currentYearIndex !== this.years.length - 1)
+            this.props.onYearChange(this.years[currentYearIndex + 1]);
     }
 
     render() {
@@ -93,7 +103,9 @@ export default class Timeline extends React.Component {
                 <div className={classnames("timeline_leftYear",{timeline_year_hidden: currentYear === firstYear})}>{firstYear}</div>
                 <div className="timeline_scale" ref={(div) => {if (div) this.scaleRect = div.getBoundingClientRect()}}>
                     <div className="timeline_selector" onMouseDown={this.onSelectorMouseDown} style={{left: this.yearOffsetsWithShift[currentYearIndex]}}>
-                        {currentYear}
+                        <div className="timeline_selectorLeftarrow" onClick={this.selectPreviousYear}></div>
+                        <div className="timeline_selectorYear">{currentYear}</div>
+                        <div className="timeline_selectorRightarrow" onClick={this.selectNextYear}></div>
                     </div>
                     {yearLabels}
                 </div>
