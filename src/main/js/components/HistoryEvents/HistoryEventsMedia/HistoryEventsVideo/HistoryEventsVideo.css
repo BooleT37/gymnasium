@@ -50,6 +50,7 @@
 
 .historyEventsVideo .video-js .vjs-tech {
     height: 600px;
+    background-color: black;
 }
 
 .historyEventsVideo .video-js .vjs-progress-holder {
