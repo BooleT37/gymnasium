@@ -32,3 +32,21 @@ export function triggerClickEvent(el) {
         el.click();
     }
 }
+
+export function addBreakLines(text, number) {
+    var React = require('react');
+    if (number === undefined)
+        number = 1;
+    
+    function addParagraph(newArray, currentValue, index, array) {
+        newArray.push(currentValue);
+        if (index !== array.length - 1) {
+            var newList = [];
+            for (var i = 0; i < number; i++)
+                newList.push(<br key={`${index}-${i}`}/>);
+            newArray = newArray.concat(newList);
+        }
+        return newArray;
+    }
+    return text.split(/\n/).reduce(addParagraph, []);
+}

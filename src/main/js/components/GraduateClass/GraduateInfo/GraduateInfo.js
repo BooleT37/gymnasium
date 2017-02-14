@@ -9,7 +9,7 @@ import CustomScroll from 'react-custom-scroll';
 import Actions from '../../../actions/Actions';
 import GraduatesStore from '../../../stores/GraduatesStore';
 import PhotoContainer from '../../PhotoContainer/PhotoContainer';
-import {fullNameToString} from '../../../utils';
+import {fullNameToString, addBreakLines} from '../../../utils';
 
 export default class GraduateInfo extends React.Component {
     constructor(props) {
@@ -124,8 +124,8 @@ export default class GraduateInfo extends React.Component {
                                         <div className="graduateInfo_data">
                                             {generateRow("Дата рождения", graduate.birthDate, true)}
                                             {generateRow("Интересы", graduate.interests, true)}
-                                            {generateRow("Любимые предметы в школе", graduate.favouriteSubjects)}
-                                            {generateRow("Достижения", graduate.achievements, false, "graduateInfo_achievementsRow")}
+                                            {generateRow("Любимые предметы в школе", addBreakLines(graduate.favouriteSubjects))}
+                                            {generateRow("Достижения", addBreakLines(graduate.achievements), false, "graduateInfo_achievementsRow")}
                                         </div>
                                     </div>
                                 </div>

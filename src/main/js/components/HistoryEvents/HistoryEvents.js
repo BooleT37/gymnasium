@@ -13,6 +13,7 @@ import Timeline from './Timeline/Timeline';
 
 import Actions from '../../actions/Actions';
 import HistoryEventsStore from '../../stores/HistoryEventsStore';
+import {addBreakLines} from '../../utils';
 
 const modalTitles = {
     history: "ИСТОРИЯ",
@@ -123,6 +124,7 @@ export default class HistoryEvents extends SelfUpdatingComponent {
         var state = this.state;
         var type = this.props.params.type;
         var event = state.currentEvent;
+        var backUrl = type === "history" ? null : "/traditions";
 
         if (state.loaded === false)
             return (
@@ -134,6 +136,7 @@ export default class HistoryEvents extends SelfUpdatingComponent {
                     <ModalFooter/>
                 </div>
             );
+
 
         if (state.empty === true)
             return (
@@ -156,8 +159,6 @@ export default class HistoryEvents extends SelfUpdatingComponent {
             </PhotoContainer> :
             null;
 
-        var backUrl = type === "history" ? null : "/traditions";
-        
         return (
             <div className="historyEvents">
                 <ModalHeader title={modalTitles[type]} iconType={modalIcons[type]} backUrl={backUrl}/>
@@ -188,8 +189,7 @@ export default class HistoryEvents extends SelfUpdatingComponent {
                                 {event.dateStr}
                             </div>
                             <div className="historyEvents_description">
-                                { /* todo: добавить обработку абзацев */ }
-                                {event.description}
+                                {addBreakLines(event.description, 2)}
                             </div>
                         </div>
                     </div>
