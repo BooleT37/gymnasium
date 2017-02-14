@@ -19,7 +19,7 @@
     <div id="wrapper">
         <header>
             <div id="title">
-                <span id="titleText">ГИМНАЗИЯ №2</span>
+                <div id="titleImage"></div>
                 <hr class="titleHr" id="titleHr_left"/>
             </div>
             <nav id="header_nav">

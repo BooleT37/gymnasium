@@ -3,7 +3,7 @@ header {
 }
 
 #header_nav {
-    padding: 43px 0px 0px 28px;
+    padding: 45px 0px 0px 28px;
 }
 
 #header_nav ul {
@@ -16,16 +16,11 @@ header {
     cursor: pointer;
 }
 
-#title {
-    color: white;
-    font: 200 87px 'Exo 2 ExtraLightCondensed', sans-serif;
-    font-stretch: condensed;
-    padding: 43px 0 13px;
-    width: 880px;
-}
-
-#titleText {
-    padding-left: 144px;
+#titleImage {
+    background-image: url(../images/title.png);
+    width: 519px;
+    height: 62px;
+    margin: 69px 0px 35px 153px;
 }
 
 .titleHr {
@@ -58,4 +53,8 @@ header {
 #title, #header_nav {
     display: inline-block;
     vertical-align: top;
+}
+
+#title {
+    width: 885px;
 }
