@@ -24,33 +24,33 @@
             </div>
             <nav id="header_nav">
                 <ul>
-                    <li class="header_link" data-linkTo="nav_graduates" style="margin-right: 62px;">
-                        <img class="header_icon" src="images/header/graduates.png" alt="graduates" style="margin: 0 0 15px 39px;"/>
-                        <div class="header_elementName">ВЫПУСКНИКИ</div>
+                    <li class="header_link" data-linkTo="nav_graduates">
+                        <img class="header_icon" src="images/header/graduates.png" alt="graduates" style="margin-bottom: 15px"/>
+                        <div class="header_elementName" style="max-width: 125px">ВЫПУСКНИКИ</div>
                     </li>
-                    <li class="header_link" data-linkTo="nav_teachers" style="margin-right: 44px;">
-                        <img class="header_icon" src="images/header/teachers.png" alt="graduates" style="margin: 0px 0 25px 4px;"/>
-                        <div class="header_elementName">УЧИТЕЛЯ</div>
+                    <li class="header_link" data-linkTo="nav_teachers">
+                        <img class="header_icon" src="images/header/teachers.png" alt="graduates" style="margin-bottom: 25px"/>
+                        <div class="header_elementName" style="max-width: 83px">УЧИТЕЛЯ</div>
                     </li>
-                    <li class="header_link" data-linkTo="nav_administration" style="margin-right: 35px;">
-                        <img class="header_icon" src="images/header/administration.png" alt="graduates" style="margin: 0 0 20px 57px;"/>
-                        <div class="header_elementName">АДМИНИСТРАЦИЯ</div>
+                    <li class="header_link" data-linkTo="nav_administration">
+                        <img class="header_icon" src="images/header/administration.png" alt="graduates" style="margin-bottom: 20px"/>
+                        <div class="header_elementName" style="max-width: 164px">АДМИНИСТРАЦИЯ</div>
                     </li>
-                    <li class="header_link" data-linkTo="nav_history" style="margin-right: 46px;">
-                        <img class="header_icon" src="images/header/history.png" alt="graduates" style="margin: 0 0 27px 6px;"/>
-                        <div class="header_elementName">ИСТОРИЯ</div>
+                    <li class="header_link" data-linkTo="nav_history">
+                        <img class="header_icon" src="images/header/history.png" alt="graduates" style="margin-bottom: 27px"/>
+                        <div class="header_elementName" style="max-width: 85px">ИСТОРИЯ</div>
                     </li>
-                    <li class="header_link" data-linkTo="nav_souvenirs" style="margin-right: 33px;">
-                        <img class="header_icon" src="images/header/souvenirs.png" alt="graduates" style="margin: 0 0 24px 14px;"/>
-                        <div class="header_elementName">СУВЕНИРЫ</div>
+                    <li class="header_link" data-linkTo="nav_souvenirs">
+                        <img class="header_icon" src="images/header/souvenirs.png" alt="graduates" style="margin-bottom: 24px"/>
+                        <div class="header_elementName" style="max-width: 99px">СУВЕНИРЫ</div>
                     </li>
                     <li class="header_link" data-linkTo="nav_traditions">
-                        <img class="header_icon" src="images/header/traditions.png" alt="graduates" style="margin: 0 0 25px 26px;"/>
-                        <div class="header_elementName">ТРАДИЦИИ</div>
+                        <img class="header_icon" src="images/header/traditions.png" alt="graduates" style="margin-bottom: 25px"/>
+                        <div class="header_elementName" style="max-width: 100px">ТРАДИЦИИ</div>
                     </li>
                 </ul>
+                <hr class="titleHr" id="titleHr_right"/>
             </nav>
-            <hr class="titleHr" id="titleHr_right"/>
         </header>
         <nav id="nav">
             <ul>

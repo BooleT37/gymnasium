@@ -1,33 +1,3 @@
-@font-face {
-    font-family: Karton;
-    src: url('./fonts/Karton.otf');
-}
-
-@font-face {
-    font-family: Karton-Regular;
-    src: url('./fonts/Karton-Regular.ttf');
-}
-
-@font-face {
-    font-family: "Exo 2 ExtraLightCondensed";
-    font-weight: 200;
-    font-stretch: condensed;
-    src: url('./fonts/Exo2-ExtraLightCondensed.otf');
-}
-
-@font-face {
-    font-family: "Exo 2 LightCondensed";
-    font-weight: 300;
-    font-stretch: condensed;
-    src: url('./fonts/Exo2-LightCondensed.otf');
-}
-
-@font-face {
-    font-family: "Exo 2 RegularCondensed";
-    font-stretch: condensed;
-    src: url('./fonts/Exo2-RegularCondensed.otf');
-}
-
 body {
     margin: 0;
     font-family: 'Exo 2 RegularCondensed', sans-serif;
@@ -50,6 +20,7 @@ body {
 #wrapper {
     margin: 0 auto;
     width: 1903px;
+    overflow-x: hidden;
 }
 
 .photoFrame {

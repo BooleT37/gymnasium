@@ -31,7 +31,7 @@ module.exports = {
                 )
             },
             {
-                test: /\.(png|ttf|otf|eot)$/,
+                test: /\.(png|ttf|otf|eot|svg|woff)$/,
                 loader: "url-loader?limit=100000&name=[name].[ext]&publicPath=../images/file-loader/&outputPath=src/main/resources/static/images/file-loader/",
             },
             {

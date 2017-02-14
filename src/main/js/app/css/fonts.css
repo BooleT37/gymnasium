@@ -1,0 +1,47 @@
+@font-face {
+    font-family: Karton;
+    src: url('../fonts/Karton/Karton.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/Karton/Karton.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('../fonts/Karton/Karton.otf') format('opentype'), /* otf? */
+        url('../fonts/Karton/Karton.woff') format('woff'), /* Pretty Modern Browsers */
+        url('../fonts/Karton/Karton.ttf')  format('truetype') /* Safari, Android, iOS */
+}
+
+@font-face {
+    font-family: Karton-Regular;
+    src: url('../fonts/Karton-Regular/Karton-Regular.eot');
+    src: url('../fonts/Karton-Regular/Karton-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Karton-Regular/Karton-Regular.otf') format('opentype'),
+        url('../fonts/Karton-Regular/Karton-Regular.woff') format('woff'),
+        url('../fonts/Karton-Regular/Karton-Regular.ttf')  format('truetype')
+}
+
+@font-face {
+    font-family: "Exo 2 ExtraLightCondensed";
+    src: url('../fonts/Exo2-ExtraLightCondensed/Exo2-ExtraLightCondensed.eot');
+    src: url('../fonts/Exo2-ExtraLightCondensed/Exo2-ExtraLightCondensed.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Exo2-ExtraLightCondensed/Exo2-ExtraLightCondensed.otf') format('opentype'),
+        url('../fonts/Exo2-ExtraLightCondensed/Exo2-ExtraLightCondensed.woff') format('woff'),
+        url('../fonts/Exo2-ExtraLightCondensed/Exo2-ExtraLightCondensed.ttf')  format('truetype')
+}
+
+@font-face {
+    font-family: "Exo 2 LightCondensed";
+    font-weight: 300;
+    font-stretch: condensed;
+    src: url('../fonts/Exo2-LightCondensed/Exo2-LightCondensed.eot');
+    src: url('../fonts/Exo2-LightCondensed/Exo2-LightCondensed.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Exo2-LightCondensed/Exo2-LightCondensed.otf') format('opentype'),
+        url('../fonts/Exo2-LightCondensed/Exo2-LightCondensed.woff') format('woff'),
+        url('../fonts/Exo2-LightCondensed/Exo2-LightCondensed.ttf')  format('truetype')
+}
+
+@font-face {
+    font-family: "Exo 2 RegularCondensed";
+    font-stretch: condensed;
+    src: url('../fonts/Exo2-RegularCondensed/Exo2-RegularCondensed.eot');
+    src: 
+        url('../fonts/Exo2-RegularCondensed/Exo2-RegularCondensed.ttf')  format('truetype'),
+        url('../fonts/Exo2-RegularCondensed/Exo2-RegularCondensed.otf') format('embedded-opentype'),
+        url('../fonts/Exo2-RegularCondensed/Exo2-RegularCondensed.woff') format('woff')
+}

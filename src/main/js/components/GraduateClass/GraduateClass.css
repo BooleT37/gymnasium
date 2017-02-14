@@ -69,6 +69,10 @@ input.graduateClass_graduateYear::-webkit-inner-spin-button {
     margin: 0;
 }
 
+input.graduateClass_graduateYear {
+    -moz-appearance:textfield;
+}
+
 .graduateClass_graduateYear_invalid {
     background-color: #ffccbf;
 }

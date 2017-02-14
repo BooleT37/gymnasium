@@ -3,17 +3,21 @@ header {
 }
 
 #header_nav {
-    padding: 45px 0px 0px 28px;
+    padding-top: 45px;
+    position: relative;
 }
 
 #header_nav ul {
-    -webkit-padding-start: 0;
+    -webkit-padding-start: 28px;
+    -moz-padding-start: 28px;
 }
 
 #header_nav li {
     display: inline-block;
     color: white;
     cursor: pointer;
+    text-align: center;
+    margin-right: 46px;
 }
 
 #titleImage {
@@ -35,15 +39,17 @@ header {
 }
 
 #titleHr_right {
-    width: 99px;
+    width: 90px;
     position: absolute;
-    top: 156px;
-    right: 0px;
+    top: 157px;
+    right: -62px;
 }
 
 .header_elementName {
     font: 200 24px 'Exo 2 ExtraLightCondensed', sans-serif;
     font-stretch: condensed;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .header_link:hover .header_elementName {
