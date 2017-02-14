@@ -17,7 +17,7 @@ public class HistoryEvent {
 
     @Column(nullable = false)
     private LocalDate date;
-    @Column(length = 1000) //todo is it enough?
+    @Column(length = 2000)
     private String description;
     @Enumerated(STRING)
     @Column(nullable = false)
