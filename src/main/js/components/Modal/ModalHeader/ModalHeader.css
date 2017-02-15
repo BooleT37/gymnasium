@@ -86,6 +86,10 @@
     width: 53px;
 }
 
+.modal_backButton:hover {
+    background-position-x: -53px;
+}
+
 /*.modal_headerHr {
     box-shadow: 0px 2px 5px grey;
 }*/

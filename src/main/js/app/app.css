@@ -86,3 +86,7 @@ textarea {
     height: 55px;
     width: 55px;
 }
+
+.closeButton:hover {
+    background-position-x: -55px;
+}
