@@ -19,7 +19,7 @@
     border: 0;
     border-radius: 0;
     left: 50%;
-    top: 50%;
+    top: calc(50% - 33px);
     margin-left: -145px;
     margin-top: -145px;
 }
@@ -139,6 +139,10 @@
 
 .historyEventsVideo .video-js .vjs-control:focus:before, .historyEventsVideo .video-js .vjs-control:hover:before, .historyEventsVideo .video-js .vjs-control:focus {
     text-shadow: 0 0 20px white;
+}
+
+.historyEventsVideo .video-js .vjs-progress-control {
+    margin-top: 5px;
 }
 
 .historyEventsVideo .video-js .vjs-progress-control:hover .vjs-progress-holderspan.vjs-control-text {
