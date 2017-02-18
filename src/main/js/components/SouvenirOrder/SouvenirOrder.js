@@ -10,14 +10,20 @@ import ModalHeader from '../Modal/ModalHeader/ModalHeader';
 import ModalFooter from '../Modal/ModalFooter/ModalFooter';
 
 import Actions from '../../actions/Actions';
+import client from '../../client';
 import SouvenirsStore from '../../stores/SouvenirsStore';
+import update from 'immutability-helper';
 
+//todo add decent validating engine
 export default class SouvenirOrder extends SelfUpdatingComponent {
     constructor(props) {
         super(props);
         this.store = SouvenirsStore;
         this.lazyLoadStoreAction = Actions.lazyLoadSouvenirs;
 
+        this.handleFioChange = this.handleFioChange.bind(this);
+        this.handlePhonehange = this.handlePhonehange.bind(this);
+        this.handleEmailChange = this.handleEmailChange.bind(this);
         this.submitForm = this.submitForm.bind(this);
     }
 
@@ -37,9 +43,38 @@ export default class SouvenirOrder extends SelfUpdatingComponent {
         });
     }
 
+    handleFioChange(e) {
+        this.setState(update(this.state, { form: {$merge: { fio: e.target.value } }}));
+    }
+
+    handlePhonehange(e) {
+        this.setState(update(this.state, { form: {$merge: { phone: e.target.value } }}));
+    }
+
+    handleEmailChange(e) {
+        this.setState(update(this.state, { form: {$merge: { email: e.target.value } }}));
+    }
+
     submitForm() {
-        if (console)
-            console.log("Отпарвка зарабоатет, когда появится админка");
+        var entity = this.state.form;
+        if (entity.fio.length === 0 || entity.phone.length === 0 || entity.email.length === 0) {
+            alert("Все поля обязательны для заполнения!");
+            return;
+        }
+        entity.souvenir = this.state.souvenir;
+        
+        client({
+                method: 'POST',
+                path: `/api/souvenirs/sendRequest`,
+                entity: entity
+            }).then(response => {
+            }).catch(response => {
+                console.log(response.entity);
+            });
+
+        //Optimistic behavior
+        alert("Спасибо за ваш заказ. Администратор свяжется с вами по указанным вам контактам");
+        Actions.routeTo("/souvenirs");
     }
 
     render() {

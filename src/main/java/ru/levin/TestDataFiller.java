@@ -22,6 +22,7 @@ public class TestDataFiller {
     @Inject private AdministrationEmployeeDao administrationEmployeeDao;
     @Inject private SouvenirDao souvenirDao;
     @Inject private HistoryEventDao historyEventDao;
+    @Inject private AdminDao adminDao;
 
     private void fillGraduatesAndClasses() throws WrongGradeException, EntityAlreadyExistsException {
         if (!graduateDao.isEmpty())
@@ -262,6 +263,13 @@ public class TestDataFiller {
         historyEventDao.add(new HistoryEvent(LocalDate.of(2012, 5, 2), shortLoremIpsum, HistoryEventType.TRAVEL, null, null));
     }
 
+    private void fillAdmins() throws EntityAlreadyExistsException {
+        if (!adminDao.isEmpty())
+            adminDao.deleteAll();
+
+        adminDao.add(new Admin("BooleT", "BooleT37@mail.ru"));
+    }
+
     public void fill() throws WrongGradeException, EntityAlreadyExistsException {
         String debugEnv = System.getenv().get("FILL_WITH_TEST_DATA");
         Boolean fillWithTestData = debugEnv != null && debugEnv.equals("TRUE");
@@ -272,6 +280,7 @@ public class TestDataFiller {
             fillAdministration();
             fillSouvenirs();
             fillHistoryEvents();
+            fillAdmins();
         }
     }
 }

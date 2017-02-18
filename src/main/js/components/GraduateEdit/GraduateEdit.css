@@ -33,6 +33,10 @@
     margin: 23px 0 0 63px;
 }
 
+.graduateEdit_input_highlighted {
+    background-color: #ffccbf;
+}
+
 .graduateEdit .graduateEdit_left input, .graduateEdit .graduateEdit_left textarea {
     margin-bottom: 21px;
 }
@@ -150,4 +154,8 @@
     padding-top: 8px;
     text-align: center;
     cursor: pointer;
+}
+
+.graduateEdit_submitButton.graduateEdit_submitButton_disabled {
+    background-color: gray;
 }

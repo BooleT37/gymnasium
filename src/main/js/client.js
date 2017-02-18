@@ -9,6 +9,6 @@ import baseRegistry from 'rest/mime/registry'
 var registry = baseRegistry.child();
 
 module.exports = rest
-		.wrap(mime, { registry: registry })
+		.wrap(mime, { registry: registry, mime: 'application/json' })
 		.wrap(uriTemplateInterceptor)
 		.wrap(errorCode)

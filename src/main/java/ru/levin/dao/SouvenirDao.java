@@ -25,6 +25,13 @@ public class SouvenirDao {
         return em.createQuery("from " + Souvenir.class.getName(), Souvenir.class).getResultList();
     }
 
+    public Souvenir getById(Long id) throws EntityNotFoundException {
+        Souvenir found = em.find(Souvenir.class, id);
+        if (found == null)
+            throw new EntityNotFoundException(String.format("Can't find souvenir with id %d", id));
+        return found;
+    }
+
     @Transactional
     public Souvenir add(Souvenir souvenir) throws EntityAlreadyExistsException {
         Long id = souvenir.getId();
