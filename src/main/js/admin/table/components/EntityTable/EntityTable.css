@@ -1,0 +1,7 @@
+.entityTable table {
+    border-collapse: collapse;
+}
+
+.entityTable table td {
+    border: solid 1px gray;
+}
