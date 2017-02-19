@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import ru.levin.admin.tables.EntityProperty;
-import ru.levin.admin.tables.PropertiesStore;
-import ru.levin.admin.tables.TableEntity;
+import ru.levin.admin.tables.*;
 import ru.levin.dao.*;
 import ru.levin.entities.enums.HistoryEventType;
 
@@ -43,11 +41,16 @@ public class TableController {
         String tableTitle;
         List<EntityProperty> entityProperties;
         List<Object> entities;
+        Map<TableEntity, List<SelectPropertyValue<Long>>> foreignEntities = new HashMap<>();
         switch (tableName) {
             case "graduates":
                 tableTitle = "Выпускники";
                 entityProperties = propertiesStore.getForEntity(TableEntity.GRADUATE);
                 entities = graduateDao.getAll().stream().map(g -> (Object)g).collect(Collectors.toList());
+                List<SelectPropertyValue<Long>> graduateClassesList = graduateClassDao.getAll().stream()
+                        .map(c -> new SelectPropertyValue<>(c.toString(), c.getId()))
+                        .collect(Collectors.toList());
+                foreignEntities.put(TableEntity.GRADUATE_CLASS, graduateClassesList);
                 break;
             case "graduate_classes":
                 tableTitle = "Классы";
@@ -107,6 +110,7 @@ public class TableController {
         clientModel.put("title", tableTitle);
         clientModel.put("properties", entityProperties);
         clientModel.put("entities", entities);
+        clientModel.put("foreignEntities", foreignEntities);
 
         try {
             String clientModelJson = jacksonObjectMapper.writeValueAsString(clientModel);

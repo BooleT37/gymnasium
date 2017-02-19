@@ -1,11 +1,11 @@
 package ru.levin.admin.tables;
 
 
-public class SelectPropertyValue {
+public class SelectPropertyValue<T> {
     private String name;
-    private String value;
+    private T value;
 
-    SelectPropertyValue(String name, String value) {
+    public SelectPropertyValue(String name, T value) {
         this.name = name;
         this.value = value;
     }
@@ -14,7 +14,7 @@ public class SelectPropertyValue {
         return name;
     }
 
-    public String getValue() {
+    public T getValue() {
         return value;
     }
 }

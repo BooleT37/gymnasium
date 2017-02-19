@@ -10,10 +10,10 @@ public class EntityProperty {
     private int width = 200;
     private PropertyType type = PropertyType.STRING;
     private int maxLength = 255; //for type == STRING
-    private List<SelectPropertyValue> selectValues; //for type == SELECT
+    private List<SelectPropertyValue<String>> selectValues; //for type == SELECT
     private TableEntity relatedEntity; //for type == FOREIGN_ID
 
-    //Any type
+        //Any type
     EntityProperty(String name, String columnName, boolean nullable, int width, PropertyType type) {
         this.name = name;
         this.columnName = columnName;
@@ -75,6 +75,47 @@ public class EntityProperty {
         this.maxLength = maxLength;
     }
 
+    //Select type
+    EntityProperty(String name, String columnName, boolean nullable, int width, PropertyType type, List<SelectPropertyValue<String>> selectValues) {
+        if (type != PropertyType.SELECT)
+            throw new IllegalArgumentException("Type must be SELECT to use selectValues");
+        this.name = name;
+        this.columnName = columnName;
+        this.nullable = nullable;
+        this.width = width;
+        this.type = type;
+        this.selectValues = selectValues;
+    }
+
+    EntityProperty(String name, String columnName, boolean nullable, PropertyType type, List<SelectPropertyValue<String>> selectValues) {
+        if (type != PropertyType.SELECT)
+            throw new IllegalArgumentException("Type must be SELECT to use selectValues");
+        this.name = name;
+        this.columnName = columnName;
+        this.nullable = nullable;
+        this.type = type;
+        this.selectValues = selectValues;
+    }
+
+    EntityProperty(String name, String columnName, int width, PropertyType type, List<SelectPropertyValue<String>> selectValues) {
+        if (type != PropertyType.SELECT)
+            throw new IllegalArgumentException("Type must be SELECT to use selectValues");
+        this.name = name;
+        this.columnName = columnName;
+        this.width = width;
+        this.type = type;
+        this.selectValues = selectValues;
+    }
+
+    EntityProperty(String name, String columnName, PropertyType type, List<SelectPropertyValue<String>> selectValues) {
+        if (type != PropertyType.SELECT)
+            throw new IllegalArgumentException("Type must be SELECT to use selectValues");
+        this.name = name;
+        this.columnName = columnName;
+        this.type = type;
+        this.selectValues = selectValues;
+    }
+
     //Foreign id type
     EntityProperty(String name, String columnName, boolean nullable, int width, PropertyType type, TableEntity relatedEntity) {
         if (type != PropertyType.FOREIGN_ID)
@@ -88,8 +129,6 @@ public class EntityProperty {
     }
 
     EntityProperty(String name, String columnName, boolean nullable, PropertyType type, TableEntity relatedEntity) {
-        if (type != PropertyType.FOREIGN_ID)
-            throw new IllegalArgumentException("Type must be FOREIGN_ID to use relatedEntity");
         this.name = name;
         this.columnName = columnName;
         this.nullable = nullable;
@@ -104,47 +143,6 @@ public class EntityProperty {
         this.columnName = columnName;
         this.type = type;
         this.relatedEntity = relatedEntity;
-    }
-
-    //Select type
-    EntityProperty(String name, String columnName, boolean nullable, int width, PropertyType type, List<SelectPropertyValue> selectValues) {
-        if (type != PropertyType.SELECT)
-            throw new IllegalArgumentException("Type must be SELECT to use selectValues");
-        this.name = name;
-        this.columnName = columnName;
-        this.nullable = nullable;
-        this.width = width;
-        this.type = type;
-        this.selectValues = selectValues;
-    }
-
-    EntityProperty(String name, String columnName, boolean nullable, PropertyType type, List<SelectPropertyValue> selectValues) {
-        if (type != PropertyType.SELECT)
-            throw new IllegalArgumentException("Type must be SELECT to use selectValues");
-        this.name = name;
-        this.columnName = columnName;
-        this.nullable = nullable;
-        this.type = type;
-        this.selectValues = selectValues;
-    }
-
-    EntityProperty(String name, String columnName, int width, PropertyType type, List<SelectPropertyValue> selectValues) {
-        if (type != PropertyType.SELECT)
-            throw new IllegalArgumentException("Type must be SELECT to use selectValues");
-        this.name = name;
-        this.columnName = columnName;
-        this.width = width;
-        this.type = type;
-        this.selectValues = selectValues;
-    }
-
-    EntityProperty(String name, String columnName, PropertyType type, List<SelectPropertyValue> selectValues) {
-        if (type != PropertyType.SELECT)
-            throw new IllegalArgumentException("Type must be SELECT to use selectValues");
-        this.name = name;
-        this.columnName = columnName;
-        this.type = type;
-        this.selectValues = selectValues;
     }
 
     public String getName() {
@@ -171,7 +169,7 @@ public class EntityProperty {
         return maxLength;
     }
 
-    public List<SelectPropertyValue> getSelectValues() {
+    public List<SelectPropertyValue<String>> getSelectValues() {
         return selectValues;
     }
 

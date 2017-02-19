@@ -27,7 +27,7 @@ public class PropertiesStore {
             add(new EntityProperty("lastName", "Фамилия", false, 50));
             add(new EntityProperty("patronymic", "Отчество", 50));
             add(new EntityProperty("birthDate", "Дата рождения", PropertyType.DATE));
-            add(new EntityProperty("graduateClass", "Класс", false, PropertyType.FOREIGN_ID, TableEntity.GRADUATE_CLASS));
+            add(new EntityProperty("graduateClassId", "Класс", false, PropertyType.FOREIGN_ID, TableEntity.GRADUATE_CLASS));
             add(new EntityProperty("interests", "Интересы", 500));
             add(new EntityProperty("favouriteSubjects", "Любимые предметы", 500));
             add(new EntityProperty("achievements", "Достижения", 500));
@@ -76,9 +76,9 @@ public class PropertiesStore {
             add(new EntityProperty("employmentYear", "Год начала работы", PropertyType.NUMBER));
             add(new EntityProperty("releaseYear", "Год конца работы", PropertyType.NUMBER));
             add(new EntityProperty("photoName", "Фото"));
-            add(new EntityProperty("position", "Должность", PropertyType.SELECT, new ArrayList<SelectPropertyValue>() {{
-                add(new SelectPropertyValue("director", "Директор"));
-                add(new SelectPropertyValue("deputy_director", "Зам. директора"));
+            add(new EntityProperty("position", "Должность", PropertyType.SELECT, new ArrayList<SelectPropertyValue<String>>() {{
+                add(new SelectPropertyValue<>("director", "Директор"));
+                add(new SelectPropertyValue<>("deputy_director", "Зам. директора"));
             }}));
         }};
         this.data.put(TableEntity.ADMINISTRATION_EMPLOYEE, properties);
@@ -98,13 +98,13 @@ public class PropertiesStore {
         {{
             add(new EntityProperty("date", "Дата", false, PropertyType.DATE));
             add(new EntityProperty("description", "Описание", 2000));
-            add(new EntityProperty("type", "Тип", PropertyType.SELECT, new ArrayList<SelectPropertyValue>() {{
-                add(new SelectPropertyValue("history", "История"));
-                add(new SelectPropertyValue("literature_club", "Литературные гостинные"));
-                add(new SelectPropertyValue("sport", "Творчество"));
-                add(new SelectPropertyValue("art", "Спорт"));
-                add(new SelectPropertyValue("science", "Наука"));
-                add(new SelectPropertyValue("travel", "Путешествия"));
+            add(new EntityProperty("type", "Тип", PropertyType.SELECT, new ArrayList<SelectPropertyValue<String>>() {{
+                add(new SelectPropertyValue<>("history", "История"));
+                add(new SelectPropertyValue<>("literature_club", "Литературные гостинные"));
+                add(new SelectPropertyValue<>("sport", "Творчество"));
+                add(new SelectPropertyValue<>("art", "Спорт"));
+                add(new SelectPropertyValue<>("science", "Наука"));
+                add(new SelectPropertyValue<>("travel", "Путешествия"));
             }}));
             add(new EntityProperty("photoNames", "Фотографии", PropertyType.LIST));
             add(new EntityProperty("videoNames", "Видеозаписи", PropertyType.LIST));
