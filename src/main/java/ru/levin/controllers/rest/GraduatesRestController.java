@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/graduates")
-public class GraduatesRestController {
+public class GraduatesRestController extends BaseRestController {
     @Inject
     private GraduateDao graduateDao;
     @Inject

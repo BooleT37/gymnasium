@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/administration")
-public class AdministrationRestController {
+public class AdministrationRestController extends BaseRestController {
     @Inject
     private AdministrationEmployeeDao administrationEmployeeDao;
 

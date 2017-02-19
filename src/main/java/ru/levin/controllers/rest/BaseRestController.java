@@ -1,18 +1,15 @@
-package ru.levin;
+package ru.levin.controllers.rest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import ru.levin.model.RestResponse;
 
 import javax.servlet.http.HttpServletRequest;
 
-@ControllerAdvice
-public class RestExceptionHandler {
-
+public class BaseRestController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @ExceptionHandler(value = Exception.class)

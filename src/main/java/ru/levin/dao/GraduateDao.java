@@ -22,6 +22,10 @@ public class GraduateDao {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    public List<Graduate> getAll() {
+        return em.createQuery("from " + Graduate.class.getName(), Graduate.class).getResultList();
+    }
+
     public List<Graduate> getAllForClass(GraduateClass graduateClass) {
         return em.createQuery("from " + Graduate.class.getName() + " where graduateClass = :graduateClass", Graduate.class)
                 .setParameter("graduateClass", graduateClass)

@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/souvenirs")
-public class SouvenirsRestController {
+public class SouvenirsRestController extends BaseRestController {
     @Inject
     private SouvenirDao souvenirDao;
     @Inject

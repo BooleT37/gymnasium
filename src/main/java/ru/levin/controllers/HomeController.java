@@ -1,6 +1,7 @@
 package ru.levin.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,4 +19,7 @@ public class HomeController {
         model.put("debug", isDebug);
         return new ModelAndView("index", model);
     }
+
+    @GetMapping("/login")
+    public String login() { return "login"; }
 }

@@ -7,10 +7,10 @@
     <title>Гимназия №2</title>
     <c:choose>
         <c:when test="${debug}">
-            <link rel="stylesheet" href="http://localhost:8081/src/main/resources/static/built/bundle.css" />
+            <link rel="stylesheet" href="http://localhost:8081/src/main/resources/static/built/index.css" />
         </c:when>
         <c:otherwise>
-            <link rel="stylesheet" href="built/bundle.css" />
+            <link rel="stylesheet" href="built/index.css" />
         </c:otherwise>
     </c:choose>
 </head>
@@ -71,10 +71,10 @@
     <c:when test="${debug}">
         <div id="design" style="display: none"></div>
         <button type="button" id="designSwitchButton">Вкл</button>
-        <script src="http://localhost:8081/src/main/resources/static/built/bundle.js"></script>
+        <script src="http://localhost:8081/src/main/resources/static/built/index.js"></script>
     </c:when>
     <c:otherwise>
-        <script src="/built/bundle.js"></script>
+        <script src="/built/index.js"></script>
     </c:otherwise>
 </c:choose>
 

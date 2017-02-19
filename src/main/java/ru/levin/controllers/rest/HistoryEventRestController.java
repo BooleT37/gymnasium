@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/historyEvents")
-public class HistoryEventRestController {
+public class HistoryEventRestController extends BaseRestController {
     @Inject
     private HistoryEventDao historyEventDao;
 

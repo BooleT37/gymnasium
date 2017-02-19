@@ -4,13 +4,16 @@ var webpack = require("webpack");
 var argv = require('yargs').argv;
 
 module.exports = {
-    entry: './src/main/js/app/app.js',
+    entry: {
+        index: './src/main/js/app/app.js',
+        tablePage: './src/main/js/admin/table/tablePage.js'
+    },
     devtool: 'sourcemaps',
     cache: true,
     debug: true,
     output: {
         path: __dirname,
-        filename: './src/main/resources/static/built/bundle.js'
+        filename: 'src/main/resources/static/built/[name].js'
     },
     module: {
         loaders: [
@@ -42,7 +45,7 @@ module.exports = {
         ],
     },
     plugins: [
-        new ExtractTextPlugin("src/main/resources/static/built/bundle.css"),
+        new ExtractTextPlugin("src/main/resources/static/built/[name].css"),
         new webpack.DefinePlugin({
             'process.env': {
                 'DEBUG': argv.debug === 'true'

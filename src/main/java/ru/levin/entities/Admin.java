@@ -12,18 +12,17 @@ public class Admin {
     @Column(length = 50, nullable = false)
     private String login;
 
-//  password will be needed later
-//  private String password;
-
+    private String hashedPassword;
 
     @Column(length = 50, nullable = false)
     private String email;
 
     public Admin() {}
 
-    public Admin(String login, String email) {
+    public Admin(String login, String email, String hashedPassword) {
         this.login = login;
         this.email = email;
+        this.hashedPassword = hashedPassword;
     }
 
     public String getLogin() {
@@ -40,5 +39,13 @@ public class Admin {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getHashedPassword() {
+        return hashedPassword;
+    }
+
+    public void setHashedPassword(String hashedPassword) {
+        this.hashedPassword = hashedPassword;
     }
 }

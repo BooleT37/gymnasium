@@ -12,7 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/graduateClasses")
-public class GraduateClassesRestController {
+public class GraduateClassesRestController extends BaseRestController {
     @Inject
     private GraduateClassDao graduateClassDao;
 

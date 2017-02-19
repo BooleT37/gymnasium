@@ -1,5 +1,6 @@
 package ru.levin;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import ru.levin.dao.*;
 import ru.levin.dao.exceptions.EntityAlreadyExistsException;
 import ru.levin.entities.*;
@@ -266,8 +267,10 @@ public class TestDataFiller {
     private void fillAdmins() throws EntityAlreadyExistsException {
         if (!adminDao.isEmpty())
             adminDao.deleteAll();
-
-        adminDao.add(new Admin("BooleT", "BooleT37@mail.ru"));
+        String password = "password";
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(password);
+        adminDao.add(new Admin("BooleT", "BooleT37@mail.ru", hashedPassword));
     }
 
     public void fill() throws WrongGradeException, EntityAlreadyExistsException {
