@@ -39,20 +39,39 @@ public class GraduateDeserializer  extends StdDeserializer<Graduate> {
         } catch (EntityNotFoundException e) {
             throw new IOException(String.format("Cannot find graduate class with id %d", id));
         }
-        return new Graduate(
-            node.get("id").asLong(),
-            node.get("firstName").asText(),
-            node.get("lastName").asText(),
-            node.get("patronymic").asText(),
-            LocalDate.parse(node.get("birthDate").asText(), defaultDateTimeFormatter.get()),
-            graduateClass,
-            node.get("interests").asText(),
-            node.get("favouriteSubjects").asText(),
-            node.get("achievements").asText(),
-            node.get("photoName").asText(),
-            node.get("vkLink").asText(),
-            node.get("facebookLink").asText(),
-            node.get("famous").asBoolean()
-        );
+        String birthDateText = node.get("birthDate").asText();
+        LocalDate date = birthDateText.isEmpty() ? null : LocalDate.parse(node.get("birthDate").asText(), defaultDateTimeFormatter.get());
+        if (node.has("id"))
+            return new Graduate(
+                node.get("id").asLong(),
+                node.get("firstName").asText(),
+                node.get("lastName").asText(),
+                node.get("patronymic").asText(),
+                date,
+                graduateClass,
+                node.get("interests").asText(),
+                node.get("favouriteSubjects").asText(),
+                node.get("achievements").asText(),
+                node.get("photoName").asText(),
+                node.get("vkLink").asText(),
+                node.get("facebookLink").asText(),
+                node.get("famous").asBoolean()
+            );
+        else {
+            return new Graduate(
+                node.get("firstName").asText(),
+                node.get("lastName").asText(),
+                node.get("patronymic").asText(),
+                date,
+                graduateClass,
+                node.get("interests").asText(),
+                node.get("favouriteSubjects").asText(),
+                node.get("achievements").asText(),
+                node.get("photoName").asText(),
+                node.get("vkLink").asText(),
+                node.get("facebookLink").asText(),
+                node.get("famous").asBoolean()
+            );
+        }
     }
 }

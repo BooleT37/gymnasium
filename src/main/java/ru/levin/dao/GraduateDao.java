@@ -50,9 +50,18 @@ public class GraduateDao {
             throw new EntityNotFoundException("Graduate id cannot be null");
         if (em.find(Graduate.class, graduateId) == null)
             throw new EntityNotFoundException(String.format("Cannot find graduate with id %d", graduateId));
-        em.persist(graduate);
+        em.merge(graduate);
         em.flush();
         return graduate;
+    }
+
+    @Transactional
+    public Graduate deleteById(Long id) throws EntityNotFoundException {
+        Graduate found = em.find(Graduate.class, id);
+        if (found == null)
+            throw new EntityNotFoundException(String.format("Cannot find graduate with id %d", id));
+        em.remove(found);
+        return found;
     }
 
     @Transactional

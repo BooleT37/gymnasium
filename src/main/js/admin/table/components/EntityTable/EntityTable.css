@@ -1,3 +1,16 @@
+.entityTable {
+    text-align: center;
+}
+
+.entityTable_inner {
+    display: inline-block;
+    text-align: left;
+}
+
+.entityTable_addEntityButtonContainer {
+    padding: 5px 0px;
+}
+
 .entityTable table {
     margin: 0 auto;
     border-collapse: collapse;

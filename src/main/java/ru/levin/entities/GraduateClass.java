@@ -71,6 +71,6 @@ public class GraduateClass {
 
     @Override
     public String toString() {
-        return String.format("%d&nbsp;%s, %d&nbsp;г.", grade, character, graduateYear);
+        return String.format("%d %s, %d г.", grade, character, graduateYear);
     }
 }

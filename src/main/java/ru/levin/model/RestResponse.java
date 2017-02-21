@@ -1,8 +1,15 @@
 package ru.levin.model;
 
-public class RestResponse {
+public class RestResponse<T> {
     private boolean success;
     private String errorMessage;
+    private T entity;
+
+    public RestResponse(boolean success, String errorMessage, T entity) {
+        this.success = success;
+        this.errorMessage = errorMessage;
+        this.entity = entity;
+    }
 
     public RestResponse(boolean success, String errorMessage) {
         this.success = success;
@@ -28,5 +35,13 @@ public class RestResponse {
 
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
+    }
+
+    public T getEntity() {
+        return entity;
+    }
+
+    public void setEntity(T entity) {
+        this.entity = entity;
     }
 }

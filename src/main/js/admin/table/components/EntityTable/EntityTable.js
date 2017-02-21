@@ -6,6 +6,7 @@ import React from 'react';
 
 import RowForm from './RowForm/RowForm';
 import TableStore from '../../TableStore';
+import Actions from '../../Actions';
 import {addBreakLines} from '../../../../utils';
 import client from '../../../../client';
 
@@ -14,43 +15,100 @@ export default class EntityTable extends React.Component {
         super(props);
 
         this.state = {
-            editingEntity: null
+            editingEntity: null,
+            entities: TableStore.state.entities
         }
 
         this.onEditButtonClick = this.onEditButtonClick.bind(this);
         this.onDeleteButtonClick = this.onDeleteButtonClick.bind(this);
-        this.editEntity = this.editEntity.bind(this);
-        this.cancelEdit = this.cancelEdit.bind(this);
+        this.onAddEntityButtonClick = this.onAddEntityButtonClick.bind(this);
+        this.onCancelEditButtonClick = this.onCancelEditButtonClick.bind(this);
         this.saveEntity = this.saveEntity.bind(this);
+        this.addEntity = this.addEntity.bind(this);
+    }
+
+    componentDidMount() {
+        TableStore.listen(storeState => { this.setState({entities: storeState.entities}); });
     }
 
     onEditButtonClick(event) {
         if (this.state.editingEntity === null) {
             var id = parseInt(event.currentTarget.getAttribute("data-id"), 10);
-            this.editEntity(id);
+            var entity = TableStore.getEntityById(id);
+            this.setState({
+                editingEntity: entity
+            });
         }
     }
 
-    onDeleteButtonClick(event) {
-        if (this.state.editingEntity === null) {
-            
-        }
-    }
-
-    editEntity(id) {
-        var entity = TableStore.getEntityById(id);
-        this.setState({
-            editingEntity: entity
-        })
-    }
-
-    cancelEdit() {
+    onCancelEditButtonClick() {
         // if (confirm("Действительно отменить редактирование?"))
         //     this.setState({ editingEntity: null });
         this.setState({ editingEntity: null });
     }
+    
+    handleError(entity, status) {
+        alert(`При отправке данных произошла ошибка:\nСтатус: ${status}\nСообщение:\n${(entity && entity.errorMessage) || "[Сообщение об ошибке отсутствует]"}`);
+    }
 
     saveEntity(entity) {
+        client({
+            method: 'POST',
+            path: `/api/graduates/edit`,
+            entity: entity
+        }).then(response => {
+            if (response.entity.success) {
+                this.setState({ editingEntity: null });
+                Actions.updateEntity(entity);
+            } else {
+                this.handleError(response.entity, response.status.code);
+            }
+        });
+    }
+
+    onDeleteButtonClick(event) {
+        if (this.state.editingEntity === null) {
+            if (confirm("Действительно удалить?")) {
+                var id = parseInt(event.currentTarget.getAttribute("data-id"), 10);
+                this.deleteEntity(id);
+            }
+        }
+    }
+
+    deleteEntity(id) {
+        client({
+            method: 'POST',
+            path: `/api/graduates/delete/${id}`
+        }).then(response => {
+            if (response.entity.success) {
+                Actions.deleteEntityById(id);
+            } else {
+                this.handleError(response.entity, response.status.code);
+            }
+        });
+    }
+
+    onAddEntityButtonClick(event) {
+        if (this.state.editingEntity === null) {
+            this.setState({
+                editingEntity: { isNew: true }
+            });
+        }
+    }
+
+    addEntity(entity) {
+        client({
+            method: 'POST',
+            path: `/api/graduates/add`,
+            entity: entity
+        }).then(response => {
+            if (response.entity.success) {
+                this.setState({ editingEntity: null });
+                Actions.addEntity(response.entity.entity);
+            } else {
+                this.handleError(response.entity, response.status.code);
+            }
+        });
     }
 
     entityToPlainRow(entity) {
@@ -85,7 +143,6 @@ export default class EntityTable extends React.Component {
                             >Изменить</button>&nbsp;
                             <button
                                 type="button"
-                                href="#"
                                 data-id={entity.id}
                                 onClick={this.onDeleteButtonClick}
                                 disabled={this.state.editingEntity !== null}
@@ -114,7 +171,7 @@ export default class EntityTable extends React.Component {
 
     entityToRowEdit(entity) {
         return (
-            <RowForm key={entity.id} entity={entity} onSubmit={this.saveEntity} onCancel={this.cancelEdit}/>
+            <RowForm key={entity.id} entity={entity} onSubmit={this.saveEntity} onCancel={this.onCancelEditButtonClick}/>
         );
     }
 
@@ -127,25 +184,33 @@ export default class EntityTable extends React.Component {
 
     render() {
         var properties = TableStore.state.properties;
-        var entities = TableStore.state.entities;
+        var entities = this.state.entities;
 
         var headers = properties.map(prop => (
             <td key={prop.name} style={{width: prop.width ? (prop.width + "%") : "auto"}}>{prop.columnName || ""}</td>
         ));
 
         var rows = entities.map(entity => this.entityToRow(entity));
+        if (this.state.editingEntity && this.state.editingEntity.isNew)
+            rows.unshift(<RowForm key="-1" entity={this.state.editingEntity} onSubmit={this.addEntity} onCancel={this.cancelEdit}/>);
+
         return (
             <div className="entityTable">
-                <table>
-                    <thead>
-                        <tr>
-                            {headers}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {rows}
-                    </tbody>
-                </table>
+                <div className="entityTable_inner">
+                    <div className="entityTable_addEntityButtonContainer">
+                        <button type="button" onClick={this.onAddEntityButtonClick} disabled={this.state.editingEntity !== null}>Добавить новую запись</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                {headers}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {rows}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         )
     }

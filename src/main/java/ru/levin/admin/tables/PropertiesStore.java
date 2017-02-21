@@ -48,7 +48,7 @@ public class PropertiesStore {
         {{
             add(new EntityProperty("graduateYear", "Год выпуска", false, PropertyType.NUMBER));
             add(new EntityProperty("grade", "Класс (номер)", false, PropertyType.NUMBER));
-            add(new EntityProperty("character", "Литера"));
+            add(new EntityProperty("character", "Литера", false));
             add(new EntityProperty("photoName", "Фото"));
         }};
         this.data.put(TableEntity.GRADUATE_CLASS, properties);

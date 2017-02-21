@@ -17,7 +17,7 @@ public class Graduate {
     @Column(length = 50)
     private String patronymic;
     private LocalDate birthDate;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "COLUMN_GRADUATE_CLASS", nullable = false)
     private GraduateClass graduateClass;
     @Column(length = 500)

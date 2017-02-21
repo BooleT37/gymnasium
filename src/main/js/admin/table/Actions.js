@@ -2,6 +2,10 @@
 
 import Reflux from 'reflux';
 
-var Actions = Reflux.createActions([]);
+var Actions = Reflux.createActions([
+    "addEntity",
+    "updateEntity",
+    "deleteEntityById"
+]);
 
 export default Actions;

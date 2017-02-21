@@ -19,7 +19,28 @@ var TableStore = Reflux.createStore({
             this.state.properties.push({
                 name: "controls",
                 type: "CONTROLS"
-            })
+            });
+    },
+
+    addEntity: function(entity) {
+        this.state.entities.unshift(entity);
+        this.trigger(this.state);
+    },
+
+    updateEntity: function(entity) {
+        var entityIndex = this.state.entities.findIndex(e => e.id === entity.id);
+        if (entityIndex === -1)
+            throw new Error(`Can't update entity with id ${entity.id}: unable to find corresponding entity in store`);
+        this.state.entities[entityIndex] = entity;
+        this.trigger(this.state);
+    },
+
+    deleteEntityById: function(id) {
+        var entityIndex = this.state.entities.findIndex(e => e.id === id);
+        if (entityIndex === -1)
+            throw new Error(`Can't delete entity with id ${entity.id}: unable to find corresponding entity in store`);
+        this.state.entities.splice(entityIndex, 1);
+        this.trigger(this.state);
     },
 
     getEntityById: function(id) {
