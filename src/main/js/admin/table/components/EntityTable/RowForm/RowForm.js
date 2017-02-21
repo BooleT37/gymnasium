@@ -3,8 +3,9 @@
 import './RowForm.css';
 
 import React from 'react';
+import update from 'immutability-helper';
 
-import {parseDate, replaceNbsp} from '../../../../../utils';
+import {parseDate, parseDateIso, replaceNbsp} from '../../../../../utils';
 
 import TableStore from '../../../TableStore';
 
@@ -22,6 +23,24 @@ export default class RowForm extends React.Component {
     constructor(props) {
         super(props);
 
+        var form = {};
+        var properties = TableStore.state.properties;
+        var entity = this.props.entity;
+        properties.forEach(prop => {
+            var value = entity[prop.name];
+            if (value === null || value === undefined)
+                value = "";
+            if (value && prop.type === "DATE")
+                value = parseDate(value).toISOString().substring(0, 10);
+            if (value && prop.type === "LIST")
+                value = value.join(", ");
+            form[prop.name] = value;
+        })
+
+        this.state = {
+            form: form
+        }
+
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.cancelEdit = this.cancelEdit.bind(this);
@@ -29,7 +48,11 @@ export default class RowForm extends React.Component {
 
     handleInputChange(e) {
         var input = e.currentTarget;
-        var inputValue = e.value;
+        if (!input.name)
+            throw new Error("need name attribute!");
+        var setObj = {};
+        setObj[input.name] = input.value;
+        this.setState(update(this.state, {form: {$merge: setObj}}));
     }
 
     handleInputFocus(e) {
@@ -37,7 +60,29 @@ export default class RowForm extends React.Component {
     }
 
     handleFormSubmit() {
-        this.props.onSubmit(this.state.form);
+        var properties = TableStore.state.properties;
+        var form = {};
+        properties.forEach(prop => {
+            if (prop.name === "controls")
+                return;
+            var value = this.state.form[prop.name];
+            if (value) {
+                switch (prop.type) {
+                    case "DATE":
+                        value = parseDateIso(value).toISOString().substring(0, 10);
+                        break;
+                    case "LIST":
+                        value = value.split(", ");
+                        break;
+                    case "NUMBER":
+                    case "FOREIGN_ID":
+                        value = parseInt(value, 10);
+                        break;
+                }
+            }
+            form[prop.name] = value;
+        });
+        this.props.onSubmit(form);
     }
 
     cancelEdit() {
@@ -48,13 +93,9 @@ export default class RowForm extends React.Component {
         var entity = this.props.entity;
         var properties = TableStore.state.properties;
         var columns = properties.map(prop => {
-            var value = entity[prop.name] || "";
+            var value = this.state.form[prop.name];
             var content;
             if (inputTypes[prop.type] !== undefined) {
-                if (prop.type === "DATE")
-                    value = value ? parseDate(value).toISOString().substring(0, 10) : "";
-                if (prop.type === "LIST")
-                    value = value.join(", ");
                 content = <input
                     className="rowForm_input"
                     name={prop.name}

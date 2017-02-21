@@ -62,3 +62,8 @@ export function parseDate(date) {
     var dateBits = date.split('.').map(bit => parseInt(bit, 10));
     return new Date(dateBits[2], dateBits[1], dateBits[0]);
 }
+
+export function parseDateIso(date) {
+    var dateBits = date.split('-').map(bit => parseInt(bit, 10));
+    return new Date(dateBits[0], dateBits[1], dateBits[2]);
+}

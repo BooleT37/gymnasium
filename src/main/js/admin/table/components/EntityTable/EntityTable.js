@@ -7,6 +7,7 @@ import React from 'react';
 import RowForm from './RowForm/RowForm';
 import TableStore from '../../TableStore';
 import {addBreakLines} from '../../../../utils';
+import client from '../../../../client';
 
 export default class EntityTable extends React.Component {
     constructor(props) {
@@ -20,6 +21,7 @@ export default class EntityTable extends React.Component {
         this.onDeleteButtonClick = this.onDeleteButtonClick.bind(this);
         this.editEntity = this.editEntity.bind(this);
         this.cancelEdit = this.cancelEdit.bind(this);
+        this.saveEntity = this.saveEntity.bind(this);
     }
 
     onEditButtonClick(event) {
@@ -46,6 +48,9 @@ export default class EntityTable extends React.Component {
         // if (confirm("Действительно отменить редактирование?"))
         //     this.setState({ editingEntity: null });
         this.setState({ editingEntity: null });
+    }
+
+    saveEntity(entity) {
     }
 
     entityToPlainRow(entity) {
@@ -109,7 +114,7 @@ export default class EntityTable extends React.Component {
 
     entityToRowEdit(entity) {
         return (
-            <RowForm key={entity.id} entity={entity} onSubmit={this.onFormSubmit} onCancel={this.cancelEdit}/>
+            <RowForm key={entity.id} entity={entity} onSubmit={this.saveEntity} onCancel={this.cancelEdit}/>
         );
     }
 
