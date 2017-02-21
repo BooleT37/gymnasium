@@ -1,7 +1,26 @@
 .entityTable table {
+    margin: 0 auto;
     border-collapse: collapse;
 }
 
-.entityTable table td {
+.entityTable thead td {
+    font-weight: bold;
+    text-align: center;
+}
+
+.entityTable td {
     border: solid 1px gray;
+}
+
+.entityTable tbody td {
+    padding: 2px;
+}
+
+.entityTable_controls {
+    width: 150px;
+}
+
+.entityTable_control_disabled {
+    color: gray;
+    cursor: pointer;
 }

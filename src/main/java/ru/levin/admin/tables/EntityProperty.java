@@ -7,7 +7,7 @@ public class EntityProperty {
     private String name;
     private String columnName;
     private boolean nullable = true;
-    private int width = 200;
+    private Integer width;
     private PropertyType type = PropertyType.STRING;
     private int maxLength = 255; //for type == STRING
     private List<SelectPropertyValue<String>> selectValues; //for type == SELECT
@@ -48,16 +48,23 @@ public class EntityProperty {
         this.columnName = columnName;
     }
 
-    EntityProperty(String name, String columnName, int maxLength) {
+    EntityProperty(String name, String columnName, int width) {
         this.name = name;
         this.columnName = columnName;
-        this.maxLength = maxLength;
+        this.width = width;
     }
 
     EntityProperty(String name, String columnName, boolean nullable) {
         this.name = name;
         this.columnName = columnName;
         this.nullable = nullable;
+    }
+
+    EntityProperty(String name, String columnName, int width, int maxLength) {
+        this.name = name;
+        this.columnName = columnName;
+        this.width = width;
+        this.maxLength = maxLength;
     }
 
     EntityProperty(String name, String columnName, boolean nullable, int width, int maxLength) {
@@ -72,6 +79,21 @@ public class EntityProperty {
         this.name = name;
         this.columnName = columnName;
         this.nullable = nullable;
+        this.maxLength = maxLength;
+    }
+
+    EntityProperty(String name, String columnName, int width, PropertyType type, int maxLength) {
+        this.name = name;
+        this.columnName = columnName;
+        this.width = width;
+        this.type = type;
+        this.maxLength = maxLength;
+    }
+
+    EntityProperty(String name, String columnName, PropertyType type, int maxLength) {
+        this.name = name;
+        this.columnName = columnName;
+        this.type = type;
         this.maxLength = maxLength;
     }
 
@@ -145,6 +167,15 @@ public class EntityProperty {
         this.relatedEntity = relatedEntity;
     }
 
+    //CONTROLS
+    EntityProperty(String name, int width, PropertyType type) {
+        if (type != PropertyType.CONTROLS)
+            throw new IllegalArgumentException("This constructor is only for CONTROLS type property");
+        this.name = name;
+        this.width = width;
+        this.type = type;
+    }
+
     public String getName() {
         return name;
     }
@@ -157,7 +188,7 @@ public class EntityProperty {
         return columnName;
     }
 
-    public int getWidth() {
+    public Integer getWidth() {
         return width;
     }
 

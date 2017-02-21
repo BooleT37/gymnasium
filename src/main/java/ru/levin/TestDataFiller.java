@@ -138,36 +138,36 @@ public class TestDataFiller {
         if (!teacherDao.isEmpty())
             teacherDao.deleteAll();
 
-        teacherDao.add(new Teacher("Варвара", "Калашникова", "Геласьевна", LocalDate.of(1951, 2, 9), Arrays.asList("Математика", "Информатика"), 2003, 2013, null, false));
-        teacherDao.add(new Teacher("Антонина", "Жданова", "Авксентьевна", LocalDate.of(1952, 3, 22), Collections.singletonList("Математика"), 2005, 2015, null, true));
-        teacherDao.add(new Teacher("Авдей", "Горбунов", "Демьянович", LocalDate.of(1957, 4, 21), null, null, 2017, null, false));
-        teacherDao.add(new Teacher("Надежда", "Родионова", "Вадимовна", LocalDate.of(1958, 11, 20), null, null, null, null, false));
-        teacherDao.add(new Teacher("Полина", "Семёнова", "Станиславовна", null, null, 2010, null, null, true));
-        teacherDao.add(new Teacher("Макар", "Анисимов", "Станиславович", null, null, 2003, 2003, null, false));
-        teacherDao.add(new Teacher("Октябрина", "Фомичёва", "Агафоновна", null, null, 2004, 2006, null, true));
-        teacherDao.add(new Teacher("Серапион", "Веселов", "Юрьевич", LocalDate.of(1983, 9, 10), null, null, null, null, false));
-        teacherDao.add(new Teacher("Вадим", "Горбачёв", "Александрович", LocalDate.of(1987, 6, 26), null, 2008, null, null, false));
-        teacherDao.add(new Teacher("Альвиан", "Красильников", "Мэлсович", LocalDate.of(1987, 10, 22), null, 2004, 2004, null, false));
-        teacherDao.add(new Teacher("Галина", "Гусева", "Руслановна", LocalDate.of(1956, 4, 12), null, null, 2014, null, false));
-        teacherDao.add(new Teacher("Донат", "Рыбаков", "Улебович", LocalDate.of(1959, 7, 26), null, 2009, null, null, false));
-        teacherDao.add(new Teacher("Галина", "Селезнёва", "Геннадьевна", null, Collections.singletonList("Физкультура"), null, 2010, null, false));
-        teacherDao.add(new Teacher("Валентин", "Русаков", "Макарович", null, Collections.singletonList("Русский язык"), 2011, 2011, null, false));
-        teacherDao.add(new Teacher("Геласий", "Гусев", "Яковович", null, Collections.singletonList("Литература"), 2009, 2011, null, false));
-        teacherDao.add(new Teacher("Степан", "Путин", "Пётрович", LocalDate.of(1972, 5, 19), Collections.singletonList("ОБЖ"), null, 2010, null, true));
-        teacherDao.add(new Teacher("Онисим", "Никонов", "Альвианович", LocalDate.of(1973, 9, 7), Collections.singletonList("Русский язык"), 2009, 2013, null, false));
-        teacherDao.add(new Teacher("Екатерина", "Бобылёва", "Якуновна", LocalDate.of(1977, 10, 4), null, 2011, 2017, null, false));
-        teacherDao.add(new Teacher("Максим", "Одинцов", "Иринеевич", LocalDate.of(1981, 2, 21), null, 2006, 2013, null, false));
-        teacherDao.add(new Teacher("Григорий", "Буров", "Павлович", null, null, 208, 208, null, false));
-        teacherDao.add(new Teacher("Максим", "Горбачёв", "Арсеньевич", null, Collections.singletonList("Математика"), null, 2008, null, false));
-        teacherDao.add(new Teacher("Любовь", "Гаврилова", "Созоновна", null, Collections.singletonList("Математика"), null, 2015, null, false));
-        teacherDao.add(new Teacher("Леонид", "Антонов", "Юрьевич", LocalDate.of(1968, 6, 2), Collections.singletonList("Математика"), 2004, 2013, null, false));
-        teacherDao.add(new Teacher("Евсей", "Калашников", "Игоревич", LocalDate.of(1974, 7, 11), Collections.singletonList("Математика"), 2015, null, null, true));
-        teacherDao.add(new Teacher("Николай", "Белоусов", "Аристархович", LocalDate.of(1981, 3, 31), Collections.singletonList("Математика"), 2005, 2010, null, false));
-        teacherDao.add(new Teacher("Мэлс", "Николаев", "Агафонович", null, null, 2008, 2008, null, false));
-        teacherDao.add(new Teacher("Даниил", "Иванов", "Федосеевич", null, null, 2006, 2010, null, false));
-        teacherDao.add(new Teacher("Валентин", "Тарасов", "Александрович", LocalDate.of(1984, 6, 3), Collections.singletonList("Математика"), 2010, 2015, null, false));
-        teacherDao.add(new Teacher("Фаина", "Фёдорова", "Станиславовна", null, Collections.singletonList("Математика"), 2008, null, null, false));
-        teacherDao.add(new Teacher("Октябрина", "Ефремова", "Игнатьевна", LocalDate.of(1986, 6, 19), null, 2013, 2014, null, false));
+        teacherDao.add(new Teacher("Варвара", "Калашникова", "Геласьевна", LocalDate.of(1951, 2, 9), Arrays.asList("Математика", "Информатика"), 2003, 2013, null));
+        teacherDao.add(new Teacher("Антонина", "Жданова", "Авксентьевна", LocalDate.of(1952, 3, 22), Collections.singletonList("Математика"), 2005, 2015, null));
+        teacherDao.add(new Teacher("Авдей", "Горбунов", "Демьянович", LocalDate.of(1957, 4, 21), null, null, 2017, null));
+        teacherDao.add(new Teacher("Надежда", "Родионова", "Вадимовна", LocalDate.of(1958, 11, 20), null, null, null, null));
+        teacherDao.add(new Teacher("Полина", "Семёнова", "Станиславовна", null, null, 2010, null, null));
+        teacherDao.add(new Teacher("Макар", "Анисимов", "Станиславович", null, null, 2003, 2003, null));
+        teacherDao.add(new Teacher("Октябрина", "Фомичёва", "Агафоновна", null, null, 2004, 2006, null));
+        teacherDao.add(new Teacher("Серапион", "Веселов", "Юрьевич", LocalDate.of(1983, 9, 10), null, null, null, null));
+        teacherDao.add(new Teacher("Вадим", "Горбачёв", "Александрович", LocalDate.of(1987, 6, 26), null, 2008, null, null));
+        teacherDao.add(new Teacher("Альвиан", "Красильников", "Мэлсович", LocalDate.of(1987, 10, 22), null, 2004, 2004, null));
+        teacherDao.add(new Teacher("Галина", "Гусева", "Руслановна", LocalDate.of(1956, 4, 12), null, null, 2014, null));
+        teacherDao.add(new Teacher("Донат", "Рыбаков", "Улебович", LocalDate.of(1959, 7, 26), null, 2009, null, null));
+        teacherDao.add(new Teacher("Галина", "Селезнёва", "Геннадьевна", null, Collections.singletonList("Физкультура"), null, 2010, null));
+        teacherDao.add(new Teacher("Валентин", "Русаков", "Макарович", null, Collections.singletonList("Русский язык"), 2011, 2011, null));
+        teacherDao.add(new Teacher("Геласий", "Гусев", "Яковович", null, Collections.singletonList("Литература"), 2009, 2011, null));
+        teacherDao.add(new Teacher("Степан", "Путин", "Пётрович", LocalDate.of(1972, 5, 19), Collections.singletonList("ОБЖ"), null, 2010, null));
+        teacherDao.add(new Teacher("Онисим", "Никонов", "Альвианович", LocalDate.of(1973, 9, 7), Collections.singletonList("Русский язык"), 2009, 2013, null));
+        teacherDao.add(new Teacher("Екатерина", "Бобылёва", "Якуновна", LocalDate.of(1977, 10, 4), null, 2011, 2017, null));
+        teacherDao.add(new Teacher("Максим", "Одинцов", "Иринеевич", LocalDate.of(1981, 2, 21), null, 2006, 2013, null));
+        teacherDao.add(new Teacher("Григорий", "Буров", "Павлович", null, null, 208, 208, null));
+        teacherDao.add(new Teacher("Максим", "Горбачёв", "Арсеньевич", null, Collections.singletonList("Математика"), null, 2008, null));
+        teacherDao.add(new Teacher("Любовь", "Гаврилова", "Созоновна", null, Collections.singletonList("Математика"), null, 2015, null));
+        teacherDao.add(new Teacher("Леонид", "Антонов", "Юрьевич", LocalDate.of(1968, 6, 2), Collections.singletonList("Математика"), 2004, 2013, null));
+        teacherDao.add(new Teacher("Евсей", "Калашников", "Игоревич", LocalDate.of(1974, 7, 11), Collections.singletonList("Математика"), 2015, null, null));
+        teacherDao.add(new Teacher("Николай", "Белоусов", "Аристархович", LocalDate.of(1981, 3, 31), Collections.singletonList("Математика"), 2005, 2010, null));
+        teacherDao.add(new Teacher("Мэлс", "Николаев", "Агафонович", null, null, 2008, 2008, null));
+        teacherDao.add(new Teacher("Даниил", "Иванов", "Федосеевич", null, null, 2006, 2010, null));
+        teacherDao.add(new Teacher("Валентин", "Тарасов", "Александрович", LocalDate.of(1984, 6, 3), Collections.singletonList("Математика"), 2010, 2015, null));
+        teacherDao.add(new Teacher("Фаина", "Фёдорова", "Станиславовна", null, Collections.singletonList("Математика"), 2008, null, null));
+        teacherDao.add(new Teacher("Октябрина", "Ефремова", "Игнатьевна", LocalDate.of(1986, 6, 19), null, 2013, 2014, null));
     }
 
     private void fillAdministration() throws EntityAlreadyExistsException {

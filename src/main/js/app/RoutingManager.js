@@ -97,6 +97,7 @@ class HistoryEventsVideoWrapper extends React.Component {
   }
 }
 
+//todo redirect somewhere home from wrong routes
 export default class RoutingManager {
     run() {
         render((

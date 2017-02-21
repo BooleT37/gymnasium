@@ -1,0 +1,15 @@
+.rowForm_input {
+    width: calc(100% - 4px);
+}
+
+input[type="checkbox"].rowForm_input {
+    width: auto;
+}
+
+textarea.rowForm_input {
+    height: 100px;
+}
+
+.rowForm_controls {
+    width: 150px;
+}

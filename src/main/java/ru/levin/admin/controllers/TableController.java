@@ -48,7 +48,7 @@ public class TableController {
                 entityProperties = propertiesStore.getForEntity(TableEntity.GRADUATE);
                 entities = graduateDao.getAll().stream().map(g -> (Object)g).collect(Collectors.toList());
                 List<SelectPropertyValue<Long>> graduateClassesList = graduateClassDao.getAll().stream()
-                        .map(c -> new SelectPropertyValue<>(c.toString(), c.getId()))
+                        .map(c -> new SelectPropertyValue<>(c.getId(), c.toString()))
                         .collect(Collectors.toList());
                 foreignEntities.put(TableEntity.GRADUATE_CLASS, graduateClassesList);
                 break;
@@ -56,6 +56,7 @@ public class TableController {
                 tableTitle = "Классы";
                 entityProperties = propertiesStore.getForEntity(TableEntity.GRADUATE_CLASS);
                 entities = graduateClassDao.getAll().stream().map(g -> (Object)g).collect(Collectors.toList());
+
                 break;
             case "teachers":
                 tableTitle = "Учителя";

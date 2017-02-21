@@ -4,6 +4,8 @@ import Reflux from 'reflux';
 import Actions from '../actions/Actions';
 import client from '../client';
 
+import {parseDate} from '../utils';
+
 var HistoryEventsStore = Reflux.createStore({
     listenables: Actions,
 
@@ -21,14 +23,8 @@ var HistoryEventsStore = Reflux.createStore({
         return found;
     },
 
-    //parse date from format dd.MM.yyyy
-    parseDate(date) {
-        var dateBits = date.split('.').map(bit => parseInt(bit, 10));
-        return new Date(dateBits[2], dateBits[1], dateBits[0]);
-    },
-
     convertSingleEvent(event) {
-        event.date = this.parseDate(event.date);
+        event.date = parseDate(event.date);
         //todo: проверить во всех браузерах
         event.dateStr = event.date.toLocaleDateString('ru-RU', {year: "numeric", month: "long", day: "numeric"});
         return event;

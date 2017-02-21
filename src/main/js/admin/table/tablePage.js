@@ -18,7 +18,8 @@ class TablePage {
         render(
             (
                 <div className="tablePage">
-                    <div className="title">{storeState.tableTitle}</div>
+                    <a href="/admin/">← Назад на главную страницу</a>
+                    <h2 className="tablePage_title">{storeState.title}</h2>
                     <EntityTable/>
                 </div>
             ),

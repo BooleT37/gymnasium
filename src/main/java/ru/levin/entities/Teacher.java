@@ -27,7 +27,6 @@ public class Teacher {
     private Integer employmentYear;
     private Integer releaseYear;
     private String photoName;
-    private boolean famous;
 
     @Transient
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
@@ -35,10 +34,10 @@ public class Teacher {
     private Teacher() {}
 
     public Teacher(String firstName, String lastName, String patronymic) {
-        this(firstName, lastName, patronymic, null, null, null, null, null, false);
+        this(firstName, lastName, patronymic, null, null, null, null, null);
     }
 
-    public Teacher(String firstName, String lastName, String patronymic, LocalDate birthDate, List<String> subjects, Integer employmentYear, Integer releaseYear, String photoName, boolean famous) {
+    public Teacher(String firstName, String lastName, String patronymic, LocalDate birthDate, List<String> subjects, Integer employmentYear, Integer releaseYear, String photoName) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.patronymic = patronymic;
@@ -47,7 +46,6 @@ public class Teacher {
         this.employmentYear = employmentYear;
         this.releaseYear = releaseYear;
         this.photoName = photoName;
-        this.famous = famous;
     }
 
     public Long getId() {
@@ -116,13 +114,5 @@ public class Teacher {
 
     public void setPhotoName(String photoName) {
         this.photoName = photoName;
-    }
-
-    public boolean isFamous() {
-        return famous;
-    }
-
-    public void setFamous(boolean famous) {
-        this.famous = famous;
     }
 }
