@@ -39,8 +39,8 @@ public class GraduateDeserializer  extends StdDeserializer<Graduate> {
         } catch (EntityNotFoundException e) {
             throw new IOException(String.format("Cannot find graduate class with id %d", id));
         }
-        String birthDateText = node.get("birthDate").asText();
-        LocalDate date = birthDateText.isEmpty() ? null : LocalDate.parse(node.get("birthDate").asText(), defaultDateTimeFormatter.get());
+        String birthDate = node.get("birthDate").asText();
+        LocalDate date = (birthDate == null || birthDate.isEmpty()) ? null : LocalDate.parse(node.get("birthDate").asText(), defaultDateTimeFormatter.get());
         if (node.has("id"))
             return new Graduate(
                 node.get("id").asLong(),

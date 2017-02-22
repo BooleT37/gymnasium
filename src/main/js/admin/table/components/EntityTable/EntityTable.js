@@ -47,22 +47,20 @@ export default class EntityTable extends React.Component {
         this.setState({ editingEntity: null });
     }
     
-    handleError(entity, status) {
-        alert(`При отправке данных произошла ошибка:\nСтатус: ${status}\nСообщение:\n${(entity && entity.errorMessage) || "[Сообщение об ошибке отсутствует]"}`);
+    handleError(message) {
+        alert(`При отправке данных произошла ошибка:\nСообщение:\n${message || "[Сообщение об ошибке отсутствует]"}`);
     }
 
     saveEntity(entity) {
         client({
-            method: 'POST',
-            path: `/api/graduates/edit`,
+            method: 'PUT',
+            path: `/api/graduates/${entity.id}`,
             entity: entity
         }).then(response => {
-            if (response.entity.success) {
-                this.setState({ editingEntity: null });
-                Actions.updateEntity(entity);
-            } else {
-                this.handleError(response.entity, response.status.code);
-            }
+            this.setState({ editingEntity: null });
+            Actions.updateEntity(response.entity);
+        }).catch(response => {
+            this.handleError(response.message);
         });
     }
 
@@ -77,14 +75,12 @@ export default class EntityTable extends React.Component {
 
     deleteEntity(id) {
         client({
-            method: 'POST',
-            path: `/api/graduates/delete/${id}`
+            method: 'DELETE',
+            path: `/api/graduates/${id}`
         }).then(response => {
-            if (response.entity.success) {
-                Actions.deleteEntityById(id);
-            } else {
-                this.handleError(response.entity, response.status.code);
-            }
+            Actions.deleteEntityById(id);
+        }).catch(response => {
+            this.handleError(response.message);
         });
     }
 
@@ -99,15 +95,13 @@ export default class EntityTable extends React.Component {
     addEntity(entity) {
         client({
             method: 'POST',
-            path: `/api/graduates/add`,
+            path: `/api/graduates/`,
             entity: entity
         }).then(response => {
-            if (response.entity.success) {
-                this.setState({ editingEntity: null });
-                Actions.addEntity(response.entity.entity);
-            } else {
-                this.handleError(response.entity, response.status.code);
-            }
+            this.setState({ editingEntity: null });
+            Actions.addEntity(response.entity);
+        }).catch(response => {
+            this.handleError(response.message);
         });
     }
 

@@ -22,6 +22,13 @@ public class GraduateDao {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    public Graduate getById(Long id) throws EntityNotFoundException {
+        Graduate found = em.find(Graduate.class, id);
+        if (found == null)
+            throw new EntityNotFoundException(String.format("Cannot find graduate with id %d", id));
+        return found;
+    }
+
     public List<Graduate> getAll() {
         return em.createQuery("from " + Graduate.class.getName(), Graduate.class).getResultList();
     }

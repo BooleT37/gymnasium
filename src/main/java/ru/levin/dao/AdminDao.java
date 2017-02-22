@@ -68,7 +68,7 @@ public class AdminDao implements UserDetailsService {
             throw new UsernameNotFoundException(ex.getMessage());
         }
         List<GrantedAuthority> grantedAuths = new ArrayList<>();
-        grantedAuths.add(new SimpleGrantedAuthority("ADMIN"));
+        grantedAuths.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
         return new org.springframework.security.core.userdetails.User(admin.getLogin(), admin.getHashedPassword(), grantedAuths);
     }
 }

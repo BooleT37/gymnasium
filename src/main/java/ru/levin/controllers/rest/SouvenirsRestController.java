@@ -5,7 +5,6 @@ import ru.levin.dao.AdminDao;
 import ru.levin.dao.SouvenirDao;
 import ru.levin.dao.exceptions.EntityNotFoundException;
 import ru.levin.entities.Souvenir;
-import ru.levin.model.RestResponse;
 import ru.levin.model.SouvenirOrder;
 import ru.levin.orderManagers.SouvenirOrderManager;
 
@@ -29,9 +28,8 @@ public class SouvenirsRestController extends BaseRestController {
     }
 
     @PostMapping("sendRequest")
-    public RestResponse sendRequest(@RequestBody SouvenirOrder souvenirOrder) throws EntityNotFoundException, IOException {
+    public void sendRequest(@RequestBody SouvenirOrder souvenirOrder) throws EntityNotFoundException, IOException {
         souvenirOrderManager.placeOrder(souvenirOrder);
-        return new RestResponse(true);
     }
 
 }

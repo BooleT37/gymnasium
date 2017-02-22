@@ -27,7 +27,8 @@ var GraduatesStore = Reflux.createStore({
             this.state[classId] = { loading: true };
             client({
                 method: 'GET',
-                path: `/api/graduates/class/${classId}`
+                params: { class: classId },
+                path: '/api/graduates/'
             }).done(response => {
                 this.state[classId] = response.entity;
                 this.trigger(this.state);
