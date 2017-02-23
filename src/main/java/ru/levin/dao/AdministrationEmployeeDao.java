@@ -22,6 +22,13 @@ public class AdministrationEmployeeDao {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    public AdministrationEmployee getById(Long id) throws EntityNotFoundException {
+        AdministrationEmployee found = em.find(AdministrationEmployee.class, id);
+        if (found == null)
+            throw new EntityNotFoundException(String.format("Cannot find administration employee with id %d", id));
+        return found;
+    }
+
     public List<AdministrationEmployee> getAll() {
         return em.createQuery("from " + AdministrationEmployee.class.getName(), AdministrationEmployee.class).getResultList();
     }
@@ -46,9 +53,18 @@ public class AdministrationEmployeeDao {
             throw new EntityNotFoundException("Administration employee id cannot be null");
         if (em.find(AdministrationEmployee.class, id) == null)
             throw new EntityNotFoundException(String.format("Cannot find administration employee with id %d", id));
-        em.persist(employee);
+        em.merge(employee);
         em.flush();
         return employee;
+    }
+
+    @Transactional
+    public AdministrationEmployee deleteById(Long id) throws EntityNotFoundException {
+        AdministrationEmployee found = em.find(AdministrationEmployee.class, id);
+        if (found == null)
+            throw new EntityNotFoundException(String.format("Cannot find administration employee with id %d", id));
+        em.remove(found);
+        return found;
     }
 
     @Transactional

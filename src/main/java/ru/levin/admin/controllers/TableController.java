@@ -39,12 +39,15 @@ public class TableController {
     public ModelAndView table(@PathVariable(name="tableName") String tableName) {
         Map<String, Object> model = new HashMap<>();
         String tableTitle;
+        String controllerName;
         List<EntityProperty> entityProperties;
         List<Object> entities;
         Map<TableEntity, List<SelectPropertyValue<Long>>> foreignEntities = new HashMap<>();
+        Map<String, String> fixSelectValues = new HashMap<>();
         switch (tableName) {
             case "graduates":
                 tableTitle = "Выпускники";
+                controllerName = "graduates";
                 entityProperties = propertiesStore.getForEntity(TableEntity.GRADUATE);
                 entities = graduateDao.getAll().stream().map(g -> (Object)g).collect(Collectors.toList());
                 List<SelectPropertyValue<Long>> graduateClassesList = graduateClassDao.getAll().stream()
@@ -54,54 +57,69 @@ public class TableController {
                 break;
             case "graduate_classes":
                 tableTitle = "Классы";
+                controllerName = "graduateClasses";
                 entityProperties = propertiesStore.getForEntity(TableEntity.GRADUATE_CLASS);
                 entities = graduateClassDao.getAll().stream().map(g -> (Object)g).collect(Collectors.toList());
-
                 break;
             case "teachers":
                 tableTitle = "Учителя";
+                controllerName = "teachers";
                 entityProperties = propertiesStore.getForEntity(TableEntity.TEACHER);
                 entities = teacherDao.getAll().stream().map(g -> (Object)g).collect(Collectors.toList());
                 break;
             case "administration":
                 tableTitle = "Администрация";
+                controllerName = "administration";
                 entityProperties = propertiesStore.getForEntity(TableEntity.ADMINISTRATION_EMPLOYEE);
                 entities = administrationEmployeeDao.getAll().stream().map(g -> (Object)g).collect(Collectors.toList());
                 break;
             case "souvenirs":
                 tableTitle = "Сувениры";
+                controllerName = "souvenirs";
                 entityProperties = propertiesStore.getForEntity(TableEntity.SOUVENIR);
                 entities = souvenirDao.getAll().stream().map(g -> (Object)g).collect(Collectors.toList());
                 break;
             case "history":
                 tableTitle = "История";
+                controllerName = "historyEvents";
                 entityProperties = propertiesStore.getForEntity(TableEntity.HISTORY_EVENT);
-                entities = historyEventDao.getForType(HistoryEventType.HISTORY).stream().map(g -> (Object)g).collect(Collectors.toList());
+                entities = historyEventDao.getAllForType(HistoryEventType.HISTORY).stream().map(g -> (Object)g).collect(Collectors.toList());
+                fixSelectValues.put("type", HistoryEventType.HISTORY.toString());
                 break;
             case "literature_club":
                 tableTitle = "Литературные гостинные";
+                controllerName = "historyEvents";
                 entityProperties = propertiesStore.getForEntity(TableEntity.HISTORY_EVENT);
-                entities = historyEventDao.getForType(HistoryEventType.LITERATURE_CLUB).stream().map(g -> (Object)g).collect(Collectors.toList());
+                entities = historyEventDao.getAllForType(HistoryEventType.LITERATURE_CLUB).stream().map(g -> (Object)g).collect(Collectors.toList());
+                fixSelectValues.put("type", HistoryEventType.LITERATURE_CLUB.toString());
                 break;
             case "sport":
                 tableTitle = "Спорт";
+                controllerName = "historyEvents";
                 entityProperties = propertiesStore.getForEntity(TableEntity.HISTORY_EVENT);
-                entities = historyEventDao.getForType(HistoryEventType.SPORT).stream().map(g -> (Object)g).collect(Collectors.toList());
+                entities = historyEventDao.getAllForType(HistoryEventType.SPORT).stream().map(g -> (Object)g).collect(Collectors.toList());
+                fixSelectValues.put("type", HistoryEventType.SPORT.toString());
                 break;
             case "art":
                 tableTitle = "Творчество";
+                controllerName = "historyEvents";
                 entityProperties = propertiesStore.getForEntity(TableEntity.HISTORY_EVENT);
-                entities = historyEventDao.getForType(HistoryEventType.ART).stream().map(g -> (Object)g).collect(Collectors.toList());
+                entities = historyEventDao.getAllForType(HistoryEventType.ART).stream().map(g -> (Object)g).collect(Collectors.toList());
+                fixSelectValues.put("type", HistoryEventType.ART.toString());
                 break;
             case "science":
                 tableTitle = "Наука";
+                controllerName = "historyEvents";
                 entityProperties = propertiesStore.getForEntity(TableEntity.HISTORY_EVENT);
-                entities = historyEventDao.getForType(HistoryEventType.SCIENCE).stream().map(g -> (Object)g).collect(Collectors.toList());
+                entities = historyEventDao.getAllForType(HistoryEventType.SCIENCE).stream().map(g -> (Object)g).collect(Collectors.toList());
+                fixSelectValues.put("type", HistoryEventType.SCIENCE.toString());
                 break;
             case "travel":
                 tableTitle = "Путешествия";
+                controllerName = "historyEvents";
                 entityProperties = propertiesStore.getForEntity(TableEntity.HISTORY_EVENT);
-                entities = historyEventDao.getForType(HistoryEventType.TRAVEL).stream().map(g -> (Object)g).collect(Collectors.toList());
+                entities = historyEventDao.getAllForType(HistoryEventType.TRAVEL).stream().map(g -> (Object)g).collect(Collectors.toList());
+                fixSelectValues.put("type", HistoryEventType.TRAVEL.toString());
                 break;
             default:
                 throw new ResourceNotFoundException(String.format("Cannot fild table '%s'", tableName));
@@ -109,9 +127,11 @@ public class TableController {
 
         Map<String, Object> clientModel = new HashMap<>();
         clientModel.put("title", tableTitle);
+        clientModel.put("controller", controllerName);
         clientModel.put("properties", entityProperties);
         clientModel.put("entities", entities);
         clientModel.put("foreignEntities", foreignEntities);
+        clientModel.put("fixSelectValues", fixSelectValues);
 
         try {
             String clientModelJson = jacksonObjectMapper.writeValueAsString(clientModel);

@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 
 @Named
 public class TestDataFiller {
@@ -227,7 +228,7 @@ public class TestDataFiller {
         if (!historyEventDao.isEmpty())
             historyEventDao.deleteAll();
 
-        historyEventDao.add(new HistoryEvent(LocalDate.of(1992, 8, 9), loremIpsum, HistoryEventType.HISTORY, Arrays.asList("1.jpg", "2.jpg", "3.jpg"), Arrays.asList("SampleVideo_1280x720_10mb.mp4", "SampleVideo_1280x720_1mb.mp4", "SampleVideo_720x480_1mb.mp4")));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(1992, 8, 9), loremIpsum, HistoryEventType.HISTORY, new HashSet<>(Arrays.asList("1.jpg", "2.jpg", "3.jpg")), new HashSet<>(Arrays.asList("SampleVideo_1280x720_10mb.mp4", "SampleVideo_1280x720_1mb.mp4", "SampleVideo_720x480_1mb.mp4"))));
         historyEventDao.add(new HistoryEvent(LocalDate.of(1995, 12, 8), loremIpsum, HistoryEventType.HISTORY, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(1998, 6, 4), shortLoremIpsum, HistoryEventType.HISTORY, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(1999, 5, 23), shortLoremIpsum, HistoryEventType.HISTORY, null, null));
@@ -237,26 +238,26 @@ public class TestDataFiller {
         historyEventDao.add(new HistoryEvent(LocalDate.of(2010, 1, 30), shortLoremIpsum, HistoryEventType.HISTORY, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(2015, 2, 17), shortLoremIpsum, HistoryEventType.HISTORY, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(2016, 3, 5), shortLoremIpsum, HistoryEventType.HISTORY, null, null));
-        historyEventDao.add(new HistoryEvent(LocalDate.of(1997, 2, 16), shortLoremIpsum, HistoryEventType.LITERATURE_CLUB, Arrays.asList("1.jpg", "2.jpg"), Arrays.asList("SampleVideo_1280x720_1mb.mp4", "SampleVideo_720x480_1mb.mp4")));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(1997, 2, 16), shortLoremIpsum, HistoryEventType.LITERATURE_CLUB, new HashSet<>(Arrays.asList("1.jpg", "2.jpg")), new HashSet<>(Arrays.asList("SampleVideo_1280x720_1mb.mp4", "SampleVideo_720x480_1mb.mp4"))));
         historyEventDao.add(new HistoryEvent(LocalDate.of(1998, 2, 18), shortLoremIpsum, HistoryEventType.LITERATURE_CLUB, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(2009, 5, 27), shortLoremIpsum, HistoryEventType.LITERATURE_CLUB, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(2000, 9, 11), shortLoremIpsum, HistoryEventType.LITERATURE_CLUB, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(2015, 9, 24), shortLoremIpsum, HistoryEventType.LITERATURE_CLUB, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(2016, 6, 19), shortLoremIpsum, HistoryEventType.LITERATURE_CLUB, null, null));
-        historyEventDao.add(new HistoryEvent(LocalDate.of(1995, 8, 25), shortLoremIpsum, HistoryEventType.SPORT, Arrays.asList("1.jpg", "2.jpg"), Arrays.asList("SampleVideo_1280x720_1mb.mp4", "SampleVideo_720x480_1mb.mp4")));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(1995, 8, 25), shortLoremIpsum, HistoryEventType.SPORT, new HashSet<>(Arrays.asList("1.jpg", "2.jpg")), new HashSet<>(Arrays.asList("SampleVideo_1280x720_1mb.mp4", "SampleVideo_720x480_1mb.mp4"))));
         historyEventDao.add(new HistoryEvent(LocalDate.of(2006, 1, 28), shortLoremIpsum, HistoryEventType.SPORT, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(2011, 4, 3), shortLoremIpsum, HistoryEventType.SPORT, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(2011, 4, 27), shortLoremIpsum, HistoryEventType.SPORT, null, null));
-        historyEventDao.add(new HistoryEvent(LocalDate.of(1993, 3, 6), shortLoremIpsum, HistoryEventType.ART, Arrays.asList("1.jpg", "2.jpg"), Arrays.asList("SampleVideo_1280x720_1mb.mp4", "SampleVideo_720x480_1mb.mp4")));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(1993, 3, 6), shortLoremIpsum, HistoryEventType.ART, new HashSet<>(Arrays.asList("1.jpg", "2.jpg")), new HashSet<>(Arrays.asList("SampleVideo_1280x720_1mb.mp4", "SampleVideo_720x480_1mb.mp4"))));
         historyEventDao.add(new HistoryEvent(LocalDate.of(1994, 10, 14), shortLoremIpsum, HistoryEventType.ART, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(1997, 5, 13), shortLoremIpsum, HistoryEventType.ART, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(2003, 8, 16), shortLoremIpsum, HistoryEventType.ART, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(2014, 1, 12), shortLoremIpsum, HistoryEventType.ART, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(2014, 5, 14), shortLoremIpsum, HistoryEventType.ART, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(2015, 11, 16), shortLoremIpsum, HistoryEventType.ART, null, null));
-        historyEventDao.add(new HistoryEvent(LocalDate.of(2003, 4, 11), shortLoremIpsum, HistoryEventType.SCIENCE, Arrays.asList("1.jpg", "2.jpg"), Arrays.asList("SampleVideo_1280x720_1mb.mp4", "SampleVideo_720x480_1mb.mp4")));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(2003, 4, 11), shortLoremIpsum, HistoryEventType.SCIENCE, new HashSet<>(Arrays.asList("1.jpg", "2.jpg")), new HashSet<>(Arrays.asList("SampleVideo_1280x720_1mb.mp4", "SampleVideo_720x480_1mb.mp4"))));
         historyEventDao.add(new HistoryEvent(LocalDate.of(2003, 7, 5), shortLoremIpsum, HistoryEventType.SCIENCE, null, null));
-        historyEventDao.add(new HistoryEvent(LocalDate.of(1995, 3, 15), shortLoremIpsum, HistoryEventType.TRAVEL, Arrays.asList("1.jpg", "2.jpg"), Arrays.asList("SampleVideo_1280x720_1mb.mp4", "SampleVideo_720x480_1mb.mp4")));
+        historyEventDao.add(new HistoryEvent(LocalDate.of(1995, 3, 15), shortLoremIpsum, HistoryEventType.TRAVEL, new HashSet<>(Arrays.asList("1.jpg", "2.jpg")), new HashSet<>(Arrays.asList("SampleVideo_1280x720_1mb.mp4", "SampleVideo_720x480_1mb.mp4"))));
         historyEventDao.add(new HistoryEvent(LocalDate.of(1999, 9, 6), shortLoremIpsum, HistoryEventType.TRAVEL, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(2004, 4, 26), shortLoremIpsum, HistoryEventType.TRAVEL, null, null));
         historyEventDao.add(new HistoryEvent(LocalDate.of(2007, 9, 5), shortLoremIpsum, HistoryEventType.TRAVEL, null, null));
@@ -267,7 +268,7 @@ public class TestDataFiller {
     private void fillAdmins() throws EntityAlreadyExistsException {
         if (!adminDao.isEmpty())
             adminDao.deleteAll();
-        String password = "password";
+        String password = "EJ0RJe29QP";
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(password);
         adminDao.add(new Admin("BooleT", "BooleT37@mail.ru", hashedPassword));

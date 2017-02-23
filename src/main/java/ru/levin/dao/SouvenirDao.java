@@ -21,15 +21,15 @@ public class SouvenirDao {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public List<Souvenir> getAll() {
-        return em.createQuery("from " + Souvenir.class.getName(), Souvenir.class).getResultList();
-    }
-
     public Souvenir getById(Long id) throws EntityNotFoundException {
         Souvenir found = em.find(Souvenir.class, id);
         if (found == null)
             throw new EntityNotFoundException(String.format("Can't find souvenir with id %d", id));
         return found;
+    }
+
+    public List<Souvenir> getAll() {
+        return em.createQuery("from " + Souvenir.class.getName(), Souvenir.class).getResultList();
     }
 
     @Transactional
@@ -52,9 +52,18 @@ public class SouvenirDao {
             throw new EntityNotFoundException("Souvenir id cannot be null");
         if (em.find(Souvenir.class, id) == null)
             throw new EntityNotFoundException(String.format("Cannot find souvenir with id %d", id));
-        em.persist(souvenir);
+        em.merge(souvenir);
         em.flush();
         return souvenir;
+    }
+
+    @Transactional
+    public Souvenir deleteById(Long id) throws EntityNotFoundException {
+        Souvenir found = em.find(Souvenir.class, id);
+        if (found == null)
+            throw new EntityNotFoundException(String.format("Cannot find souvenir with id %d", id));
+        em.remove(found);
+        return found;
     }
 
     @Transactional

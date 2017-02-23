@@ -22,15 +22,15 @@ public class TeacherDao {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public List<Teacher> getAll() {
-        return em.createQuery("from " + Teacher.class.getName(), Teacher.class).getResultList();
-    }
-
     public Teacher getById(Long id) throws EntityNotFoundException {
         Teacher teacher = em.find(Teacher.class, id);
         if (teacher == null)
             throw new EntityNotFoundException(String.format("Cannot find teacher with id %d", id));
         return teacher;
+    }
+
+    public List<Teacher> getAll() {
+        return em.createQuery("from " + Teacher.class.getName(), Teacher.class).getResultList();
     }
 
     @Transactional
@@ -53,9 +53,18 @@ public class TeacherDao {
             throw new EntityNotFoundException("Teacher id cannot be null");
         if (em.find(Teacher.class, id) == null)
             throw new EntityNotFoundException(String.format("Cannot find teacher with id %d", id));
-        em.persist(teacher);
+        em.merge(teacher);
         em.flush();
         return teacher;
+    }
+
+    @Transactional
+    public Teacher deleteById(Long id) throws EntityNotFoundException {
+        Teacher found = em.find(Teacher.class, id);
+        if (found == null)
+            throw new EntityNotFoundException(String.format("Cannot find teacher with id %d", id));
+        em.remove(found);
+        return found;
     }
 
     @Transactional

@@ -89,7 +89,7 @@ public class AdministrationEmployee {
         return employmentYear;
     }
 
-    public void setEmploymentYear(int employmentYear) {
+    public void setEmploymentYear(Integer employmentYear) {
         this.employmentYear = employmentYear;
     }
 
@@ -97,7 +97,7 @@ public class AdministrationEmployee {
         return releaseYear;
     }
 
-    public void setReleaseYear(int releaseYear) {
+    public void setReleaseYear(Integer releaseYear) {
         this.releaseYear = releaseYear;
     }
 

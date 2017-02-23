@@ -42,8 +42,6 @@ export default class EntityTable extends React.Component {
     }
 
     onCancelEditButtonClick() {
-        // if (confirm("Действительно отменить редактирование?"))
-        //     this.setState({ editingEntity: null });
         this.setState({ editingEntity: null });
     }
     
@@ -52,15 +50,16 @@ export default class EntityTable extends React.Component {
     }
 
     saveEntity(entity) {
+        var controller = TableStore.state.controller;
         client({
             method: 'PUT',
-            path: `/api/graduates/${entity.id}`,
+            path: `/api/${controller}/${entity.id}`,
             entity: entity
         }).then(response => {
             this.setState({ editingEntity: null });
             Actions.updateEntity(response.entity);
         }).catch(response => {
-            this.handleError(response.message);
+            this.handleError(response.entity ? response.entity.message : response.message);
         });
     }
 
@@ -74,13 +73,14 @@ export default class EntityTable extends React.Component {
     }
 
     deleteEntity(id) {
+        var controller = TableStore.state.controller;
         client({
             method: 'DELETE',
-            path: `/api/graduates/${id}`
+            path: `/api/${controller}/${id}`
         }).then(response => {
             Actions.deleteEntityById(id);
         }).catch(response => {
-            this.handleError(response.message);
+            this.handleError(response.entity ? response.entity.message : response.message);
         });
     }
 
@@ -93,15 +93,16 @@ export default class EntityTable extends React.Component {
     }
 
     addEntity(entity) {
+        var controller = TableStore.state.controller;
         client({
             method: 'POST',
-            path: `/api/graduates/`,
+            path: `/api/${controller}/`,
             entity: entity
         }).then(response => {
             this.setState({ editingEntity: null });
             Actions.addEntity(response.entity);
         }).catch(response => {
-            this.handleError(response.message);
+            this.handleError(response.entity ? response.entity.message : response.message);
         });
     }
 
@@ -186,7 +187,7 @@ export default class EntityTable extends React.Component {
 
         var rows = entities.map(entity => this.entityToRow(entity));
         if (this.state.editingEntity && this.state.editingEntity.isNew)
-            rows.unshift(<RowForm key="-1" entity={this.state.editingEntity} onSubmit={this.addEntity} onCancel={this.cancelEdit}/>);
+            rows.unshift(<RowForm key="-1" entity={this.state.editingEntity} onSubmit={this.addEntity} onCancel={this.onCancelEditButtonClick}/>);
 
         return (
             <div className="entityTable">

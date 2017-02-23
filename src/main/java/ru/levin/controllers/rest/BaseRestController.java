@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import ru.levin.dao.exceptions.EntityNotFoundException;
 import ru.levin.model.RestError;
 
 public class BaseRestController {
@@ -14,6 +15,11 @@ public class BaseRestController {
     @ExceptionHandler({ AccessDeniedException.class })
     public ResponseEntity<RestError> accessDeniedHandler(Exception e) {
         return getResponseEntity(e.getMessage(), HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler({ EntityNotFoundException.class })
+    public ResponseEntity<RestError> entityNotFoundHandler(Exception e) {
+        return getResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(value = Exception.class)

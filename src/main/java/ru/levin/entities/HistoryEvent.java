@@ -4,7 +4,7 @@ import ru.levin.entities.enums.HistoryEventType;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
 import static javax.persistence.EnumType.STRING;
 
@@ -22,20 +22,20 @@ public class HistoryEvent {
     @Enumerated(STRING)
     @Column(nullable = false)
     private HistoryEventType type;
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(
             name="TBL_HISTORY_PHOTOS"
     )
-    private List<String> photoNames;
-    @ElementCollection
+    private Set<String> photoNames;
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(
             name="TBL_HISTORY_VIDEOS"
     )
-    private List<String> videoNames;
+    private Set<String> videoNames;
 
     private HistoryEvent() {}
 
-    public HistoryEvent(LocalDate date, String description, HistoryEventType type, List<String> photoNames, List<String> videoNames) {
+    public HistoryEvent(LocalDate date, String description, HistoryEventType type, Set<String> photoNames, Set<String> videoNames) {
         this.date = date;
         this.description = description;
         this.type = type;
@@ -63,19 +63,19 @@ public class HistoryEvent {
         this.description = description;
     }
 
-    public List<String> getPhotoNames() {
+    public Set<String> getPhotoNames() {
         return photoNames;
     }
 
-    public void setPhotoNames(List<String> photoNames) {
+    public void setPhotoNames(Set<String> photoNames) {
         this.photoNames = photoNames;
     }
 
-    public List<String> getVideoNames() {
+    public Set<String> getVideoNames() {
         return videoNames;
     }
 
-    public void setVideoNames(List<String> videoNames) {
+    public void setVideoNames(Set<String> videoNames) {
         this.videoNames = videoNames;
     }
 

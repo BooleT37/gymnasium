@@ -40,12 +40,18 @@ export default class RowForm extends React.Component {
 
             //for new entities to set default select value
             if (prop.nullable === false && !value)
-                if (prop.type === "SELECT")
-                    value = prop.selectValues[0].value;
-                else if (prop.type === "FOREIGN_ID")
-                    value = TableStore.state.foreignEntities[prop.relatedEntity][0].value;
+                if (prop.type === "SELECT") {
+                    var fixSelectValue = TableStore.state.fixSelectValues[prop.name];
+                    if (fixSelectValue)
+                        value = fixSelectValue;
+                    else
+                        value = prop.selectValues[0].value;
+                } else {
+                    if (prop.type === "FOREIGN_ID")
+                        value = TableStore.state.foreignEntities[prop.relatedEntity][0].value;
+                }
             form[prop.name] = value;
-        })
+        });
 
         this.state = {
             form: form
@@ -54,6 +60,7 @@ export default class RowForm extends React.Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.cancelEdit = this.cancelEdit.bind(this);
+        this.handleInputKeyPress = this.handleInputKeyPress.bind(this);
     }
 
     handleInputChange(e) {
@@ -80,20 +87,22 @@ export default class RowForm extends React.Component {
             if (prop.name === "controls")
                 return;
             var value = this.state.form[prop.name];
-            if (value) {
-                switch (prop.type) {
-                    case "DATE":
-                        value = isoToServer(value);
-                        break;
-                    case "LIST":
-                        value = value.split(", ");
-                        break;
-                    case "NUMBER":
-                    case "FOREIGN_ID":
-                        value = parseInt(value, 10);
-                        break;
-                }
+
+            if (prop.type === "NUMBER")
+                if (value)
+                    value = parseInt(value, 10);
+                else
+                    value = null;
+
+            if (value && prop.type === "DATE")
+                value = isoToServer(value);
+
+            if (prop.type === "LIST") {
+                value = value.split(", ");
+                if (value.length === 1 && !value[0])
+                    value = [];
             }
+
             if (prop.nullable === false && (value === null || value === undefined || (typeof value === "string" && value.length === 0))) {
                 alert(`Поле '${prop.columnName}' обязательно для заполнения!`);
                 isValid = false;
@@ -106,6 +115,12 @@ export default class RowForm extends React.Component {
         if (!isValid)
             return;
         this.props.onSubmit(form);
+    }
+
+    handleInputKeyPress(target) {
+        if(target.charCode==13){
+            this.handleFormSubmit();
+        }
     }
 
     cancelEdit() {
@@ -127,6 +142,7 @@ export default class RowForm extends React.Component {
                     value={value}
                     onChange={this.handleInputChange}
                     onFocus={this.handleInputFocus}
+                    onKeyPress={this.handleInputKeyPress} 
                 />;
             } else {
                 switch (prop.type) {
@@ -134,7 +150,14 @@ export default class RowForm extends React.Component {
                         content = <input className="rowForm_input" name={prop.name} type="checkbox" checked={value} onChange={this.handleInputChange}/>;
                         break;
                     case("TEXT"):
-                        content = <textarea autoFocus={i === 0} className="rowForm_input" name={prop.name} value={value} onChange={this.handleInputChange} onFocus={this.handleInputFocus}/>;
+                        content = <textarea
+                            autoFocus={i === 0}
+                            className="rowForm_input"
+                            name={prop.name}
+                            value={value}
+                            onChange={this.handleInputChange}
+                            onFocus={this.handleInputFocus}
+                            />;
                         break;
                     case("SELECT"):
                         var options = prop.selectValues.map(v => (<option value={v.value} key={v.value}>{v.displayName}</option>));

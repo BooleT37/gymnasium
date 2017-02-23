@@ -79,7 +79,7 @@ public class PropertiesStore {
             add(new EntityProperty("employmentYear", "Год начала работы", PropertyType.NUMBER));
             add(new EntityProperty("releaseYear", "Год конца работы", PropertyType.NUMBER));
             add(new EntityProperty("photoName", "Фото"));
-            add(new EntityProperty("position", "Должность", PropertyType.SELECT, new ArrayList<SelectPropertyValue<String>>() {{
+            add(new EntityProperty("position", "Должность", false, PropertyType.SELECT, new ArrayList<SelectPropertyValue<String>>() {{
                 add(new SelectPropertyValue<>(AdministrationPosition.DIRECTOR.toString(), "Директор"));
                 add(new SelectPropertyValue<>(AdministrationPosition.DEPUTY_DIRECTOR.toString(), "Зам. директора"));
             }}));
@@ -101,7 +101,7 @@ public class PropertiesStore {
         {{
             add(new EntityProperty("date", "Дата", false, PropertyType.DATE));
             add(new EntityProperty("description", "Описание", PropertyType.TEXT, 2000));
-            add(new EntityProperty("type", "Тип", PropertyType.SELECT, new ArrayList<SelectPropertyValue<String>>() {{
+            add(new EntityProperty("type", "Тип", false, PropertyType.SELECT, new ArrayList<SelectPropertyValue<String>>() {{
                 add(new SelectPropertyValue<>(HistoryEventType.HISTORY.toString(), "История"));
                 add(new SelectPropertyValue<>(HistoryEventType.LITERATURE_CLUB.toString(), "Литературные гостинные"));
                 add(new SelectPropertyValue<>(HistoryEventType.ART.toString(), "Творчество"));

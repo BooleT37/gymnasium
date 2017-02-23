@@ -3,6 +3,7 @@ package ru.levin.dao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.levin.dao.exceptions.EntityAlreadyExistsException;
+import ru.levin.dao.exceptions.EntityNotFoundException;
 import ru.levin.entities.HistoryEvent;
 import ru.levin.entities.enums.HistoryEventType;
 
@@ -19,10 +20,21 @@ public class HistoryEventDao {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public List<HistoryEvent> getForType(HistoryEventType type) {
+    public HistoryEvent getById(Long id) throws EntityNotFoundException {
+        HistoryEvent found = em.find(HistoryEvent.class, id);
+        if (found == null)
+            throw new EntityNotFoundException(String.format("Cannot find history event with id %d", id));
+        return found;
+    }
+
+    public List<HistoryEvent> getAllForType(HistoryEventType type) {
         return em.createQuery("from " + HistoryEvent.class.getName() + " where type = :type", HistoryEvent.class)
                 .setParameter("type", type)
                 .getResultList();
+    }
+
+    public List<HistoryEvent> getAll() {
+        return em.createQuery("from " + HistoryEvent.class.getName(), HistoryEvent.class).getResultList();
     }
 
     @Transactional
@@ -34,6 +46,27 @@ public class HistoryEventDao {
         em.persist(historyEvent);
         em.flush();
         return historyEvent;
+    }
+
+    @Transactional
+    public HistoryEvent edit(HistoryEvent event) throws EntityNotFoundException {
+        Long id = event.getId();
+        if (id == null)
+            throw new EntityNotFoundException("History event id cannot be null");
+        if (em.find(HistoryEvent.class, id) == null)
+            throw new EntityNotFoundException(String.format("Cannot find teacher with id %d", id));
+        em.merge(event);
+        em.flush();
+        return event;
+    }
+
+    @Transactional
+    public HistoryEvent deleteById(Long id) throws EntityNotFoundException {
+        HistoryEvent found = em.find(HistoryEvent.class, id);
+        if (found == null)
+            throw new EntityNotFoundException(String.format("Cannot find history event with id %d", id));
+        em.remove(found);
+        return found;
     }
 
     @Transactional

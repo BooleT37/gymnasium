@@ -2,7 +2,6 @@ package ru.levin.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Entity
@@ -19,7 +18,7 @@ public class Teacher {
     @Column(length = 50)
     private String patronymic;
     private LocalDate birthDate;
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(
         name="TBL_SUBJECTS"
     )
@@ -27,9 +26,6 @@ public class Teacher {
     private Integer employmentYear;
     private Integer releaseYear;
     private String photoName;
-
-    @Transient
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
     private Teacher() {}
 
@@ -96,7 +92,7 @@ public class Teacher {
         return employmentYear;
     }
 
-    public void setEmploymentYear(int employmentYear) {
+    public void setEmploymentYear(Integer employmentYear) {
         this.employmentYear = employmentYear;
     }
 
@@ -104,7 +100,7 @@ public class Teacher {
         return releaseYear;
     }
 
-    public void setReleaseYear(int releaseYear) {
+    public void setReleaseYear(Integer releaseYear) {
         this.releaseYear = releaseYear;
     }
 
