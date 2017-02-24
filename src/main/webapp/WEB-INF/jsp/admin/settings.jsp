@@ -11,7 +11,7 @@
             <link rel="stylesheet" href="http://localhost:8081/src/main/resources/static/built/settings.css" />
         </c:when>
         <c:otherwise>
-            <link rel="stylesheet" href="built/settings.css" />
+            <link rel="stylesheet" href="/built/settings.css" />
         </c:otherwise>
     </c:choose>
 </head>
