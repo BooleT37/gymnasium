@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.settingsPage_title {
+    text-align: center;
+}
+
+.settingsPage_left, .settingsPage_right {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+}
+
+.settingsPage_form {
+    background: whitesmoke;
+    border: solid 1px darkgray;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 5px 0;
+}
+
+.settingsPage_form_line {
+    margin-bottom: 5px;
+}
+
+.settingsPage_form_label {
+    width: 150px;
+    display: inline-block;
+    text-align: right;
+    margin-right: 10px;
+}

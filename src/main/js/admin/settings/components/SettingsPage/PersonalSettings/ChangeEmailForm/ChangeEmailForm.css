@@ -1,0 +1,11 @@
+.changeEmailForm {
+    width: 250px;
+}
+
+.changeEmailForm_button {
+    margin-right: 5px;
+}
+
+.changeEmailForm .settingsPage_form_label {
+    width: 50px;
+}

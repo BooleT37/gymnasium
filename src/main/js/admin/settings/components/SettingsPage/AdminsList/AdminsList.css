@@ -1,0 +1,53 @@
+.adminsList {
+    text-align: center;
+}
+
+.adminsList_inner {
+    display: inline-block;
+    text-align: left;
+    min-width: 350px;
+}
+
+.adminsList_currentAdminRow {
+    background: whitesmoke;
+}
+
+.adminsList_newAdminControls {
+    margin-bottom: 5px;
+}
+
+.adminsList_newAdminButton {
+    margin-right: 5px;
+}
+
+.adminsList table {
+    border-collapse: collapse;
+}
+
+.adminsList thead td {
+    font-weight: bold;
+    text-align: center;
+}
+
+.adminsList td {
+    border: solid 1px gray;
+}
+
+.adminsList td.adminsList_controlsCol {
+    border: solid 1px white;
+}
+
+.adminsList tbody td {
+    padding: 2px;
+}
+
+.adminsList_deleteLink {
+    margin-left: 2px;
+    font-size: 14px;
+    cursor: pointer;
+    color: navy;
+}
+
+.adminsList_deleteLink:hover {
+    text-decoration: underline;
+}

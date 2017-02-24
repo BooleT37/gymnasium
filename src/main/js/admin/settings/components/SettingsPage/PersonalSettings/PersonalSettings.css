@@ -1,0 +1,25 @@
+.personalSettings_button {
+    cursor: pointer;
+    color: navy;
+    margin-bottom: 10px;
+}
+
+.personalSettings_button:hover {
+    text-decoration: underline;
+}
+
+.personalSettings_button_email {
+    margin-left: 6px;
+}
+
+.personalSettings_emailContainer {
+    margin-bottom: 10px;
+}
+
+.personalSettings_email_empty {
+    color: darkgray;
+}
+
+.personalSettings_error {
+    color: tomato;
+}
