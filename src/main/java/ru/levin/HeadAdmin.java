@@ -17,7 +17,7 @@ public class HeadAdmin {
     @PostConstruct
     private void postConstruct() {
         String hashedPassword = "$2a$10$fPpLalSyfbiRdWjXuAcSieiwn57R5b9lEn/CrGExsXpA3y9Tdwmu.";
-        admin = new Admin("BooleT", "BooleT37@mail.ru", hashedPassword);
+        admin = new Admin("BooleT", "BooleT37@mail.ru", hashedPassword, false);
     }
     public Admin get() {
         return admin;
