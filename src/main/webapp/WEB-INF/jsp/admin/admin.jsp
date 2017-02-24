@@ -5,6 +5,7 @@
 <head lang="ru">
     <meta charset="UTF-8"/>
     <title>Админка</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <style>
         body {
             font-family: Arial, sans-serif;

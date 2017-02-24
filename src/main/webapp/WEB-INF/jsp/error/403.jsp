@@ -4,6 +4,7 @@
 <html>
     <head>
         <title>Гимназия № 2 - ошибка 403</title>
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     </head>
     <body>
         <h2>Упс! Что-то пошло не так.</h2>

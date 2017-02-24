@@ -6,6 +6,7 @@
 <head lang="ru">
     <meta charset="UTF-8"/>
     <title>Админка - ${title}</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <c:choose>
         <c:when test="${debug}">
             <link rel="stylesheet" href="http://localhost:8081/src/main/resources/static/built/tablePage.css" />
