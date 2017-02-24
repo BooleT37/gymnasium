@@ -6,7 +6,8 @@ var argv = require('yargs').argv;
 module.exports = {
     entry: {
         index: './src/main/js/app/app.js',
-        tablePage: './src/main/js/admin/table/tablePage.js'
+        tablePage: './src/main/js/admin/table/tablePage.js',
+        settings: './src/main/js/admin/settings/settings.js'
     },
     devtool: 'sourcemaps',
     cache: true,

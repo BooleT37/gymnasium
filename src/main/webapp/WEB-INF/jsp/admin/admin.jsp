@@ -61,7 +61,7 @@
             <a href="/admin/tables/travel"><div class="nav_item">Путешествия</div></a>
         </div>
         <div>
-            <a href="/admin/tables/admins"><div class="nav_item">Администраторы</div></a>
+            <a href="/admin/settings"><div class="nav_item">Настройки</div></a>
         </div>
         <div class="links">
             <a href="/logout" class="link">↩ Выйти</a><br/>

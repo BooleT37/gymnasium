@@ -54,10 +54,10 @@ public class SouvenirOrderManager {
                 if (file == null)
                     throw new IOException(String.format("Can't find file for url %s", url.toString()));
                 imageList.add(new MailImage(file, file.getName()));
-                mailHelper.sendMailToFirstAdmin(this.getMailText(souvenir.getName(), souvenirID, order.getFio(), order.getPhone(), file.getName()), subject, true, imageList);
+                mailHelper.sendMailToAllSubscribedAdmins(this.getMailText(souvenir.getName(), souvenirID, order.getFio(), order.getPhone(), file.getName()), subject, true, imageList);
             }
         } else {
-            mailHelper.sendMailToFirstAdmin(this.getMailText(souvenir.getName(), souvenirID, order.getFio(), order.getPhone(), null), subject);
+            mailHelper.sendMailToAllSubscribedAdmins(this.getMailText(souvenir.getName(), souvenirID, order.getFio(), order.getPhone(), null), subject);
         }
     }
 }

@@ -14,18 +14,22 @@ import javax.inject.Inject;
 @SpringBootApplication
 public class GymnasiumApplication extends SpringBootServletInitializer {
     @Inject
-    private TestDataFiller testDataFiller;
+    private DataFiller dataFiller;
 
     public static void main(String[] args) {
         SpringApplication.run(GymnasiumApplication.class, args);
     }
 
-    private void fillWithTestData() throws EntityAlreadyExistsException, WrongGradeException {
-        testDataFiller.fill();
+    private void fillData() throws EntityAlreadyExistsException, WrongGradeException {
+        String debugEnv = System.getenv().get("FILL_WITH_TEST_DATA");
+        Boolean fillWithTestData = debugEnv != null && debugEnv.equals("TRUE");
+        if (fillWithTestData)
+            dataFiller.fillTestData();
+        dataFiller.addHeadAdmin();
     }
 
     @Bean
 	public CommandLineRunner runner() {
-        return args -> this.fillWithTestData();
+        return args -> this.fillData();
 	}
 }

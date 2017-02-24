@@ -1,6 +1,5 @@
 package ru.levin;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import ru.levin.dao.*;
 import ru.levin.dao.exceptions.EntityAlreadyExistsException;
 import ru.levin.entities.*;
@@ -17,7 +16,7 @@ import java.util.Collections;
 import java.util.HashSet;
 
 @Named
-public class TestDataFiller {
+class DataFiller {
     @Inject private GraduateDao graduateDao;
     @Inject private GraduateClassDao graduateClassDao;
     @Inject private TeacherDao teacherDao;
@@ -25,6 +24,7 @@ public class TestDataFiller {
     @Inject private SouvenirDao souvenirDao;
     @Inject private HistoryEventDao historyEventDao;
     @Inject private AdminDao adminDao;
+    @Inject private HeadAdmin headAdmin;
 
     private void fillGraduatesAndClasses() throws WrongGradeException, EntityAlreadyExistsException {
         if (!graduateDao.isEmpty())
@@ -265,26 +265,17 @@ public class TestDataFiller {
         historyEventDao.add(new HistoryEvent(LocalDate.of(2012, 5, 2), shortLoremIpsum, HistoryEventType.TRAVEL, null, null));
     }
 
-    private void fillAdmins() throws EntityAlreadyExistsException {
-        if (!adminDao.isEmpty())
-            adminDao.deleteAll();
-        String password = "EJ0RJe29QP";
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String hashedPassword = passwordEncoder.encode(password);
-        adminDao.add(new Admin("BooleT", "BooleT37@mail.ru", hashedPassword));
+    void addHeadAdmin() throws EntityAlreadyExistsException {
+        if (adminDao.isEmpty()) {
+            adminDao.add(headAdmin.get());
+        }
     }
 
-    public void fill() throws WrongGradeException, EntityAlreadyExistsException {
-        String debugEnv = System.getenv().get("FILL_WITH_TEST_DATA");
-        Boolean fillWithTestData = debugEnv != null && debugEnv.equals("TRUE");
-
-        if (fillWithTestData) {
-            fillGraduatesAndClasses();
-            fillTeachers();
-            fillAdministration();
-            fillSouvenirs();
-            fillHistoryEvents();
-            fillAdmins();
-        }
+    void fillTestData() throws WrongGradeException, EntityAlreadyExistsException {
+        fillGraduatesAndClasses();
+        fillTeachers();
+        fillAdministration();
+        fillSouvenirs();
+        fillHistoryEvents();
     }
 }

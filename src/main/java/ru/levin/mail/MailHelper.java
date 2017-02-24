@@ -24,29 +24,33 @@ public class MailHelper {
     @Value("${mail.address}")
     private String mailAddress;
 
-    public void sendMailToFirstAdmin(String text, String subject, boolean isMultipart, List<MailImage> images) {
+    public void sendMailToAllSubscribedAdmins(String text, String subject, boolean isMultipart, List<MailImage> images) {
         List<Admin> admins = adminDao.getAll();
-        String emailTo = admins.get(0).getEmail();
-
-        MimeMessage mail = javaMailSender.createMimeMessage();
-
-        try {
-            MimeMessageHelper helper = new MimeMessageHelper(mail, isMultipart, "UTF-8");
-            helper.setTo(emailTo);
-            helper.setReplyTo(mailAddress);
-            helper.setFrom(mailAddress);
-            helper.setSubject(subject);
-            helper.setText(text, true);
-            if (images != null)
-                for (MailImage image : images)
-                    helper.addInline(image.getCid(), image.getFile());
-        } catch (MessagingException e) {
-            logger.warn(e.getMessage());
+        for (Admin admin : admins) {
+            if (!admin.isSubscribed())
+                continue;
+            String emailTo = admin.getEmail();
+            if (emailTo == null || emailTo.isEmpty())
+                continue;
+            MimeMessage mail = javaMailSender.createMimeMessage();
+            try {
+                MimeMessageHelper helper = new MimeMessageHelper(mail, isMultipart, "UTF-8");
+                helper.setTo(emailTo);
+                helper.setReplyTo(mailAddress);
+                helper.setFrom(mailAddress);
+                helper.setSubject(subject);
+                helper.setText(text, true);
+                if (images != null)
+                    for (MailImage image : images)
+                        helper.addInline(image.getCid(), image.getFile());
+            } catch (MessagingException e) {
+                logger.warn(e.getMessage());
+            }
+            javaMailSender.send(mail);
         }
-        javaMailSender.send(mail);
     }
 
-    public void sendMailToFirstAdmin(String text, String subject) {
-        this.sendMailToFirstAdmin(text, subject, false, null);
+    public void sendMailToAllSubscribedAdmins(String text, String subject) {
+        this.sendMailToAllSubscribedAdmins(text, subject, false, null);
     }
 }

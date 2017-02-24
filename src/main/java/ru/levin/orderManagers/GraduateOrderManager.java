@@ -69,7 +69,7 @@ public class GraduateOrderManager {
             List<MailImage> imageList = new ArrayList<>();
             imageList.add(new MailImage(outputFile, outputFile.getName()));
             try {
-                mailHelper.sendMailToFirstAdmin(getMailText(order, outputFile.getName()), subject, true, imageList);
+                mailHelper.sendMailToAllSubscribedAdmins(getMailText(order, outputFile.getName()), subject, true, imageList);
             } catch (Exception e) {
                 logger.warn("Coudn't send a message to admin. Message is:");
                 logger.warn(e.getMessage());
@@ -79,7 +79,7 @@ public class GraduateOrderManager {
                 }
             }
         } else {
-            mailHelper.sendMailToFirstAdmin(getMailText(order, null), subject);
+            mailHelper.sendMailToAllSubscribedAdmins(getMailText(order, null), subject);
         }
     }
 }

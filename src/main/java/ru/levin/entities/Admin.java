@@ -1,5 +1,7 @@
 package ru.levin.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,12 +14,22 @@ public class Admin {
     @Column(length = 50, nullable = false)
     private String login;
 
+    @JsonIgnore
     private String hashedPassword;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50)
     private String email;
 
+    private boolean subscribed = true;
+
     public Admin() {}
+
+    public Admin(String login, String hashedPassword, String email, boolean subscribed) {
+        this.login = login;
+        this.hashedPassword = hashedPassword;
+        this.email = email;
+        this.subscribed = subscribed;
+    }
 
     public Admin(String login, String email, String hashedPassword) {
         this.login = login;
@@ -47,5 +59,13 @@ public class Admin {
 
     public void setHashedPassword(String hashedPassword) {
         this.hashedPassword = hashedPassword;
+    }
+
+    public boolean isSubscribed() {
+        return subscribed;
+    }
+
+    public void setSubscribed(boolean subscribed) {
+        this.subscribed = subscribed;
     }
 }

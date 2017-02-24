@@ -23,6 +23,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
             .antMatchers("**").permitAll() //todo authorization for REST
             .and()
+            .headers()
+            .frameOptions()
+            .disable()
+            .and()
             .formLogin()
             .loginPage("/login")
             .defaultSuccessUrl("/admin");

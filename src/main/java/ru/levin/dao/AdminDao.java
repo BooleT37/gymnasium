@@ -27,15 +27,15 @@ public class AdminDao implements UserDetailsService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public List<Admin> getAll() {
-        return em.createQuery("from " + Admin.class.getName(), Admin.class).getResultList();
-    }
-
-    private Admin getByLogin(String login) throws EntityNotFoundException {
+    public Admin getByLogin(String login) throws EntityNotFoundException {
         Admin found =  em.find(Admin.class, login);
         if (found == null)
             throw new EntityNotFoundException(String.format("Cannot find admin with login %s", login));
         return found;
+    }
+
+    public List<Admin> getAll() {
+        return em.createQuery("from " + Admin.class.getName(), Admin.class).getResultList();
     }
 
     @Transactional
@@ -46,6 +46,27 @@ public class AdminDao implements UserDetailsService {
             throw new EntityAlreadyExistsException(String.format("Admin with login '%s' already exists", login));
         em.persist(admin);
         return admin;
+    }
+
+    @Transactional
+    public Admin edit(Admin admin) throws EntityNotFoundException {
+        String login = admin.getLogin();
+        if (login == null || login.isEmpty())
+            throw new EntityNotFoundException("Admin login cannot be null or empty");
+        if (em.find(Admin.class, login) == null)
+            throw new EntityNotFoundException(String.format("Cannot find admin with login %s", login));
+        em.merge(admin);
+        em.flush();
+        return admin;
+    }
+
+    @Transactional
+    public Admin deleteByLogin(String login) throws EntityNotFoundException {
+        Admin found = em.find(Admin.class, login);
+        if (found == null)
+            throw new EntityNotFoundException(String.format("Cannot find admin with login %s", login));
+        em.remove(found);
+        return found;
     }
 
     @Transactional
