@@ -9,13 +9,23 @@
     <c:choose>
         <c:when test="${debug}">
             <link rel="stylesheet" href="http://localhost:8081/src/main/resources/static/built/index.css" />
+            <c:if test="${animation}">
+                <link rel="stylesheet" href="http://localhost:8081/src/main/resources/static/built/animation.css" />
+            </c:if>
         </c:when>
         <c:otherwise>
             <link rel="stylesheet" href="built/index.css" />
+            <c:if test="${animation}">
+                <link rel="stylesheet" href="built/animation.css" />
+            </c:if>
         </c:otherwise>
     </c:choose>
 </head>
 <body>
+<div class="parallax_container">
+    <div class="parallax parallax_0"></div>
+    <div class="parallax parallax_1"></div>
+</div>
 <div id="content">
     <div id="wrapper">
         <header>
@@ -63,6 +73,13 @@
                 <li><a class="nav_element" href="#traditions" id="nav_traditions"><div class="nav_element_image" id="nav_image_traditions"></div></a></li>
             </ul>
         </nav>
+        <c:if test="${animation}">
+            <div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:500px; height:500px">
+                <canvas id="canvas" width="500" height="500" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+                <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:500px; height:500px; position: absolute; left: 0px; top: 0px; display: block;">
+                </div>
+            </div>
+        </c:if>
     </div>
 </div>
 <div class="ReactModalPortal"></div>
@@ -73,9 +90,15 @@
         <div id="design" style="display: none"></div>
         <button type="button" id="designSwitchButton">Вкл</button>
         <script src="http://localhost:8081/src/main/resources/static/built/index.js"></script>
+        <c:if test="${animation}">
+            <script src="http://localhost:8081/src/main/resources/static/built/animation.js"></script>
+        </c:if>
     </c:when>
     <c:otherwise>
         <script src="/built/index.js"></script>
+        <c:if test="${animation}">
+            <script src="/built/animation.js></script>
+        </c:if>
     </c:otherwise>
 </c:choose>
 

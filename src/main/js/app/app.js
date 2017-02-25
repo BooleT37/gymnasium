@@ -6,10 +6,11 @@ import './css/header.css';
 import './css/nav.css';
 import '../components/Modal/modal.css';
 
+
 import Velocity from 'velocity-animate';
 import 'babel-polyfill';
-import {triggerClickEvent} from '../utils';
 
+import {triggerClickEvent} from '../utils';
 import RoutingManager from './RoutingManager';
 
 
@@ -64,11 +65,54 @@ class App {
     var routingManager = new RoutingManager();
     routingManager.run();
   }
+
+  setUpParallax() {
+    const screenHeight = 3671;
+    const clientHeight = window.document.documentElement.clientHeight;
+    
+    const layersProps = [
+      {
+        image: document.getElementsByClassName("parallax_0")[0],
+        imageHeight: 2797,
+        containerHeight: 3346,
+        containerOffsetBottom: 325
+      },
+      {
+        image: document.getElementsByClassName("parallax_1")[0],
+        imageHeight: 1382,
+        containerHeight: 1550,
+        containerOffsetBottom: 0
+      }
+    ];
+
+    var layers = layersProps.map(layerProps => {
+        return {
+          image: layerProps.image,
+          containerHeight: layerProps.containerHeight,
+          imageHeight: layerProps.imageHeight,
+          containerOffsetBottom: layerProps.containerOffsetBottom,
+          distanceToContainer: screenHeight - layerProps.containerOffsetBottom - layerProps.containerHeight,
+          containerExtraHeightClient: layerProps.containerHeight - clientHeight,
+          containerExtraHeightImage: layerProps.containerHeight - layerProps.imageHeight
+      }
+    });
+
+    function setOffset() {
+      layers.forEach((layer, i) => {
+          var offset = (window.pageYOffset - layer.distanceToContainer) * layer.containerExtraHeightImage / layer.containerExtraHeightClient;
+          layer.image.style.transform = `translate3d(0px, ${offset}px, 0px)`;
+      })
+    }
+
+    window.addEventListener("scroll", setOffset);
+    setOffset();
+  }
   
   run() {
     this.setUpAutoscrollers();
     this.setUpDesignSwitchButton();
     this.setUpRouter();
+    this.setUpParallax();
   }
 }
 
