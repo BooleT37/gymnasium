@@ -13,18 +13,18 @@ public class Admin {
     @Id
     @Column(length = 50, nullable = false)
     private String login;
-
-    @JsonIgnore
-    private String hashedPassword;
-
     @Column(length = 50)
     private String email;
+    @JsonIgnore
+    @Column(length = 60)
+    private String hashedPassword;
+
 
     private boolean subscribed = true;
 
     public Admin() {}
 
-    public Admin(String login, String hashedPassword, String email, boolean subscribed) {
+    public Admin(String login, String email, String hashedPassword, boolean subscribed) {
         this.login = login;
         this.hashedPassword = hashedPassword;
         this.email = email;
