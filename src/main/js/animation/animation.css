@@ -1,0 +1,13 @@
+#animation_container {
+		position: absolute;
+    margin: 0px auto;
+    left: 0;
+    right: 0;
+    top: 1365px;
+    bottom: 0;
+		background-color: transparent !important;
+  }
+
+	#animation_container #canvas {
+		background-color: transparent !important;
+	}

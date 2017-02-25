@@ -95,9 +95,9 @@
         </c:if>
     </c:when>
     <c:otherwise>
-        <script src="/built/index.js"></script>
+        <script src="built/index.js"></script>
         <c:if test="${animation}">
-            <script src="/built/animation.js></script>
+            <script src="built/animation.js"></script>
         </c:if>
     </c:otherwise>
 </c:choose>
