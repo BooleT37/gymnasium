@@ -2,7 +2,7 @@
     width: 1100px;
     height: 183px;
     display: inline-block;
-    background-image: url('./../images/nav_items.png');
+    background-image: url('/images/nav_items.png');
 }
 
 #nav_image_graduates {

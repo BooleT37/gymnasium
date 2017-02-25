@@ -8,7 +8,7 @@ body {
     position: absolute;
     width: 1903px;
     height: 3671px;
-    background-color: transparent;
+    background-image: url('/images/background/background.png');
 }
 
 .parallax_container {
@@ -29,29 +29,16 @@ body {
 .parallax_0 {
     height: 2797px;
     top: 0px; /* Height - containerHeight - containerOffsetBottom */
-    background-image: url('./images/background/parallax_0.jpg');
+    background-image: url('/images/background/parallax_0.jpg');
     z-index: 1;
 }
 
 .parallax_1 {
     height: 1382px;
     top: 2121px;
-    background-image: url('./images/background/parallax_1.png');
+    background-image: url('/images/background/parallax_1.png');
     z-index: 2;
 }
-
-/*#content:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    z-index: -1;
-    display: block;
-    background-image: url('./images/background.jpg');
-    width: 1903px;
-    height: 3595px;
-    margin: 0 auto;
-}*/
 
 #wrapper {
     margin: 0 auto;
