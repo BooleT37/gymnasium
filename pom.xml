@@ -115,6 +115,9 @@
                         <goals>
                             <goal>webpack</goal>
                         </goals>
+                        <configuration>
+                            <arguments>--config webpack.release.config.js</arguments>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

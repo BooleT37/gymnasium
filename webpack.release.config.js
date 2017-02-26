@@ -9,9 +9,7 @@ module.exports = {
         tablePage: './src/main/js/admin/table/tablePage.js',
         settings: './src/main/js/admin/settings/settings.js'
     },
-    devtool: 'sourcemaps',
     cache: true,
-    debug: true,
     output: {
         path: __dirname,
         filename: 'src/main/resources/static/built/[name].js'
@@ -31,7 +29,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract(
-                    "style-loader", "css-loader?sourceMap=1&root=http://localhost:8080/"
+                    "style-loader", "css-loader"
                 )
             },
             {
@@ -45,11 +43,6 @@ module.exports = {
         ],
     },
     plugins: [
-        new ExtractTextPlugin("src/main/resources/static/built/[name].css"),
-        new webpack.DefinePlugin({
-            'process.env': {
-                'DEBUG': true
-            }
-        })
+        new ExtractTextPlugin("src/main/resources/static/built/[name].css")
     ]
 };
