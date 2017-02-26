@@ -8,3 +8,4 @@ node_modules/
 /gymnasium.log
 /src/main/resources/static/built/*
 /src/main/js/app/images/design.jpg
+/src/main/js/app/css/design.css
