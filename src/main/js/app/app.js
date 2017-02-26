@@ -77,6 +77,8 @@ class App {
       }
     ];
 
+    const mobileFix = navigator.userAgent.match(/(Android|iPod|iPhone|iPad)/);
+
     var layers = layersProps.map(layerProps => {
         return {
           image: layerProps.image,
@@ -89,11 +91,24 @@ class App {
       }
     });
 
+    if (mobileFix)
+      layers.forEach(layer => {
+          var image = layer.image;
+          image.style.backgroundRepeat = 'no-repeat';
+          image.style.top = 0;
+          image.style.height = '100%';
+
+          layer.offsetTop = screenHeight - layer.containerHeight - layer.containerOffsetBottom;
+      });
+
     function setOffset() {
       layers.forEach((layer, i) => {
           var offset = (window.pageYOffset - layer.distanceToContainer) * layer.containerExtraHeightImage / layer.containerExtraHeightClient;
-          layer.image.style.transform = `translate3d(0px, ${offset}px, 0px)`;
-      })
+            if (mobileFix)
+              layer.image.style.backgroundPositionY = (layer.offsetTop + offset) + "px";
+            else
+              layer.image.style.transform = `translate3d(0px, ${offset}px, 0px)`;
+      });
     }
 
     window.addEventListener("scroll", setOffset);
