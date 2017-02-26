@@ -4,7 +4,7 @@ var webpack = require("webpack");
 
 module.exports = {
     entry: {
-        index: './src/main/js/app/app.js',
+        index: './src/main/js/app/app.release.js',
         animation: './src/main/js/animation/animation.js',
         tablePage: './src/main/js/admin/table/tablePage.js',
         settings: './src/main/js/admin/settings/settings.js'

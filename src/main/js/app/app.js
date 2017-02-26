@@ -14,14 +14,6 @@ import {triggerClickEvent} from '../utils';
 import RoutingManager from './RoutingManager';
 
 
-if (process.env.DEBUG) {
-  require('./css/design.css');
-  require('./css/fonts.css');
-} else {
-  require('./css/fonts.production.css');
-}
-
-
 class App {
   setUpAutoscrollers() {
     function openLink(id) {

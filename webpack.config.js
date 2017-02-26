@@ -4,7 +4,7 @@ var webpack = require("webpack");
 
 module.exports = {
     entry: {
-        index: './src/main/js/app/app.js',
+        index: './src/main/js/app/app.debug.js',
         animation: './src/main/js/animation/animation.js',
         tablePage: './src/main/js/admin/table/tablePage.js',
         settings: './src/main/js/admin/settings/settings.js'
@@ -45,11 +45,6 @@ module.exports = {
         ],
     },
     plugins: [
-        new ExtractTextPlugin("src/main/resources/static/built/[name].css"),
-        new webpack.DefinePlugin({
-            'process.env': {
-                'DEBUG': true
-            }
-        })
+        new ExtractTextPlugin("src/main/resources/static/built/[name].css")
     ]
 };
