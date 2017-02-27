@@ -77,7 +77,7 @@ class App {
       }
     ];
 
-    const mobileFix = navigator.userAgent.match(/(Android|iPod|iPhone|iPad)/);
+    const mobileFix = navigator.userAgent.match(/(Android|iPod|iPhone|iPad|Safari)/);
 
     var layers = layersProps.map(layerProps => {
         return {
