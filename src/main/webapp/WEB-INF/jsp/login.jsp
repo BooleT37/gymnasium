@@ -54,7 +54,8 @@
             <td><input name="submit" type="submit" value="Войти" /></td>
          </tr>
       </table>
-  </form>
+  </form><br/>
+  <a href="/" class="link">← Вернуться на сайт</a>
   <br/>
 </body>
 </html>
