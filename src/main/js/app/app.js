@@ -9,6 +9,7 @@ import '../components/Modal/modal.css';
 
 import Velocity from 'velocity-animate';
 import 'babel-polyfill';
+import Modernizr from './modernizr';
 
 import {triggerClickEvent} from '../utils';
 import RoutingManager from './RoutingManager';
@@ -77,7 +78,7 @@ class App {
       }
     ];
 
-    const mobileFix = navigator.userAgent.match(/(Android|iPod|iPhone|iPad|Safari)/);
+    const supportsTransform = Modernizr.csstransforms;
 
     var layers = layersProps.map(layerProps => {
         return {
@@ -91,7 +92,7 @@ class App {
       }
     });
 
-    if (mobileFix)
+    if (!supportsTransform)
       layers.forEach(layer => {
           var image = layer.image;
           image.style.backgroundRepeat = 'no-repeat';
@@ -104,10 +105,13 @@ class App {
     function setOffset() {
       layers.forEach((layer, i) => {
           var offset = (window.pageYOffset - layer.distanceToContainer) * layer.containerExtraHeightImage / layer.containerExtraHeightClient;
-            if (mobileFix)
-              layer.image.style.backgroundPositionY = (layer.offsetTop + offset) + "px";
+            if (supportsTransform) {
+              layer.image.style.transform = `translate(0px, ${offset}px)`;
+              layer.image.style.msTransform = `translate(0px, ${offset}px)`;
+              layer.image.style.webkitTransform = `translate(0px, ${offset}px)`;
+            }
             else
-              layer.image.style.transform = `translate3d(0px, ${offset}px, 0px)`;
+              layer.image.style.backgroundPositionY = (layer.offsetTop + offset) + "px";
       });
     }
 
