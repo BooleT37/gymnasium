@@ -32,7 +32,7 @@ export default class GraduatesListItem extends React.Component {
 
     render() {
         var graduate = this.props.graduate;
-        var graduateName = fullNameToShortString(graduate.lastName, graduate.firstName, graduate.patronymic);
+        var graduateName = fullNameToShortString(graduate.firstName, graduate.lastName, graduate.patronymic);
         var itemContent = <span className={classnames("graduateListItem_name", { graduateListItem_name_famous: graduate.famous })}>{graduateName}</span>
         var contents;
         if (this.props.selected)

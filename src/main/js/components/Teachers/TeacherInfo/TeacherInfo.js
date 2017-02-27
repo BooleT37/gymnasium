@@ -44,7 +44,7 @@ export default class TeacherInfo extends React.Component {
                     </div>
                 </div>
                 <div className="teacherInfo_right">
-                    <div className="teacherInfo_title">{fullNameToString(teacher.lastName, teacher.firstName, teacher.patronymic)}</div>
+                    <div className="teacherInfo_title">{fullNameToString(teacher.firstName, teacher.lastName, teacher.patronymic)}</div>
                     {birthDateRow}
                     {subjectsRow}
                     {yearsRow}

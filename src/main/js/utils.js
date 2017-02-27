@@ -14,11 +14,11 @@ export function removeDuplicates(array) {
     return Array.from(new Set(array));
 }
 
-export function fullNameToShortString(lastName, firstName, patronymic) {
+export function fullNameToShortString(firstName, lastName, patronymic) {
     return lastName + (firstName ? (" " + firstName[0].toUpperCase() + ".") : "") + (patronymic ? ("\u00a0" + patronymic[0].toUpperCase() + ".") : "");
 }
 
-export function fullNameToString(lastName, firstName, patronymic) {
+export function fullNameToString(firstName, lastName, patronymic) {
     return lastName + (firstName ? (" " + firstName) : "") + (patronymic ? (" " + patronymic) : "");
 }
 

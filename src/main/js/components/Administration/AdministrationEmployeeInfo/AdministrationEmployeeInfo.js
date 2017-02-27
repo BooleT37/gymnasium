@@ -41,7 +41,7 @@ export default class AdministrationEmployeeInfo extends React.Component {
                     </div>
                 </div>
                 <div className="administrationEmployeeInfo_right">
-                    <div className="administrationEmployeeInfo_title">{fullNameToString(employee.lastName, employee.firstName, employee.patronymic)}</div>
+                    <div className="administrationEmployeeInfo_title">{fullNameToString(employee.firstName, employee.lastName, employee.patronymic)}</div>
                     {birthDateRow}
                     {yearsRow}
                 </div>

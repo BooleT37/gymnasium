@@ -117,7 +117,7 @@ export default class GraduateInfo extends React.Component {
                     </div>
                     <div className="graduateInfo_right">
                         <div className="graduateInfo_table graduateInfo_rightWrapper">
-                            <div className="graduateInfo_tableRow graduateInfo_title">{fullNameToString(graduate.lastName, graduate.firstName, graduate.patronymic)}</div>
+                            <div className="graduateInfo_tableRow graduateInfo_title">{fullNameToString(graduate.firstName, graduate.lastName, graduate.patronymic)}</div>
                             <div className="graduateInfo_tableRow graduateInfo_dataWrapper">
                                 <div className="graduateInfo_tableCell graduateInfo_dataOuterWrapper">
                                     <div className="graduateInfo_dataInnerrWrapper">

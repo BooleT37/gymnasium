@@ -60,7 +60,7 @@ export default class AdministrationSelector extends React.Component {
                         </PhotoContainer>
                     </div>
                     <div className="administrationSelector_itemName">
-                        {fullNameToShortString(obj.lastName, obj.firstName, obj.patronymic)}
+                        {fullNameToShortString(obj.firstName, obj.lastName, obj.patronymic)}
                     </div>
                 </div>
             );
