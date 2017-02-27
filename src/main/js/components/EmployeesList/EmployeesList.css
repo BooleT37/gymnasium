@@ -24,3 +24,14 @@
 employeeList_item_name {
     margin-left: 20px;
 }
+
+.employeeList_groupTitle {
+    cursor: default;
+    padding-left: 38px;
+    font-size: 24px;
+    margin: 26px 0 10px;
+}
+
+.employeeList_group:not(:last-child) {
+    margin-bottom: 40px;
+}

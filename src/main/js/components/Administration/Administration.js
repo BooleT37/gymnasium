@@ -88,6 +88,19 @@ export default class Administration extends SelfUpdatingComponent {
                         selected = {state.selected}
                         items = {AdministrationStore.state.list}
                         onItemSelect = {this.showEmployeeInfo}
+                        groupBy = {{
+                            prop: "position",
+                            groups: [
+                                {
+                                    value: "DIRECTOR",
+                                    name: "ДИРЕКТОРА"
+                                },
+                                {
+                                    value: "DEPUTY_DIRECTOR",
+                                    name: "ЗАМЕСТИТЕЛИ ДИРЕКТОРА"
+                                }
+                            ]
+                        }}
                     />
                 </div>
                 <ModalFooter/>

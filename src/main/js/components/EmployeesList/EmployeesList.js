@@ -25,16 +25,34 @@ export default class EmployeesList extends React.Component {
         }
     }
 
-    render() {
-        var state = this.state;
-        var items = this.props.items.map((item, i) =>
-            <div className={classnames("employeeList_item", {employeeList_item_selected: state.selectedItem && item.id === state.selectedItem.id})}
+    renderItems(items) {
+        return items.map((item, i) => (
+            <div className={classnames("employeeList_item", {employeeList_item_selected: this.state.selectedItem && item.id === this.state.selectedItem.id})}
                 key={i} onClick={this.onItemClick.bind(this, item)}>
                     <div className="employeeList_item_name">
                         {fullNameToShortString(item.firstName, item.lastName, item.patronymic)}
                     </div>
-            </div>
+            </div>)
         );
+    }
+
+    render() {
+        var state = this.state;
+        var items;
+        if (this.props.groupBy) {
+            var groupBy = this.props.groupBy;
+            items = groupBy.groups.map(group => {
+                var items = this.props.items.filter(item => item[groupBy.prop] === group.value)
+                return (
+                    <div className="employeeList_group" key={group.value + "_group"}>
+                        <div className="employeeList_groupTitle">{group.name}</div>
+                        <div className="employeeList_groupItems">{this.renderItems(items)}</div>
+                    </div>
+                );
+            })
+        } else {
+            items = this.renderItems(this.props.items);
+        }
         return (
             <div className="employeesList">
                 <CustomScroll>
