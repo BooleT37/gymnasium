@@ -69,7 +69,7 @@
     cursor: pointer;
     width: 15px;
     height: 24px;
-    background-size: contain;
+    background-size: cover;
     margin: 23px 12px 0;
 }
 
