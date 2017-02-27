@@ -1,3 +1,13 @@
+#nav {
+    text-align: center;
+    margin-top: 435px;
+}
+
+#nav li {
+    margin: 315px 0;
+    list-style-type: none;
+}
+
 .nav_element_image {
     width: 1100px;
     height: 183px;
@@ -51,14 +61,4 @@
 
 #nav_image_traditions:hover {
     background-position-y: -366px;
-}
-
-#nav {
-    text-align: center;
-    margin-top: 660px;
-}
-
-#nav li {
-    margin: 260px 0;
-    list-style-type: none;
 }
