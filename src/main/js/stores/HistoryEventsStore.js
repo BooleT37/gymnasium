@@ -1,6 +1,9 @@
 'use strict';
 
 import Reflux from 'reflux';
+import moment from 'moment';
+
+
 import Actions from '../actions/Actions';
 import client from '../client';
 
@@ -11,6 +14,8 @@ var HistoryEventsStore = Reflux.createStore({
 
     init: function () {
         this.state = {}
+
+        moment.locale('ru');
     },
 
     getEventByTypeAndId(type, id) {
@@ -25,15 +30,14 @@ var HistoryEventsStore = Reflux.createStore({
 
     convertSingleEvent(event) {
         event.date = parseDate(event.date);
-        //todo: проверить во всех браузерах
-        event.dateStr = event.date.toLocaleDateString('ru-RU', {year: "numeric", month: "long", day: "numeric"});
+        event.dateStr = event.date.format('LL');
         return event;
     },
 
     //convert date to Date object and sort list by dates
     convertList(events) {
         var res = events.map(this.convertSingleEvent);
-        return events.sort((a, b) => a.date.getTime() - b.date.getTime());
+        return events.sort((a, b) => a.date.unix() - b.date.unix());
     },
 
     lazyLoadHistoryEventsOfType: function(type) {

@@ -29,7 +29,7 @@ export default class Timeline extends React.Component {
     }
     
     onComponentUpdate(newProps) {
-        this.years = removeDuplicates(newProps.list.map(e => e.date.getFullYear())).sort((a, b) => a - b);
+        this.years = removeDuplicates(newProps.list.map(e => e.date.year())).sort((a, b) => a - b);
         if (this.years.length === 1) {
             this.yearOffsets = [0];
             this.yearOffsetsWithShift = [-selectorHalfWidth];
@@ -40,7 +40,7 @@ export default class Timeline extends React.Component {
             this.yearOffsets = this.years.map(y => scaleWidth * (y - firstYear) / yearInterval);
             this.yearOffsetsWithShift = this.yearOffsets.map(offset => offset - selectorHalfWidth);
         }
-        this.currentYear = this.props.current.date.getFullYear();
+        this.currentYear = this.props.current.date.year();
     }
 
     componentDidMount() {

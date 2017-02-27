@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export function concat(arrays) {
     return [].concat.apply([], arrays);
 }
@@ -57,13 +59,10 @@ export function replaceNbsp(str) {
     return str ? str.replace(/ /g, "\u00a0") : "";
 }
 
-// parse date from format dd.MM.yyyy
 export function parseDate(date) {
-    var dateBits = date.split('.').map(bit => parseInt(bit, 10));
-    return new Date(dateBits[2], dateBits[1] - 1, dateBits[0]);
+    return new moment(date, "DD.MM.YYYY");
 }
 
-export function parseDateIso(date) {
-    var dateBits = date.split('-').map(bit => parseInt(bit, 10));
-    return new Date(dateBits[0], dateBits[1] - 1, dateBits[2]);
-}
+// export function parseDateIso(date) {
+//     return new moment(date, "YYYY-MM-DD");
+// }

@@ -75,7 +75,7 @@ export default class HistoryEvents extends SelfUpdatingComponent {
         this.firstEventForEachYear = {};
         var lastYear = null;
         list.forEach((event, i) => {
-            var year = event.date.getFullYear();
+            var year = event.date.year();
             if (lastYear !== year) {
                 this.firstEventForEachYear[year] = event;
                 lastYear = year;
