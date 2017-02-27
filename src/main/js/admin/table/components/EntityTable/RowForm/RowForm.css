@@ -1,5 +1,9 @@
-.rowForm_input {
+.no-csscalc .rowForm_input {
     width: calc(100% - 4px);
+}
+
+.csscalc .rowForm_input {
+    width: 100%
 }
 
 input[type="checkbox"].rowForm_input {

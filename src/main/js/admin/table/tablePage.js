@@ -4,6 +4,7 @@ import './tablePage.css';
 
 import React from 'react';
 import { render } from 'react-dom';
+import Modernizr from '../../modernizr';
 
 import TableStore from './TableStore';
 import EntityTable from './components/EntityTable/EntityTable';

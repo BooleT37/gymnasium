@@ -9,7 +9,7 @@ import '../components/Modal/modal.css';
 
 import Velocity from 'velocity-animate';
 import 'babel-polyfill';
-import Modernizr from './modernizr';
+import Modernizr from '../modernizr';
 
 import {triggerClickEvent} from '../utils';
 import RoutingManager from './RoutingManager';
