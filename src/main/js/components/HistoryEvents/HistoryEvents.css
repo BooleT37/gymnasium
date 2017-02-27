@@ -1,28 +1,5 @@
-.historyEvents_arrowLeft, .historyEvents_innerContent, .historyEvents_arrowRight {
-    display: inline-block;
-    vertical-align: top;
-}
-
-.historyEvents_innerContent {
-    width: 1013px;
-}
-
-.historyEvents_arrowLeft, .historyEvents_arrowRight {
-    cursor: pointer;
-    width: 27px;
-    height: 44px;
-    background-size: cover;
-    margin-top: 186px;
-    vertical-align: -160px;
-}
-
-.historyEvents_arrow_disabled {
-    visibility: hidden;
-}
-
 .historyEvents_content {
-    padding: 0 39px;
-    width: 1122px;
+    padding-left: 66px;
 }
 
 .historyEvents_left, .historyEvents_right {
@@ -36,6 +13,10 @@
     background-image: url(./images/photoFrame.png);
     margin: 54px 0 51px 21px;
     padding: 16px 60px 49px 22px;
+}
+
+.historyEvents_photoContainer {
+    cursor: pointer;
 }
 
 .historyEvents_imagePreview {
@@ -53,7 +34,7 @@
 }
 
 .historyEvents_leftButtons {
-    margin: 67px 0 0 40px;
+    margin: 53px 0 0 40px;
 }
 
 .historyEvents_photosButton {
@@ -70,15 +51,41 @@
 }
 
 .historyEvents_right {
-    margin: 35px 0 0 43px;
+    margin-left: 8px;
 }
 
-.historyEvents_date {
+.historyEvents_data {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 35px;
+}
+
+.historyEvents_arrow, .historyEvents_date {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.historyEvents_arrow {
+    cursor: pointer;
+    width: 15px;
+    height: 24px;
+    background-size: contain;
+    margin: 23px 12px 0;
+}
+
+.historyEvents_arrow_disabled {
+    visibility: hidden;
+}
+
+.historyEvents_date {    
+    width: 365px;
+    text-align: center;
     font-size: 50px;
-    margin-bottom: 34px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .historyEvents_description {
-    margin-left: 3px;
-    width: 545px;
+    margin: 17px 0 0 13px;
+    width: 430px;
 }

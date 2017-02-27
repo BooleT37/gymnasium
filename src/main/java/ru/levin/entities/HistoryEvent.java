@@ -16,6 +16,8 @@ public class HistoryEvent {
     private Long id;
 
     @Column(nullable = false)
+    private String name;
+    @Column(nullable = false)
     private LocalDate date;
     @Column(length = 2000)
     private String description;
@@ -35,7 +37,8 @@ public class HistoryEvent {
 
     private HistoryEvent() {}
 
-    public HistoryEvent(LocalDate date, String description, HistoryEventType type, Set<String> photoNames, Set<String> videoNames) {
+    public HistoryEvent(String name, LocalDate date, String description, HistoryEventType type, Set<String> photoNames, Set<String> videoNames) {
+        this.name = name;
         this.date = date;
         this.description = description;
         this.type = type;
@@ -45,6 +48,14 @@ public class HistoryEvent {
 
     public Long getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public LocalDate getDate() {

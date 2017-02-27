@@ -30,7 +30,7 @@ export default class EmployeesList extends React.Component {
         var items = this.props.items.map((item, i) =>
             <div className={classnames("employeeList_item", {employeeList_item_selected: state.selectedItem && item.id === state.selectedItem.id})}
                 key={i} onClick={this.onItemClick.bind(this, item)}>
-                    <div className={classnames("employeeList_item_name", {employeeList_item_name_famous: item.famous})}>
+                    <div className="employeeList_item_name">
                         {fullNameToShortString(item.firstName, item.lastName, item.patronymic)}
                     </div>
             </div>

@@ -24,13 +24,3 @@
 employeeList_item_name {
     margin-left: 20px;
 }
-
-.employeeList_item_name_famous::before {
-    content: "";
-    position: absolute;
-    left: 11px;
-    top: 6px;
-    width: 16px;
-    height: 15px;
-    background-image: url(./images/star.png);
-}

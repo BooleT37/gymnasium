@@ -10,6 +10,7 @@ import PhotoContainer from '../PhotoContainer/PhotoContainer';
 import ModalHeader from '../Modal/ModalHeader/ModalHeader';
 import ModalFooter from '../Modal/ModalFooter/ModalFooter';
 import Timeline from './Timeline/Timeline';
+import HistoryEventsList from './HistoryEventsList/HistoryEventsList';
 
 import Actions from '../../actions/Actions';
 import HistoryEventsStore from '../../stores/HistoryEventsStore';
@@ -39,6 +40,7 @@ export default class HistoryEvents extends SelfUpdatingComponent {
         this.store = HistoryEventsStore;
         this.lazyLoadStoreAction = Actions.lazyLoadHistoryEventsOfType;
 
+        this.switchEvent = this.switchEvent.bind(this);
         this.onArrowLeftClick = this.onArrowLeftClick.bind(this);
         this.onArrowRightClick = this.onArrowRightClick.bind(this);
         this.onPhotosClick = this.onPhotosClick.bind(this);
@@ -94,17 +96,20 @@ export default class HistoryEvents extends SelfUpdatingComponent {
             });
         //location.hash is "#/history|(traditions/...)"
         } else {
-            id = list[0].id;
-            Actions.routeTo(`${this.pathPrefix}/${id}`);
+            this.switchEvent(list[0]);
         }
     }
 
+    switchEvent(event) {
+        Actions.routeTo(`${this.pathPrefix}/${event.id}`);
+    }
+
     onArrowLeftClick() {
-        Actions.routeTo(`${this.pathPrefix}/${this.state.previousEvent.id}`);
+        this.switchEvent(this.state.previousEvent);
     }
 
     onArrowRightClick() {
-        Actions.routeTo(`${this.pathPrefix}/${this.state.nextEvent.id}`);
+        this.switchEvent(this.state.nextEvent);
     }
 
     onPhotosClick() {
@@ -116,8 +121,7 @@ export default class HistoryEvents extends SelfUpdatingComponent {
     }
 
     onYearChange(year) {
-        // console.log(year);
-        Actions.routeTo(`${this.pathPrefix}/${this.firstEventForEachYear[year].id}`);
+        this.switchEvent(this.firstEventForEachYear[year]);
     }
 
     render() {
@@ -150,7 +154,7 @@ export default class HistoryEvents extends SelfUpdatingComponent {
             );
 
         var photoPreview = (event.photoNames && event.photoNames.length) ?
-            <PhotoContainer height={243}>
+            <PhotoContainer height={243} onClick={this.onPhotosClick} className="historyEvents_photoContainer">
                 <img
                     src={`images/photos/${this.pathPrefix}/${event.photoNames[0]}`}
                     alt="Photo preview"
@@ -163,9 +167,6 @@ export default class HistoryEvents extends SelfUpdatingComponent {
             <div className="historyEvents">
                 <ModalHeader title={modalTitles[type]} iconType={modalIcons[type]} backUrl={backUrl}/>
                 <div className="modal_content historyEvents_content">
-                    <div
-                        className={classnames("arrow_left", "historyEvents_arrowLeft", {historyEvents_arrow_disabled: state.previousEvent === null})}
-                        onClick={this.onArrowLeftClick}></div>
                     <div className="historyEvents_innerContent">
                         <div className="historyEvents_left">
                             <div className="historyEvents_photoFrame">
@@ -185,17 +186,40 @@ export default class HistoryEvents extends SelfUpdatingComponent {
                             </div>
                         </div>
                         <div className="historyEvents_right">
-                            <div className="historyEvents_date">
-                                {event.dateStr}
+                            <div className="historyEvents_data">
+                                <div className="historyEvents_dateRow">
+                                    <div
+                                        className={classnames(
+                                            "arrow_left",
+                                            "historyEvents_arrowLeft",
+                                            "historyEvents_arrow",
+                                            {historyEvents_arrow_disabled: state.previousEvent === null}
+                                            )}
+                                        onClick={this.onArrowLeftClick}></div>
+                                    <div className="historyEvents_date">
+                                        {event.dateStr}
+                                    </div>
+                                    <div
+                                        className={classnames(
+                                            "arrow_right",
+                                            "historyEvents_arrowRight",
+                                            "historyEvents_arrow",
+                                            {historyEvents_arrow_disabled: state.nextEvent === null}
+                                            )}
+                                        onClick={this.onArrowRightClick}></div>
+                                    </div>
+                                <div className="historyEvents_description">
+                                    {addBreakLines(event.description, 2)}
+                                </div>
                             </div>
-                            <div className="historyEvents_description">
-                                {addBreakLines(event.description, 2)}
-                            </div>
+                            <HistoryEventsList
+                                selected = {state.currentEvent}
+                                list = {state.list}
+                                onSelect = {this.switchEvent}
+                            />
                         </div>
                     </div>
-                    <div
-                        className={classnames("arrow_right", "historyEvents_arrowRight", {historyEvents_arrow_disabled: state.nextEvent === null})}
-                        onClick={this.onArrowRightClick}></div>
+                    
                 </div>
                 <ModalFooter>
                     <Timeline list={state.list} current={state.currentEvent} onYearChange={this.onYearChange}/>
