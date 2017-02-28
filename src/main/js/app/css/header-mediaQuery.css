@@ -1,0 +1,33 @@
+@media (min-width: 1570px) {
+    #header_nav {
+      float: right;
+      padding-right: 51px;
+    }
+    #title {
+        margin-right: 965px;
+        padding-top: 23px;
+        padding-right: 112px;
+    }
+    #titleHr_left {
+        margin: 15px 0 0;
+    }
+}
+
+@media (max-width: 1569px) {
+  header {
+    position: relative;
+    margin-top: 20px;
+  }
+  #header_nav {    
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    text-align: center;
+  }
+    #titleHr_right {
+      display: none;
+    }
+    #header_nav ul {
+      min-width: 950px;
+    }
+}

@@ -3,6 +3,7 @@
 import './app.css';
 import './css/customScroll.css';
 import './css/header.css';
+import './css/header-mediaQuery.css';
 import './css/nav.css';
 import '../components/Modal/modal.css';
 

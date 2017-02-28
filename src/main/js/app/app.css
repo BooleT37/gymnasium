@@ -6,8 +6,10 @@ body {
 
 #content {
     position: absolute;
-    width: 1903px;
+    width: 100%;
+    min-width: 1138px;
     height: 3671px;
+    background-position-x: center;
     background-image: url('/images/background/background.png');
 }
 
@@ -15,7 +17,7 @@ body {
     position: absolute;
     top: 0px;
     height: 3671px;
-    width: 1903px;
+    width: 100%;
     z-index: -1;
 }
 
@@ -42,7 +44,7 @@ body {
 
 #wrapper {
     margin: 0 auto;
-    width: 1903px;
+    width: 100%;
     overflow-x: hidden;
 }
 

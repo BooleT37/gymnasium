@@ -29,10 +29,6 @@
 <div id="content">
     <div id="wrapper">
         <header>
-            <div id="title">
-                <div id="titleImage"></div>
-                <hr class="titleHr" id="titleHr_left"/>
-            </div>
             <nav id="header_nav">
                 <ul>
                     <li class="header_link" data-linkTo="nav_graduates">
@@ -62,6 +58,10 @@
                 </ul>
                 <hr class="titleHr" id="titleHr_right"/>
             </nav>
+            <div id="title">
+                <div id="titleImage"></div>
+                <hr class="titleHr" id="titleHr_left"/>
+            </div>
         </header>
         <nav id="nav">
             <ul>

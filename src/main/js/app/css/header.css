@@ -1,10 +1,11 @@
 header {
     position: relative;
+    margin-top: 46px;
 }
 
 #header_nav {
-    padding-top: 45px;
     position: relative;
+    width: 965px;
 }
 
 #header_nav ul {
@@ -24,7 +25,7 @@ header {
     background-image: url(../images/title.png);
     width: 519px;
     height: 62px;
-    margin: 69px 0px 35px 153px;
+    margin: 0px auto 35px;
 }
 
 .titleHr {
@@ -34,15 +35,11 @@ header {
     box-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
-#titleHr_left {
-    margin: 15px 0 0;
-}
-
 #titleHr_right {
     width: 90px;
     position: absolute;
-    top: 157px;
-    right: -62px;
+    top: 114px;
+    right: -12px;
 }
 
 .header_elementName {
@@ -54,13 +51,4 @@ header {
 
 .header_link:hover .header_elementName {
     text-shadow: 0px 0px 10px white;
-}
-
-#title, #header_nav {
-    display: inline-block;
-    vertical-align: top;
-}
-
-#title {
-    width: 885px;
 }
