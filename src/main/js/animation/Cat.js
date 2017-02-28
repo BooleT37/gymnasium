@@ -502,16 +502,16 @@ p.nominalBounds = new cjs.Rectangle(152.4,168.4,701.9,701.7);
 	// Слой 13
 	this.instance = new lib.Cat_1();
 	this.instance.parent = this;
-	this.instance.setTransform(92.4,106,0.31,0.31,0,0,0,450,510.2);
+	this.instance.setTransform(212.1,243.6,0.713,0.713,0,0,0,449.9,510.2);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(108,108.5,197.3,214.6);
+p.nominalBounds = new cjs.Rectangle(250,250,453.2,492.8);
 // library properties:
 lib.properties = {
-	width: 216,
-	height: 217,
+	width: 500,
+	height: 500,
 	fps: 24,
 	color: "#FFFFFF",
 	opacity: 0.00,

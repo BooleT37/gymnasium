@@ -1,11 +1,11 @@
 #animation_container {
     position: absolute;
     margin: 0px auto;
-    left: 0;
-    right: 114px;
-    top: 1930px;
+    left: 276px;
+    right: 191px;
     bottom: 0;
     background-color: transparent !important;
+    z-index: 1;
   }
 
 	#animation_container #canvas {

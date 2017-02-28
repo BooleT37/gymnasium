@@ -68,18 +68,18 @@
                 <li><a class="nav_element" href="#graduateClasses" id="nav_graduates"><div class="nav_element_image" id="nav_image_graduates"></div></a></li>
                 <li><a class="nav_element" href="#teachers" id="nav_teachers"><div class="nav_element_image" id="nav_image_teachers"></div></a></li>
                 <li><a class="nav_element" href="#souvenirs" id="nav_souvenirs"><div class="nav_element_image" id="nav_image_souvenirs"></div></a></li>
-                <li><a class="nav_element" href="#history" id="nav_history"><div class="nav_element_image" id="nav_image_history"></div></a></li>
+                <li style="margin-top: 350px"><a class="nav_element" href="#history" id="nav_history"><div class="nav_element_image" id="nav_image_history"></div></a></li>
                 <li><a class="nav_element" href="#administration" id="nav_administration"><div class="nav_element_image" id="nav_image_administration"></div></a></li>
                 <li><a class="nav_element" href="#traditions" id="nav_traditions"><div class="nav_element_image" id="nav_image_traditions"></div></a></li>
             </ul>
-        </nav>
-        <c:if test="${animation}">
-            <div id="animation_container" style="background-color:rgba(255, 255, 255, 0.00); width:216px; height:217px">
-                <canvas id="canvas" width="216" height="217" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 0.00);"></canvas>
-                <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:216px; height:217px; position: absolute; left: 0px; top: 0px; display: block;">
+            <c:if test="${animation}">
+                <div id="animation_container" style="background-color:rgba(255, 255, 255, 0.00); width:500px; height:500px">
+                    <canvas id="canvas" width="500" height="500" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 0.00);"></canvas>
+                    <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:500px; height:500px; position: absolute; left: 0px; top: 0px; display: block;">
+                    </div>
                 </div>
-            </div>
-        </c:if>
+            </c:if>
+        </nav>
     </div>
 </div>
 <div class="ReactModalPortal"></div>

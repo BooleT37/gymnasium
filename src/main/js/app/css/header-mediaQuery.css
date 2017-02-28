@@ -11,6 +11,9 @@
     #titleHr_left {
         margin: 15px 0 0;
     }
+    #animation_container {
+      top: 1128px;
+    }
 }
 
 @media (max-width: 1569px) {
@@ -29,5 +32,8 @@
     }
     #header_nav ul {
       min-width: 950px;
+    }
+    #animation_container {
+      top: 1178px;
     }
 }
