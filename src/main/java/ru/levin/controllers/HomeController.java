@@ -17,15 +17,6 @@ public class HomeController {
         Boolean isDebug = debugEnv != null && debugEnv.equals("TRUE");
         Map<String, Object> model = new HashMap<>();
         model.put("debug", isDebug);
-        return new ModelAndView("index", model);
-    }
-
-    @RequestMapping(value = "/cat")
-    public ModelAndView animation() {
-        String debugEnv = System.getenv().get("DEBUG_MODE");
-        Boolean isDebug = debugEnv != null && debugEnv.equals("TRUE");
-        Map<String, Object> model = new HashMap<>();
-        model.put("debug", isDebug);
         model.put("animation", true);
         return new ModelAndView("index", model);
     }
