@@ -48,7 +48,7 @@
     <div class="nav">
         <div>
             <a href="/admin/tables/graduates"><div class="nav_item">Выпускники</div></a>
-            <a href="/admin/tables/graduate_classes"><div class="nav_item">Классы</div></a>
+            <a href="/admin/tables/classes"><div class="nav_item">Классы</div></a>
             <a href="/admin/tables/teachers"><div class="nav_item">Учителя</div></a>
             <a href="/admin/tables/administration"><div class="nav_item">Администрация</div></a>
             <a href="/admin/tables/souvenirs"><div class="nav_item">Сувениры</div></a>

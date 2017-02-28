@@ -8,5 +8,5 @@ import baseRegistry from 'rest/mime/registry';
 var registry = baseRegistry.child();
 
 export default rest
-		.wrap(mime, { registry: registry, mime: 'application/json' })
-		.wrap(errorCode)
+		.wrap(mime, { registry: registry, mime: 'multipart/form-data' })
+		.wrap(errorCode);

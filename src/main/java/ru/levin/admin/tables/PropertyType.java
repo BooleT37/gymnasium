@@ -10,5 +10,8 @@ public enum PropertyType {
     SELECT,
     BOOLEAN,
     FOREIGN_ID,
+    PHOTO,
+    PHOTOS_LIST,
+    VIDEOS_LIST,
     CONTROLS
 }

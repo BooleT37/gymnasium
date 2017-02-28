@@ -9,6 +9,7 @@ import TableStore from '../../TableStore';
 import Actions from '../../Actions';
 import {addBreakLines} from '../../../../utils';
 import client from '../../../../client';
+import clientMultipart from '../../../../client-multipart';
 
 export default class EntityTable extends React.Component {
     constructor(props) {
@@ -49,8 +50,30 @@ export default class EntityTable extends React.Component {
         alert(`При отправке данных произошла ошибка:\nСообщение:\n${message || "[Сообщение об ошибке отсутствует]"}`);
     }
 
-    saveEntity(entity) {
+    // uploadPhoto(photo) {
+    //     if (photo)
+    //         return clientMultipart({
+    //             method: 'POST',
+    //             path: `/admin/tables/uploadPhoto`,
+    //             entity: {
+    //                 photo: photo,
+    //                 name: photo.name,
+    //                 tableName: TableStore.state.tableName
+    //             }
+    //         });
+    //     else
+    //         return new Promise().resolve(response);
+    // }
+
+    saveEntity(entity, uploadedPhoto) {
         var controller = TableStore.state.controller;
+        // var promise = this.uploadPhoto(uploadedPhoto);
+        // promise.then(_ => {
+        //     return client({
+        //         method: 'PUT',
+        //         path: `/api/${controller}/${entity.id}`,
+        //         entity: entity
+        //     });
         client({
             method: 'PUT',
             path: `/api/${controller}/${entity.id}`,
@@ -92,8 +115,15 @@ export default class EntityTable extends React.Component {
         }
     }
 
-    addEntity(entity) {
+    addEntity(entity, uploadedPhoto) {
         var controller = TableStore.state.controller;
+        // var promise = this.uploadPhoto(uploadedPhoto);
+        // promise.then(_ => {
+        //     return client({
+        //         method: 'POST',
+        //         path: `/api/${controller}/`,
+        //         entity: entity
+        //     });
         client({
             method: 'POST',
             path: `/api/${controller}/`,
@@ -154,6 +184,17 @@ export default class EntityTable extends React.Component {
                     } else {
                         valueContent = "";
                     }
+                    break;
+                case "PHOTO":
+                    if (value) {
+                        valueContent = (<img src={prop.path + "/" + value} className="entityTable_photo" alt="photo"/>)
+                    } else {
+                        valueContent = "";
+                    }
+                    break;
+                case "PHOTOS_LIST":
+                case "VIDEOS_LIST":
+                    valueContent = value.join(", ");
                     break;
                 default:
                     valueContent = value;

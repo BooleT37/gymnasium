@@ -1,9 +1,9 @@
 .no-csscalc .rowForm_input {
-    width: calc(100% - 4px);
+    width: 100%
 }
 
 .csscalc .rowForm_input {
-    width: 100%
+    width: calc(100% - 4px);
 }
 
 input[type="checkbox"].rowForm_input {
@@ -16,4 +16,12 @@ textarea.rowForm_input {
 
 .rowForm_controls {
     width: 150px;
+}
+
+.rowForm_photoInputCurrentPhoto_noPhoto {
+    color: gray;
+}
+
+.rowForm_deletePhotoButton {
+    margin-top: 5px;
 }

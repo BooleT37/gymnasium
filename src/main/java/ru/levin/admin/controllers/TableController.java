@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import ru.levin.admin.tables.*;
+import ru.levin.admin.tables.FolderPathsForTables;
+import ru.levin.admin.tables.PropertiesStore;
+import ru.levin.admin.tables.SelectPropertyValue;
+import ru.levin.admin.tables.TableEntity;
+import ru.levin.admin.tables.entityProperties.EntityProperty;
 import ru.levin.dao.*;
 import ru.levin.entities.enums.HistoryEventType;
 
@@ -30,6 +34,7 @@ public class TableController {
     @Inject private HistoryEventDao historyEventDao;
 
     @Inject private PropertiesStore propertiesStore;
+    @Inject private FolderPathsForTables folderPathsForTables;
 
     @Inject private ObjectMapper jacksonObjectMapper;
 
@@ -40,7 +45,7 @@ public class TableController {
         Map<String, Object> model = new HashMap<>();
         String tableTitle;
         String controllerName;
-        List<EntityProperty> entityProperties;
+        List<EntityProperty> entityProperties  = propertiesStore.get(tableName);
         List<Object> entities;
         Map<TableEntity, List<SelectPropertyValue<Long>>> foreignEntities = new HashMap<>();
         Map<String, String> fixSelectValues = new HashMap<>();
@@ -48,85 +53,75 @@ public class TableController {
             case "graduates":
                 tableTitle = "Выпускники";
                 controllerName = "graduates";
-                entityProperties = propertiesStore.getForEntity(TableEntity.GRADUATE);
                 entities = graduateDao.getAll().stream().map(g -> (Object)g).collect(Collectors.toList());
                 List<SelectPropertyValue<Long>> graduateClassesList = graduateClassDao.getAll().stream()
                         .map(c -> new SelectPropertyValue<>(c.getId(), c.toString()))
                         .collect(Collectors.toList());
                 foreignEntities.put(TableEntity.GRADUATE_CLASS, graduateClassesList);
                 break;
-            case "graduate_classes":
+            case "classes":
                 tableTitle = "Классы";
                 controllerName = "graduateClasses";
-                entityProperties = propertiesStore.getForEntity(TableEntity.GRADUATE_CLASS);
                 entities = graduateClassDao.getAll().stream().map(g -> (Object)g).collect(Collectors.toList());
                 break;
             case "teachers":
                 tableTitle = "Учителя";
                 controllerName = "teachers";
-                entityProperties = propertiesStore.getForEntity(TableEntity.TEACHER);
                 entities = teacherDao.getAll().stream().map(g -> (Object)g).collect(Collectors.toList());
                 break;
             case "administration":
                 tableTitle = "Администрация";
                 controllerName = "administration";
-                entityProperties = propertiesStore.getForEntity(TableEntity.ADMINISTRATION_EMPLOYEE);
                 entities = administrationEmployeeDao.getAll().stream().map(g -> (Object)g).collect(Collectors.toList());
                 break;
             case "souvenirs":
                 tableTitle = "Сувениры";
                 controllerName = "souvenirs";
-                entityProperties = propertiesStore.getForEntity(TableEntity.SOUVENIR);
                 entities = souvenirDao.getAll().stream().map(g -> (Object)g).collect(Collectors.toList());
                 break;
             case "history":
                 tableTitle = "История";
                 controllerName = "historyEvents";
-                entityProperties = propertiesStore.getForEntity(TableEntity.HISTORY_EVENT);
                 entities = historyEventDao.getAllForType(HistoryEventType.HISTORY).stream().map(g -> (Object)g).collect(Collectors.toList());
                 fixSelectValues.put("type", HistoryEventType.HISTORY.toString());
                 break;
             case "literature_club":
                 tableTitle = "Литературные гостинные";
                 controllerName = "historyEvents";
-                entityProperties = propertiesStore.getForEntity(TableEntity.HISTORY_EVENT);
                 entities = historyEventDao.getAllForType(HistoryEventType.LITERATURE_CLUB).stream().map(g -> (Object)g).collect(Collectors.toList());
                 fixSelectValues.put("type", HistoryEventType.LITERATURE_CLUB.toString());
                 break;
             case "sport":
                 tableTitle = "Спорт";
                 controllerName = "historyEvents";
-                entityProperties = propertiesStore.getForEntity(TableEntity.HISTORY_EVENT);
                 entities = historyEventDao.getAllForType(HistoryEventType.SPORT).stream().map(g -> (Object)g).collect(Collectors.toList());
                 fixSelectValues.put("type", HistoryEventType.SPORT.toString());
                 break;
             case "art":
                 tableTitle = "Творчество";
                 controllerName = "historyEvents";
-                entityProperties = propertiesStore.getForEntity(TableEntity.HISTORY_EVENT);
                 entities = historyEventDao.getAllForType(HistoryEventType.ART).stream().map(g -> (Object)g).collect(Collectors.toList());
                 fixSelectValues.put("type", HistoryEventType.ART.toString());
                 break;
             case "science":
                 tableTitle = "Наука";
                 controllerName = "historyEvents";
-                entityProperties = propertiesStore.getForEntity(TableEntity.HISTORY_EVENT);
                 entities = historyEventDao.getAllForType(HistoryEventType.SCIENCE).stream().map(g -> (Object)g).collect(Collectors.toList());
                 fixSelectValues.put("type", HistoryEventType.SCIENCE.toString());
                 break;
             case "travel":
                 tableTitle = "Путешествия";
                 controllerName = "historyEvents";
-                entityProperties = propertiesStore.getForEntity(TableEntity.HISTORY_EVENT);
                 entities = historyEventDao.getAllForType(HistoryEventType.TRAVEL).stream().map(g -> (Object)g).collect(Collectors.toList());
                 fixSelectValues.put("type", HistoryEventType.TRAVEL.toString());
                 break;
             default:
-                throw new ResourceNotFoundException(String.format("Cannot fild table '%s'", tableName));
+                throw new ResourceNotFoundException(String.format("Cannot find table '%s'", tableName));
         }
 
         Map<String, Object> clientModel = new HashMap<>();
         clientModel.put("title", tableTitle);
+        clientModel.put("tableName", tableName);
         clientModel.put("controller", controllerName);
         clientModel.put("properties", entityProperties);
         clientModel.put("entities", entities);
@@ -147,4 +142,11 @@ public class TableController {
 
         return new ModelAndView("admin/table", model);
     }
+
+//    @PostMapping("/uploadPhoto")
+//    public void uploadPhoto(@RequestParam("photo") MultipartFile photo, @RequestParam("name") String name, @RequestParam("tableName") String tableName) throws IOException {
+//        String savePath = folderPathsForTables.getPhotoPath(tableName);
+//        File file = new File("/" + savePath + "/" + name);
+//        photo.transferTo(file);
+//    }
 }

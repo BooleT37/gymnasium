@@ -16,8 +16,11 @@ const inputTypes = {
     NUMBER: "number",
     DATE: "date",
     LIST: "text", //todo сделать несколько инпутов
+    PHOTO: "text",
+    PHOTOS_LIST: "text",
+    VIDEOS_LIST: "text",
      //обрабатывается отдельно
-    // TEXT, SELECT, BOOLEAN, FOREIGN_ID и CONTROLS обрабатываются отдельно
+    // PHOTO, PHOTOS_LIST, TEXT, SELECT, BOOLEAN, FOREIGN_ID и CONTROLS обрабатываются отдельно
 }
 
 
@@ -35,7 +38,7 @@ export default class RowForm extends React.Component {
             if (value && prop.type === "DATE") {
                 value = serverToIso(value);
             }
-            if (value && prop.type === "LIST")
+            if (value && prop.type === "LIST" || prop.type === "PHOTOS_LIST" ||  prop.type === "VIDEOS_LIST")
                 value = value.join(", ");
 
             //for new entities to set default select value
@@ -67,10 +70,17 @@ export default class RowForm extends React.Component {
         var input = e.currentTarget;
         if (!input.name)
             throw new Error("need name attribute!");
-        var setObj = {};
-        var value = input.type === "checkbox" ? input.checked : input.value;
-        setObj[input.name] = value;
-        this.setState(update(this.state, {form: {$merge: setObj}}));
+        var formObj = {};
+        var value;
+        switch (input.type) {
+            case "checkbox":
+                value = input.checked;
+                break;
+            default:
+                value = input.value;
+        }
+        formObj[input.name] = value;
+        this.setState(update(this.state, {form: {$merge: formObj}}));
     }
 
     handleInputFocus(e) {
@@ -97,7 +107,7 @@ export default class RowForm extends React.Component {
             if (value && prop.type === "DATE")
                 value = isoToServer(value);
 
-            if (prop.type === "LIST") {
+            if (prop.type === "LIST" || prop.type === "PHOTOS_LIST" ||  prop.type === "VIDEOS_LIST") {
                 value = value.split(", ");
                 if (value.length === 1 && !value[0])
                     value = [];
@@ -114,13 +124,20 @@ export default class RowForm extends React.Component {
         });
         if (!isValid)
             return;
-        this.props.onSubmit(form);
+        this.props.onSubmit(form, this.state.uploadedPhoto);
     }
 
     handleInputKeyPress(target) {
         if(target.charCode==13){
             this.handleFormSubmit();
         }
+    }
+
+    handleDeletePhoto(event) {
+        var name = event.target.getAttribute('data-name');
+        var formObj = {};
+        formObj[name] = "";
+        this.setState(update(this.state, {form: {$merge: formObj}, uploadedPhoto: {$set: null}}));
     }
 
     cancelEdit() {
