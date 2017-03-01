@@ -50,7 +50,7 @@ public class AdminsRestController extends BaseRestController {
         if (!requestBody.getEmail().isEmpty() && admins.stream().anyMatch(admin -> admin.getEmail().toLowerCase().equals(requestBody.getEmail().toLowerCase())))
             throw new EmailAlreadyInUseException("Email is already is use");
         String hashedPassword = bcryptEncoder.encode(requestBody.getPassword());
-        Admin newAdmin = new Admin(requestBody.getLogin(), hashedPassword, requestBody.getEmail(), requestBody.getSubscribed());
+        Admin newAdmin = new Admin(requestBody.getLogin(), requestBody.getEmail(), hashedPassword, requestBody.getSubscribed());
         try {
             return adminDao.add(newAdmin);
         } catch (EntityAlreadyExistsException e) {
