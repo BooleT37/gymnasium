@@ -39,7 +39,7 @@ export default class RowForm extends React.Component {
                 value = serverToIso(value);
             }
             if (value && prop.type === "LIST" || prop.type === "PHOTOS_LIST" ||  prop.type === "VIDEOS_LIST")
-                value = value.join(", ");
+                value = value ? value.join(", ") : "";
 
             //for new entities to set default select value
             if (prop.nullable === false && !value)
