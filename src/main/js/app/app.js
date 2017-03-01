@@ -18,21 +18,21 @@ import RoutingManager from './RoutingManager';
 
 class App {
   setUpAutoscrollers() {
-    function openLink(id) {
-        var element = document.getElementById(id);
-        var image = element.getElementsByClassName("nav_element_image")[0];
+    function openLink(idLinkTo, idScrollTo) {
+        var linkElement = document.getElementById(idLinkTo);
+        var scrollToElement = document.getElementById(idScrollTo);
         var h = window.innerHeight
           || document.documentElement.clientHeight
           || document.body.clientHeight;
         var navElementHeightHalf = 91;
         var offset = -(h / 2 - navElementHeightHalf);
-        Velocity(image, "scroll", { container: document.body, easing: "ease", offset: offset});
+        Velocity(scrollToElement, "scroll", { easing: "ease", offset: offset});
 
-        setTimeout(function() { triggerClickEvent(element); }, 400)
+        setTimeout(function() { triggerClickEvent(linkElement); }, 400)
     }
 
     var links = document.getElementsByClassName("header_link");
-    Array.from(links).forEach((el, i) => {el.onclick = openLink.bind(null, el.getAttribute('data-linkTo'))});
+    Array.from(links).forEach((el, i) => {el.onclick = openLink.bind(null, el.getAttribute('data-linkTo'), el.getAttribute('data-scrollTo'))});
   }
 
   setUpDesignSwitchButton() {

@@ -31,27 +31,27 @@
         <header>
             <nav id="header_nav">
                 <ul>
-                    <li class="header_link" data-linkTo="nav_graduates">
+                    <li class="header_link" data-linkTo="nav_graduates_link" data-scrollTo="nav_graduates">
                         <img class="header_icon" src="images/header/graduates.png" alt="graduates" style="margin-bottom: 15px"/>
                         <div class="header_elementName" style="max-width: 125px">ВЫПУСКНИКИ</div>
                     </li>
-                    <li class="header_link" data-linkTo="nav_teachers">
+                    <li class="header_link" data-linkTo="nav_teachers_link" data-scrollTo="nav_teachers">
                         <img class="header_icon" src="images/header/teachers.png" alt="graduates" style="margin-bottom: 25px"/>
                         <div class="header_elementName" style="max-width: 83px">УЧИТЕЛЯ</div>
                     </li>
-                    <li class="header_link" data-linkTo="nav_administration">
-                        <img class="header_icon" src="images/header/administration.png" alt="graduates" style="margin-bottom: 20px"/>
-                        <div class="header_elementName" style="max-width: 164px">АДМИНИСТРАЦИЯ</div>
-                    </li>
-                    <li class="header_link" data-linkTo="nav_history">
-                        <img class="header_icon" src="images/header/history.png" alt="graduates" style="margin-bottom: 27px"/>
-                        <div class="header_elementName" style="max-width: 85px">ИСТОРИЯ</div>
-                    </li>
-                    <li class="header_link" data-linkTo="nav_souvenirs">
+                    <li class="header_link" data-linkTo="nav_souvenirs_link" data-scrollTo="nav_souvenirs">
                         <img class="header_icon" src="images/header/souvenirs.png" alt="graduates" style="margin-bottom: 24px"/>
                         <div class="header_elementName" style="max-width: 99px">СУВЕНИРЫ</div>
                     </li>
-                    <li class="header_link" data-linkTo="nav_traditions">
+                    <li class="header_link" data-linkTo="nav_history_link" data-scrollTo="nav_history">
+                        <img class="header_icon" src="images/header/history.png" alt="graduates" style="margin-bottom: 27px"/>
+                        <div class="header_elementName" style="max-width: 85px">ИСТОРИЯ</div>
+                    </li>
+                    <li class="header_link" data-linkTo="nav_administration_link" data-scrollTo="nav_administration">
+                        <img class="header_icon" src="images/header/administration.png" alt="graduates" style="margin-bottom: 20px"/>
+                        <div class="header_elementName" style="max-width: 164px">АДМИНИСТРАЦИЯ</div>
+                    </li>
+                    <li class="header_link" data-linkTo="nav_traditions_link" data-scrollTo="nav_traditions">
                         <img class="header_icon" src="images/header/traditions.png" alt="graduates" style="margin-bottom: 25px"/>
                         <div class="header_elementName" style="max-width: 100px">ТРАДИЦИИ</div>
                     </li>
@@ -65,12 +65,12 @@
         </header>
         <nav id="nav">
             <ul>
-                <li><a class="nav_element" href="#graduateClasses" id="nav_graduates"><div class="nav_element_image" id="nav_image_graduates"></div></a></li>
-                <li><a class="nav_element" href="#teachers" id="nav_teachers"><div class="nav_element_image" id="nav_image_teachers"></div></a></li>
-                <li><a class="nav_element" href="#souvenirs" id="nav_souvenirs"><div class="nav_element_image" id="nav_image_souvenirs"></div></a></li>
-                <li style="margin-top: 350px"><a class="nav_element" href="#history" id="nav_history"><div class="nav_element_image" id="nav_image_history"></div></a></li>
-                <li><a class="nav_element" href="#administration" id="nav_administration"><div class="nav_element_image" id="nav_image_administration"></div></a></li>
-                <li><a class="nav_element" href="#traditions" id="nav_traditions"><div class="nav_element_image" id="nav_image_traditions"></div></a></li>
+                <li id="nav_graduates"><a class="nav_element" href="#graduateClasses" id="nav_graduates_link"><div class="nav_element_image" id="nav_image_graduates"></div></a></li>
+                <li id="nav_teachers"><a class="nav_element" href="#teachers" id="nav_teachers_link"><div class="nav_element_image" id="nav_image_teachers"></div></a></li>
+                <li id="nav_souvenirs"><a class="nav_element" href="#souvenirs" id="nav_souvenirs_link"><div class="nav_element_image" id="nav_image_souvenirs"></div></a></li>
+                <li id="nav_history" style="margin-top: 350px"><a class="nav_element" href="#history" id="nav_history_link"><div class="nav_element_image" id="nav_image_history"></div></a></li>
+                <li id="nav_administration"><a class="nav_element" href="#administration" id="nav_administration_link"><div class="nav_element_image" id="nav_image_administration"></div></a></li>
+                <li id="nav_traditions"><a class="nav_element" href="#traditions" id="nav_traditions_link"><div class="nav_element_image" id="nav_image_traditions"></div></a></li>
             </ul>
             <c:if test="${animation}">
                 <div id="animation_container" style="background-color:rgba(255, 255, 255, 0.00); width:500px; height:500px">
