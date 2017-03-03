@@ -21,7 +21,7 @@ public class PropertiesStore {
         add(new TextEntityProperty("description", "Описание", 2000));
         add(new SelectEntityProperty("type", "Тип", false, new ArrayList<SelectPropertyValue<String>>() {{
             add(new SelectPropertyValue<>(HistoryEventType.HISTORY.toString(), "История"));
-            add(new SelectPropertyValue<>(HistoryEventType.LITERATURE_CLUB.toString(), "Литературные гостинные"));
+            add(new SelectPropertyValue<>(HistoryEventType.LITERATURE_CLUB.toString(), "Литературные гостиные"));
             add(new SelectPropertyValue<>(HistoryEventType.ART.toString(), "Творчество"));
             add(new SelectPropertyValue<>(HistoryEventType.SPORT.toString(), "Спорт"));
             add(new SelectPropertyValue<>(HistoryEventType.SCIENCE.toString(), "Наука"));

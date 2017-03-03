@@ -29,7 +29,7 @@ export default class Traditions extends React.Component {
                 <ModalHeader title="ТРАДИЦИИ" iconType="cup"/>
                 <div className="modal_content traditions_content">
                     <div className="traditions_row">
-                        {renderItem(1, "scroll", "ЛИТЕРАТУРНЫЕ ГОСТИННЫЕ", "literature_club")}
+                        {renderItem(1, "scroll", "ЛИТЕРАТУРНЫЕ ГОСТИНЫЕ", "literature_club")}
                         {renderItem(2, "bulbs", "НАУКА", "science")}
                     </div>
                     <div className="traditions_row">

@@ -55,7 +55,7 @@
             <a href="/admin/tables/history"><div class="nav_item">История</div></a>
         </div>
         <div>
-            <a href="/admin/tables/literature_club"><div class="nav_item">Литературные гостинные</div></a>
+            <a href="/admin/tables/literature_club"><div class="nav_item">Литературные гостиные</div></a>
             <a href="/admin/tables/sport"><div class="nav_item">Спорт</div></a>
             <a href="/admin/tables/art"><div class="nav_item">Творчество</div></a>
             <a href="/admin/tables/science"><div class="nav_item">Наука</div></a>

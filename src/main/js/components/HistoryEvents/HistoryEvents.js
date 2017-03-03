@@ -18,7 +18,7 @@ import {addBreakLines} from '../../utils';
 
 const modalTitles = {
     history: "ИСТОРИЯ",
-    literature_club: "ЛИТЕРАТУРНЫЕ ГОСТИННЫЕ",
+    literature_club: "ЛИТЕРАТУРНЫЕ ГОСТИНЫЕ",
     sport: "СПОРТ",
     art: "ТВОРЧЕСТВО",
     science: "НАУКА",

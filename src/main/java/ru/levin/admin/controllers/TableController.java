@@ -86,7 +86,7 @@ public class TableController {
                 fixSelectValues.put("type", HistoryEventType.HISTORY.toString());
                 break;
             case "literature_club":
-                tableTitle = "Литературные гостинные";
+                tableTitle = "Литературные гостиные";
                 controllerName = "historyEvents";
                 entities = historyEventDao.getAllForType(HistoryEventType.LITERATURE_CLUB).stream().map(g -> (Object)g).collect(Collectors.toList());
                 fixSelectValues.put("type", HistoryEventType.LITERATURE_CLUB.toString());
