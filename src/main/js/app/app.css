@@ -4,20 +4,21 @@ body {
     font-stretch: condensed;
 }
 
-#content {
+#content, .parallax_container {
     position: absolute;
     width: 100%;
     min-width: 1138px;
+}
+
+#content {
     height: 3671px;
     background-position-x: center;
     background-image: url('/images/background/background.png');
 }
 
 .parallax_container {
-    position: absolute;
     top: 0px;
     height: 3671px;
-    width: 100%;
     z-index: -1;
 }
 
@@ -32,6 +33,7 @@ body {
     height: 2797px;
     top: 0px; /* Height - containerHeight - containerOffsetBottom */
     background-image: url('/images/background/parallax_0.jpg');
+    background-position-x: center;
     z-index: 1;
 }
 
@@ -39,6 +41,7 @@ body {
     height: 1382px;
     top: 2121px;
     background-image: url('/images/background/parallax_1.png');
+    background-position-x: center;
     z-index: 2;
 }
 
