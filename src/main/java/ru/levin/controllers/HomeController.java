@@ -17,7 +17,7 @@ public class HomeController {
         Boolean isDebug = debugEnv != null && debugEnv.equals("TRUE");
         Map<String, Object> model = new HashMap<>();
         model.put("debug", isDebug);
-        model.put("animation", true);
+        model.put("animation", false);
         return new ModelAndView("index", model);
     }
 
