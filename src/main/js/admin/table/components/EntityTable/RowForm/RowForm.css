@@ -25,3 +25,23 @@ textarea.rowForm_input {
 .rowForm_deletePhotoButton {
     margin-top: 5px;
 }
+
+.rowForm_currentPhotoName {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.rowForm_deletePhotoButton {
+    font-weight: 600;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.rowForm_simpleEditorCheckbox {
+    margin-top: 5px;
+    min-width: 200px;
+}
+
+.rowForm_simpleEditorLabel {
+    font-size: 12px;
+}

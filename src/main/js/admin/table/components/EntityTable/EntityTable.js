@@ -24,6 +24,7 @@ export default class EntityTable extends React.Component {
         this.onDeleteButtonClick = this.onDeleteButtonClick.bind(this);
         this.onAddEntityButtonClick = this.onAddEntityButtonClick.bind(this);
         this.onCancelEditButtonClick = this.onCancelEditButtonClick.bind(this);
+        this.onFormSubmit = this.onFormSubmit.bind(this);
         this.saveEntity = this.saveEntity.bind(this);
         this.addEntity = this.addEntity.bind(this);
     }
@@ -46,44 +47,104 @@ export default class EntityTable extends React.Component {
         this.setState({ editingEntity: null });
     }
     
-    handleError(message) {
+    handleError(response) {
+        var message = response.entity ? (response.entity.message || response.entity) : response.message;
         alert(`При отправке данных произошла ошибка:\nСообщение:\n${message || "[Сообщение об ошибке отсутствует]"}`);
     }
 
-    // uploadPhoto(photo) {
-    //     if (photo)
-    //         return clientMultipart({
-    //             method: 'POST',
-    //             path: `/admin/tables/uploadPhoto`,
-    //             entity: {
-    //                 photo: photo,
-    //                 name: photo.name,
-    //                 tableName: TableStore.state.tableName
-    //             }
-    //         });
-    //     else
-    //         return new Promise().resolve(response);
-    // }
+    onFormSubmit(entity, photosToAdd, videosToAdd, photosToDelete, videosToDelete) {
+        var promise = Promise.resolve();
+        var i;
+        var savePhoto = (photo) => () => this.savePhoto(photo);
+        var saveVideo = (video) => () => this.saveVideo(video);
+        var deletePhoto = (photoName) => () => this.deletePhoto(photoName);
+        var deleteVideo = (videoName) => () => this.deleteVideo(videoName);
 
-    saveEntity(entity, uploadedPhoto) {
+        for (i = 0; i < photosToAdd.length; i++) {
+            promise = promise.then(savePhoto(photosToAdd[i]));
+        }
+
+        for (i = 0; i < videosToAdd.length; i++) {
+            promise = promise.then(saveVideo(videosToAdd[i]));
+        }
+
+        for (i = 0; i < photosToDelete.length; i++) {
+            promise = promise.then(deletePhoto(photosToDelete[i]));
+        }
+
+        for (i = 0; i < videosToDelete.length; i++) {
+            promise = promise.then(deleteVideo(videosToDelete[i]));
+        }
+
+        promise
+            .then(() => this.saveEntity(entity))
+            .catch(this.handleError);
+    }
+
+    savePhoto(photo) {
+        if (!photo) {
+            throw new Error("Can't save empty photo");
+        }
+         return clientMultipart({
+             method: 'POST',
+             path:  `/admin/photos/${TableStore.state.tableName}`,
+             entity: {
+                 photo,
+                 name: photo.name
+             }
+         });
+    }
+
+    saveVideo(video) {
+        if (!video) {
+            throw new Error("Can't save empty video");
+        }
+         return clientMultipart({
+             method: 'POST',
+             path:  `/admin/videos/${TableStore.state.tableName}`,
+             entity: {
+                 video,
+                 name: video.name
+             }
+         });
+    }
+
+    deletePhoto(photoName) {
+        if (!photoName) {
+            throw new Error("Can't delete photo with empty name");
+        }
+        return client({
+           method: 'DELETE',
+           path: `/admin/photos/${TableStore.state.tableName}`,
+           entity: {
+               name: photoName
+           }
+       })
+    }
+
+    deleteVideo(videoName) {
+        if (!videoName) {
+            throw new Error("Can't delete video with empty name");
+        }
+        return client({
+           method: 'DELETE',
+           path: `/admin/videos/${TableStore.state.tableName}`,
+           entity: {
+               name: videoName
+           }
+       })
+    }
+
+    saveEntity(entity) {
         var controller = TableStore.state.controller;
-        // var promise = this.uploadPhoto(uploadedPhoto);
-        // promise.then(_ => {
-        //     return client({
-        //         method: 'PUT',
-        //         path: `/api/${controller}/${entity.id}`,
-        //         entity: entity
-        //     });
-        client({
-            method: 'PUT',
-            path: `/api/${controller}/${entity.id}`,
-            entity: entity
-        }).then(response => {
-            this.setState({ editingEntity: null });
-            Actions.updateEntity(response.entity);
-        }).catch(response => {
-            this.handleError(response.entity ? response.entity.message : response.message);
-        });
+        return client({
+           method: 'PUT',
+           path: `/api/${controller}/${entity.id}`,
+           entity: entity
+       }).then(response => {
+           Actions.updateEntity(response.entity);
+           this.setState({ editingEntity: null });
+       }).catch(this.handleError);
     }
 
     onDeleteButtonClick(event) {
@@ -102,9 +163,7 @@ export default class EntityTable extends React.Component {
             path: `/api/${controller}/${id}`
         }).then(response => {
             Actions.deleteEntityById(id);
-        }).catch(response => {
-            this.handleError(response.entity ? response.entity.message : response.message);
-        });
+        }).catch(this.handleError);
     }
 
     onAddEntityButtonClick(event) {
@@ -117,13 +176,6 @@ export default class EntityTable extends React.Component {
 
     addEntity(entity, uploadedPhoto) {
         var controller = TableStore.state.controller;
-        // var promise = this.uploadPhoto(uploadedPhoto);
-        // promise.then(_ => {
-        //     return client({
-        //         method: 'POST',
-        //         path: `/api/${controller}/`,
-        //         entity: entity
-        //     });
         client({
             method: 'POST',
             path: `/api/${controller}/`,
@@ -131,9 +183,7 @@ export default class EntityTable extends React.Component {
         }).then(response => {
             this.setState({ editingEntity: null });
             Actions.addEntity(response.entity);
-        }).catch(response => {
-            this.handleError(response.entity ? response.entity.message : response.message);
-        });
+        }).catch(this.handleError);
     }
 
     entityToPlainRow(entity) {
@@ -193,8 +243,21 @@ export default class EntityTable extends React.Component {
                     }
                     break;
                 case "PHOTOS_LIST":
+                    var photos = value.map((name) => (<img
+                        key={name}
+                        src={prop.path + "/" + name}
+                        className="entityTable_photoInList"
+                        alt="photo"
+                    />))
+                    valueContent = <span>{photos}</span>;
+                    break;
                 case "VIDEOS_LIST":
-                    valueContent = value.join(", ");
+                    var videos = value.map(name => (
+                        <div key={name} className="entityTable_videoInList">
+                            <a href={prop.path + "/" + name} title={name}>{name}</a>
+                        </div>
+                    ));
+                    valueContent = <span>{videos}</span>;
                     break;
                 default:
                     valueContent = value;
@@ -207,7 +270,7 @@ export default class EntityTable extends React.Component {
 
     entityToRowEdit(entity) {
         return (
-            <RowForm key={entity.id} entity={entity} onSubmit={this.saveEntity} onCancel={this.onCancelEditButtonClick}/>
+            <RowForm key={entity.id} entity={entity} onSubmit={this.onFormSubmit} onCancel={this.onCancelEditButtonClick}/>
         );
     }
 

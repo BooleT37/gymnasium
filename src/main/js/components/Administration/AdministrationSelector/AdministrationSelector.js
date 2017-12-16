@@ -51,7 +51,7 @@ export default class AdministrationSelector extends React.Component {
 
     render() {
         function renderItem(obj) {
-            var photoSrc = obj.photoName ? `/images/photos/administration/${obj.photoName}` : "images/no_photo.png";
+            var photoSrc = obj.photoName ? `/photos/administration/${obj.photoName}` : "images/no_photo.png";
             return (
                 <div className="administrationSelector_item" onClick={this.onItemClick} key={obj.id} data-id={obj.id}>
                     <div className="photoFrame administrationSelector_itemPhotoFrame">

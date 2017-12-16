@@ -247,7 +247,7 @@ export default class GraduateClass extends SelfUpdatingComponent {
                 </div>
             );
 
-        var photoElement = state.currentClass.photoName ? <img src={"images/photos/classes/" + state.currentClass.photoName} className="graduateClass_photo"></img> : null;
+        var photoElement = state.currentClass.photoName ? <img src={"/photos/classes/" + state.currentClass.photoName} className="graduateClass_photo"></img> : null;
         var grades = state.grades.map((grade, i) => {
             if (grade === state.currentClass.grade)
                 return (<div className="graduateClass_grade graduateClass_grade_current" key={i}>{grade}</div>)

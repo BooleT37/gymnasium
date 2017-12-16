@@ -142,11 +142,4 @@ public class TableController {
 
         return new ModelAndView("admin/table", model);
     }
-
-//    @PostMapping("/uploadPhoto")
-//    public void uploadPhoto(@RequestParam("photo") MultipartFile photo, @RequestParam("name") String name, @RequestParam("tableName") String tableName) throws IOException {
-//        String savePath = folderPathsForTables.getPhotoPath(tableName);
-//        File file = new File("/" + savePath + "/" + name);
-//        photo.transferTo(file);
-//    }
 }

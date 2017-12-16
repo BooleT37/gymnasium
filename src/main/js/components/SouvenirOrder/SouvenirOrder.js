@@ -82,7 +82,7 @@ export default class SouvenirOrder extends SelfUpdatingComponent {
             return (<div className="modal_loader">Загрузка сувениров...</div>);
         var souvenir = this.state.souvenir;
         var imageElement = souvenir.photoName ?
-            <img src={`/images/photos/souvenirs/${souvenir.photoName}`} alt="image" className="souvenirOrder_image"/>
+            <img src={`/photos/souvenirs/${souvenir.photoName}`} alt="image" className="souvenirOrder_image"/>
             : null;
         return (
             <div className="souvenirOrder">

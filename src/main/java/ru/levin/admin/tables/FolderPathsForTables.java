@@ -11,7 +11,7 @@ public class FolderPathsForTables {
 
     public FolderPathsForTables() {
         photosPaths = new HashMap<>();
-        String defaultPhotosPath = "/images/photos/";
+        String defaultPhotosPath = "/photos/";
         photosPaths.put("graduates", defaultPhotosPath + "graduates");
         photosPaths.put("classes", defaultPhotosPath + "classes");
         photosPaths.put("teachers", defaultPhotosPath + "teachers");
@@ -25,7 +25,7 @@ public class FolderPathsForTables {
         photosPaths.put("travel", defaultPhotosPath + "traditions/travel");
 
         videosPaths = new HashMap<>();
-        String defaultVideosPath = "/video/";
+        String defaultVideosPath = "/videos/";
         videosPaths.put("graduates", defaultVideosPath + "graduates");
         videosPaths.put("classes", defaultVideosPath + "classes");
         videosPaths.put("teachers", defaultVideosPath + "teachers");
@@ -39,11 +39,11 @@ public class FolderPathsForTables {
         videosPaths.put("travel", defaultVideosPath + "traditions/travel");
     }
 
-    String getPhotoPath(String tableName) {
+    public String getPhotoPath(String tableName) {
         return photosPaths.get(tableName);
     }
 
-    String getVideoPath(String tableName) {
+    public String getVideoPath(String tableName) {
         return videosPaths.get(tableName);
     }
 }

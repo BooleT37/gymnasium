@@ -26,7 +26,7 @@ export default class SouvenirsEnlargedPhoto extends SelfUpdatingComponent {
         }
         this.setState({
             loaded: true,
-            src: "images/photos/souvenirs/" + this.store.getSouvenirById(this.props.params.souvenirId).photoName
+            src: "photos/souvenirs/" + this.store.getSouvenirById(this.props.params.souvenirId).photoName
         });
     }
 

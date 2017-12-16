@@ -67,7 +67,7 @@ export default class HistoryEventsMedia extends SelfUpdatingComponent {
         var items;
         if (this.props.type === "photo") {
             items = state.currentEvent.photoNames;
-            innerComponent = <HistoryEventsPhoto src={`images/photos/${this.pathPrefix}/${items[state.index]}`}/>;
+            innerComponent = <HistoryEventsPhoto src={`photos/${this.pathPrefix}/${items[state.index]}`}/>;
         } else {
             items = state.currentEvent.videoNames;
             innerComponent = <HistoryEventsVideo src={`videos/${this.pathPrefix}/${items[state.index]}`}/>;

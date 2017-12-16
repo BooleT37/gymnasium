@@ -156,7 +156,7 @@ export default class HistoryEvents extends SelfUpdatingComponent {
         var photoPreview = (event.photoNames && event.photoNames.length) ?
             <PhotoContainer height={243} onClick={this.onPhotosClick} className="historyEvents_photoContainer">
                 <img
-                    src={`images/photos/${this.pathPrefix}/${event.photoNames[0]}`}
+                    src={`photos/${this.pathPrefix}/${event.photoNames[0]}`}
                     alt="Photo preview"
                     className="historyEvents_imagePreview"
                 />

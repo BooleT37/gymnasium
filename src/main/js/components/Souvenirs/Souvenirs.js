@@ -90,7 +90,7 @@ export default class Souvenirs extends SelfUpdatingComponent {
             var imageElements = obj.photoName ? (
                 <div className="souvenirs_itemImage" data-id={obj.id} onClick={this.handleItemClick}>
                     <PhotoContainer height={270}>
-                        <img src={`/images/photos/souvenirs/${obj.photoName}`} alt="image"/>
+                        <img src={`/photos/souvenirs/${obj.photoName}`} alt="image"/>
                     </PhotoContainer>
                     <div className="souvenirs_enlarge"></div>
                 </div>
