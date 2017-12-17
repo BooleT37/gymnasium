@@ -3,6 +3,7 @@
 import './EntityTable.css';
 
 import React from 'react';
+import Loader from 'react-loader';
 
 import RowForm from './RowForm/RowForm';
 import TableStore from '../../TableStore';
@@ -317,6 +318,7 @@ export default class EntityTable extends React.Component {
                         </tbody>
                     </table>
                 </div>
+                {this.state.loading && <Loader/>}
             </div>
         )
     }

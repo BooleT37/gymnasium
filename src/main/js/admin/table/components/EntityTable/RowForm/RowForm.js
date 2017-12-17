@@ -4,7 +4,6 @@ import './RowForm.css';
 
 import React from 'react';
 import update from 'immutability-helper';
-import Loader from 'react-loader';
 
 import {isoToServer, serverToIso} from './RowForm-dateConverter';
 import {replaceNbsp} from '../../../../../utils';
@@ -534,7 +533,6 @@ export default class RowForm extends React.Component {
                         content = (
                             <div className="rowForm_controls">
                                 <button type="button" onClick={this.handleFormSubmit} disabled={this.props.loading}>Сохранить</button>
-                                {this.props.loading && <Loader/>}
                                 <button type="button" onClick={this.cancelEdit}>Отмена</button>
                             </div>
                         );
