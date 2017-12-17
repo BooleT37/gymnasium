@@ -40,10 +40,10 @@ public class FolderPathsForTables {
     }
 
     public String getPhotoPath(String tableName) {
-        return photosPaths.get(tableName);
+        return photosPaths.get(tableName) + "/";
     }
 
     public String getVideoPath(String tableName) {
-        return videosPaths.get(tableName);
+        return videosPaths.get(tableName) + "/";
     }
 }

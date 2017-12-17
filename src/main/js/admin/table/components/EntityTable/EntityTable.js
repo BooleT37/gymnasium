@@ -17,7 +17,8 @@ export default class EntityTable extends React.Component {
 
         this.state = {
             editingEntity: null,
-            entities: TableStore.state.entities
+            entities: TableStore.state.entities,
+            loading: false
         }
 
         this.onEditButtonClick = this.onEditButtonClick.bind(this);
@@ -60,6 +61,8 @@ export default class EntityTable extends React.Component {
         var deletePhoto = (photoName) => () => this.deletePhoto(photoName);
         var deleteVideo = (videoName) => () => this.deleteVideo(videoName);
 
+        this.setState({loading: true});
+
         for (i = 0; i < photosToAdd.length; i++) {
             promise = promise.then(savePhoto(photosToAdd[i]));
         }
@@ -76,9 +79,13 @@ export default class EntityTable extends React.Component {
             promise = promise.then(deleteVideo(videosToDelete[i]));
         }
 
-        promise
+        return promise
             .then(() => this.saveEntity(entity))
-            .catch(this.handleError);
+            .then(() => { this.setState({loading: false}); })
+            .catch((e) => {
+                this.setState({loading: false});
+                this.handleError(e);
+            });
     }
 
     savePhoto(photo) {
@@ -237,7 +244,7 @@ export default class EntityTable extends React.Component {
                     break;
                 case "PHOTO":
                     if (value) {
-                        valueContent = (<img src={prop.path + "/" + value} className="entityTable_photo" alt="photo"/>)
+                        valueContent = (<img src={prop.path + value} className="entityTable_photo" alt="photo"/>)
                     } else {
                         valueContent = "";
                     }
@@ -245,7 +252,7 @@ export default class EntityTable extends React.Component {
                 case "PHOTOS_LIST":
                     var photos = value.map((name) => (<img
                         key={name}
-                        src={prop.path + "/" + name}
+                        src={prop.path + name}
                         className="entityTable_photoInList"
                         alt="photo"
                     />))
@@ -254,7 +261,7 @@ export default class EntityTable extends React.Component {
                 case "VIDEOS_LIST":
                     var videos = value.map(name => (
                         <div key={name} className="entityTable_videoInList">
-                            <a href={prop.path + "/" + name} title={name}>{name}</a>
+                            <a href={prop.path + name} title={name}>{name}</a>
                         </div>
                     ));
                     valueContent = <span>{videos}</span>;

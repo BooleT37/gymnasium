@@ -91,8 +91,7 @@ export default class RowForm extends React.Component {
             photosList,
             videosList,
             photoEditorDisabled: false,
-            videosEditorDisabled: false,
-            loading: false
+            videosEditorDisabled: false
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -403,8 +402,7 @@ export default class RowForm extends React.Component {
             : this.state.videosList
                 .filter(video => !video.newFile && video.deleted)
                 .map(video => video.name);
-        this.setState({loading: true});
-        this.props.onSubmit(form, photosToAdd, videosToAdd, photosToDelete, videosToDelete);
+        this.props.onSubmit(form, photosToAdd, videosToAdd, photosToDelete, videosToDelete)
     }
 
     cancelEdit() {
@@ -535,8 +533,8 @@ export default class RowForm extends React.Component {
                     case("CONTROLS"):
                         content = (
                             <div className="rowForm_controls">
-                                <button type="button" onClick={this.handleFormSubmit} disabled={this.state.loading}>Сохранить</button>
-                                {this.state.loading && <Loader/>}
+                                <button type="button" onClick={this.handleFormSubmit} disabled={this.props.loading}>Сохранить</button>
+                                {this.props.loading && <Loader/>}
                                 <button type="button" onClick={this.cancelEdit}>Отмена</button>
                             </div>
                         );
