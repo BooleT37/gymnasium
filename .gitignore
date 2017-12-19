@@ -9,3 +9,7 @@ node_modules/
 /src/main/resources/static/built/*
 /src/main/js/app/images/design.jpg
 /src/main/js/app/css/design.css
+
+.mvn/
+mvnw.cmd
+nohup.out
