@@ -171,10 +171,27 @@ export default class EntityTable extends React.Component {
             path: `/api/${controller}/${id}`
         }).then(response => {
             Actions.deleteEntityById(id);
-        }).catch(this.handleError);
+        }).catch((e) => {
+            if (controller === "graduateClasses") {
+                alert("Сначала удалите всех выпускников из этого класса");
+            } else {
+                handleError(e);
+            }
+        });
     }
 
     onAddEntityButtonClick(event) {
+        var error = false;
+        TableStore.state.properties.forEach(prop => {
+            if (prop.type === "FOREIGN_ID" && TableStore.state.foreignEntities[prop.relatedEntity].length === 0) {
+                alert(`Сначала заполните хотя бы один объект типа "${prop.columnName}"`);
+                error = true;
+                return;
+            }
+        });
+        if (error) {
+            return;
+        }
         if (this.state.editingEntity === null) {
             this.setState({
                 editingEntity: { isNew: true }

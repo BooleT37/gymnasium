@@ -369,6 +369,10 @@ export default class RowForm extends React.Component {
                     value = [];
             }
 
+            if (!value && (prop.type === "PHOTOS_LIST" || prop.type === "VIDEOS_LIST")) {
+                value = [];
+            }
+
             if (prop.nullable === false && (value === null || value === undefined || (typeof value === "string" && value.length === 0))) {
                 alert(`Поле '${prop.columnName}' обязательно для заполнения!`);
                 isValid = false;
@@ -478,13 +482,13 @@ export default class RowForm extends React.Component {
                             <div>
                                 {this.state.photoEditorDisabled ? (
                                     <SimpleFilesListEdit
-                                        fileNames={value}
+                                        fileNames={value || []}
                                         onAdd={(fileName) => { this.handlePhotoAddInSimpleList(fileName, prop.name)}}
                                         onDelete={(name) => this.handlePhotoDeleteFromSimpleList(prop.name, name)}
                                     />
                                 ) : (
                                     <FilesListEdit
-                                        fileNames={value}
+                                        fileNames={value || []}
                                         onAdd={(input) => { this.handlePhotoAddInList(input, input.files[0], prop.name)}}
                                         onDelete={(name) => this.handlePhotoDeleteFromList(prop.name, name)}
                                     />
@@ -506,13 +510,13 @@ export default class RowForm extends React.Component {
                             <div>
                                 {this.state.videoEditorDisabled ? (
                                     <SimpleFilesListEdit
-                                        fileNames={value}
+                                        fileNames={value || []}
                                         onAdd={(fileName) => { this.handleVideoAddInSimpleList(fileName, prop.name)}}
                                         onDelete={(name) => this.handleVideoDeleteFromSimpleList(prop.name, name)}
                                     />
                                 ) : (
                                     <FilesListEdit
-                                        fileNames={value}
+                                        fileNames={value || []}
                                         onAdd={(input) => { this.handleVideoAddInList(input, input.files[0], prop.name)}}
                                         onDelete={(name) => this.handleVideoDeleteFromList(prop.name, name)}
                                     />
