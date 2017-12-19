@@ -26,9 +26,8 @@ export default class EntityTable extends React.Component {
         this.onDeleteButtonClick = this.onDeleteButtonClick.bind(this);
         this.onAddEntityButtonClick = this.onAddEntityButtonClick.bind(this);
         this.onCancelEditButtonClick = this.onCancelEditButtonClick.bind(this);
-        this.onFormSubmit = this.onFormSubmit.bind(this);
-        this.saveEntity = this.saveEntity.bind(this);
-        this.addEntity = this.addEntity.bind(this);
+        this.onNewEntitySubmit = this.onNewEntitySubmit.bind(this);
+        this.onExistingEntitySubmit = this.onExistingEntitySubmit.bind(this);
     }
 
     componentDidMount() {
@@ -54,7 +53,15 @@ export default class EntityTable extends React.Component {
         alert(`При отправке данных произошла ошибка:\nСообщение:\n${message || "[Сообщение об ошибке отсутствует]"}`);
     }
 
-    onFormSubmit(entity, photosToAdd, videosToAdd, photosToDelete, videosToDelete) {
+    onNewEntitySubmit(entity, photosToAdd, videosToAdd, photosToDelete, videosToDelete) {
+        this.submitForm(entity, photosToAdd, videosToAdd, photosToDelete, videosToDelete, true);
+    }
+
+    onExistingEntitySubmit(entity, photosToAdd, videosToAdd, photosToDelete, videosToDelete) {
+        this.submitForm(entity, photosToAdd, videosToAdd, photosToDelete, videosToDelete, false);
+    }
+
+    submitForm(entity, photosToAdd, videosToAdd, photosToDelete, videosToDelete, isNew) {
         var promise = Promise.resolve();
         var i;
         var savePhoto = (photo) => () => this.savePhoto(photo);
@@ -80,8 +87,12 @@ export default class EntityTable extends React.Component {
             promise = promise.then(deleteVideo(videosToDelete[i]));
         }
 
+        if (isNew) {
+            promise = promise.then(() => this.addEntity(entity))
+        } else {
+            promise = promise.then(() => this.saveEntity(entity))
+        }
         return promise
-            .then(() => this.saveEntity(entity))
             .then(() => { this.setState({loading: false}); })
             .catch((e) => {
                 this.setState({loading: false});
@@ -295,7 +306,7 @@ export default class EntityTable extends React.Component {
 
     entityToRowEdit(entity) {
         return (
-            <RowForm key={entity.id} entity={entity} onSubmit={this.onFormSubmit} onCancel={this.onCancelEditButtonClick}/>
+            <RowForm key={entity.id} entity={entity} onSubmit={this.onExistingEntitySubmit} onCancel={this.onCancelEditButtonClick}/>
         );
     }
 
@@ -316,7 +327,7 @@ export default class EntityTable extends React.Component {
 
         var rows = entities.map(entity => this.entityToRow(entity));
         if (this.state.editingEntity && this.state.editingEntity.isNew)
-            rows.unshift(<RowForm key="-1" entity={this.state.editingEntity} onSubmit={this.addEntity} onCancel={this.onCancelEditButtonClick}/>);
+            rows.unshift(<RowForm key="-1" entity={this.state.editingEntity} onSubmit={this.onNewEntitySubmit} onCancel={this.onCancelEditButtonClick}/>);
 
         return (
             <div className="entityTable">
