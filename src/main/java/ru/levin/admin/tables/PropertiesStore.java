@@ -32,8 +32,8 @@ public class PropertiesStore {
     private List<EntityProperty> graduates() {
         return new ArrayList<EntityProperty>()
         {{
-            add(new StringEntityProperty("firstName", "Имя", false, 7, 50));
             add(new StringEntityProperty("lastName", "Фамилия", false, 7, 50));
+            add(new StringEntityProperty("firstName", "Имя", false, 7, 50));
             add(new StringEntityProperty("patronymic", "Отчество", 7, 50));
             add(new EntityProperty("birthDate", "Дата рождения", 7,  PropertyType.DATE));
             add(new ForeignIdEntityProperty("graduateClassId", "Класс", false, 5, TableEntity.GRADUATE_CLASS));
@@ -61,8 +61,8 @@ public class PropertiesStore {
     private List<EntityProperty> teachers() {
         return new ArrayList<EntityProperty>()
         {{
-            add(new StringEntityProperty("firstName", "Имя", false, 50));
             add(new StringEntityProperty("lastName", "Фамилия", false, 50));
+            add(new StringEntityProperty("firstName", "Имя", false, 50));
             add(new StringEntityProperty("patronymic", "Отчество", 50));
             add(new EntityProperty("birthDate", "Дата рождения", PropertyType.DATE));
             add(new EntityProperty("subjects", "Предметы", PropertyType.LIST));
@@ -75,8 +75,8 @@ public class PropertiesStore {
     private List<EntityProperty> administration() {
         return new ArrayList<EntityProperty>()
         {{
-            add(new StringEntityProperty("firstName", "Имя", false, 50));
             add(new StringEntityProperty("lastName", "Фамилия", false, 50));
+            add(new StringEntityProperty("firstName", "Имя", false, 50));
             add(new StringEntityProperty("patronymic", "Отчество", 50));
             add(new EntityProperty("birthDate", "Дата рождения", PropertyType.DATE));
             add(new EntityProperty("employmentYear", "Год начала работы", PropertyType.NUMBER));
